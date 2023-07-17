@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <base href="maplejs"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Maple Tools</title>
+</head>
+<body class='flex flex-col h-screen justify-between text-center'>
+    <header class='text-xl p-8 border-b-2 border-red-600 uppercase font-bold mx-auto h-18'>
+        <button id="homeBtn" class="nav-link px-5" aria-current="page">Home</button>
+        <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
+        <button id="crsBtn" class="nav-link px-5">CRS</button>
+        <button id="nclcBtn" class="nav-link px-5">NCLC</button>
+        <button id="suggestedpnpBtn" class="nav-link px-5">Suggested PNP</button>
+        <button id="ebooksBtn" class="nav-link px-5">Ebooks</button>
+        <button id="extraInfoBtn" class="nav-link px-5">Extra Info</button>
+    </header>
+    
+    
+    
+    <template id="eligibilityCalculatorTemplate">
+        <section id="eligibility_calculator">
+            <div>
+                <h1 class='text-4xl font-bold mt-10'>Eligibility Calculator</h1>
+                <p class='text-xl mt-5'>This tool will help you determine your eligibility for Express Entry</p>
+                <p class='text-xl mt-5'>Please note that you are only eligible if you get 67 points or more /100</p>
+            
+                <div class='bg-gray-400 w-1/2 mt-10 mx-auto text-center'>
+                    <div class="flex flex-col justify-center items-center gap-4">
+                        <h1 class='text-2xl font-bold'>What is your marital status?</h1>
+                        <select class="marital-status" name="marital-status" id="marital-status">
+                            <option value="">Select your gender</option>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                        </select>
+                    </div>
+            
+                    <div style="display: none;" class="ageDiv flex flex-col justify-center items-center gap-4 mt-10">
+                        <h1 class='text-2xl font-bold'>Age</h1>
+                        <select name="age" id="age">
+                            <option value="17">17 or less</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                            <option value="46">46</option>
+                            <option value="47">47 or more</option>
+                        </select>
+                    </div>
+            
+                    <div style="display: none;" class="educationDiv flex flex-col justify-center items-center gap-4 mt-10">
+                        <h1 class='text-2xl font-bold'>Education</h1>
+                        <select class='w-1/2' name="education" id="education">
+                            <option value="">Select your qualification</option>
+                            <option value="secondary">Secondary school (high school) credential or less</option>
+                            <option value="one-year">One-year post-secondary program credential</option>
+                            <option value="two-year">Two-year post-secondary program credential</option>
+                            <option value="bachelors">Bachelor's degree OR a three or more year post-secondary program credential</option>
+                            <option value="two-or-more">Two or more post-secondary program credentials (1 should be 3 or more years)</option>
+                            <option value="masters">Master's degree</option>
+                            <option value="doctoral">Doctoral level university degree (Ph.D.)</option>
+                        </select>
+                    </div>
+            
+                    <div style="display: none;" class="first-language-div">
+                        <h1 class='text-2xl font-bold mt-10'>First Official Language</h1>
+                        <div class="flex flex-col justify-center items-center gap-4">
+                            <label htmlFor="first-language-availability">Are your test results less than two years old?</label>
+                            <select name="first-language-availability" id="first-language-availability">
+                                <option value=""></option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+            
+                        <div style="display: none;" class="first-language-typeDiv flex flex-col justify-center items-center gap-4 mt-10">
+                            <label htmlFor="first-language-type">Which language test did you take for your first official language?</label>
+                            <select name="first-language-type" id="first-language-type">
+                                <option value=""></option>
+                                <option value="ielts">IELTS</option>
+                                <option value="celpip">CELPIP</option>
+                                <option value="tef-canada">TEF Canada</option>
+                                <option value="tcf-canada">TCF Canada</option>
+                            </select>
+                        </div>
+                        
+                        <div style="display: none;" class="first-language-scoresDiv flex flex-col justify-center items-center gap-2 mt-10">
+                            <label>Set your test scores</label>
+                            <div class="flex flex-col justify-center items-center gap-4">
+                                <label htmlFor="first-language-reading">Reading</label>
+                                <select class="mb-4" name="first-language-reading" id="first-language-reading">
+                                    <option value="first-language-reading-clb6">CLB 6 or less</option>
+                                    <option value="first-language-reading-clb7">CLB 7</option>
+                                    <option value="first-language-reading-clb8">CLB 8</option>
+                                    <option value="first-language-reading-clb9">CLB 9 or more</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col justify-center items-center gap-4">
+                                <label htmlFor="first-language-writing">Writing</label>
+                                <select class="mb-4" name="first-language-writing" id="first-language-writing">
+                                    <option value="first-language-writing-clb6">CLB 6 or less</option>
+                                    <option value="first-language-writing-clb7">CLB 7</option>
+                                    <option value="first-language-writing-clb8">CLB 8</option>
+                                    <option value="first-language-writing-clb9">CLB 9 or more</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col justify-center items-center gap-4">
+                                <label htmlFor="first-language-listening">Listening</label>
+                                <select class="mb-4" name="first-language-listening" id="first-language-listening">
+                                    <option value="first-language-listening-clb6">CLB 6 or less</option>
+                                    <option value="first-language-listening-clb7">CLB 7</option>
+                                    <option value="first-language-listening-clb8">CLB 8</option>
+                                    <option value="first-language-listening-clb9">CLB 9 or more</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col justify-center items-center gap-4">
+                                <label htmlFor="first-language-speaking">Speaking</label>
+                                <select class="mb-4" name="first-language-speaking" id="first-language-speaking">
+                                    <option value="first-language-speaking-clb6">CLB 6 or less</option>
+                                    <option value="first-language-speaking-clb7">CLB 7</option>
+                                    <option value="first-language-speaking-clb8">CLB 8</option>
+                                    <option value="first-language-speaking-clb9">CLB 9 or more</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div style="display: none;" class="second-language-div">
+                        <div class="flex flex-col justify-center items-center gap-4 mt-10">
+                            <label htmlFor="second-language-availability">Do you have other language results?</label>
+                            <select name="second-language-availability" id="second-language-availability">
+                                <option value=""></option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+
+                        <div style="display: none;" class="second-language-typeDiv flex flex-col justify-center items-center gap-4 mt-10">
+                            <label htmlFor="second-language-type">Which language test did you take for your second official language?</label>
+                            <select name="second-language-type" id="second-language-type">
+                                <option value=""></option>
+                                <option value="ielts">IELTS</option>
+                                <option value="celpip">CELPIP</option>
+                                <option value="tef-canada">TEF Canada</option>
+                                <option value="tcf-canada">TCF Canada</option>
+                            </select>
+                        </div>
+            
+                        <div style="display: none;" class="second-language-scoresDiv flex flex-col justify-center items-center gap-2 mt-10">
+                            <label>Set your test scores</label>
+                            <div class="flex flex-col justify-center items-center gap-4">
+                                <label htmlFor="second-language-reading">Reading</label>
+                                <select class="mb-4" name="second-language-reading" id="second-language-reading">
+                                    <option value="second-language-reading-clb4">CLB 4 or less</option>
+                                    <option value="second-language-reading-clb5">CLB 5 or more</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col justify-center items-center gap-4">
+                                <label htmlFor="second-language-writing">Writing</label>
+                                <select class="mb-4" name="second-language-writing" id="second-language-writing"></select>
+                            </div>
+                            <div class="flex flex-col justify-center items-center gap-4">
+                                <label htmlFor="second-language-listening">Listening</label>
+                                <select class="mb-4" name="second-language-listening" id="second-language-listening"></select>
+                            </div>
+                            <div class="flex flex-col justify-center items-center gap-4">
+                                <label htmlFor="second-language-speaking">Speaking</label>
+                                <select class="mb-4" name="second-language-speaking" id="second-language-speaking"></select>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div style="display: none;" class="work-experience-div flex flex-col justify-center items-center gap-4 mt-10">
+                        <h1 class='text-2xl font-bold'>Work Experience</h1>
+                        <select name="work-experience" id="work-experience">
+                            <option value="none">1 year</option>
+                            <option value="one-year">2 - 3 years</option>
+                            <option value="two-year">4 - 5 years</option>
+                            <option value="three-year">6 or more years</option>
+                        </select>
+                    </div>
+            
+                    <div style="display: none;" class="reserved-job-position-in-canada-div flex flex-col justify-center items-center gap-4 mt-10">
+                        <h1 class='text-2xl font-bold'>Reserved Job Position in Canada</h1>
+                        <select name="reserved-job-position-in-canada" id="reserved-job-position-in-canada">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+            
+                    <div style="display: none;" class="study-canada-div flex flex-col justify-center items-center gap-4">
+                        <h1 class='text-2xl font-bold mt-10'>Studies in Canada</h1>
+                        <label htmlFor="study-canada">Did you study in Canada?</label>
+                        <select name="study-canada" id="study-canada">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+            
+                    <div style="display: none;" class="work-experience-canada-div flex flex-col justify-center items-center gap-4">
+                        <h1 class='text-2xl font-bold mt-10'>Work experience in Canada</h1>
+                        <label htmlFor="work-experience-canada">Do you have work experience in Canada?</label>
+                        <select name="work-experience-canada" id="work-experience-canada">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+            
+                    <!-- <h1 class='text-2xl font-bold mt-10'>Reserved Job Position in Canada</h1>
+                    <div class="flex flex-col justify-center items-center gap-4">
+                        <select name="reserved-job-position" id="reserved-job-position">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div> -->
+            
+                    <div style="display: none;" class="relatives-div flex flex-col justify-center items-center gap-4">
+                        <h1 class='text-2xl font-bold mt-10'>Relatives in Canada</h1>
+                        <label htmlFor="relatives">Do you {married == true ? 'or your spouse' : ''} have relatives in Canada?</label>
+                        <select name="relatives" id="relatives">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+            
+                    <div style="display: none;" class="spouse-language-div flex flex-col justify-center items-center gap-4">
+                            <h1 class='text-2xl font-bold mt-10'>Spouse language skills</h1>
+                            <label htmlFor="spouse-language-availability">Did your spouse take a language exam and get CLB4 at least?</label>
+                            <select name="spouse-language-availability" id="spouse-language-availability">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+            
+                        <div style="display: none;" class="spouse-education-div flex flex-col justify-center items-center gap-4">
+                            <h1 class='text-2xl font-bold mt-10'>Spouse Education</h1>
+                            <label htmlFor="spouse-education">Did your spouse studied in Canada?</label>
+                            <select name="spouse-education" id="spouse-education">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+            
+                        <div style="display: none;" class="spouse-work-experience-div flex flex-col justify-center items-center gap-4">
+                            <h1 class='text-2xl font-bold mt-10'>Spouse Work Experience</h1>
+                            <label htmlFor="spouse-work-experience">Did your spouse have work experience in Canada?</label>
+                            <select name="spouse-work-experience" id="spouse-work-experience">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                </div>
+            
+                <button class='btn-calculate bg-blue-500 text-white px-5 py-2 rounded-lg mt-10' disabled>Calculate</button>
+            </div>
+        </section>
+    </template>
+
+    <template id="crsTemplate">
+        <section id="crs">crs</section>
+    </template>
+
+    <template id="nclcTemplate">
+        <section id="nclc">nclc</section>
+    </template>
+
+    <template id="extraInfoTemplate">
+        <section id="extraInfo">extraInfo</section>
+    </template>
+
+    <template id="ebooksTemplate">
+        <section id="ebooks">ebooks</section>
+    </template>
+
+    <template id="suggestedpnpTemplate">
+        <section id="suggestedpnp">suggestedpnp</section>
+    </template>
+    
+    <template id="homeTemplate">
+        <section id="home">
+            <h1 class='text-4xl font-bold mt-10'>Welcome to MapleMind Tools</h1>
+            <p class='text-xl mt-5'>This website is designed to help you with your Express Entry application.</p>
+            <p class='text-xl mt-5'>Please note that the other IRCC immigration systems will be added soon.</p>
+            <p class='text-xl mt-5'>If you have any questions, feel free to ask them in <a href='https://www.facebook.com/groups/hellocanada25' class='text-blue-600' target="_blank" rel="noreferrer">Facebook group</a></p>
+        </section>
+    </template>
+
+    <main>
+        <section>
+            <h1 class='text-4xl font-bold mt-10'>Welcome to MapleMind Tools</h1>
+            <p class='text-xl mt-5'>This website is designed to help you with your Express Entry application.</p>
+            <p class='text-xl mt-5'>Please note that the other IRCC immigration systems will be added soon.</p>
+            <p class='text-xl mt-5'>If you have any questions, feel free to ask them in <a href='https://www.facebook.com/groups/hellocanada25' class='text-blue-600' target="_blank" rel="noreferrer">Facebook group</a></p>
+        </section>
+    </main>
+
+
+
+
+
+    <footer class='flex flex-col justify-center items-center h-20 mt-10 bg-black text-white'>
+        <p>Designed and developed with ❤ by <b>Mahdi</b></p>
+        <p>© <span id="year"></span> - All rights reserved</p>
+    </footer>
+    <script src="./script/main.js"></script>
+
+</body>
+
+</html>

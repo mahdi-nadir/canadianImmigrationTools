@@ -1,0 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Navbar */
+.nav-link {
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #f59e0b;
+}
