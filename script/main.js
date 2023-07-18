@@ -28,13 +28,12 @@ let main = document.querySelector('main');
 let count = 0;
 let educationScore = 0;
 let ageScore = 0;
-// let homeComponent = document.querySelector('#home');
-// let eligibilityCalculatorComponent = document.querySelector('#eligibility_calculator');
-// let crsComponent = document.querySelector('#crs');
-// let nclcComponent = document.querySelector('#nclc');
-// let suggestedpnpComponent = document.querySelector('#suggestedpnp');
-// let ebooksComponent = document.querySelector('#ebooks');
-// let extraInfoComponent = document.querySelector('#extraInfo');
+let firstLangScore = 0;
+let firstLangScoresArray = [0, 0, 0, 0];
+let secondLangScore = 0;
+let secondLangScoresArray = [0, 0, 0, 0];
+let workExpeScore = 0;
+
 
 
 // add event listeners to buttons and display the right component when clicked
@@ -52,10 +51,13 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 
     // declare variables for the form
     let martialStatus = document.querySelector('.marital-status');
+
     let ageDiv = document.querySelector('.ageDiv');
     let ageInput = document.querySelector('[name="age"]');
+
     let educationDiv = document.querySelector('.educationDiv');
     let educationInput = document.querySelector('[name="education"]');
+
     let firstLangDiv = document.querySelector('.first-language-div');
     let firstLangInput = document.querySelector('[name="first-language-availability"]');
     let firstLangTypeDiv = document.querySelector('.first-language-typeDiv');
@@ -65,15 +67,13 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     let firstLangWritingInput = document.querySelector('[name="first-language-writing"]');
     let firstLangListeningInput = document.querySelector('[name="first-language-listening"]');
     let firstLangSpeakingInput = document.querySelector('[name="first-language-speaking"]');
+
     let secondLangDiv = document.querySelector('.second-language-div');
     let secondLangInput = document.querySelector('[name="second-language-availability"]');
     let secondLangTypeDiv = document.querySelector('.second-language-typeDiv');
     let secondLangTypeInput = document.querySelector('[name="second-language-type"]');
     let secondLangScoresDiv = document.querySelector('.second-language-scoresDiv');
-    let secondLangReadingInput = document.querySelector('[name="second-language-reading"]');
-    let secondLangWritingInput = document.querySelector('[name="second-language-writing"]');
-    let secondLangListeningInput = document.querySelector('[name="second-language-listening"]');
-    let secondLangSpeakingInput = document.querySelector('[name="second-language-speaking"]');
+    let secondLangScoresInput = document.querySelector('[name="second-language-scores"]');
 
     let workExpDiv = document.querySelector('.work-experience-div');
     let workExpInput = document.querySelector('[name="work-experience"]');
@@ -137,7 +137,6 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             ageScore = 0;
         }
         educationDiv.style.display = 'block';
-        console.log(ageScore);
     })
 
     educationInput.addEventListener('change', () => {
@@ -159,12 +158,148 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             educationScore = 0;
         }
         firstLangDiv.style.display = 'block';
-        count = educationScore + ageScore;
-        console.log(educationScore);
-        console.log(count);
+    })
 
+    firstLangInput.addEventListener('change', () => {
+        if (firstLangInput.value == 'yes') {
+            firstLangTypeDiv.style.display = 'block';
+        } else {
+            firstLangTypeDiv.style.display = 'none';
+            firstLangScoresDiv.style.display = 'none';
+        }
+    })
+
+    firstLangTypeInput.addEventListener('change', () => {
+        if (firstLangTypeInput.value == 'ielts' || firstLangTypeInput.value == 'celpip') {
+            firstLangScoresDiv.style.display = 'block';
+            secondLangTypeInput.removeChild(secondLangTypeInput.childNodes[3]);
+            secondLangTypeInput.removeChild(secondLangTypeInput.childNodes[4]);
+        } else if (firstLangTypeInput.value == 'tef-canada' || firstLangTypeInput.value == 'tcf-canada') {
+            firstLangScoresDiv.style.display = 'block';
+            secondLangTypeInput.removeChild(secondLangTypeInput.childNodes[3]);
+            secondLangTypeInput.removeChild(secondLangTypeInput.childNodes[4]);
+        } else {
+            firstLangScoresDiv.style.display = 'none';
+        }
+    })
+
+    firstLangReadingInput.addEventListener('change', () => {
+        getScoreOfFirstLangSkill(0, 'reading', firstLangReadingInput);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        count = educationScore + ageScore + firstLangScore;
+    })
+
+    firstLangWritingInput.addEventListener('change', () => {
+        getScoreOfFirstLangSkill(1, 'writing', firstLangWritingInput);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        count = educationScore + ageScore + firstLangScore;
+    })
+
+    firstLangListeningInput.addEventListener('change', () => {
+        getScoreOfFirstLangSkill(2, 'listening', firstLangListeningInput);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        count = educationScore + ageScore + firstLangScore;
+    })
+
+    firstLangSpeakingInput.addEventListener('change', () => {
+        getScoreOfFirstLangSkill(3, 'speaking', firstLangSpeakingInput);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        count = educationScore + ageScore + firstLangScore;
+    })
+
+    secondLangInput.addEventListener('change', () => {
+        if (secondLangInput.value == 'yes') {
+            secondLangTypeDiv.style.display = 'block';
+            secondLangTypeInput.value = '';
+            workExpDiv.style.display = 'none';
+        } else {
+            secondLangTypeDiv.style.display = 'none';
+            secondLangScoresDiv.style.display = 'none';
+            workExpDiv.style.display = 'block';
+        }
+    })
+
+    secondLangTypeInput.addEventListener('change', () => {
+        if (secondLangTypeInput.value == 'ielts' || secondLangTypeInput.value == 'celpip') {
+            secondLangScoresDiv.style.display = 'block';
+        } else if (secondLangTypeInput.value == 'tef-canada' || secondLangTypeInput.value == 'tcf-canada') {
+            secondLangScoresDiv.style.display = 'block';
+        } else {
+            secondLangScoresDiv.style.display = 'none';
+        }
+    })
+
+    secondLangScoresInput.addEventListener('change', () => {
+        secondLangScoresInput.value == 'yes' ? secondLangScore = 4 : secondLangScore = 0;
+        count = educationScore + ageScore + firstLangScore + secondLangScore;
+        triggerWorkExpDivFromSecondLang(secondLangScore, workExpDiv);
+    })
+
+    workExpInput.addEventListener('change', () => {
+        if (workExpInput.value === '1') {
+            workExpeScore = 9;
+        } else if (workExpInput.value === '2-3') {
+            workExpeScore = 11;
+        } else if (workExpInput.value === '4-5') {
+            workExpeScore = 13;
+        } else if (workExpInput.value === '6') {
+            workExpeScore = 15;
+        }
+        reservedJobDiv.style.display = 'block';
+        if (workExpInput.value === '') {
+            workExpeScore = 0;
+            reservedJobDiv.style.display = 'none';
+        }
+        count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore;
+        console.log(count);
     })
 })
+
+
+
+
+
+
+
+
+
+
+function triggerWorkExpDivFromSecondLang(score, workExperienceDiv) {
+    if (score == 4) {
+        workExperienceDiv.style.display = 'block';
+    }
+}
+
+function triggerSecondLangDiv(reading, writing, listening, speaking, divSecondLang) {
+    if (reading.value != 'first-language-reading-clb6' && writing.value != 'first-language-writing-clb6' && listening.value != 'first-language-listening-clb6' && speaking.value != 'first-language-speaking-clb6') {
+        divSecondLang.style.display = 'block';
+    } else {
+        divSecondLang.style.display = 'none';
+    }
+}
+
+function getScoreOfFirstLangSkill(index, skill, langSkillInput) {
+    if (langSkillInput.value == `first-language-${skill}-clb6`) {
+        firstLangScoresArray[index] = 0;
+    } else if (langSkillInput.value == `first-language-${skill}-clb7`) {
+        firstLangScoresArray[index] = 4;
+    } else if (langSkillInput.value == `first-language-${skill}-clb8`) {
+        firstLangScoresArray[index] = 5;
+    } else if (langSkillInput.value == `first-language-${skill}-clb9`) {
+        firstLangScoresArray[index] = 6;
+    }
+}
+
+
+function calculateLanguageScore(langArray) {
+    let langScore = langArray[0] + langArray[1] + langArray[2] + langArray[3];
+    return langScore;
+}
+
 
 crsBtn.addEventListener('click', () => {
     main.innerHTML = '';

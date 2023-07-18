@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- <base href="maplejs"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -157,8 +156,8 @@
                             <label htmlFor="second-language-availability">Do you have other language results?</label>
                             <select name="second-language-availability" id="second-language-availability">
                                 <option value=""></option>
-                                <option value="yes">Yes</option>
                                 <option value="no">No</option>
+                                <option value="yes">Yes</option>
                             </select>
                         </div>
 
@@ -174,36 +173,23 @@
                         </div>
             
                         <div style="display: none;" class="second-language-scoresDiv flex flex-col justify-center items-center gap-2 mt-10">
-                            <label>Set your test scores</label>
-                            <div class="flex flex-col justify-center items-center gap-4">
-                                <label htmlFor="second-language-reading">Reading</label>
-                                <select class="mb-4" name="second-language-reading" id="second-language-reading">
-                                    <option value="second-language-reading-clb4">CLB 4 or less</option>
-                                    <option value="second-language-reading-clb5">CLB 5 or more</option>
-                                </select>
-                            </div>
-                            <div class="flex flex-col justify-center items-center gap-4">
-                                <label htmlFor="second-language-writing">Writing</label>
-                                <select class="mb-4" name="second-language-writing" id="second-language-writing"></select>
-                            </div>
-                            <div class="flex flex-col justify-center items-center gap-4">
-                                <label htmlFor="second-language-listening">Listening</label>
-                                <select class="mb-4" name="second-language-listening" id="second-language-listening"></select>
-                            </div>
-                            <div class="flex flex-col justify-center items-center gap-4">
-                                <label htmlFor="second-language-speaking">Speaking</label>
-                                <select class="mb-4" name="second-language-speaking" id="second-language-speaking"></select>
-                            </div>
+                            <label>Have you get CLB5 or more in all language skills?</label>
+                            <select name="second-language-scores" id="second-language-scores">
+                                <option value=""></option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
                         </div>
                     </div>
             
                     <div style="display: none;" class="work-experience-div flex flex-col justify-center items-center gap-4 mt-10">
                         <h1 class='text-2xl font-bold'>Work Experience</h1>
                         <select name="work-experience" id="work-experience">
-                            <option value="none">1 year</option>
-                            <option value="one-year">2 - 3 years</option>
-                            <option value="two-year">4 - 5 years</option>
-                            <option value="three-year">6 or more years</option>
+                            <option value=""></option>
+                            <option value="1">1 year</option>
+                            <option value="2-3">2 - 3 years</option>
+                            <option value="4-5">4 - 5 years</option>
+                            <option value="6">6 or more years</option>
                         </select>
                     </div>
             
@@ -232,14 +218,6 @@
                             <option value="no">No</option>
                         </select>
                     </div>
-            
-                    <!-- <h1 class='text-2xl font-bold mt-10'>Reserved Job Position in Canada</h1>
-                    <div class="flex flex-col justify-center items-center gap-4">
-                        <select name="reserved-job-position" id="reserved-job-position">
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div> -->
             
                     <div style="display: none;" class="relatives-div flex flex-col justify-center items-center gap-4">
                         <h1 class='text-2xl font-bold mt-10'>Relatives in Canada</h1>
