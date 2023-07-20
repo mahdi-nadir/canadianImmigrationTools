@@ -61,7 +61,6 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     let eligibilityComponentDiv = document.querySelector('#eligibility_calculator');
     let eligibilityDiv = document.querySelector('.eligibility-div');
     let explanations = document.querySelectorAll('.fa-solid')
-    // let crossCancel = document.querySelectorAll('.hhh');
 
     let martialStatus = document.querySelector('.marital-status');
 
@@ -117,6 +116,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 
     let overlay = document.querySelector('#overlay');
     let modal = document.querySelector('#modal');
+    let modalResult = document.querySelector('#modalResult');
     let btnReset = document.querySelector('.btn-reset');
     let btnCalculate = document.querySelector('.btn-calculate');
 
@@ -160,8 +160,34 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             ageScore = 2;
         } else if (ageInput.value == 46) {
             ageScore = 1;
+        } else if (ageInput.value >= 47) {
+            ageScore = 0;
         } else {
             ageScore = 0;
+            let modalResult = document.querySelector('#modalResult');
+            modalResult.innerHTML += `
+                <div>
+                <h1>You cannot create a profile if you are 17 years old or less</h1>
+                </div>`;
+
+            overlay.style.display = 'block';
+            overlay.style.opacity = '0.8';
+            overlay.style.visibility = 'visible';
+            modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+
+            function hideResultModal() {
+                modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                modalResult.innerHTML = ''; // Clear the modal content for the next time
+                cancelButton.removeEventListener('click', hideResultModal);
+                resetAll();
+            }
+
+            let cancelButton = document.querySelector('#cancel');
+            cancelButton.addEventListener('click', hideResultModal);
+            return
         }
         educationDiv.style.display = 'block';
         educationInput.scrollIntoView({ behavior: 'smooth' })
@@ -196,6 +222,30 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         } else {
             firstLangTypeDiv.style.display = 'none';
             firstLangScoresDiv.style.display = 'none';
+            let modalResult = document.querySelector('#modalResult');
+            modalResult.innerHTML += `
+                <div>
+                <h1>You should have a language test to be eligible to Express Entry</h1>
+                </div>`;
+
+            overlay.style.display = 'block';
+            overlay.style.opacity = '0.8';
+            overlay.style.visibility = 'visible';
+            modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+
+            function hideResultModal() {
+                modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                modalResult.innerHTML = ''; // Clear the modal content for the next time
+                cancelButton.removeEventListener('click', hideResultModal);
+                resetAll();
+            }
+
+            let cancelButton = document.querySelector('#cancel');
+            cancelButton.addEventListener('click', hideResultModal);
+            return
         }
     })
 
@@ -450,19 +500,105 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         btnCalculate.scrollIntoView({ behavior: 'smooth' })
     })
 
-    btnCalculate.addEventListener('click', () => {
+    // btnCalculate.addEventListener('click', () => {
+    //     adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
+    //     count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore + adaptabilityScore;
+    //     if (count >= 67) {
+    //         eligibilityDiv.style.backgroundColor = '#4CAF50';
+    //     } else {
+    //         eligibilityDiv.style.backgroundColor = '#f44336';
+    //     }
+    //     eligibilityDiv.style.opacity = '0.8';
+    //     eligibilityDiv.style.pointerEvents = 'none';
+    //     let buttonCancel = document.querySelector('#cancel');
+    //     // modalResult.innerHTML = buttonCancel.innerHTML;
+    //     modalResult.innerHTML += `<h2>Your score is ${count}</h2>`;
+    //     overlay.style.display = 'block';
+    //     overlay.style.opacity = '0.8';
+    //     overlay.style.visibility = 'visible';
+    //     modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+
+    //     buttonCancel.addEventListener('click', () => {
+    //         console.log('cancel button clicked');
+    //         modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+    //         overlay.style.display = 'none';
+    //         overlay.style.opacity = '0';
+    //         overlay.style.visibility = 'hidden';
+    //     });
+    // })
+
+    function showResultModal(count) {
         adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
         count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore + adaptabilityScore;
+
         if (count >= 67) {
             eligibilityDiv.style.backgroundColor = '#4CAF50';
         } else {
             eligibilityDiv.style.backgroundColor = '#f44336';
         }
+
         eligibilityDiv.style.opacity = '0.8';
         eligibilityDiv.style.pointerEvents = 'none';
-    })
+        let modalResult = document.querySelector('#modalResult');
+        modalResult.innerHTML += `
+        <div>
+        <h1>${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear"></i>'}</h1>
+        <li><b>Age:</b> ${ageScore}</li>
+        <li><b>Education:</b> ${educationScore}</li>
+        <li><b>First Language:</b> ${firstLangScore}</li>
+        <li><b>Second Language:</b> ${secondLangScore}</li>
+        <li><b>Work Experience:</b> ${workExpeScore}</li>
+        <li><b>Reserved Job:</b> ${reservedJobScore}</li>
+        <li><b>Adaptability:</b> ${adaptabilityScore}</li>
+        <h2>Your score is ${count}</h2>
+        </div>`;
+
+        overlay.style.display = 'block';
+        overlay.style.opacity = '0.8';
+        overlay.style.visibility = 'visible';
+        modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+
+        function hideResultModal() {
+            modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+            overlay.style.display = 'none';
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            modalResult.innerHTML = ''; // Clear the modal content for the next time
+            cancelButton.removeEventListener('click', hideResultModal);
+            resetAll();
+        }
+
+        let cancelButton = document.querySelector('#cancel');
+        cancelButton.addEventListener('click', hideResultModal);
+    }
+
+    btnCalculate.addEventListener('click', showResultModal);
 
     btnReset.addEventListener('click', () => {
+        resetAll();
+    })
+
+
+    for (let explanation of explanations) {
+        explanation.addEventListener('click', () => {
+            overlay.style.display = 'block';
+            overlay.style.opacity = '0.8';
+            overlay.style.visibility = 'visible';
+            modal.style.transform = 'translate(-50%, -50%) scale(1)';
+            modal.innerHTML = explanation.nextElementSibling.innerHTML;
+
+            const cancelBtn = modal.querySelector('#cancelBtn');
+
+            cancelBtn.addEventListener('click', () => {
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                modal.style.transform = 'translate(-50%, -50%) scale(0)';
+            });
+        });
+    }
+
+    function resetAll() {
         count = 0;
         educationScore = 0;
         ageScore = 0;
@@ -519,44 +655,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         spouseWorkExpInput.value = '';
         btnReset.disabled = true;
         btnCalculate.disabled = true;
-        eligibilityComponentDiv.style.backgroundColor = '#fff';
-        eligibilityDiv.style.backgroundColor = '#fff';
-        eligibilityDiv.style.opacity = '1';
-        eligibilityDiv.style.pointerEvents = 'auto';
-    })
-
-    // let clicked = true;
-    for (let explanation of explanations) {
-        explanation.addEventListener('click', () => {
-            // clicked = !clicked;
-            // if (clicked == true) {
-            // overlay.style.display = 'none';
-            // overlay.style.opacity = '0';
-            // overlay.style.visibility = 'hidden';
-            // modal.style.transform = 'translate(-50%, -10%) scale(0)';
-            // } else {
-            overlay.style.display = 'block';
-            overlay.style.opacity = '0.8';
-            overlay.style.visibility = 'visible';
-            modal.style.transform = 'translate(-50%, -10%) scale(1)';
-            modal.innerHTML = explanation.nextElementSibling.innerHTML;
-            // }
-        })
     }
-
-    for (let cancel of crossCancel) {
-        cancel.addEventListener('click', () => {
-            console.log();
-            // overlay.style.display = 'none';
-            // overlay.style.opacity = '0';
-            // overlay.style.visibility = 'hidden';
-            // modal.style.transform = 'translate(-50%, -10%) scale(0)';
-        })
-    }
-
-
-
-
 
     // refreshPage(eligibilityCalculatorTemplate, eligibilityComponentDiv);
 })
@@ -579,23 +678,23 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 
 
 function triggerWorkExpDivFromSecondLang(score, workExperienceDiv) {
-    if (score == 4) {
-        workExperienceDiv.style.display = 'block';
-        workExperienceDiv.scrollIntoView({ behavior: 'smooth' })
-    }
+    workExperienceDiv.style.display = 'block';
+    workExperienceDiv.scrollIntoView({ behavior: 'smooth' })
 }
 
 function triggerSecondLangDiv(reading, writing, listening, speaking, divSecondLang) {
-    if (reading.value != 'first-language-reading-clb6' && writing.value != 'first-language-writing-clb6' && listening.value != 'first-language-listening-clb6' && speaking.value != 'first-language-speaking-clb6') {
+    if ((reading.value == '' || reading.value == 'first-language-reading-clb6') || (writing.value == '' || writing.value == 'first-language-writing-clb6') || (listening.value == '' || listening.value == 'first-language-listening-clb6') || (speaking.value == '' || speaking.value == 'first-language-speaking-clb6')) {
+        divSecondLang.style.display = 'none';
+    } else {
         divSecondLang.style.display = 'block';
         divSecondLang.scrollIntoView({ behavior: 'smooth' })
-    } else {
-        divSecondLang.style.display = 'none';
     }
 }
 
 function getScoreOfFirstLangSkill(index, skill, langSkillInput) {
-    if (langSkillInput.value == `first-language-${skill}-clb6`) {
+    if (langSkillInput.value == '') {
+        firstLangScoresArray[index] = 0;
+    } else if (langSkillInput.value == `first-language-${skill}-clb6`) {
         firstLangScoresArray[index] = 0;
     } else if (langSkillInput.value == `first-language-${skill}-clb7`) {
         firstLangScoresArray[index] = 4;

@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Maple Tools</title>
 </head>
-<body class='flex flex-col h-screen justify-between text-center'>
+<body class='flex flex-col h-screen justify-between text-center bg-slate-50'>
     <header class='text-xl p-8 border-b-2 border-red-600 uppercase font-bold mx-auto h-18'>
         <button id="homeBtn" class="nav-link px-5" aria-current="page">Home</button>
         <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
@@ -19,8 +19,6 @@
         <button id="extraInfoBtn" class="nav-link px-5">Extra Info</button>
     </header>
     
-    
-
     <template id="eligibilityCalculatorTemplate">
         <section id="eligibility_calculator">
             <div>
@@ -32,22 +30,23 @@
                     <div class="flex flex-col justify-center items-center gap-4">
                         <h1 class='text-2xl font-bold'>What is your marital status?</h1>
                         <select class="marital-status" name="marital-status" id="marital-status">
-                            <option value="">Select your gender</option>
+                            <option value="">Select..</option>
                             <option value="single">Single</option>
                             <option value="married">Married</option>
                         </select>
                         <i class="fa-solid fa-question questionMaritalStatus"></i>
                         <div style="display: none;" class="explanation explanationMaritalStatus">
-                            <span id="crossStop">X</span>
-                            <p>
-                                <b>Single</b> means you are not married and you do not have a common-law partner.
-                            </p>
+                                <button id="cancelBtn" class="cancelButton">X</button>
+                                <p>
+                                    <b>Single</b> means you are not married and you do not have a common-law partner.
+                                </p>
                         </div>
                     </div>
             
                     <div style="display: none;" class="ageDiv flex flex-col justify-center items-center gap-4 mt-10">
                         <h1 class='text-2xl font-bold'>How old are you?</h1>
                         <select name="age" id="age">
+                            <option value="">Select..</option>
                             <option value="17">17 or less</option>
                             <option value="18">18</option>
                             <option value="19">19</option>
@@ -82,7 +81,7 @@
                         </select>
                         <i class="fa-solid fa-question questionAge"></i>
                         <div style="display: none;" class="explanation explanationAge">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 Your age is based on the day IRCC gets an invitation to apply (ITA). It means that if you are 35 years old now, but you turn 36 before you get an ITA, then you will not get points for being 35.
                             </p>
@@ -92,7 +91,7 @@
                     <div style="display: none;" class="educationDiv flex flex-col justify-center items-center gap-4 mt-10">
                         <h1 class='text-2xl font-bold'>What is your level of education?</h1>
                         <select class='w-1/2' name="education" id="education">
-                            <option value="">Select your qualification</option>
+                            <option value="">Select..</option>
                             <option value="secondary">Secondary school (high school) credential or less</option>
                             <option value="one-year">One-year post-secondary program credential</option>
                             <option value="two-year">Two-year post-secondary program credential</option>
@@ -103,7 +102,7 @@
                         </select>
                         <i class="fa-solid fa-question questionEducation"></i>
                         <div style="display: none;" class="explanation explanationEducation">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 Enter the highest level of education for which you:
 
@@ -133,13 +132,13 @@
                         <div class="flex flex-col justify-center items-center gap-4">
                             <label htmlFor="first-language-availability">Are your test results less than two years old?</label>
                             <select name="first-language-availability" id="first-language-availability">
-                                <option value=""></option>
-                                <option value="yes">Yes</option>
+                                <option value="">Select..</option>
                                 <option value="no">No</option>
+                                <option value="yes">Yes</option>
                             </select>
                             <i class="fa-solid fa-question questionFirstLangAvailability"></i>
                             <div style="display: none;" class="explanation explanationFirstLangAvailability">
-                                <span class="crossStop">X</span>
+                                <button id="cancelBtn" class="cancelButton">X</button>
                                 <p>
                                     Your test results must be less than two years old when you apply for permanent residence. If your test results are older than two years before submitting your application, you will not get points for your first official language. And if you submit your application with an expired test result, IRCC will simply refuse it.
                                 </p>
@@ -149,7 +148,7 @@
                         <div style="display: none;" class="first-language-typeDiv flex flex-col justify-center items-center gap-4 mt-10">
                             <label htmlFor="first-language-type">Which language test did you take for your first official language?</label>
                             <select name="first-language-type" id="first-language-type">
-                                <option value=""></option>
+                                <option value="">Select..</option>
                                 <option value="ielts">IELTS</option>
                                 <option value="celpip">CELPIP</option>
                                 <option value="tef-canada">TEF Canada</option>
@@ -162,6 +161,7 @@
                             <div class="flex flex-col justify-center items-center gap-4">
                                 <label htmlFor="first-language-reading">Reading</label>
                                 <select class="mb-4" name="first-language-reading" id="first-language-reading">
+                                    <option value="">Select..</option>
                                     <option value="first-language-reading-clb6">CLB 6 or less</option>
                                     <option value="first-language-reading-clb7">CLB 7</option>
                                     <option value="first-language-reading-clb8">CLB 8</option>
@@ -171,6 +171,7 @@
                             <div class="flex flex-col justify-center items-center gap-4">
                                 <label htmlFor="first-language-writing">Writing</label>
                                 <select class="mb-4" name="first-language-writing" id="first-language-writing">
+                                    <option value="">Select..</option>
                                     <option value="first-language-writing-clb6">CLB 6 or less</option>
                                     <option value="first-language-writing-clb7">CLB 7</option>
                                     <option value="first-language-writing-clb8">CLB 8</option>
@@ -180,6 +181,7 @@
                             <div class="flex flex-col justify-center items-center gap-4">
                                 <label htmlFor="first-language-listening">Listening</label>
                                 <select class="mb-4" name="first-language-listening" id="first-language-listening">
+                                    <option value="">Select..</option>
                                     <option value="first-language-listening-clb6">CLB 6 or less</option>
                                     <option value="first-language-listening-clb7">CLB 7</option>
                                     <option value="first-language-listening-clb8">CLB 8</option>
@@ -189,6 +191,7 @@
                             <div class="flex flex-col justify-center items-center gap-4">
                                 <label htmlFor="first-language-speaking">Speaking</label>
                                 <select class="mb-4" name="first-language-speaking" id="first-language-speaking">
+                                    <option value="" selected>Select..</option>
                                     <option value="first-language-speaking-clb6">CLB 6 or less</option>
                                     <option value="first-language-speaking-clb7">CLB 7</option>
                                     <option value="first-language-speaking-clb8">CLB 8</option>
@@ -197,7 +200,7 @@
                             </div>
                             <i class="fa-solid fa-question questionFirstLangScores"></i>
                         <div style="display: none;" class="explanation explanationFirstLangScores">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 You can get points for your first official language if you get CLB 7 or more in all language skills. <br>
                                 <b>Reading</b> = Compréhension de l'écrit <br>
@@ -213,7 +216,7 @@
                         <div class="flex flex-col justify-center items-center gap-4 mt-10">
                             <label htmlFor="second-language-availability">Do you have other language results?</label>
                             <select name="second-language-availability" id="second-language-availability">
-                                <option value=""></option>
+                                <option value="">Select..</option>
                                 <option value="no">No</option>
                                 <option value="yes">Yes</option>
                             </select>
@@ -222,7 +225,7 @@
                         <div style="display: none;" class="second-language-typeDiv flex flex-col justify-center items-center gap-4 mt-10">
                             <label htmlFor="second-language-type">Which language test did you take for your second official language?</label>
                             <select name="second-language-type" id="second-language-type">
-                                <option value=""></option>
+                                <option value="">Select..</option>
                                 <option value="ielts">IELTS</option>
                                 <option value="celpip">CELPIP</option>
                                 <option value="tef-canada">TEF Canada</option>
@@ -233,13 +236,13 @@
                         <div style="display: none;" class="second-language-scoresDiv flex flex-col justify-center items-center gap-2 mt-10">
                             <label>Have you get CLB5 or more in all language skills?</label>
                             <select name="second-language-scores" id="second-language-scores">
-                                <option value=""></option>
+                                <option value="">Select..</option>
                                 <option value="no">No</option>
                                 <option value="yes">Yes</option>
                             </select>
                             <i class="fa-solid fa-question questionSecondLangScores"></i>
                             <div style="display: none;" class="explanation explanationSecondLangScores">
-                                <span class="crossStop">X</span>
+                                <button id="cancelBtn" class="cancelButton">X</button>
                                 <p>
                                     You can get points for your second official language if you get CLB 5 or more in all language skills. <br>
                                     <b>Reading</b> = Compréhension de l'écrit <br>
@@ -254,7 +257,7 @@
                     <div style="display: none;" class="work-experience-div flex flex-col justify-center items-center gap-4 mt-10">
                         <h1 class='text-2xl font-bold'>Work Experience</h1>
                         <select name="work-experience" id="work-experience">
-                            <option value=""></option>
+                            <option value="">Select..</option>
                             <option value="1">1 year</option>
                             <option value="2-3">2 - 3 years</option>
                             <option value="4-5">4 - 5 years</option>
@@ -262,7 +265,7 @@
                         </select>
                         <i class="fa-solid fa-question questionWorkExp"></i>
                         <div style="display: none;" class="explanation explanationWorkExp">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 You can get points for your work experience if you have at least one year of <u>continuous</u> work experience <u>in the same occupation</u>. <br>
                                 <b>Continuous</b> means that you have worked without any long breaks. <br>
@@ -284,7 +287,7 @@
                         </select>
                         <i class="fa-solid fa-question questionReservedJob"></i>
                         <div style="display: none;" class="explanation explanationReservedJob">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 A valid job offer must be:
 
@@ -312,7 +315,7 @@
                         </select>
                         <i class="fa-solid fa-question questionStudyCanada"></i>
                         <div style="display: none;" class="explanation explanationStudyCanada">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 You can get points for your studies in Canada if you:
 
@@ -336,7 +339,7 @@
                         </select>
                         <i class="fa-solid fa-question questionWorkExpCanada"></i>
                         <div style="display: none;" class="explanation explanationWorkExpCanada">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 You can get points for your work experience in Canada if you:
 
@@ -358,7 +361,7 @@
                         </select>
                         <i class="fa-solid fa-question questionJobOffer"></i>
                         <div style="display: none;" class="explanation explanationJobOffer">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 You earned points for having <a href="http://ircc.canada.ca/english/helpcentre/glossary.asp#arranged_employment">arranged employment.</a>
                             </p>
@@ -375,7 +378,7 @@
                         </select>
                         <i class="fa-solid fa-question questionRelatives"></i>
                         <div style="display: none;" class="explanation explanationRelatives">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 You can get points for having a relative in Canada if he is:
 
@@ -407,7 +410,7 @@
                         </select>
                         <i class="fa-solid fa-question questionSpouseLangAvailability"></i>
                         <div style="display: none;" class="explanation explanationSpouseLangAvailability">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 Your spouse can get points for his/her language skills if he/she gets CLB 4 or more in all language skills. <br>
                                 <b>Reading</b> = Compréhension de l'écrit <br>
@@ -431,7 +434,7 @@
                         </select>
                         <i class="fa-solid fa-question questionSpouseEducation"></i>
                         <div style="display: none;" class="explanation explanationSpouseEducation">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 You can get points for your spouse's studies in Canada if he/she:
 
@@ -454,7 +457,7 @@
                         </select>
                         <i class="fa-solid fa-question questionSpouseWorkExp"></i>
                         <div style="display: none;" class="explanation explanationSpouseWorkExp">
-                            <span class="crossStop">X</span>
+                            <button id="cancelBtn" class="cancelButton">X</button>
                             <p>
                                 You can get points for your spouse's work experience in Canada if he/she:
 
@@ -515,7 +518,9 @@
 
     <div id="overlay"></div>
     <div id="modal"></div>
-
+    
+    
+    <div id="modalResult"><button id="cancel">CANCEL</button></div>
 
     <footer class='flex flex-col justify-center items-center h-20 mt-10 bg-black text-white'>
         <p>Designed and developed with ❤ by <b>Mahdi</b></p>
