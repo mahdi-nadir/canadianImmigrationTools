@@ -10,3 +10,30 @@
 .nav-link:hover {
     color: #f59e0b;
 }
+
+#overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.2s ease-in-out;
+    background: rgba(0, 0, 0, 0.7);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+}
+
+#modal {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%) scale(0);
+    transition: all 0.5s ease-in-out;
+    width: 80%;
+    max-width: 700px;
+    background: #f00;
+    z-index: 9999;
+    border-radius: 5px;
+    overflow: hidden;
+}
