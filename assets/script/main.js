@@ -225,7 +225,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             firstLangScoresDiv.style.display = 'none';
             let modalResult = document.querySelector('#modalResult');
             modalResult.innerHTML += `
-                <div>
+                <div class="mt-5">
                 <h1><b>You should have a language test to be eligible to Express Entry</b></h1>
                 </div>`;
 
@@ -511,15 +511,15 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         let modalResult = document.querySelector('#modalResult');
 
         if (count >= 67) {
-            modalResult.style.backgroundColor = '#4CAF50';
+            modalResult.style.backgroundColor = '#c3ffc3';
         } else {
-            modalResult.style.backgroundColor = '#f44336';
+            modalResult.style.backgroundColor = '#fcc2c2';
         }
 
         modalResult.innerHTML += `
-        <div class="text-center text-lg md:text-xl">
-        <h1 class="text-center text-xl md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear"></i>'}</h1>
-        <div class="text-center text-xl md:text-3xl indent-8">
+        <div class="mt-5">
+        <h1 class="text-center text-xl md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile mb-3"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear"></i>'}</h1>
+        <div class="indent-8">
         <li><b>Age:</b> ${ageScore}</li>
         <li><b>Education:</b> ${educationScore}</li>
         <li><b>First Language:</b> ${firstLangScore}</li>
@@ -528,8 +528,9 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         <li><b>Reserved Job:</b> ${reservedJobScore}</li>
         <li><b>Adaptability:</b> ${adaptabilityScore}</li>
         </div>
-        <h2 class="text-xl md:text-3xl">Your score is ${count}</h2>
-        </div>`;
+        <h2 class="text-center text-xl mt-3 md:text-3xl">Your score is <b>${count}</b></h2>
+        </div>
+        `;
 
 
         overlay.style.display = 'block';

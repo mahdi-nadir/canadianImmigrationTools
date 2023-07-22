@@ -48,6 +48,7 @@ body {
     text-decoration: underline;
 }
 
+
 /* media query 1015px */
 @media (max-width: 1015px) {
     #modal, #modalResult {
