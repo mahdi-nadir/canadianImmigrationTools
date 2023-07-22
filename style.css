@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body {
+    min-height: 100vh;
+}
+
 /* Navbar */
 .nav-link {
     transition: all 0.2s ease-in-out;
@@ -30,10 +34,34 @@
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     transition: all 0.5s ease-in-out;
-    width: 80%;
+    width: 50%;
     max-width: 700px;
-    background: #f00;
+    background: #f7e6e6;
     z-index: 9999;
+    border: 3px solid black;
     border-radius: 5px;
     overflow: hidden;
+}
+
+.active {
+    color: red;
+    text-decoration: underline;
+}
+
+/* media query 1015px */
+@media (max-width: 1015px) {
+    #modal, #modalResult {
+        width: 90%;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1015px) {
+    #modal, #modalResult {
+        font-size: 12pt;
+    }
 }

@@ -21,6 +21,7 @@ let nclcTemplate = document.querySelector('#nclcTemplate');
 let suggestedpnpTemplate = document.querySelector('#suggestedpnpTemplate');
 let ebooksTemplate = document.querySelector('#ebooksTemplate');
 let extraInfoTemplate = document.querySelector('#extraInfoTemplate');
+let buttons = [homeBtn, eligibilityCalculatorBtn, crsBtn, nclcBtn, suggestedpnpBtn, ebooksBtn, extraInfoBtn]
 
 
 // declare components variables
@@ -225,7 +226,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             let modalResult = document.querySelector('#modalResult');
             modalResult.innerHTML += `
                 <div>
-                <h1>You should have a language test to be eligible to Express Entry</h1>
+                <h1><b>You should have a language test to be eligible to Express Entry</b></h1>
                 </div>`;
 
             overlay.style.display = 'block';
@@ -238,13 +239,14 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
                 overlay.style.display = 'none';
                 overlay.style.opacity = '0';
                 overlay.style.visibility = 'hidden';
-                modalResult.innerHTML = ''; // Clear the modal content for the next time
+                modalResult.querySelector('div').remove(); // Clear the modal content for the next time
                 cancelButton.removeEventListener('click', hideResultModal);
                 resetAll();
             }
 
             let cancelButton = document.querySelector('#cancel');
             cancelButton.addEventListener('click', hideResultModal);
+
             return
         }
     })
@@ -500,49 +502,24 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         btnCalculate.scrollIntoView({ behavior: 'smooth' })
     })
 
-    // btnCalculate.addEventListener('click', () => {
-    //     adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
-    //     count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore + adaptabilityScore;
-    //     if (count >= 67) {
-    //         eligibilityDiv.style.backgroundColor = '#4CAF50';
-    //     } else {
-    //         eligibilityDiv.style.backgroundColor = '#f44336';
-    //     }
-    //     eligibilityDiv.style.opacity = '0.8';
-    //     eligibilityDiv.style.pointerEvents = 'none';
-    //     let buttonCancel = document.querySelector('#cancel');
-    //     // modalResult.innerHTML = buttonCancel.innerHTML;
-    //     modalResult.innerHTML += `<h2>Your score is ${count}</h2>`;
-    //     overlay.style.display = 'block';
-    //     overlay.style.opacity = '0.8';
-    //     overlay.style.visibility = 'visible';
-    //     modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
-
-    //     buttonCancel.addEventListener('click', () => {
-    //         console.log('cancel button clicked');
-    //         modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
-    //         overlay.style.display = 'none';
-    //         overlay.style.opacity = '0';
-    //         overlay.style.visibility = 'hidden';
-    //     });
-    // })
-
     function showResultModal(count) {
         adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
         count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore + adaptabilityScore;
 
+
+
+        let modalResult = document.querySelector('#modalResult');
+
         if (count >= 67) {
-            eligibilityDiv.style.backgroundColor = '#4CAF50';
+            modalResult.style.backgroundColor = '#4CAF50';
         } else {
-            eligibilityDiv.style.backgroundColor = '#f44336';
+            modalResult.style.backgroundColor = '#f44336';
         }
 
-        eligibilityDiv.style.opacity = '0.8';
-        eligibilityDiv.style.pointerEvents = 'none';
-        let modalResult = document.querySelector('#modalResult');
         modalResult.innerHTML += `
-        <div>
-        <h1>${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear"></i>'}</h1>
+        <div class="text-center text-lg md:text-xl">
+        <h1 class="text-center text-xl md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear"></i>'}</h1>
+        <div class="text-center text-xl md:text-3xl indent-8">
         <li><b>Age:</b> ${ageScore}</li>
         <li><b>Education:</b> ${educationScore}</li>
         <li><b>First Language:</b> ${firstLangScore}</li>
@@ -550,8 +527,10 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         <li><b>Work Experience:</b> ${workExpeScore}</li>
         <li><b>Reserved Job:</b> ${reservedJobScore}</li>
         <li><b>Adaptability:</b> ${adaptabilityScore}</li>
-        <h2>Your score is ${count}</h2>
+        </div>
+        <h2 class="text-xl md:text-3xl">Your score is ${count}</h2>
         </div>`;
+
 
         overlay.style.display = 'block';
         overlay.style.opacity = '0.8';
@@ -563,9 +542,10 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             overlay.style.display = 'none';
             overlay.style.opacity = '0';
             overlay.style.visibility = 'hidden';
-            modalResult.innerHTML = ''; // Clear the modal content for the next time
+            modalResult.querySelector('div').remove(); // Clear the modal content for the next time
             cancelButton.removeEventListener('click', hideResultModal);
             resetAll();
+
         }
 
         let cancelButton = document.querySelector('#cancel');
@@ -585,7 +565,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             overlay.style.opacity = '0.8';
             overlay.style.visibility = 'visible';
             modal.style.transform = 'translate(-50%, -50%) scale(1)';
-            modal.innerHTML = explanation.nextElementSibling.innerHTML;
+            modal.innerHTML = explanation.parentElement.nextElementSibling.innerHTML;
 
             const cancelBtn = modal.querySelector('#cancelBtn');
 
@@ -655,6 +635,8 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         spouseWorkExpInput.value = '';
         btnReset.disabled = true;
         btnCalculate.disabled = true;
+        eligibilityDiv.style.backgroundColor = '#e2e8f0';
+        modalResult.style.backgroundColor = '#f7e6e6';
     }
 
     // refreshPage(eligibilityCalculatorTemplate, eligibilityComponentDiv);
@@ -674,6 +656,13 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 // }
 
 
+for (let btn of buttons) {
+    btn.addEventListener('click', () => {
+        let current = document.getElementsByClassName('active');
+        current[0].classList.remove('active');
+        btn.classList.add('active');
+    })
+}
 
 
 
