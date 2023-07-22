@@ -49,7 +49,7 @@ body {
 }
 
 
-/* media query 1015px */
+/* media query */
 @media (max-width: 1015px) {
     #modal, #modalResult {
         width: 90%;
@@ -61,7 +61,7 @@ body {
     }
 }
 
-@media (max-width: 1015px) {
+@media (max-width: 650px) {
     #modal, #modalResult {
         font-size: 12pt;
     }
