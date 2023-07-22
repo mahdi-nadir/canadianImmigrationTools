@@ -273,10 +273,10 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         } else {
             firstLangScoresDiv.style.display = 'none';
         }
-        firstLangReadingInput.value = 'first-language-reading-clb6';
-        firstLangWritingInput.value = 'first-language-writing-clb6';
-        firstLangListeningInput.value = 'first-language-listening-clb6';
-        firstLangSpeakingInput.value = 'first-language-speaking-clb6';
+        firstLangReadingInput.value = '';
+        firstLangWritingInput.value = '';
+        firstLangListeningInput.value = '';
+        firstLangSpeakingInput.value = '';
     })
 
     firstLangReadingInput.addEventListener('change', () => {
