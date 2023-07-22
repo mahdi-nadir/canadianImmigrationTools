@@ -233,6 +233,9 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             overlay.style.opacity = '0.8';
             overlay.style.visibility = 'visible';
             modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+            modalResult.style.backgroundColor = '#fcc2c2';
+            let audio = new Audio('assets/sounds/failure.mp3');
+            audio.play();
 
             function hideResultModal() {
                 modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
@@ -512,13 +515,17 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 
         if (count >= 67) {
             modalResult.style.backgroundColor = '#c3ffc3';
+            let audio = new Audio('assets/sounds/success.mp3');
+            audio.play();
         } else {
             modalResult.style.backgroundColor = '#fcc2c2';
+            let audio = new Audio('assets/sounds/failure.mp3');
+            audio.play();
         }
 
         modalResult.innerHTML += `
         <div class="mt-5">
-        <h1 class="text-center text-xl md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile mb-3"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear"></i>'}</h1>
+        <h1 class="text-center text-xl font-bold underline md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile mb-3"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear mb-3"></i>'}</h1>
         <div class="indent-8">
         <li><b>Age:</b> ${ageScore}</li>
         <li><b>Education:</b> ${educationScore}</li>
@@ -528,7 +535,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         <li><b>Reserved Job:</b> ${reservedJobScore}</li>
         <li><b>Adaptability:</b> ${adaptabilityScore}</li>
         </div>
-        <h2 class="text-center text-xl mt-3 md:text-3xl">Your score is <b>${count}</b></h2>
+        <h2 class="text-center text-xl mt-3 md:text-3xl">Your score is <b class="underline">${count}</b></h2>
         </div>
         `;
 
