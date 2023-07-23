@@ -135,60 +135,33 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         ageInput.scrollIntoView({ behavior: 'smooth' })
         btnReset.disabled = false;
 
-        if (martialStatus.value != '') {
-            eligibilityCalculatorBtn.disabled = true;
-            // navButtons.forEach(btn => {
-            //     // click on the button to leave the page, a confirmation modal will appear
-            //     btn.addEventListener('click', () => {
-            //         if (btn.id == 'eligibilityCalculatorBtn') {
-            //             return
-            //         } else {
-            //             overlay.style.display = 'block';
-            //             overlay.style.opacity = '0.8';
-            //             overlay.style.visibility = 'visible';
-            //             modalConfirmation.style.transform = 'translate(-50%, -50%) scale(1)';
+        if (btnReset.disabled == false) {
+            console.log('trying to go somewhere else');
+            // overlay.style.display = 'block';
+            // overlay.style.opacity = '0.8';
+            // overlay.style.visibility = 'visible';
+            // modalConfirmation.style.display = 'block';
+            // modalConfirmation.style.transform = 'translate(-50%, -50%) scale(1)';
 
-            //             function hideConfirmationModal() {
-            //                 modalConfirmation.style.transform = 'translate(-50%, -50%) scale(0)';
-            //                 overlay.style.display = 'none';
-            //                 overlay.style.opacity = '0';
-            //                 overlay.style.visibility = 'hidden';
-            //                 cancelButton.removeEventListener('click', hideConfirmationModal);
+            // function hideConfirmationModal() {
+            //     overlay.style.display = 'none';
+            //     overlay.style.opacity = '0';
+            //     overlay.style.visibility = 'hidden';
+            //     modalConfirmation.style.transform = 'translate(-50%, -50%) scale(0)';
+            //     modalConfirmation.style.display = 'none';
+            //     cancelButton.removeEventListener('click', hideConfirmationModal);
+            //     confirmButton.removeEventListener('click', hideConfirmationModal);
+            // }
 
-            //             }
-
-            //             let cancelButton = document.querySelector('#cancel');
-            //             cancelButton.addEventListener('click', hideConfirmationModal);
-            //         }
-
-
-
-            //     })
-            // })
+            // let cancelButton = document.querySelector('#close');
+            // let confirmButton = document.querySelector('#confirm');
+            // cancelButton.addEventListener('click', hideConfirmationModal);
+            // confirmButton.addEventListener('click', hideConfirmationModal);
         }
     })
 
 
-    // overlay.style.display = 'block';
-    //                 overlay.style.opacity = '0.8';
-    //                 overlay.style.visibility = 'visible';
-    //                 modalConfirmation.style.display = 'block';
-    //                 modalConfirmation.style.transform = 'translate(-50%, -50%) scale(1)';
 
-    //                 function hideConfirmationModal() {
-    //                     overlay.style.display = 'none';
-    //                     overlay.style.opacity = '0';
-    //                     overlay.style.visibility = 'hidden';
-    //                     modalConfirmation.style.transform = 'translate(-50%, -50%) scale(0)';
-    //                     modalConfirmation.style.display = 'none';
-    //                     cancelButton.removeEventListener('click', hideConfirmationModal);
-    //                     confirmButton.removeEventListener('click', hideConfirmationModal);
-    //                 }
-
-    //                 let cancelButton = document.querySelector('#close');
-    //                 let confirmButton = document.querySelector('#confirm');
-    //                 cancelButton.addEventListener('click', hideConfirmationModal);
-    //                 confirmButton.addEventListener('click', hideConfirmationModal);
 
     ageInput.addEventListener('change', () => {
         if (ageInput.value >= 18 && ageInput.value <= 35) {
@@ -705,41 +678,6 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 })
 
 
-crsBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = crsTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
-
-nclcBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = nclcTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
-
-suggestedpnpBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = suggestedpnpTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
-
-ebooksBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = ebooksTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
-
-extraInfoBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = extraInfoTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
-
-
-
-
-
-
 for (let btn of navButtons) {
     btn.addEventListener('click', () => {
         let current = document.getElementsByClassName('active');
@@ -785,6 +723,50 @@ function calculateLanguageScore(langArray) {
     let langScore = langArray[0] + langArray[1] + langArray[2] + langArray[3];
     return langScore;
 }
+
+
+
+
+
+
+
+
+crsBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = crsTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
+
+nclcBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = nclcTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
+
+suggestedpnpBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = suggestedpnpTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
+
+ebooksBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = ebooksTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
+
+extraInfoBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = extraInfoTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
+
+
+
+
+
+
+
 
 
 
