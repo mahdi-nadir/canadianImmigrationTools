@@ -48,6 +48,10 @@ body {
     text-decoration: underline;
 }
 
+#ttt {
+    margin: auto;
+}
+
 
 /* media query */
 @media (max-width: 1015px) {

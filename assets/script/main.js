@@ -741,6 +741,193 @@ nclcBtn.addEventListener('click', () => {
     main.innerHTML = '';
     let clone = nclcTemplate.content.cloneNode(true);
     main.appendChild(clone);
+
+    // buttons
+    let tefBtn = document.querySelector('#triggerTef');
+    let tcfBtn = document.querySelector('#triggerTcf');
+    let ieltsBtn = document.querySelector('#triggerIelts');
+    let celpipBtn = document.querySelector('#triggerCelpip');
+
+    // for tef canada
+    tefBtn.addEventListener('click', () => {
+        let tefDiv = document.querySelector('.tef');
+        let tefReading = document.querySelector('[name="tefReading"]');
+        let tefReadingScore = document.querySelector('#tefReadingScore');
+        let errorTefReading = document.querySelector('#errorTefReading');
+        let tefListening = document.querySelector('[name="tefListening"]');
+        let tefListeningScore = document.querySelector('#tefListeningScore');
+        let errorTefListening = document.querySelector('#errorTefListening');
+        let tefWriting = document.querySelector('[name="tefWriting"]');
+        let tefWritingScore = document.querySelector('#tefWritingScore');
+        let errorTefWriting = document.querySelector('#errorTefWriting');
+        let tefSpeaking = document.querySelector('[name="tefSpeaking"]');
+        let tefSpeakingScore = document.querySelector('#tefSpeakingScore');
+        let errorTefSpeaking = document.querySelector('#errorTefSpeaking');
+        let finalResultTef = document.querySelector('#finalResultTef');
+        let tefResultBtn = document.querySelector('#tefResultBtn');
+        let tefResetBtn = document.querySelector('#tefResetBtn');
+
+        tefDiv.style.display = 'block';
+        tefDiv.scrollIntoView({ behavior: 'smooth' })
+
+        tefReading.addEventListener('input', () => {
+            errorTefReading.innerHTML = '';
+            errorTefReading.style.display = 'none';
+            if (tefReading.value > 0 && tefReading.value <= 44) {
+                tefReadingScore.innerHTML = 1;
+            } else if (tefReading.value >= 45 && tefReading.value <= 90) {
+                tefReadingScore.innerHTML = 2;
+            } else if (tefReading.value >= 91 && tefReading.value <= 120) {
+                tefReadingScore.innerHTML = 3;
+            } else if (tefReading.value >= 121 && tefReading.value <= 150) {
+                tefReadingScore.innerHTML = 4;
+            } else if (tefReading.value >= 151 && tefReading.value <= 180) {
+                tefReadingScore.innerHTML = 5;
+            } else if (tefReading.value >= 181 && tefReading.value <= 206) {
+                tefReadingScore.innerHTML = 6;
+            } else if (tefReading.value >= 207 && tefReading.value <= 232) {
+                tefReadingScore.innerHTML = 7;
+            } else if (tefReading.value >= 233 && tefReading.value <= 247) {
+                tefReadingScore.innerHTML = 8;
+            } else if (tefReading.value >= 248 && tefReading.value <= 262) {
+                tefReadingScore.innerHTML = 9;
+            } else if (tefReading.value >= 263 && tefReading.value <= 277) {
+                tefReadingScore.innerHTML = 10;
+            } else if (tefReading.value >= 278 && tefReading.value <= 287) {
+                tefReadingScore.innerHTML = 11;
+            } else if (tefReading.value >= 288 && tefReading.value <= 300) {
+                tefReadingScore.innerHTML = 12;
+            } else if (tefReading.value == '') {
+                tefReadingScore.innerHTML = 0;
+            } else {
+                errorTefReading.innerHTML = 'Please enter a valid score';
+                errorTefReading.style.display = 'block';
+                tefReadingScore.innerHTML = 0;
+            }
+            Number(tefReadingScore.innerHTML)
+        })
+
+        tefListening.addEventListener('input', () => {
+            errorTefListening.innerHTML = '';
+            errorTefListening.style.display = 'none';
+            if (tefListening.value > 0 && tefListening.value <= 55) {
+                tefListeningScore.innerHTML = 1;
+            } else if (tefListening.value >= 56 && tefListening.value <= 110) {
+                tefListeningScore.innerHTML = 2;
+            } else if (tefListening.value >= 111 && tefListening.value <= 144) {
+                tefListeningScore.innerHTML = 3;
+            } else if (tefListening.value >= 145 && tefListening.value <= 180) {
+                tefListeningScore.innerHTML = 4;
+            } else if (tefListening.value >= 181 && tefListening.value <= 216) {
+                tefListeningScore.innerHTML = 5;
+            } else if (tefListening.value >= 217 && tefListening.value <= 248) {
+                tefListeningScore.innerHTML = 6;
+            } else if (tefListening.value >= 249 && tefListening.value <= 279) {
+                tefListeningScore.innerHTML = 7;
+            } else if (tefListening.value >= 280 && tefListening.value <= 297) {
+                tefListeningScore.innerHTML = 8;
+            } else if (tefListening.value >= 298 && tefListening.value <= 315) {
+                tefListeningScore.innerHTML = 9;
+            } else if (tefListening.value >= 316 && tefListening.value <= 333) {
+                tefListeningScore.innerHTML = 10;
+            } else if (tefListening.value >= 333 && tefListening.value <= 349) {
+                tefListeningScore.innerHTML = 11;
+            } else if (tefListening.value >= 350 && tefListening.value <= 360) {
+                tefListeningScore.innerHTML = 12;
+            } else if (tefListening.value == '') {
+                tefListeningScore.innerHTML = 0;
+            } else {
+                errorTefListening.innerHTML = 'Please enter a valid score';
+                errorTefListening.style.display = 'block';
+                tefListeningScore.innerHTML = 0;
+            }
+            Number(tefListeningScore.innerHTML)
+        })
+
+        tefWriting.addEventListener('input', () => {
+            errorTefWriting.innerHTML = '';
+            errorTefWriting.style.display = 'none';
+            if (tefWriting.value > 0 && tefWriting.value <= 70) {
+                tefWritingScore.innerHTML = 1;
+            } else if (tefWriting.value >= 71 && tefWriting.value <= 120) {
+                tefWritingScore.innerHTML = 2;
+            } else if (tefWriting.value >= 121 && tefWriting.value <= 180) {
+                tefWritingScore.innerHTML = 3;
+            } else if (tefWriting.value >= 181 && tefWriting.value <= 225) {
+                tefWritingScore.innerHTML = 4;
+            } else if (tefWriting.value >= 226 && tefWriting.value <= 270) {
+                tefWritingScore.innerHTML = 5;
+            } else if (tefWriting.value >= 271 && tefWriting.value <= 309) {
+                tefWritingScore.innerHTML = 6;
+            } else if (tefWriting.value >= 310 && tefWriting.value <= 348) {
+                tefWritingScore.innerHTML = 7;
+            } else if (tefWriting.value >= 349 && tefWriting.value <= 370) {
+                tefWritingScore.innerHTML = 8;
+            } else if (tefWriting.value >= 371 && tefWriting.value <= 392) {
+                tefWritingScore.innerHTML = 9;
+            } else if (tefWriting.value >= 393 && tefWriting.value <= 415) {
+                tefWritingScore.innerHTML = 10;
+            } else if (tefWriting.value >= 416 && tefWriting.value <= 438) {
+                tefWritingScore.innerHTML = 11;
+            } else if (tefWriting.value >= 439 && tefWriting.value <= 450) {
+                tefWritingScore.innerHTML = 12;
+            } else if (tefWriting.value == '') {
+                tefWritingScore.innerHTML = 0;
+            } else {
+                errorTefWriting.innerHTML = 'Please enter a valid score';
+                errorTefWriting.style.display = 'block';
+                tefWritingScore.innerHTML = 0;
+            }
+            Number(tefWritingScore.innerHTML)
+        })
+
+        tefSpeaking.addEventListener('input', () => {
+            errorTefSpeaking.innerHTML = '';
+            errorTefSpeaking.style.display = 'none';
+            if (tefSpeaking.value > 0 && tefSpeaking.value <= 70) {
+                tefSpeakingScore.innerHTML = 1;
+            } else if (tefSpeaking.value >= 71 && tefSpeaking.value <= 120) {
+                tefSpeakingScore.innerHTML = 2;
+            } else if (tefSpeaking.value >= 121 && tefSpeaking.value <= 180) {
+                tefSpeakingScore.innerHTML = 3;
+            } else if (tefSpeaking.value >= 181 && tefSpeaking.value <= 225) {
+                tefSpeakingScore.innerHTML = 4;
+            } else if (tefSpeaking.value >= 226 && tefSpeaking.value <= 270) {
+                tefSpeakingScore.innerHTML = 5;
+            } else if (tefSpeaking.value >= 271 && tefSpeaking.value <= 309) {
+                tefSpeakingScore.innerHTML = 6;
+            } else if (tefSpeaking.value >= 310 && tefSpeaking.value <= 348) {
+                tefSpeakingScore.innerHTML = 7;
+            } else if (tefSpeaking.value >= 349 && tefSpeaking.value <= 370) {
+                tefSpeakingScore.innerHTML = 8;
+            } else if (tefSpeaking.value >= 371 && tefSpeaking.value <= 392) {
+                tefSpeakingScore.innerHTML = 9;
+            } else if (tefSpeaking.value >= 393 && tefSpeaking.value <= 415) {
+                tefSpeakingScore.innerHTML = 10;
+            } else if (tefSpeaking.value >= 416 && tefSpeaking.value <= 438) {
+                tefSpeakingScore.innerHTML = 11;
+            } else if (tefSpeaking.value >= 439 && tefSpeaking.value <= 450) {
+                tefSpeakingScore.innerHTML = 12;
+            } else if (tefSpeaking.value == '') {
+                tefSpeakingScore.innerHTML = 0;
+            } else {
+                errorTefSpeaking.innerHTML = 'Please enter a valid score';
+                errorTefSpeaking.style.display = 'block';
+                tefSpeakingScore.innerHTML = 0;
+            }
+            Number(tefSpeakingScore.innerHTML)
+        })
+
+        tefResultBtn.addEventListener('click', () => {
+            if (tefReadingScore.innerHTML == '' || tefListeningScore.innerHTML == '' || tefWritingScore.innerHTML == '' || tefSpeakingScore.innerHTML == '') {
+                finalResultTef.innerHTML = 'Please enter all scores';
+            } else {
+                let tefScore = [Number(tefReadingScore.innerHTML), Number(tefListeningScore.innerHTML), Number(tefWritingScore.innerHTML), Number(tefSpeakingScore.innerHTML)];
+                let min = Math.min(...tefScore);
+                finalResultTef.innerHTML = `Your CLB is <b class="underline">${min}</b>`;
+            }
+        })
+    })
 })
 
 suggestedpnpBtn.addEventListener('click', () => {

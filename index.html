@@ -507,7 +507,141 @@
     </template>
 
     <template id="nclcTemplate">
-        <section id="nclc">NCLC Calculator <br><b>Coming Soon..</b></section>
+        <section id="nclc" class="mx-auto">
+            <div class="mb-8">
+                <h1 class='text-4xl font-bold mt-10'>CLB Calculator</h1>
+                <p class='text-xl mt-5'>The Canadian Language Benchmarks (CLB) describe 12 levels of ability in each of four different language skills - Listening, Speaking, Reading and Writing.</p>
+                <p class='text-xl mt-5'>Please note that you are eligible only if you get CLB7 or more in all language skills</p>
+            </div>
+            <div class="languageButtons flex flex-col md:flex-row justify-center items-center gap-4">
+                <button id="triggerTef" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">TEF Canada</button>
+                <button id="triggerTcf" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">TCF Canada</button>
+                <button id="triggerIelts" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">IELTS</button>
+                <button id="triggerCelpip" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">CELPIP</button>
+            </div>
+            <div class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-20 mt-20 mx-auto md:w-3/4 p-4">
+                
+                <div class="tef border-black border-4 rounded p-2 text-center w-[300px]" style="display: none;">
+                    <h1 class="title text-xl md:text-2xl font-bold uppercase underline mb-4">TEF Canada</h1>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="tefReading" class="text-lg md:text-xl font-bold">Reading</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="tefReading" id="tefReading" maxlength="3">
+                        <span style="display: none;" id="errorTefReading" class="text-red-600 font-bold italic"></span>
+                        <span id="tefReadingScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="tefWriting" class="text-lg md:text-xl font-bold">Writing</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="tefWriting" id="tefWriting">
+                        <span style="display: none;" id="errorTefWriting"></span>
+                        <span id="tefWritingScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="tefListening" class="text-lg md:text-xl font-bold">Listening</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="tefListening" id="tefListening">
+                        <span style="display: none;" id="errorTefListening"></span>
+                        <span id="tefListeningScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="tefSpeaking" class="text-lg md:text-xl font-bold">Speaking</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="tefSpeaking" id="tefSpeaking">
+                        <span style="display: none;" id="errorTefSpeaking"></span>
+                        <span id="tefSpeakingScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="result flex flex-col gap-4">
+                        <div id="finalResultTef" class="resultDiv text-xl md:text-2xl">0</div>
+                        <button id="tefResultBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">Get your final TEF score</button>
+                        <button id="tefResetBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">Reset TEF entries</button>
+                    </div>
+                </div>
+                
+                <div class="tcf border-black border-4 rounded p-2 text-center w-[300px]" style="display: none;">
+                    <h1 class="title text-xl md:text-2xl font-bold uppercase underline mb-4">TCF Canada</h1>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="tcfReading" class="text-lg md:text-xl font-bold">Reading</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="tcfReading" id="tcfReading">
+                        <span id="tcfReadingScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="tcfWriting" class="text-lg md:text-xl font-bold">Writing</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="tcfwriting" id="tcfWriting">
+                        <span id="tcfWritingScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="tcfListening" class="text-lg md:text-xl font-bold">Listening</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="tcfListening" id="tcfListening">
+                        <span id="tcfListeningScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="tcfSpeking" class="text-lg md:text-xl font-bold">Speking</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="tcfSpeking" id="tcfSpeking">
+                        <span id="tcfSpekingScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="result flex flex-col gap-4">
+                        <div class="finalResultTcf text-xl md:text-2xl">0</div>
+                        <button id="tcfResultBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">Get your final TCF score</button>
+                        <button id="tcfResetBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">Reset TCF entries</button>
+                    </div>
+                </div>
+
+                <div class="ielts border-black border-4 rounded p-2 text-center w-[300px]" style="display: none;">
+                    <h1 class="title text-xl md:text-2xl font-bold uppercase underline mb-4">IELTS</h1>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="ieltsReading" class="text-lg md:text-xl font-bold">Reading</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="ieltsReading" id="ieltsReading">
+                        <span id="ieltsReadingScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="ieltsWriting" class="text-lg md:text-xl font-bold">Writing</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="ieltsWriting" id="ieltsWriting">
+                        <span id="ieltsWritingScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="ieltsListening" class="text-lg md:text-xl font-bold">Listening</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="ieltsListening" id="ieltsListening">
+                        <span id="ieltslisteningScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="ieltsSpeaking" class="text-lg md:text-xl font-bold">Speaking</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="ieltsSpeaking" id="ieltsSpeaking">
+                        <span id="ieltsSpeakingScore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="result flex flex-col gap-4">
+                        <div class="finalResultIelts text-xl md:text-2xl">0</div>
+                        <button id="ieltsResultBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">Get your final IELTS score</button>
+                        <button id="ieltsResetBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">Reset IELTS entries</button>
+                    </div>
+                </div>
+
+                <div class="celpip border-black border-4 rounded p-2 text-center w-[300px]" style="display: none;">
+                    <h1 class="title text-xl md:text-2xl font-bold uppercase underline mb-4">CELPIP</h1>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="celpipreading" class="text-lg md:text-xl font-bold">Reading</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="celpipreading" id="celpipreading">
+                        <span id="celpipreadingscore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="celpipwriting" class="text-lg md:text-xl font-bold">Writing</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="celpipwriting" id="celpipwriting">
+                        <span id="celpipwritingscore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="celpiplistening" class="text-lg md:text-xl font-bold">Listening</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="celpiplistening" id="celpiplistening">
+                        <span id="celpiplisteningscore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-2">
+                        <label for="celpipspeaking" class="text-lg md:text-xl font-bold">Speaking</label>
+                        <input class="rounded bg-slate-100 border-red-800 border-4" type="number" name="celpipspeaking" id="celpipspeaking">
+                        <span id="celpipspeakingscore" class="mb-4 text-green-700 text-md md:text-lg font-bold">0</span>
+                    </div>
+                    <div class="result flex flex-col gap-4">
+                        <div class="resultDiv text-xl md:text-2xl">0</div>
+                        <button id="celpipResultBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">Get your final CELPIP score</button>
+                        <button id="celpipResetBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg">Reset CELPIP entries</button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </template>
 
     <template id="extraInfoTemplate">
@@ -535,7 +669,7 @@
         <section>
             <h1 class='text-4xl font-bold mt-10'>Welcome to MapleMind Tools</h1>
             <p class='text-xl mt-5'>This website is designed to help you with your Express Entry application.</p>
-            <p class='text-xl mt-5'>Please note that the other IRCC immigration systems will be added soon.</p>
+            <!-- <p class='text-xl mt-5'>Please note that the other IRCC immigration systems will be added soon.</p> -->
             <p class='text-xl mt-5'>If you have any questions, feel free to ask them in my <a href='https://www.facebook.com/groups/hellocanada25' class='text-blue-600' target="_blank" rel="noreferrer">Facebook group</a></p>
         </section>
     </main>
