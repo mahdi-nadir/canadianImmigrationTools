@@ -12,7 +12,6 @@ let suggestedpnpBtn = document.querySelector('#suggestedpnpBtn');
 let ebooksBtn = document.querySelector('#ebooksBtn');
 let extraInfoBtn = document.querySelector('#extraInfoBtn');
 
-
 // templates of components
 let homeTemplate = document.querySelector('#homeTemplate');
 let eligibilityCalculatorTemplate = document.querySelector('#eligibilityCalculatorTemplate');
@@ -21,7 +20,7 @@ let nclcTemplate = document.querySelector('#nclcTemplate');
 let suggestedpnpTemplate = document.querySelector('#suggestedpnpTemplate');
 let ebooksTemplate = document.querySelector('#ebooksTemplate');
 let extraInfoTemplate = document.querySelector('#extraInfoTemplate');
-let buttons = [homeBtn, eligibilityCalculatorBtn, crsBtn, nclcBtn, suggestedpnpBtn, ebooksBtn, extraInfoBtn]
+let navButtons = [homeBtn, eligibilityCalculatorBtn, crsBtn, nclcBtn, suggestedpnpBtn, ebooksBtn, extraInfoBtn]
 
 
 // declare components variables
@@ -118,6 +117,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     let overlay = document.querySelector('#overlay');
     let modal = document.querySelector('#modal');
     let modalResult = document.querySelector('#modalResult');
+    let modalConfirmation = document.querySelector('#modalConfirmation');
     let btnReset = document.querySelector('.btn-reset');
     let btnCalculate = document.querySelector('.btn-calculate');
 
@@ -134,7 +134,61 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         ageDiv.style.display = 'block';
         ageInput.scrollIntoView({ behavior: 'smooth' })
         btnReset.disabled = false;
+
+        if (martialStatus.value != '') {
+            eligibilityCalculatorBtn.disabled = true;
+            // navButtons.forEach(btn => {
+            //     // click on the button to leave the page, a confirmation modal will appear
+            //     btn.addEventListener('click', () => {
+            //         if (btn.id == 'eligibilityCalculatorBtn') {
+            //             return
+            //         } else {
+            //             overlay.style.display = 'block';
+            //             overlay.style.opacity = '0.8';
+            //             overlay.style.visibility = 'visible';
+            //             modalConfirmation.style.transform = 'translate(-50%, -50%) scale(1)';
+
+            //             function hideConfirmationModal() {
+            //                 modalConfirmation.style.transform = 'translate(-50%, -50%) scale(0)';
+            //                 overlay.style.display = 'none';
+            //                 overlay.style.opacity = '0';
+            //                 overlay.style.visibility = 'hidden';
+            //                 cancelButton.removeEventListener('click', hideConfirmationModal);
+
+            //             }
+
+            //             let cancelButton = document.querySelector('#cancel');
+            //             cancelButton.addEventListener('click', hideConfirmationModal);
+            //         }
+
+
+
+            //     })
+            // })
+        }
     })
+
+
+    // overlay.style.display = 'block';
+    //                 overlay.style.opacity = '0.8';
+    //                 overlay.style.visibility = 'visible';
+    //                 modalConfirmation.style.display = 'block';
+    //                 modalConfirmation.style.transform = 'translate(-50%, -50%) scale(1)';
+
+    //                 function hideConfirmationModal() {
+    //                     overlay.style.display = 'none';
+    //                     overlay.style.opacity = '0';
+    //                     overlay.style.visibility = 'hidden';
+    //                     modalConfirmation.style.transform = 'translate(-50%, -50%) scale(0)';
+    //                     modalConfirmation.style.display = 'none';
+    //                     cancelButton.removeEventListener('click', hideConfirmationModal);
+    //                     confirmButton.removeEventListener('click', hideConfirmationModal);
+    //                 }
+
+    //                 let cancelButton = document.querySelector('#close');
+    //                 let confirmButton = document.querySelector('#confirm');
+    //                 cancelButton.addEventListener('click', hideConfirmationModal);
+    //                 confirmButton.addEventListener('click', hideConfirmationModal);
 
     ageInput.addEventListener('change', () => {
         if (ageInput.value >= 18 && ageInput.value <= 35) {
@@ -650,25 +704,49 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     // refreshPage(eligibilityCalculatorTemplate, eligibilityComponentDiv);
 })
 
-// function refreshPage(componentTemplate, componentDiv) {
-//     if (window.performance.navigation && window.performance.navigation.type === 1) {
-//         if (main.innerHTML = componentDiv) {
-//             main.innerHTML = '';
-//             let clone = componentTemplate.content.cloneNode(true);
-//             main.appendChild(clone);
-//             console.log('This page is reloaded');
-//         }
-//     } else {
-//         console.info("This page is not reloaded");
-//     }
-// }
+
+crsBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = crsTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
+
+nclcBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = nclcTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
+
+suggestedpnpBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = suggestedpnpTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
+
+ebooksBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = ebooksTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
+
+extraInfoBtn.addEventListener('click', () => {
+    main.innerHTML = '';
+    let clone = extraInfoTemplate.content.cloneNode(true);
+    main.appendChild(clone);
+})
 
 
-for (let btn of buttons) {
+
+
+
+
+for (let btn of navButtons) {
     btn.addEventListener('click', () => {
         let current = document.getElementsByClassName('active');
+        current[0].disabled = false;
         current[0].classList.remove('active');
         btn.classList.add('active');
+        btn.disabled = true;
     })
 }
 
@@ -709,36 +787,20 @@ function calculateLanguageScore(langArray) {
 }
 
 
-crsBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = crsTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
-
-nclcBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = nclcTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
-
-suggestedpnpBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = suggestedpnpTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
-
-ebooksBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = ebooksTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
-
-extraInfoBtn.addEventListener('click', () => {
-    main.innerHTML = '';
-    let clone = extraInfoTemplate.content.cloneNode(true);
-    main.appendChild(clone);
-})
 
 
 
 
+
+// function refreshPage(componentTemplate, componentDiv) {
+//     if (window.performance.navigation && window.performance.navigation.type === 1) {
+//         if (main.innerHTML = componentDiv) {
+//             main.innerHTML = '';
+//             let clone = componentTemplate.content.cloneNode(true);
+//             main.appendChild(clone);
+//             console.log('This page is reloaded');
+//         }
+//     } else {
+//         console.info("This page is not reloaded");
+//     }
+// }

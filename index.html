@@ -27,7 +27,7 @@
                 <p class='text-xl mt-5'>This tool will help you determine your eligibility for Express Entry</p>
                 <p class='text-xl mt-5'>Please note that you are only eligible if you get 67 points or more /100</p>
             
-                <div class='eligibility-div bg-slate-200 w-2/3 mt-10 mx-auto text-center p-6 border-2 border-black rounded'>
+                <div class='eligibility-div bg-slate-200 w-[90%] md:w-2/3 mt-10 mx-auto text-center p-6 border-2 border-black rounded'>
                     <div class="flex flex-col justify-center items-center gap-4">
                         <h1 class='text-xl md:text-2xl font-bold'>Marital status</h1>
                         <div class="flex flex-row justify-center items-center gap-2">
@@ -543,9 +543,16 @@
 
     <div id="overlay"></div>
     <div id="modal" class="text-lg lg:text-xl border-black rounded w-1/2 p-4 min-h-[10%] text-justify"></div>
-    
-    
     <div id="modalResult" class="p-6 text-start text-lg md:text-xl"><button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button></div>
+    <div id="modalConfirmation" class="text-lg lg:text-xl border-black rounded w-[30%] p-4 min-h-[10%] text-justify flex flex-col justify-center items-center gap-10 bg-slate-400" style="display: none;">
+        <p>
+            <b>Are you sure you want to leave?</b>
+        </p>
+        <div class="flex flex-row justify-center items-center gap-6">
+            <button id="close" class="close right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">Close</button>
+            <button id="confirm" class="confirm right-3 px-2 text-white bg-green-500 rounded hover:bg-green-600">Confirm</button>
+        </div>
+    </div>
 </div>
     <footer class='flex flex-col justify-center items-center h-18 mt-10 bg-black text-white'>
         <p class="pt-5">Designed and developed with ❤ by <b>Mahdi</b></p>

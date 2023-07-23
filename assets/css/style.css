@@ -28,7 +28,7 @@ body {
     z-index: 1;
 }
 
-#modal, #modalResult {
+#modal, #modalResult, #modalConfirmation {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -51,7 +51,7 @@ body {
 
 /* media query */
 @media (max-width: 1015px) {
-    #modal, #modalResult {
+    #modal, #modalResult, #modalConfirmation {
         width: 90%;
     }
 
@@ -62,7 +62,7 @@ body {
 }
 
 @media (max-width: 650px) {
-    #modal, #modalResult {
+    #modal, #modalResult, #modalConfirmation {
         font-size: 12pt;
     }
 }
