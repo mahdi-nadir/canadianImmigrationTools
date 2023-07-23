@@ -1014,7 +1014,7 @@ nclcBtn.addEventListener('click', () => {
                 tcfReadingScore.innerHTML = 2;
             } else if (tcfReading.value >= 232 && tcfReading.value <= 341) {
                 tcfReadingScore.innerHTML = 3;
-            } else if (tcfReading.value >= 342 && tcfReading.value <= 347) {
+            } else if (tcfReading.value >= 342 && tcfReading.value <= 374) {
                 tcfReadingScore.innerHTML = 4;
             } else if (tcfReading.value >= 375 && tcfReading.value <= 405) {
                 tcfReadingScore.innerHTML = 5;
@@ -1024,7 +1024,7 @@ nclcBtn.addEventListener('click', () => {
                 tcfReadingScore.innerHTML = 7;
             } else if (tcfReading.value >= 499 && tcfReading.value <= 523) {
                 tcfReadingScore.innerHTML = 8;
-            } else if (tcfReading.value >= 542 && tcfReading.value <= 548) {
+            } else if (tcfReading.value >= 524 && tcfReading.value <= 548) {
                 tcfReadingScore.innerHTML = 9;
             } else if (tcfReading.value >= 549 && tcfReading.value <= 599) {
                 tcfReadingScore.innerHTML = 10;
@@ -1092,7 +1092,7 @@ nclcBtn.addEventListener('click', () => {
                 tcfWritingScore.innerHTML = 4;
             } else if (tcfWriting.value == 6) {
                 tcfWritingScore.innerHTML = 5;
-            } else if (tcfWriting.value == 7 || tcfWriting.value == 9) {
+            } else if (tcfWriting.value >= 7 && tcfWriting.value <= 9) {
                 tcfWritingScore.innerHTML = 6;
             } else if (tcfWriting.value == 10 || tcfWriting.value == 11) {
                 tcfWritingScore.innerHTML = 7;
@@ -1129,7 +1129,7 @@ nclcBtn.addEventListener('click', () => {
                 tcfSpeakingScore.innerHTML = 4;
             } else if (tcfSpeaking.value == 6) {
                 tcfSpeakingScore.innerHTML = 5;
-            } else if (tcfSpeaking.value == 7 || tcfSpeaking.value == 9) {
+            } else if (tcfSpeaking.value >= 7 && tcfSpeaking.value <= 9) {
                 tcfSpeakingScore.innerHTML = 6;
             } else if (tcfSpeaking.value == 10 || tcfSpeaking.value == 11) {
                 tcfSpeakingScore.innerHTML = 7;

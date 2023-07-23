@@ -13,7 +13,7 @@
         <button id="homeBtn" class="active nav-link px-5" aria-current="page">Home</button>
         <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
         <button id="crsBtn" class="nav-link px-5">CRS</button>
-        <button id="nclcBtn" class="nav-link px-5">NCLC</button>
+        <button id="nclcBtn" class="nav-link px-5">CLB</button>
         <button id="suggestedpnpBtn" class="nav-link px-5">Suggested PNP</button>
         <button id="ebooksBtn" class="nav-link px-5">Ebooks</button>
         <button id="extraInfoBtn" class="nav-link px-5">Extra Info</button>
@@ -507,7 +507,7 @@
     </template>
 
     <template id="nclcTemplate">
-        <section id="nclc" class="mx-auto">
+        <section id="nclc">
             <div class="mb-8">
                 <h1 class='text-4xl font-bold mt-10'>CLB Calculator</h1>
                 <p class='text-xl mt-5'>The Canadian Language Benchmarks (CLB) describe 12 levels of ability in each of four different language skills - Listening, Speaking, Reading and Writing.</p>
@@ -521,32 +521,32 @@
                 <button id="triggerCelpip" class="font-bold bg-indigo-500 text-white px-5 py-2 rounded-lg">CELPIP</button>
             </div>
 
-            <div class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-20 mt-20 mx-auto md:w-3/4 p-4">
+            <div class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-20 mt-20 mx-auto md:w-3/4">
                 
-                <div class="tef border-blue-500 border-4 rounded p-2 text-center w-[400px]" style="display: none;">
+                <div class="tef border-blue-500 border-4 rounded p-2 text-center w-[280px] md:w-[400px]" style="display: none;">
                     <h1 class="title text-xl md:text-2xl font-bold uppercase underline mb-4">TEF Canada</h1>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label for="tefReading" class="text-lg md:text-xl font-bold">Compéhension de l'écrit</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="tefReading" id="tefReading" min="1" max="300">
-                        <span style="display: none;" id="errorTefReading" class="errorTef text-red-600 font-bold italic"></span>
+                        <label for="tefReading" class="text-md md:text-xl font-bold">Compéhension de l'écrit</label>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg w-1/2" type="number" name="tefReading" id="tefReading" min="1" max="300">
+                        <span style="display: none;" id="errorTefReading" class="errorTef text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="tefReadingScore" class="mb-4 text-blue-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label for="tefWriting" class="text-lg md:text-xl font-bold">Expression écrite</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="tefWriting" id="tefWriting" min="1" max="450">
-                        <span style="display: none;" id="errorTefWriting" class="errorTef text-red-600 font-bold italic"></span>
+                        <label for="tefWriting" class="text-md md:text-xl font-bold">Expression écrite</label>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg w-1/2" type="number" name="tefWriting" id="tefWriting" min="1" max="450">
+                        <span style="display: none;" id="errorTefWriting" class="errorTef text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="tefWritingScore" class="mb-4 text-blue-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label for="tefListening" class="text-lg md:text-xl font-bold">Compréhension de l'oral</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="tefListening" id="tefListening" min="1" max="360">
-                        <span style="display: none;" id="errorTefListening" class="errorTef text-red-600 font-bold italic"></span>
+                        <label for="tefListening" class="text-md md:text-xl font-bold">Compréhension de l'oral</label>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg w-1/2" type="number" name="tefListening" id="tefListening" min="1" max="360">
+                        <span style="display: none;" id="errorTefListening" class="errorTef text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="tefListeningScore" class="mb-4 text-blue-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label for="tefSpeaking" class="text-lg md:text-xl font-bold">Expression orale</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="tefSpeaking" id="tefSpeaking" min="1" max="450">
-                        <span style="display: none;" id="errorTefSpeaking" class="errorTef text-red-600 font-bold italic"></span>
+                        <label for="tefSpeaking" class="text-md md:text-xl font-bold">Expression orale</label>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg w-1/2" type="number" name="tefSpeaking" id="tefSpeaking" min="1" max="450">
+                        <span style="display: none;" id="errorTefSpeaking" class="errorTef text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="tefSpeakingScore" class="mb-4 text-blue-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="result flex flex-col gap-4">
@@ -556,30 +556,30 @@
                     </div>
                 </div>
                 
-                <div class="tcf border-gray-500 border-4 rounded p-2 text-center w-[400px]" style="display: none;">
+                <div class="tcf border-gray-500 border-4 rounded p-2 text-center w-[280px] md:w-[400px]" style="display: none;">
                     <h1 class="title text-xl md:text-2xl font-bold uppercase underline mb-4">TCF Canada</h1>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label for="tcfReading" class="text-lg md:text-xl font-bold">Compéhension écrite</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="tcfReading" id="tcfReading" min="1" max="699">
-                        <span style="display: none;" id="errorTcfReading" class="errorTcf text-red-600 font-bold italic"></span>
+                        <label for="tcfReading" class="text-md md:text-xl font-bold">Compéhension écrite</label>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" name="tcfReading" id="tcfReading" min="1" max="699">
+                        <span style="display: none;" id="errorTcfReading" class="errorTcf text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="tcfReadingScore" class="mb-4 text-gray-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label for="tcfWriting" class="text-lg md:text-xl font-bold">Expression écrite</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="tcfWriting" id="tcfWriting" min="1" max="20">
-                        <span style="display: none;" id="errorTcfWriting" class="errorTcf text-red-600 font-bold italic"></span>
+                        <label for="tcfWriting" class="text-md md:text-xl font-bold">Expression écrite</label>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" name="tcfWriting" id="tcfWriting" min="1" max="20">
+                        <span style="display: none;" id="errorTcfWriting" class="errorTcf text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="tcfWritingScore" class="mb-4 text-gray-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label for="tcfListening" class="text-lg md:text-xl font-bold">Compréhension orale</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="tcfListening" id="tcfListening" min="1" max="699">
-                        <span style="display: none;" id="errorTcfListening" class="errorTcf text-red-600 font-bold italic"></span>
+                        <label for="tcfListening" class="text-md md:text-xl font-bold">Compréhension orale</label>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" name="tcfListening" id="tcfListening" min="1" max="699">
+                        <span style="display: none;" id="errorTcfListening" class="errorTcf text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="tcfListeningScore" class="mb-4 text-gray-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
-                        <label for="tcfSpeaking" class="text-lg md:text-xl font-bold">Expression orale</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="tcfSpeaking" id="tcfSpeaking" min="1" max="20">
-                        <span style="display: none;" id="errorTcfSpeaking" class="errorTcf text-red-600 font-bold italic"></span>
+                        <label for="tcfSpeaking" class="text-md md:text-xl font-bold">Expression orale</label>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" name="tcfSpeaking" id="tcfSpeaking" min="1" max="20">
+                        <span style="display: none;" id="errorTcfSpeaking" class="errorTcf text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="tcfSpeakingScore" class="mb-4 text-gray-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="result flex flex-col gap-4">
@@ -589,30 +589,30 @@
                     </div>
                 </div>
 
-                <div class="ielts border-green-500 border-4 rounded p-2 text-center w-[400px]" style="display: none;">
+                <div class="ielts border-green-500 border-4 rounded p-2 text-center w-[280px] md:w-[400px]" style="display: none;">
                     <h1 class="title text-xl md:text-2xl font-bold uppercase underline mb-4">IELTS</h1>
                     <div class="flex flex-col justify-center items-center gap-2">
                         <label for="ieltsReading" class="text-lg md:text-xl font-bold">Reading</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" step="0.5" name="ieltsReading" id="ieltsReading" min="1" max="9">
-                        <span style="display: none;" id="errorIeltsReading" class="errorIelts text-red-600 font-bold italic"></span>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" step="0.5" name="ieltsReading" id="ieltsReading" min="1" max="9">
+                        <span style="display: none;" id="errorIeltsReading" class="errorIelts text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="ieltsReadingScore" class="mb-4 text-green-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
                         <label for="ieltsWriting" class="text-lg md:text-xl font-bold">Writing</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" step="0.5" name="ieltsWriting" id="ieltsWriting" min="1" max="9">
-                        <span style="display: none;" id="errorIeltsWriting" class="errorIelts text-red-600 font-bold italic"></span>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" step="0.5" name="ieltsWriting" id="ieltsWriting" min="1" max="9">
+                        <span style="display: none;" id="errorIeltsWriting" class="errorIelts text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="ieltsWritingScore" class="mb-4 text-green-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
                         <label for="ieltsListening" class="text-lg md:text-xl font-bold">Listening</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" step="0.5" name="ieltsListening" id="ieltsListening" min="1" max="9">
-                        <span style="display: none;" id="errorIeltsListening" class="errorIelts text-red-600 font-bold italic"></span>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" step="0.5" name="ieltsListening" id="ieltsListening" min="1" max="9">
+                        <span style="display: none;" id="errorIeltsListening" class="errorIelts text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="ieltsListeningScore" class="mb-4 text-green-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
                         <label for="ieltsSpeaking" class="text-lg md:text-xl font-bold">Speaking</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" step="0.5" name="ieltsSpeaking" id="ieltsSpeaking" min="1" max="9">
-                        <span style="display: none;" id="errorIeltsSpeaking" class="errorIelts text-red-600 font-bold italic"></span>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" step="0.5" name="ieltsSpeaking" id="ieltsSpeaking" min="1" max="9">
+                        <span style="display: none;" id="errorIeltsSpeaking" class="errorIelts text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="ieltsSpeakingScore" class="mb-4 text-green-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="result flex flex-col gap-4">
@@ -622,30 +622,30 @@
                     </div>
                 </div>
 
-                <div class="celpip border-indigo-500 border-4 rounded p-2 text-center w-[400px]" style="display: none;">
+                <div class="celpip border-indigo-500 border-4 rounded p-2 text-center w-[280px] md:w-[400px]" style="display: none;">
                     <h1 class="title text-xl md:text-2xl font-bold uppercase underline mb-4">CELPIP</h1>
                     <div class="flex flex-col justify-center items-center gap-2">
                         <label for="celpipReading" class="text-lg md:text-xl font-bold">Reading</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="celpipReading" id="celpipReading" min="1" max="10">
-                        <span id="errorCelpipReading" class="errorCelpip text-red-600 font-bold italic"></span>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" name="celpipReading" id="celpipReading" min="1" max="10">
+                        <span id="errorCelpipReading" class="errorCelpip text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="celpipReadingScore" class="mb-4 text-indigo-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
                         <label for="celpipWriting" class="text-lg md:text-xl font-bold">Writing</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="celpipWriting" id="celpipWriting" min="1" max="10">
-                        <span id="errorCelpipWriting" class="errorCelpip text-red-600 font-bold italic"></span>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" name="celpipWriting" id="celpipWriting" min="1" max="10">
+                        <span id="errorCelpipWriting" class="errorCelpip text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="celpipWritingScore" class="mb-4 text-indigo-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
                         <label for="celpipListening" class="text-lg md:text-xl font-bold">Listening</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="celpipListening" id="celpipListening" min="1" max="10">
-                        <span id="errorCelpipListening" class="errorCelpip text-red-600 font-bold italic"></span>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" name="celpipListening" id="celpipListening" min="1" max="10">
+                        <span id="errorCelpipListening" class="errorCelpip text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="celpipListeningScore" class="mb-4 text-indigo-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="flex flex-col justify-center items-center gap-2">
                         <label for="celpipSpeaking" class="text-lg md:text-xl font-bold">Speaking</label>
-                        <input class="rounded bg-slate-100 border-red-800 border-4 text-lg" type="number" name="celpipSpeaking" id="celpipSpeaking" min="1" max="10">
-                        <span id="errorCelpipSpeaking" class="errorCelpip text-red-600 font-bold italic"></span>
+                        <input class="rounded text-center bg-slate-100 border-red-800 border-4 text-lg text-lg w-1/2" type="number" name="celpipSpeaking" id="celpipSpeaking" min="1" max="10">
+                        <span id="errorCelpipSpeaking" class="errorCelpip text-md md:text-lg text-red-600 font-bold italic"></span>
                         <span id="celpipSpeakingScore" class="mb-4 text-indigo-500 text-md md:text-lg font-bold">0</span>
                     </div>
                     <div class="result flex flex-col gap-4">
