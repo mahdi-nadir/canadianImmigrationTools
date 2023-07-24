@@ -732,9 +732,843 @@ function calculateLanguageScore(langArray) {
 
 
 crsBtn.addEventListener('click', () => {
+    let count = 0;
     main.innerHTML = '';
     let clone = crsTemplate.content.cloneNode(true);
     main.appendChild(clone);
+
+    let year = new Date().getFullYear();
+    let month = new Date().getMonth() + 1;
+
+    // declare variables for the form
+    let eligibilityComponentDiv = document.querySelector('#eligibility_calculator');
+    let eligibilityDiv = document.querySelector('.eligibility-div');
+    let explanations = document.querySelectorAll('.fa-solid')
+
+    let martialStatus = document.querySelector('.marital-status');
+
+    let spouseCanadianStatusDiv = document.querySelector('.spouseCanadianStatusDiv');
+    let spouseCanadianStatusInput = document.querySelector('[name="spouseCanadianStatus"]');
+
+    let spouseFollowerDiv = document.querySelector('.spouseFollowerDiv');
+    let spouseFollowerInput = document.querySelector('[name="spouseFollower"]');
+
+    let ageDiv = document.querySelector('.ageDiv');
+    let ageInput = document.querySelector('[name="age"]');
+
+    let educationDiv = document.querySelector('.educationDiv');
+    let educationInput = document.querySelector('[name="education"]');
+
+    let studiesInCanadaDiv = document.querySelector('.studiesInCanadaDiv');
+    let studiesInCanadaInput = document.querySelector('[name="studiesInCanada"]');
+
+    let studiesInCanadaTypeDiv = document.querySelector('.studiesCanadaTypeDiv');
+    let studiesInCanadaTypeInput = document.querySelector('[name="studiesCanadaType"]');
+
+    let firstLangDiv = document.querySelector('.first-language-div');
+    let firstLangInput = document.querySelector('[name="first-language-availability"]');
+    let firstLangTypeDiv = document.querySelector('.first-language-typeDiv');
+    let firstLangTypeInput = document.querySelector('[name="first-language-type"]');
+    let firstLangScoresDiv = document.querySelector('.first-language-scoresDiv');
+    let firstLangReadingInput = document.querySelector('[name="first-language-reading"]');
+    let firstLangWritingInput = document.querySelector('[name="first-language-writing"]');
+    let firstLangListeningInput = document.querySelector('[name="first-language-listening"]');
+    let firstLangSpeakingInput = document.querySelector('[name="first-language-speaking"]');
+
+    let secondLangDiv = document.querySelector('.second-language-div');
+    let secondLangInput = document.querySelector('[name="second-language-availability"]');
+    let secondLangTypeDiv = document.querySelector('.second-language-typeDiv');
+    let secondLangTypeInput = document.querySelector('[name="second-language-type"]');
+    let secondLangScoresDiv = document.querySelector('.second-language-scoresDiv');
+    let secondLangReadingInput = document.querySelector('[name="second-language-reading"]');
+    let secondLangWritingInput = document.querySelector('[name="second-language-writing"]');
+    let secondLangListeningInput = document.querySelector('[name="second-language-listening"]');
+    let secondLangSpeakingInput = document.querySelector('[name="second-language-speaking"]');
+
+    let workExpCanDiv = document.querySelector('.work-experience-can-div');
+    let workExpCanInput = document.querySelector('[name="work-experience-can"]');
+
+    let workExpDiv = document.querySelector('.work-experience-div');
+    let workExpInput = document.querySelector('[name="work-experience"]');
+
+    let qualificationDiv = document.querySelector('.qualification-div');
+    let qualificationInput = document.querySelector('[name="qualification"]');
+
+    let reservedJobDiv = document.querySelector('.reserved-job-position-in-canada-div');
+    let reservedJobInput = document.querySelector('[name="reserved-job-position-in-canada"]');
+
+    let nominationDiv = document.querySelector('.nomination-div');
+    let nominationInput = document.querySelector('[name="nomination"]');
+
+    let studyDiv = document.querySelector('.study-canada-div');
+    let studyInput = document.querySelector('[name="study-canada"]');
+
+    let workExpInCanadaDiv = document.querySelector('.work-experience-canada-div');
+    let workExpInCanadaInput = document.querySelector('[name="work-experience-canada"]');
+
+    let jobOfferDiv = document.querySelector('.job-offer-div');
+    let jobOfferInput = document.querySelector('[name="job-offer"]');
+
+    let jobOfferTeerDiv = document.querySelector('.jobOfferTeerDiv');
+    let jobOfferTeerInput = document.querySelector('[name="jobOfferTeer"]');
+
+    let relativesDiv = document.querySelector('.relatives-div');
+    let relativesInput = document.querySelector('[name="relatives"]');
+
+    let spouseEducationDiv = document.querySelector('.spouse-education-div');
+    let spouseEducationInput = document.querySelector('[name="spouse-education"]');
+
+    let spouseWorkExpDiv = document.querySelector('.spouse-work-experience-div');
+    let spouseWorkExpInput = document.querySelector('[name="spouse-work-experience"]');
+
+    let spouseLangDiv = document.querySelector('.spouse-language-div');
+    let spouseLangInput = document.querySelector('[name="spouse-language-type"]');
+
+    let spouseLangScoresDiv = document.querySelector('.spouse-language-scoresDiv');
+    let spouseLangReadingInput = document.querySelector('[name="spouse-language-reading"]');
+    let spouseLangWritingInput = document.querySelector('[name="spouse-language-writing"]');
+    let spouseLangListeningInput = document.querySelector('[name="spouse-language-listening"]');
+    let spouseLangSpeakingInput = document.querySelector('[name="spouse-language-speaking"]');
+
+    let overlay = document.querySelector('#overlay');
+    let modal = document.querySelector('#modal');
+    let modalResult = document.querySelector('#modalResult');
+    let modalConfirmation = document.querySelector('#modalConfirmation');
+    let btnReset = document.querySelector('.btn-reset');
+    let btnCalculate = document.querySelector('.btn-calculate');
+
+
+
+
+    martialStatus.addEventListener('change', () => {
+        let spanMarried = document.querySelector('#marriedOrNot');
+        if (martialStatus.value == 'married') {
+            spanMarried.textContent = 'or your spouse or common law partner (if they will come with you to Canada)';
+        } else {
+            spanMarried.textContent = '';
+        }
+        spouseCanadianStatusDiv.style.display = 'block';
+        spouseCanadianStatusInput.scrollIntoView({ behavior: 'smooth' })
+        btnReset.disabled = false;
+
+        if (btnReset.disabled == false) {
+            console.log('trying to go somewhere else');
+            // overlay.style.display = 'block';
+            // overlay.style.opacity = '0.8';
+            // overlay.style.visibility = 'visible';
+            // modalConfirmation.style.display = 'block';
+            // modalConfirmation.style.transform = 'translate(-50%, -50%) scale(1)';
+
+            // function hideConfirmationModal() {
+            //     overlay.style.display = 'none';
+            //     overlay.style.opacity = '0';
+            //     overlay.style.visibility = 'hidden';
+            //     modalConfirmation.style.transform = 'translate(-50%, -50%) scale(0)';
+            //     modalConfirmation.style.display = 'none';
+            //     cancelButton.removeEventListener('click', hideConfirmationModal);
+            //     confirmButton.removeEventListener('click', hideConfirmationModal);
+            // }
+
+            // let cancelButton = document.querySelector('#close');
+            // let confirmButton = document.querySelector('#confirm');
+            // cancelButton.addEventListener('click', hideConfirmationModal);
+            // confirmButton.addEventListener('click', hideConfirmationModal);
+        }
+    })
+
+    spouseCanadianStatusInput.addEventListener('change', () => {
+        if (spouseCanadianStatusInput.value == 'yes') {
+            ageDiv.style.display = 'block';
+            ageInput.scrollIntoView({ behavior: 'smooth' })
+            spouseFollowerDiv.style.display = 'none';
+        } else {
+            ageDiv.style.display = 'none';
+            ageInput.value = '';
+            spouseFollowerDiv.style.display = 'block';
+            spouseFollowerInput.scrollIntoView({ behavior: 'smooth' })
+        }
+    })
+
+    spouseFollowerInput.addEventListener('change', () => {
+        ageDiv.style.display = 'block';
+        ageInput.value = '';
+    })
+
+
+    ageInput.addEventListener('change', () => {
+        if (ageInput.value >= 18 && ageInput.value <= 35) {
+            ageScore = 12;
+        } else if (ageInput.value == 36) {
+            ageScore = 11;
+        } else if (ageInput.value == 37) {
+            ageScore = 10;
+        } else if (ageInput.value == 38) {
+            ageScore = 9;
+        } else if (ageInput.value == 39) {
+            ageScore = 8;
+        } else if (ageInput.value == 40) {
+            ageScore = 7;
+        } else if (ageInput.value == 41) {
+            ageScore = 6;
+        } else if (ageInput.value == 42) {
+            ageScore = 5;
+        } else if (ageInput.value == 43) {
+            ageScore = 4;
+        } else if (ageInput.value == 44) {
+            ageScore = 3;
+        } else if (ageInput.value == 45) {
+            ageScore = 2;
+        } else if (ageInput.value == 46) {
+            ageScore = 1;
+        } else if (ageInput.value >= 47) {
+            ageScore = 0;
+        } else {
+            ageScore = 0;
+            let modalResult = document.querySelector('#modalResult');
+            modalResult.innerHTML += `
+                <div>
+                <h1>You cannot create a profile if you are 17 years old or less</h1>
+                </div>`;
+
+            overlay.style.display = 'block';
+            overlay.style.opacity = '0.8';
+            overlay.style.visibility = 'visible';
+            modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+
+            function hideResultModal() {
+                modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                modalResult.innerHTML = ''; // Clear the modal content for the next time
+                cancelButton.removeEventListener('click', hideResultModal);
+                resetAll();
+            }
+
+            let cancelButton = document.querySelector('#cancel');
+            cancelButton.addEventListener('click', hideResultModal);
+            return
+        }
+        educationDiv.style.display = 'block';
+        educationInput.scrollIntoView({ behavior: 'smooth' })
+    })
+
+    educationInput.addEventListener('change', () => {
+        if (educationInput.value == 'secondary') {
+            educationScore = 5;
+        } else if (educationInput.value == 'one-year') {
+            educationScore = 15;
+        } else if (educationInput.value == 'two-year') {
+            educationScore = 19;
+        } else if (educationInput.value == 'bachelors') {
+            educationScore = 21;
+        } else if (educationInput.value == 'two-or-more') {
+            educationScore = 22;
+        } else if (educationInput.value == 'masters') {
+            educationScore = 23;
+        } else if (educationInput.value == 'doctoral') {
+            educationScore = 25;
+        } else {
+            educationScore = 0;
+        }
+        studiesInCanadaDiv.style.display = 'block';
+        studiesInCanadaInput.scrollIntoView({ behavior: 'smooth' })
+    })
+
+    studiesInCanadaInput.addEventListener('change', () => {
+        if (studiesInCanadaInput.value == 'yes') {
+            studiesInCanadaTypeDiv.style.display = 'block';
+            studiesInCanadaTypeInput.scrollIntoView({ behavior: 'smooth' })
+            firstLangDiv.style.display = 'none';
+        } else {
+            studiesInCanadaTypeDiv.style.display = 'none';
+            firstLangDiv.style.display = 'block';
+            firstLangInput.scrollIntoView({ behavior: 'smooth' })
+        }
+    })
+
+    studiesInCanadaTypeInput.addEventListener('change', () => {
+        if (studiesInCanadaTypeInput.value == 'secondary') {
+            educationScore = 5;
+        } else if (studiesInCanadaTypeInput.value == 'diploma') {
+            educationScore = 7;
+        } else if (studiesInCanadaTypeInput.value == 'bachelor') {
+            educationScore = 15;
+        }
+        firstLangDiv.style.display = 'block';
+        firstLangInput.scrollIntoView({ behavior: 'smooth' })
+    })
+
+    firstLangInput.addEventListener('change', () => {
+        if (firstLangInput.value == 'yes') {
+            firstLangTypeDiv.style.display = 'block';
+            firstLangTypeInput.scrollIntoView({ behavior: 'smooth' })
+        } else {
+            firstLangTypeDiv.style.display = 'none';
+            firstLangScoresDiv.style.display = 'none';
+            let modalResult = document.querySelector('#modalResult');
+            modalResult.innerHTML += `
+                <div class="mt-5">
+                <h1><b>You should have a language test to be eligible to Express Entry</b></h1>
+                </div>`;
+
+            overlay.style.display = 'block';
+            overlay.style.opacity = '0.8';
+            overlay.style.visibility = 'visible';
+            modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+            modalResult.style.backgroundColor = '#fcc2c2';
+            let audio = new Audio('assets/sounds/failure.mp3');
+            audio.play();
+
+            function hideResultModal() {
+                modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                modalResult.querySelector('div').remove(); // Clear the modal content for the next time
+                cancelButton.removeEventListener('click', hideResultModal);
+                resetAll();
+            }
+
+            let cancelButton = document.querySelector('#cancel');
+            cancelButton.addEventListener('click', hideResultModal);
+
+            return
+        }
+    })
+
+    firstLangTypeInput.addEventListener('change', () => {
+        secondLangTypeInput.querySelector('option[value="ielts"]').style.display = 'block';
+        secondLangTypeInput.querySelector('option[value="celpip"]').style.display = 'block';
+        secondLangTypeInput.querySelector('option[value="tef-canada"]').style.display = 'block';
+        secondLangTypeInput.querySelector('option[value="tcf-canada"]').style.display = 'block';
+
+        if (firstLangTypeInput.value == 'ielts' || firstLangTypeInput.value == 'celpip') {
+            firstLangScoresDiv.style.display = 'block';
+            firstLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
+            secondLangTypeInput.querySelector('option[value="ielts"]').style.display = 'none';
+            secondLangTypeInput.querySelector('option[value="celpip"]').style.display = 'none';
+        } else if (firstLangTypeInput.value == 'tef-canada' || firstLangTypeInput.value == 'tcf-canada') {
+            firstLangScoresDiv.style.display = 'block';
+            firstLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
+            secondLangTypeInput.querySelector('option[value="tef-canada"]').style.display = 'none';
+            secondLangTypeInput.querySelector('option[value="tcf-canada"]').style.display = 'none';
+        } else {
+            firstLangScoresDiv.style.display = 'none';
+        }
+        firstLangReadingInput.value = '';
+        firstLangWritingInput.value = '';
+        firstLangListeningInput.value = '';
+        firstLangSpeakingInput.value = '';
+    })
+
+    firstLangReadingInput.addEventListener('change', () => {
+        getScoreOfFirstLangSkill(0, 'reading', firstLangReadingInput);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        count = educationScore + ageScore + firstLangScore;
+    })
+
+    firstLangWritingInput.addEventListener('change', () => {
+        getScoreOfFirstLangSkill(1, 'writing', firstLangWritingInput);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        count = educationScore + ageScore + firstLangScore;
+    })
+
+    firstLangListeningInput.addEventListener('change', () => {
+        getScoreOfFirstLangSkill(2, 'listening', firstLangListeningInput);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        count = educationScore + ageScore + firstLangScore;
+    })
+
+    firstLangSpeakingInput.addEventListener('change', () => {
+        getScoreOfFirstLangSkill(3, 'speaking', firstLangSpeakingInput);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        count = educationScore + ageScore + firstLangScore;
+    })
+
+    secondLangInput.addEventListener('change', () => {
+        if (secondLangInput.value == 'yes') {
+            secondLangTypeDiv.style.display = 'block';
+            secondLangTypeDiv.scrollIntoView({ behavior: 'smooth' })
+            secondLangTypeInput.value = '';
+            workExpCanDiv.style.display = 'none';
+        } else {
+            secondLangTypeDiv.style.display = 'none';
+            secondLangScoresDiv.style.display = 'none';
+            workExpCanDiv.style.display = 'block';
+            workExpCanDiv.scrollIntoView({ behavior: 'smooth' })
+        }
+    })
+
+    secondLangTypeInput.addEventListener('change', () => {
+        if (secondLangTypeInput.value != '') {
+            secondLangScoresDiv.style.display = 'block';
+            secondLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
+        } else {
+            secondLangScoresDiv.style.display = 'none';
+            workExpCanDiv.style.display = 'block';
+        }
+    })
+
+    // secondLangScoresInput.addEventListener('change', () => {
+    //     secondLangScoresInput.value == 'yes' ? secondLangScore = 4 : secondLangScore = 0;
+    //     count = educationScore + ageScore + firstLangScore + secondLangScore;
+    //     triggerWorkExpDivFromSecondLang(secondLangScore, workExpDiv);
+    // })
+
+    secondLangReadingInput.addEventListener('change', () => {
+        console.log(secondLangReadingInput.value);
+    })
+
+    secondLangWritingInput.addEventListener('change', () => {
+        console.log(secondLangWritingInput.value);
+    })
+
+    secondLangListeningInput.addEventListener('change', () => {
+        console.log(secondLangListeningInput.value);
+    })
+
+    secondLangSpeakingInput.addEventListener('change', () => {
+        console.log(secondLangSpeakingInput.value);
+    })
+
+    // workExpCanInput.addEventListener('change', () => {
+    //     if (workExpCanInput.value === '1') {
+    //         workExpeScore = 9;
+    //     } else if (workExpCanInput.value === '2-3') {
+    //         workExpeScore = 11;
+    //     } else if (workExpCanInput.value === '4-5') {
+    //         workExpeScore = 13;
+    //     } else if (workExpCanInput.value === '6') {
+    //         workExpeScore = 15;
+    //     }
+    //     qualificationDiv.style.display = 'block';
+    //     qualificationInput.scrollIntoView({ behavior: 'smooth' })
+    //     if (workExpCanInput.value === '') {
+    //         workExpeScore = 0;
+    //         workExpDiv.style.display = 'none';
+    //     }
+    //     count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore;
+    // })
+
+    workExpCanInput.addEventListener('change', () => {
+        if (workExpCanInput.value != '') {
+            workExpeScore = 9;
+        }
+
+        workExpDiv.style.display = 'block';
+        workExpInput.scrollIntoView({ behavior: 'smooth' })
+
+        if (workExpCanInput.value == '') {
+            workExpeScore = 0;
+            workExpDiv.style.display = 'none';
+        }
+    })
+
+
+
+    workExpInput.addEventListener('change', () => {
+        let monthYearSpan = document.querySelector('#monthYearExp');
+        monthYearSpan.textContent = `${month}/${year}`;
+
+        if (workExpInput.value == '1') {
+            workExpeScore = 9;
+        } else if (workExpInput.value == '2') {
+            workExpeScore = 11;
+        } else if (workExpInput.value == '3') {
+            workExpeScore = 13;
+        }
+        qualificationDiv.style.display = 'block';
+        qualificationInput.scrollIntoView({ behavior: 'smooth' })
+        if (workExpInput.value == '') {
+            workExpeScore = 0;
+            qualificationDiv.style.display = 'none';
+        }
+    })
+
+    qualificationInput.addEventListener('change', () => {
+        if (qualificationInput.value == 'yes') {
+            workExpeScore = 15;
+        } else if (qualificationInput.value == 'no') {
+            workExpeScore = 0;
+        }
+        reservedJobDiv.style.display = 'block';
+        reservedJobInput.scrollIntoView({ behavior: 'smooth' })
+        if (qualificationInput.value == '') {
+            workExpeScore = 0;
+            reservedJobDiv.style.display = 'none';
+        }
+    })
+
+    reservedJobInput.addEventListener('change', () => {
+        if (reservedJobInput.value == 'yes') {
+            jobOfferTeerDiv.style.display = 'block';
+            jobOfferTeerInput.scrollIntoView({ behavior: 'smooth' });
+            nominationDiv.style.display = 'none';
+        } else if (reservedJobInput.value == 'no') {
+            jobOfferTeerDiv.style.display = 'none';
+            nominationDiv.style.display = 'block';
+            nominationInput.scrollIntoView({ behavior: 'smooth' })
+        } else if (reservedJobInput.value == '') {
+            jobOfferTeerDiv.style.display = 'none';
+            nominationDiv.style.display = 'none';
+        }
+
+        count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore;
+    })
+
+    jobOfferTeerInput.addEventListener('change', () => {
+        if (jobOfferTeerInput.value == 'teer00') {
+            reservedJobScore = 200;
+        } else if (jobOfferTeerInput.value == 'teer0123') {
+            reservedJobScore = 50;
+        } else if (jobOfferTeerInput.value == 'teer45') {
+            reservedJobScore = 0;
+        }
+
+        nominationDiv.style.display = 'block';
+        nominationInput.scrollIntoView({ behavior: 'smooth' })
+
+        if (jobOfferTeerInput.value == '') {
+            reservedJobScore = 0;
+            nominationDiv.style.display = 'none';
+        }
+
+        count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore;
+    })
+
+    nominationInput.addEventListener('change', () => {
+        if (nominationInput.value == 'yes') {
+            reservedJobScore = 600;
+        } else if (nominationInput.value == 'no') {
+            reservedJobScore = 0;
+        }
+
+        relativesDiv.style.display = 'block';
+        relativesInput.scrollIntoView({ behavior: 'smooth' })
+
+        if (nominationInput.value == '') {
+            reservedJobScore = 0;
+            relativesDiv.style.display = 'none';
+        }
+
+        count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore;
+    })
+
+    // studyInput.addEventListener('change', () => {
+    //     if (studyInput.value == 'yes') {
+    //         studyScore = 5;
+    //     } else if (studyInput.value == 'no') {
+    //         studyScore = 0;
+    //     }
+
+    //     workExpInCanadaDiv.style.display = 'block';
+    //     workExpInCanadaDiv.scrollIntoView({ behavior: 'smooth' })
+
+    //     if (studyInput.value == '') {
+    //         studyScore = 0;
+    //         workExpInCanadaDiv.style.display = 'none';
+    //     }
+
+    //     adaptabilityScore += studyScore;
+    // })
+
+    // workExpInCanadaInput.addEventListener('change', () => {
+    //     if (workExpInCanadaInput.value == 'yes') {
+    //         workExpInCanadaScore = 10;
+    //     } else if (workExpInCanadaInput.value == 'no') {
+    //         workExpInCanadaScore = 0;
+    //     }
+
+    //     jobOfferDiv.style.display = 'block';
+    //     jobOfferDiv.scrollIntoView({ behavior: 'smooth' })
+
+    //     if (workExpInCanadaInput.value == '') {
+    //         workExpInCanadaScore = 0;
+    //         jobOfferDiv.style.display = 'none';
+    //     }
+
+    //     adaptabilityScore += workExpInCanadaScore;
+    // })
+
+    // jobOfferInput.addEventListener('change', () => {
+    //     if (jobOfferInput.value == 'yes') {
+    //         jobOfferScore = 5;
+    //     } else if (jobOfferInput.value == 'no') {
+    //         jobOfferScore = 0;
+    //     }
+
+    //     relativesDiv.style.display = 'block';
+    //     relativesDiv.scrollIntoView({ behavior: 'smooth' })
+
+    //     if (jobOfferInput.value == '') {
+    //         jobOfferScore = 0;
+    //         relativesDiv.style.display = 'none';
+    //     }
+
+    //     adaptabilityScore += jobOfferScore;
+    // })
+
+    relativesInput.addEventListener('change', () => {
+        if (relativesInput.value == 'yes') {
+            relativesScore = 5;
+        } else if (relativesInput.value == 'no') {
+            relativesScore = 0;
+        }
+
+        if (martialStatus.value == 'married') {
+            spouseEducationDiv.style.display = 'block';
+            spouseEducationDiv.scrollIntoView({ behavior: 'smooth' })
+        } else {
+            spouseEducationDiv.style.display = 'none';
+            btnCalculate.disabled = false;
+        }
+
+        if (relativesInput.value == '') {
+            relativesScore = 0;
+            spouseEducationDiv.style.display = 'none';
+        }
+
+        adaptabilityScore += relativesScore;
+    })
+
+
+    spouseEducationInput.addEventListener('change', () => {
+        if (spouseEducationInput.value == 'secondary') {
+            spouseEducationScore = 2;
+        } else if (spouseEducationInput.value == 'one-year') {
+            spouseEducationScore = 6;
+        } else if (spouseEducationInput.value == 'two-year') {
+            spouseEducationScore = 7;
+        } else if (spouseEducationInput.value == 'bachelors') {
+            spouseEducationScore = 8;
+        } else if (spouseEducationInput.value == 'two-or-more') {
+            spouseEducationScore = 9;
+        } else if (spouseEducationInput.value == 'masters' || spouseEducationInput.value == 'doctoral') {
+            spouseEducationScore = 10;
+        } else {
+            spouseEducationScore = 0;
+        }
+
+        spouseWorkExpDiv.style.display = 'block';
+        spouseWorkExpDiv.scrollIntoView({ behavior: 'smooth' })
+
+        if (spouseEducationInput.value == '') {
+            spouseEducationScore = 0;
+            spouseWorkExpDiv.style.display = 'none';
+        }
+
+        adaptabilityScore += spouseEducationScore;
+    })
+
+    spouseWorkExpInput.addEventListener('change', () => {
+        if (spouseWorkExpInput.value == 0) {
+            spouseWorkExpScore = 0;
+        } else if (spouseWorkExpInput.value == 1) {
+            spouseWorkExpScore = 5;
+        } else if (spouseWorkExpInput.value == 2) {
+            spouseWorkExpScore = 7;
+        } else if (spouseWorkExpInput.value == 3) {
+            spouseWorkExpScore = 8;
+        } else if (spouseWorkExpInput.value == 4) {
+            spouseWorkExpScore = 9;
+        } else if (spouseWorkExpInput.value >= 5) {
+            spouseWorkExpScore = 10;
+        } else {
+            spouseWorkExpScore = 0;
+        }
+
+        spouseLangDiv.style.display = 'block';
+        spouseLangInput.scrollIntoView({ behavior: 'smooth' })
+
+        if (spouseWorkExpInput.value == '') {
+            spouseWorkExpScore = 0;
+            spouseLangDiv.style.display = 'none';
+        }
+
+        adaptabilityScore += spouseWorkExpScore;
+    })
+
+    spouseLangInput.addEventListener('change', () => {
+        if (spouseLangInput.value != '' && spouseLangInput.value != 'none') {
+            spouseLangScoresDiv.style.display = 'block';
+            spouseLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
+        } else {
+            spouseLangScoresDiv.style.display = 'none';
+            btnCalculate.disabled = false;
+        }
+
+        spouseLangReadingInput.value = '';
+        spouseLangWritingInput.value = '';
+        spouseLangListeningInput.value = '';
+        spouseLangSpeakingInput.value = '';
+    })
+
+    spouseLangReadingInput.addEventListener('change', () => {
+        console.log(spouseLangReadingInput.value);
+    })
+
+    spouseLangWritingInput.addEventListener('change', () => {
+        console.log(spouseLangWritingInput.value);
+    })
+
+    spouseLangListeningInput.addEventListener('change', () => {
+        console.log(spouseLangListeningInput.value);
+    })
+
+    spouseLangSpeakingInput.addEventListener('change', () => {
+        console.log(spouseLangSpeakingInput.value);
+    })
+
+
+
+
+
+    function showResultModal(count) {
+        adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
+        count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore + adaptabilityScore;
+
+
+
+        let modalResult = document.querySelector('#modalResult');
+
+        if (count >= 67) {
+            modalResult.style.backgroundColor = '#c3ffc3';
+            let audio = new Audio('assets/sounds/success.mp3');
+            audio.play();
+        } else {
+            modalResult.style.backgroundColor = '#fcc2c2';
+            let audio = new Audio('assets/sounds/failure.mp3');
+            audio.play();
+        }
+
+        modalResult.innerHTML += `
+        <div class="mt-5">
+        <h1 class="text-center text-xl font-bold underline md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile mb-3"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear mb-3"></i>'}</h1>
+        <div class="indent-8">
+        <li><b>Age:</b> ${ageScore}</li>
+        <li><b>Education:</b> ${educationScore}</li>
+        <li><b>First Language:</b> ${firstLangScore}</li>
+        <li><b>Second Language:</b> ${secondLangScore}</li>
+        <li><b>Work Experience:</b> ${workExpeScore}</li>
+        <li><b>Reserved Job:</b> ${reservedJobScore}</li>
+        <li><b>Adaptability:</b> ${adaptabilityScore}</li>
+        </div>
+        <h2 class="text-center text-xl mt-3 md:text-3xl">Your score is <b class="underline">${count}</b></h2>
+        </div>
+        `;
+
+
+        overlay.style.display = 'block';
+        overlay.style.opacity = '0.8';
+        overlay.style.visibility = 'visible';
+        modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+
+        function hideResultModal() {
+            modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+            overlay.style.display = 'none';
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            modalResult.querySelector('div').remove(); // Clear the modal content for the next time
+            cancelButton.removeEventListener('click', hideResultModal);
+            resetAll();
+
+        }
+
+        let cancelButton = document.querySelector('#cancel');
+        cancelButton.addEventListener('click', hideResultModal);
+    }
+
+    btnCalculate.addEventListener('click', showResultModal);
+
+    btnReset.addEventListener('click', () => {
+        resetAll();
+    })
+
+
+    for (let explanation of explanations) {
+        explanation.addEventListener('click', () => {
+            overlay.style.display = 'block';
+            overlay.style.opacity = '0.8';
+            overlay.style.visibility = 'visible';
+            modal.style.transform = 'translate(-50%, -50%) scale(1)';
+            modal.innerHTML = explanation.parentElement.nextElementSibling.innerHTML;
+
+            const cancelBtn = modal.querySelector('#cancelBtn');
+
+            cancelBtn.addEventListener('click', () => {
+                overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                modal.style.transform = 'translate(-50%, -50%) scale(0)';
+            });
+        });
+    }
+
+    function resetAll() {
+        count = 0;
+        educationScore = 0;
+        ageScore = 0;
+        firstLangScore = 0;
+        firstLangScoresArray = [0, 0, 0, 0];
+        secondLangScore = 0;
+        secondLangScoresArray = [0, 0, 0, 0];
+        workExpeScore = 0;
+        reservedJobScore = 0;
+        studyScore = 0;
+        workExpInCanadaScore = 0;
+        relativesScore = 0;
+        spouseLangScore = 0;
+        spouseEducationScore = 0;
+        spouseWorkExpScore = 0;
+        adaptabilityScore = 0;
+        martialStatus.value = '';
+        ageDiv.style.display = 'none';
+        ageInput.value = '';
+        educationDiv.style.display = 'none';
+        educationInput.value = '';
+        firstLangDiv.style.display = 'none';
+        firstLangInput.value = '';
+        firstLangTypeDiv.style.display = 'none';
+        firstLangTypeInput.value = '';
+        firstLangScoresDiv.style.display = 'none';
+        firstLangReadingInput.value = 'first-language-reading-clb6';
+        firstLangWritingInput.value = 'first-language-writing-clb6';
+        firstLangListeningInput.value = 'first-language-listening-clb6';
+        firstLangSpeakingInput.value = 'first-language-speaking-clb6';
+        secondLangDiv.style.display = 'none';
+        secondLangInput.value = '';
+        secondLangTypeDiv.style.display = 'none';
+        secondLangTypeInput.value = '';
+        secondLangScoresDiv.style.display = 'none';
+        secondLangScoresInput.value = '';
+        workExpDiv.style.display = 'none';
+        workExpInput.value = '';
+        reservedJobDiv.style.display = 'none';
+        reservedJobInput.value = '';
+        studyDiv.style.display = 'none';
+        studyInput.value = '';
+        workExpInCanadaDiv.style.display = 'none';
+        workExpInCanadaInput.value = '';
+        jobOfferDiv.style.display = 'none';
+        jobOfferInput.value = '';
+        relativesDiv.style.display = 'none';
+        relativesInput.value = '';
+        spouseLangDiv.style.display = 'none';
+        spouseLangInput.value = '';
+        spouseEducationDiv.style.display = 'none';
+        spouseEducationInput.value = '';
+        spouseWorkExpDiv.style.display = 'none';
+        spouseWorkExpInput.value = '';
+        btnReset.disabled = true;
+        btnCalculate.disabled = true;
+        eligibilityDiv.style.backgroundColor = '#e2e8f0';
+        modalResult.style.backgroundColor = '#f7e6e6';
+    }
 })
 
 nclcBtn.addEventListener('click', () => {
