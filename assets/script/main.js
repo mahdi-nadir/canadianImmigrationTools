@@ -737,7 +737,7 @@ crsBtn.addEventListener('click', () => {
     let clone = crsTemplate.content.cloneNode(true);
     main.appendChild(clone);
 
-    let year = new Date().getFullYear();
+    let year = new Date().getFullYear() - 10;
     let month = new Date().getMonth() + 1;
 
     // declare variables for the form
@@ -844,11 +844,15 @@ crsBtn.addEventListener('click', () => {
         let spanMarried = document.querySelector('#marriedOrNot');
         if (martialStatus.value == 'married') {
             spanMarried.textContent = 'or your spouse or common law partner (if they will come with you to Canada)';
+            spouseCanadianStatusDiv.style.display = 'block';
+            spouseCanadianStatusInput.scrollIntoView({ behavior: 'smooth' })
         } else {
             spanMarried.textContent = '';
+            spouseCanadianStatusDiv.style.display = 'none';
+            ageDiv.style.display = 'block';
+            ageInput.scrollIntoView({ behavior: 'smooth' })
         }
-        spouseCanadianStatusDiv.style.display = 'block';
-        spouseCanadianStatusInput.scrollIntoView({ behavior: 'smooth' })
+
         btnReset.disabled = false;
 
         if (btnReset.disabled == false) {
