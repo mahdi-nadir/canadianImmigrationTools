@@ -504,11 +504,11 @@
 
     <template id="crsTemplate">
         <section id="crs">
-            <section id="eligibility_calculator">
+            <section id="crs_calculator">
                 <div>
-                    <h1 class='text-4xl font-bold mt-10'>Eligibility Calculator</h1>
-                    <p class='text-xl mt-5'>This tool will help you determine your eligibility for Express Entry</p>
-                    <p class='text-xl mt-5'>Please note that you are only eligible if you get 67 points or more /100</p>
+                    <h1 class='text-4xl font-bold mt-10'>Comprehensive Ranking Score Calculator</h1>
+                    <p class='text-xl mt-5'>This tool will help you determine your CRS for Express Entry</p>
+                    <!-- <p class='text-xl mt-5'>Please note that you are only eligible if you get 67 points or more /100</p> -->
                 
                     <div class='eligibility-div bg-slate-200 w-[90%] md:w-2/3 mt-10 mx-auto text-center p-6 border-2 border-black rounded'>
                         <div class="flex flex-col justify-center items-center gap-4">
@@ -609,9 +609,7 @@
                                     <option value="42">42</option>
                                     <option value="43">43</option>
                                     <option value="44">44</option>
-                                    <option value="45">45</option>
-                                    <option value="46">46</option>
-                                    <option value="47">47 or more</option>
+                                    <option value="45">45 or more</option>
                                 </select>
                                 <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionAge"></i>
                             </div>
@@ -628,6 +626,7 @@
                             <div class="flex flex-row justify-center items-center gap-2 mt-3">
                                 <select class="rounded bg-slate-100 border-red-800 border-4 w-1/2" name="education" id="education">
                                     <option value="">Select..</option>
+                                    <option value="notCompleted">Secondary school not completed</option>
                                     <option value="secondary">Secondary school (high school) credential or less</option>
                                     <option value="one-year">One-year post-secondary program credential</option>
                                     <option value="two-year">Two-year post-secondary program credential</option>
@@ -650,7 +649,6 @@
                             </div>
                         </div>
                 
-
                         <div class="studiesInCanadaDiv flex flex-col justify-center items-center gap-4 mt-10" style="display: none;">
                             <h1 class='text-xl md:text-2xl font-bold mt-10'>Studies in Canada</h1>
                             <div class="flex flex-col justify-center items-center gap-2">
@@ -740,40 +738,56 @@
                                     <label class="font-bold" htmlFor="first-language-reading">Reading</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="first-language-reading" id="first-language-reading">
                                         <option value="">Select..</option>
-                                        <option value="first-language-reading-clb6">CLB 6 or less</option>
-                                        <option value="first-language-reading-clb7">CLB 7</option>
-                                        <option value="first-language-reading-clb8">CLB 8</option>
-                                        <option value="first-language-reading-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-2 mt-2">
                                     <label class="font-bold" htmlFor="first-language-writing">Writing</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="first-language-writing" id="first-language-writing">
                                         <option value="">Select..</option>
-                                        <option value="first-language-writing-clb6">CLB 6 or less</option>
-                                        <option value="first-language-writing-clb7">CLB 7</option>
-                                        <option value="first-language-writing-clb8">CLB 8</option>
-                                        <option value="first-language-writing-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-2 mt-2">
                                     <label class="font-bold" htmlFor="first-language-listening">Listening</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="first-language-listening" id="first-language-listening">
                                         <option value="">Select..</option>
-                                        <option value="first-language-listening-clb6">CLB 6 or less</option>
-                                        <option value="first-language-listening-clb7">CLB 7</option>
-                                        <option value="first-language-listening-clb8">CLB 8</option>
-                                        <option value="first-language-listening-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-2 mt-2">
                                     <label class="font-bold" htmlFor="first-language-speaking">Speaking</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="first-language-speaking" id="first-language-speaking">
                                         <option value="">Select..</option>
-                                        <option value="first-language-speaking-clb6">CLB 6 or less</option>
-                                        <option value="first-language-speaking-clb7">CLB 7</option>
-                                        <option value="first-language-speaking-clb8">CLB 8</option>
-                                        <option value="first-language-speaking-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                             </div>
@@ -807,40 +821,56 @@
                                     <label class="font-bold" htmlFor="second-language-reading">Reading</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="second-language-reading" id="second-language-reading">
                                         <option value="">Select..</option>
-                                        <option value="second-language-reading-clb6">CLB 6 or less</option>
-                                        <option value="second-language-reading-clb7">CLB 7</option>
-                                        <option value="second-language-reading-clb8">CLB 8</option>
-                                        <option value="second-language-reading-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-2 mt-2">
                                     <label class="font-bold" htmlFor="second-language-writing">Writing</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="second-language-writing" id="second-language-writing">
                                         <option value="">Select..</option>
-                                        <option value="second-language-writing-clb6">CLB 6 or less</option>
-                                        <option value="second-language-writing-clb7">CLB 7</option>
-                                        <option value="second-language-writing-clb8">CLB 8</option>
-                                        <option value="second-language-writing-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-2 mt-2">
                                     <label class="font-bold" htmlFor="second-language-listening">Listening</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="second-language-listening" id="second-language-listening">
                                         <option value="">Select..</option>
-                                        <option value="second-language-listening-clb6">CLB 6 or less</option>
-                                        <option value="second-language-listening-clb7">CLB 7</option>
-                                        <option value="second-language-listening-clb8">CLB 8</option>
-                                        <option value="second-language-listening-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-2 mt-2">
                                     <label class="font-bold" htmlFor="second-language-speaking">Speaking</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="second-language-speaking" id="second-language-speaking">
                                         <option value="">Select..</option>
-                                        <option value="second-language-speaking-clb6">CLB 6 or less</option>
-                                        <option value="second-language-speaking-clb7">CLB 7</option>
-                                        <option value="second-language-speaking-clb8">CLB 8</option>
-                                        <option value="second-language-speaking-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                             </div>
