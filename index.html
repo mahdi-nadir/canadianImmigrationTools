@@ -494,10 +494,14 @@
                     </div>
                 </div>
 
-                <div class="flex flex-row justify-center items-center gap-4 md:gap-8">
-                    <button class='btn-reset font-bold bg-yellow-500 text-white px-5 py-2 rounded-lg mt-10' disabled>Reset</button>
-                    <button class='btn-calculate font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-10' disabled>Calculate</button>
+                <div class="flex flex-col justify-center items-center gap-2 md:gap-4 mx-auto">
+                    <div class="border-2 border-black bg-red-600 text-white font-bold rounded mt-4 p-2 px-5 notice" style="display: none;"></div>
+                    <div class="flex flex-row justify-center items-center gap-4 md:gap-8 mx-auto">
+                        <button class='btn-reset font-bold bg-yellow-500 text-white px-5 py-2 rounded-lg mt-6' disabled>Reset</button>
+                        <button class='btn-calculate font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-6' disabled>Calculate</button>
+                    </div>
                 </div>
+                
             </div>
         </section>
     </template>
@@ -507,7 +511,8 @@
             <section id="crs_calculator">
                 <div>
                     <h1 class='text-4xl font-bold mt-10'>Comprehensive Ranking Score Calculator</h1>
-                    <p class='text-xl mt-5'>This tool will help you determine your CRS for Express Entry</p>
+                    <p class='text-xl md:text-2xl mt-5'>This tool will help you determine your CRS for Express Entry</p><br>
+                    <p class="font-bold text-xl md:text-2xl">To get an invitation to apply, your CRS score must be above the minimum points score of your <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html" target="_blank" class="text-blue-700 underline">round of invitations</a> (cut-off scores may vary each round).</p>
                     <!-- <p class='text-xl mt-5'>Please note that you are only eligible if you get 67 points or more /100</p> -->
                 
                     <div class='eligibility-div bg-slate-200 w-[90%] md:w-2/3 mt-10 mx-auto text-center p-6 border-2 border-black rounded'>
@@ -923,7 +928,6 @@
                             </div>
                         </div>
 
-
                         <div style="display: none;" class="qualification-div flex flex-col justify-center items-center gap-4 mt-10">
                             <h1 class='text-xl md:text-2xl font-bold'>Certificate of Qualification</h1>
                             <label class="font-bold italic text-slate-600" htmlFor="qualification">
@@ -1008,49 +1012,6 @@
                                 </select>
                             </div>
                         </div>
-                
-                        <!-- <div style="display: none;" class="work-experience-canada-div flex flex-col justify-center items-center gap-4">
-                            <h1 class='text-xl md:text-2xl font-bold mt-10'>Work experience in Canada</h1>
-                            <label class="font-bold italic text-slate-600" htmlFor="work-experience-canada">Do you have work experience in Canada?</label><br>
-                            <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                                <select class="rounded bg-slate-100 border-red-800 border-4" name="work-experience-canada" id="work-experience-canada">
-                                    <option value="">Select..</option>
-                                    <option value="no">No</option>
-                                    <option value="yes">Yes</option>
-                                </select>
-                                <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionWorkExpCanada"></i>
-                            </div>
-                            <div style="display: none;" class="explanation explanationWorkExpCanada">
-                                <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
-                                <p class="pt-5">
-                                    <b><u>You can get points for your work experience in Canada if you:</u></b>
-    
-                                    <li>have at least 1 year of full-time work experience in Canada</li>
-                                    <li>have a valid work permit or were authorized to work when you did this work</li>
-                                    <li>gained your work experience in Canada with the proper authorization</li>
-                                    <li>worked in a job listed in TEER category 0, 1, 2 or 3 of the NOC</li>
-                                </p>
-                            </div>
-                        </div>
-                
-                        <div style="display: none;" class="job-offer-div flex flex-col justify-center items-center gap-4">
-                            <h1 class='text-xl md:text-2xl font-bold mt-10'>Arranged employment in Canada</h1>
-                            <label class="font-bold italic text-slate-600" htmlFor="job-offer">Do you any job offer in Canada?</label><br>
-                            <div class="flex flex-row justify-center items-center gap-2 mt-3">
-                                <select class="rounded bg-slate-100 border-red-800 border-4" name="job-offer" id="job-offer">
-                                    <option value="">Select..</option>
-                                    <option value="no">No</option>
-                                    <option value="yes">Yes</option>
-                                </select>
-                                <i class="fa-solid fa-question rounded p-1 border-red-900 cursor-pointer text-red-800 hover:bg-red-900 hover:text-white text-bold cursor-pointer text-red-800 questionJobOffer"></i>
-                            </div>
-                            <div style="display: none;" class="explanation explanationJobOffer">
-                                <button id="cancelBtn" class="cancelButton absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600"><i class="fa-solid fa-xmark"></i></button>
-                                <p class="pt-5">
-                                    You may earn extra points for having <a class="underline text-blue-500" href="http://ircc.canada.ca/english/helpcentre/glossary.asp#arranged_employment" target="_blank" rel="noreferrer">arranged employment.</a>
-                                </p>
-                            </div>
-                        </div> -->
     
                         <div style="display: none;" class="relatives-div flex flex-col justify-center items-center gap-4">
                             <h1 class='text-xl md:text-2xl font-bold mt-10'>Relatives in Canada</h1>
@@ -1089,6 +1050,7 @@
                             <div class="flex flex-row justify-center items-center gap-2 mt-3">
                                 <select class="rounded bg-slate-100 border-red-800 border-4 w-1/2" name="spouse-education" id="spouse-education">
                                     <option value="">Select..</option>
+                                    <option value="none">None or less than secondary (high school)</option>
                                     <option value="secondary">Secondary school (high school) credential or less</option>
                                     <option value="one-year">One-year post-secondary program credential</option>
                                     <option value="two-year">Two-year post-secondary program credential</option>
@@ -1163,49 +1125,68 @@
                                     <label class="font-bold" htmlFor="spouse-language-reading">Reading</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-reading" id="spouse-language-reading">
                                         <option value="">Select..</option>
-                                        <option value="spouse-language-reading-clb6">CLB 6 or less</option>
-                                        <option value="spouse-language-reading-clb7">CLB 7</option>
-                                        <option value="spouse-language-reading-clb8">CLB 8</option>
-                                        <option value="spouse-language-reading-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-2 mt-2">
                                     <label class="font-bold" htmlFor="spouse-language-writing">Writing</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-writing" id="spouse-language-writing">
                                         <option value="">Select..</option>
-                                        <option value="spouse-language-writing-clb6">CLB 6 or less</option>
-                                        <option value="spouse-language-writing-clb7">CLB 7</option>
-                                        <option value="spouse-language-writing-clb8">CLB 8</option>
-                                        <option value="spouse-language-writing-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-2 mt-2">
                                     <label class="font-bold" htmlFor="spouse-language-listening">Listening</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-listening" id="spouse-language-listening">
                                         <option value="">Select..</option>
-                                        <option value="spouse-language-listening-clb6">CLB 6 or less</option>
-                                        <option value="spouse-language-listening-clb7">CLB 7</option>
-                                        <option value="spouse-language-listening-clb8">CLB 8</option>
-                                        <option value="spouse-language-listening-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                                 <div class="flex flex-col justify-center items-center gap-2 mt-2">
                                     <label class="font-bold" htmlFor="spouse-language-speaking">Speaking</label>
                                     <select class="rounded bg-slate-100 border-red-800 border-4 mb-4" name="spouse-language-speaking" id="spouse-language-speaking">
                                         <option value="">Select..</option>
-                                        <option value="spouse-language-speaking-clb6">CLB 6 or less</option>
-                                        <option value="spouse-language-speaking-clb7">CLB 7</option>
-                                        <option value="spouse-language-speaking-clb8">CLB 8</option>
-                                        <option value="spouse-language-speaking-clb9">CLB 9 or more</option>
+                                        <option value="clb10"></option>
+                                        <option value="clb9"></option>
+                                        <option value="clb8"></option>
+                                        <option value="clb7"></option>
+                                        <option value="clb6"></option>
+                                        <option value="clb5"></option>
+                                        <option value="clb4"></option>
+                                        <option value="clb3"></option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div>
     
-                    <div class="flex flex-row justify-center items-center gap-4 md:gap-8">
-                        <button class='btn-reset font-bold bg-yellow-500 text-white px-5 py-2 rounded-lg mt-10' disabled>Reset</button>
-                        <button class='btn-calculate font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-10' disabled>Calculate</button>
+                    <div class="flex flex-col justify-center items-center gap-2 md:gap-4 mx-auto">
+                        <div class="border-2 border-black bg-red-600 text-white font-bold rounded mt-4 p-2 px-5 notice" style="display: none;"></div>
+                        <div class="flex flex-row justify-center items-center gap-4 md:gap-8 mx-auto">
+                            <button class='btn-reset font-bold bg-yellow-500 text-white px-5 py-2 rounded-lg mt-6' disabled>Reset</button>
+                            <button class='btn-calculate font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-6' disabled>Calculate</button>
+                        </div>
                     </div>
                 </div>
         </section>

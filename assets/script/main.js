@@ -32,15 +32,22 @@ let firstLangScore = 0;
 let firstLangScoresArray = [0, 0, 0, 0];
 let secondLangScore = 0;
 let secondLangScoresArray = [0, 0, 0, 0];
+let workExpeCanScore = 0;
 let workExpeScore = 0;
+let qualificationScore = 0;
+let nominationScore = 0;
 let reservedJobScore = 0;
 let studyScore = 0;
 let workExpInCanadaScore = 0;
 let relativesScore = 0;
 let spouseLangScore = 0;
+let spouseLangScoresArray = [0, 0, 0, 0];
 let spouseEducationScore = 0;
 let spouseWorkExpScore = 0;
 let adaptabilityScore = 0;
+let skillTransferabilityScore = 0;
+let additionalPointsScore = 0;
+
 
 adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
 
@@ -120,6 +127,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     let modalConfirmation = document.querySelector('#modalConfirmation');
     let btnReset = document.querySelector('.btn-reset');
     let btnCalculate = document.querySelector('.btn-calculate');
+    let noticeDiv = document.querySelector('.notice');
 
 
 
@@ -136,7 +144,6 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         btnReset.disabled = false;
 
         if (btnReset.disabled == false) {
-            console.log('trying to go somewhere else');
             // overlay.style.display = 'block';
             // overlay.style.opacity = '0.8';
             // overlay.style.visibility = 'visible';
@@ -159,9 +166,6 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             // confirmButton.addEventListener('click', hideConfirmationModal);
         }
     })
-
-
-
 
     ageInput.addEventListener('change', () => {
         if (ageInput.value >= 18 && ageInput.value <= 35) {
@@ -190,35 +194,25 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             ageScore = 1;
         } else if (ageInput.value >= 47) {
             ageScore = 0;
-        } else {
-            ageScore = 0;
-            let modalResult = document.querySelector('#modalResult');
-            modalResult.innerHTML += `
-                <div>
-                <h1>You cannot create a profile if you are 17 years old or less</h1>
-                </div>`;
-
-            overlay.style.display = 'block';
-            overlay.style.opacity = '0.8';
-            overlay.style.visibility = 'visible';
-            modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
-
-            function hideResultModal() {
-                modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
-                overlay.style.display = 'none';
-                overlay.style.opacity = '0';
-                overlay.style.visibility = 'hidden';
-                modalResult.innerHTML = ''; // Clear the modal content for the next time
-                cancelButton.removeEventListener('click', hideResultModal);
-                resetAll();
-            }
-
-            let cancelButton = document.querySelector('#cancel');
-            cancelButton.addEventListener('click', hideResultModal);
-            return
         }
+
         educationDiv.style.display = 'block';
         educationInput.scrollIntoView({ behavior: 'smooth' })
+        noticeDiv.style.display = 'none';
+
+        if (ageInput.value == 17) {
+            ageScore = 0;
+            educationDiv.style.display = 'none';
+            noticeDiv.style.display = 'block';
+            noticeDiv.innerHTML += `
+                You cannot create a profile if you are 17 years old or less
+                `;
+            noticeDiv.scrollIntoView({ behavior: 'smooth' })
+        } else if (ageInput.value == '') {
+            noticeDiv.style.display = 'none';
+            educationDiv.style.display = 'none';
+            noticeDiv.innerHTML = '';
+        }
     })
 
     educationInput.addEventListener('change', () => {
@@ -247,37 +241,17 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         if (firstLangInput.value == 'yes') {
             firstLangTypeDiv.style.display = 'block';
             firstLangTypeInput.scrollIntoView({ behavior: 'smooth' })
+            noticeDiv.style.display = 'none';
+            noticeDiv.innerHTML = '';
+
         } else {
             firstLangTypeDiv.style.display = 'none';
             firstLangScoresDiv.style.display = 'none';
-            let modalResult = document.querySelector('#modalResult');
-            modalResult.innerHTML += `
-                <div class="mt-5">
-                <h1><b>You should have a language test to be eligible to Express Entry</b></h1>
-                </div>`;
-
-            overlay.style.display = 'block';
-            overlay.style.opacity = '0.8';
-            overlay.style.visibility = 'visible';
-            modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
-            modalResult.style.backgroundColor = '#fcc2c2';
-            let audio = new Audio('assets/sounds/failure.mp3');
-            audio.play();
-
-            function hideResultModal() {
-                modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
-                overlay.style.display = 'none';
-                overlay.style.opacity = '0';
-                overlay.style.visibility = 'hidden';
-                modalResult.querySelector('div').remove(); // Clear the modal content for the next time
-                cancelButton.removeEventListener('click', hideResultModal);
-                resetAll();
-            }
-
-            let cancelButton = document.querySelector('#cancel');
-            cancelButton.addEventListener('click', hideResultModal);
-
-            return
+            noticeDiv.style.display = 'block';
+            noticeDiv.innerHTML = `
+                You should have a language test to be eligible to Express Entry
+                `;
+            noticeDiv.scrollIntoView({ behavior: 'smooth' })
         }
     })
 
@@ -309,6 +283,8 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     firstLangReadingInput.addEventListener('change', () => {
         getScoreOfFirstLangSkill(0, 'reading', firstLangReadingInput);
         firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        errorLanguageSkill(firstLangReadingInput, 'reading');
+        hideError();
         triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
         count = educationScore + ageScore + firstLangScore;
     })
@@ -316,6 +292,8 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     firstLangWritingInput.addEventListener('change', () => {
         getScoreOfFirstLangSkill(1, 'writing', firstLangWritingInput);
         firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        errorLanguageSkill(firstLangWritingInput, 'writing');
+        hideError();
         triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
         count = educationScore + ageScore + firstLangScore;
     })
@@ -323,6 +301,8 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     firstLangListeningInput.addEventListener('change', () => {
         getScoreOfFirstLangSkill(2, 'listening', firstLangListeningInput);
         firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        errorLanguageSkill(firstLangListeningInput, 'listening');
+        hideError();
         triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
         count = educationScore + ageScore + firstLangScore;
     })
@@ -330,9 +310,34 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     firstLangSpeakingInput.addEventListener('change', () => {
         getScoreOfFirstLangSkill(3, 'speaking', firstLangSpeakingInput);
         firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        errorLanguageSkill(firstLangSpeakingInput, 'speaking');
+        hideError();
         triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
         count = educationScore + ageScore + firstLangScore;
     })
+
+    function errorLanguageSkill(input, skill) {
+        if (input.value == '' || input.value == 'first-language-' + skill + '-clb6') {
+            noticeDiv.style.display = 'block';
+            noticeDiv.innerHTML += `
+                    <li class="listElement">You should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry</li>
+                    `;
+        } else {
+            let listElements = document.querySelectorAll('.listElement');
+            for (let i = 0; i < listElements.length; i++) {
+                if (listElements[i].textContent == 'You should get at least "CLB 7" in ' + skill + ' skill to be eligible to Express Entry') {
+                    listElements[i].remove();
+                }
+            }
+        }
+    }
+
+    function hideError() {
+        // if all skills are not empty and all skills are not equal to 'first-language-' + skill + '-clb6', then hide the error
+        if ((firstLangReadingInput.value != '' && firstLangReadingInput.value != 'first-language-reading-clb6') && (firstLangWritingInput.value != '' && firstLangWritingInput.value != 'first-language-writing-clb6') && (firstLangListeningInput.value != '' && firstLangListeningInput.value != 'first-language-listening-clb6') && (firstLangSpeakingInput.value != '' && firstLangSpeakingInput.value != 'first-language-speaking-clb6')) {
+            noticeDiv.style.display = 'none';
+        }
+    }
 
     secondLangInput.addEventListener('change', () => {
         if (secondLangInput.value == 'yes') {
@@ -363,7 +368,8 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     secondLangScoresInput.addEventListener('change', () => {
         secondLangScoresInput.value == 'yes' ? secondLangScore = 4 : secondLangScore = 0;
         count = educationScore + ageScore + firstLangScore + secondLangScore;
-        triggerWorkExpDivFromSecondLang(secondLangScore, workExpDiv);
+        workExpDiv.style.display = 'block';
+        workExpDiv.scrollIntoView({ behavior: 'smooth' })
     })
 
     workExpInput.addEventListener('change', () => {
@@ -536,8 +542,6 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
         count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore + adaptabilityScore;
 
-
-
         let modalResult = document.querySelector('#modalResult');
 
         if (count >= 67) {
@@ -689,12 +693,6 @@ for (let btn of navButtons) {
 }
 
 
-
-function triggerWorkExpDivFromSecondLang(workExperienceDiv) {
-    workExperienceDiv.style.display = 'block';
-    workExperienceDiv.scrollIntoView({ behavior: 'smooth' })
-}
-
 // function triggerCanWorkExpDivFromSecondLang(workExperienceDiv, reading, writing, listening, speaking) {
 //     if (reading.value == '' || writing.value == '' || listening.value == '' || speaking.value == '') {
 //         workExperienceDiv.style.display = 'none';
@@ -746,11 +744,13 @@ crsBtn.addEventListener('click', () => {
     let clone = crsTemplate.content.cloneNode(true);
     main.appendChild(clone);
 
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
     let year = new Date().getFullYear() - 10;
-    let month = new Date().getMonth() + 1;
+    let month = monthNames[new Date().getMonth()];
 
     // declare variables for the form
-    let eligibilityComponentDiv = document.querySelector('#eligibility_calculator');
     let eligibilityDiv = document.querySelector('.eligibility-div');
     let explanations = document.querySelectorAll('.fa-solid')
 
@@ -847,27 +847,50 @@ crsBtn.addEventListener('click', () => {
     let modalConfirmation = document.querySelector('#modalConfirmation');
     let btnReset = document.querySelector('.btn-reset');
     let btnCalculate = document.querySelector('.btn-calculate');
+    let spanMarried = document.querySelector('#marriedOrNot');
     let likeSingle = false;
 
 
 
 
     martialStatus.addEventListener('change', () => {
-        let spanMarried = document.querySelector('#marriedOrNot');
         if (martialStatus.value == 'married') {
-            spanMarried.textContent = 'or your spouse or common law partner (if they will come with you to Canada)';
             ageDiv.style.display = 'none';
             spouseCanadianStatusDiv.style.display = 'block';
             spouseCanadianStatusInput.scrollIntoView({ behavior: 'smooth' })
-        } else {
-            spanMarried.textContent = '';
+        } else if (martialStatus.value == 'single') {
             spouseCanadianStatusDiv.style.display = 'none';
             ageDiv.style.display = 'block';
             ageInput.scrollIntoView({ behavior: 'smooth' })
-        }
+        } /* else {
+            notDisplayComponents(martialStatus);
+            spouseCanadianStatusDiv.style.display = 'none';
+            ageDiv.style.display = 'none';
+            educationDiv.style.display = 'none';
+            firstLangDiv.style.display = 'none';
+            firstLangTypeDiv.style.display = 'none';
+            firstLangScoresDiv.style.display = 'none';
+            secondLangDiv.style.display = 'none';
+            secondLangTypeDiv.style.display = 'none';
+            secondLangScoresDiv.style.display = 'none';
+            workExpDiv.style.display = 'none';
+            qualificationDiv.style.display = 'none';
+            reservedJobDiv.style.display = 'none';
+            nominationDiv.style.display = 'none';
+            studyDiv.style.display = 'none';
+            workExpInCanadaDiv.style.display = 'none';
+            jobOfferDiv.style.display = 'none';
+            jobOfferTeerDiv.style.display = 'none';
+            relativesDiv.style.display = 'none';
+            spouseEducationDiv.style.display = 'none';
+            spouseWorkExpDiv.style.display = 'none';
+            spouseLangDiv.style.display = 'none';
+            spouseLangScoresDiv.style.display = 'none';
+            btnCalculate.disabled = true;
+        } */
 
         btnReset.disabled = false;
-        console.log(likeSingle);
+
         if (btnReset.disabled == false) {
             // console.log('trying to go somewhere else');
             // overlay.style.display = 'block';
@@ -899,26 +922,73 @@ crsBtn.addEventListener('click', () => {
             ageInput.scrollIntoView({ behavior: 'smooth' })
             spouseFollowerDiv.style.display = 'none';
             likeSingle = true;
-        } else {
+        } else if (spouseCanadianStatusInput.value == 'no') {
             likeSingle = false;
             ageDiv.style.display = 'none';
             ageInput.value = '';
             spouseFollowerDiv.style.display = 'block';
             spouseFollowerInput.scrollIntoView({ behavior: 'smooth' })
-        }
-        console.log(likeSingle);
+        } /* else {
+            notDisplayComponents(spouseCanadianStatusDiv);
+        } */
+        spanMarriedOrSingle(spanMarried);
     })
+
+    // function notDisplayComponents(component) {
+    //     const componentsArray = [
+    //         spouseCanadianStatusDiv,
+    //         spouseFollowerDiv,
+    //         ageDiv,
+    //         educationDiv,
+    //         firstLangDiv,
+    //         firstLangTypeDiv,
+    //         firstLangScoresDiv,
+    //         secondLangDiv,
+    //         secondLangTypeDiv,
+    //         secondLangScoresDiv,
+    //         workExpCanDiv,
+    //         workExpDiv,
+    //         qualificationDiv,
+    //         reservedJobDiv,
+    //         jobOfferTeerDiv,
+    //         nominationDiv,
+    //         relativesDiv,
+    //         spouseEducationDiv,
+    //         spouseWorkExpDiv,
+    //         spouseLangDiv,
+    //         spouseLangScoresDiv
+    //     ]
+
+    //     for (let i = 0; i < componentsArray.length; i++) {
+    //         if (componentsArray.indexOf(componentsArray[i]) <= i) {
+    //             componentsArray[i].style.display = 'none';
+    //             console.log(componentsArray[i]);
+    //             console.log(component);
+    //         }
+    //     }
+    // }
 
     spouseFollowerInput.addEventListener('change', () => {
         if (spouseFollowerInput.value == 'yes') {
             likeSingle = false;
-        } else {
+        } else if (spouseFollowerInput.value == 'no') {
             likeSingle = true;
-        }
+        } /* else {
+            notDisplayComponents(spouseFollowerDiv);
+        } */
         ageDiv.style.display = 'block';
         ageInput.value = '';
-        console.log(likeSingle);
+        spanMarriedOrSingle(spanMarried);
+
     })
+
+    function spanMarriedOrSingle(span) {
+        if (martialStatus.value == 'married' && likeSingle == false) {
+            span.textContent = 'or your spouse or common law partner (if they will come with you to Canada)';
+        } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
+            span.textContent = '';
+        }
+    }
 
 
     ageInput.addEventListener('change', () => {
@@ -965,6 +1035,7 @@ crsBtn.addEventListener('click', () => {
                 ageScore = 0;
             } else {
                 ageScore = 0;
+                // notDisplayComponents(ageDiv);
             }
         } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
             if (ageInput.value == 17) {
@@ -1009,10 +1080,9 @@ crsBtn.addEventListener('click', () => {
                 ageScore = 0;
             } else {
                 ageScore = 0;
+                // notDisplayComponents(ageDiv);
             }
         }
-        console.log(ageScore);
-        console.log(likeSingle);
         educationDiv.style.display = 'block';
         educationInput.scrollIntoView({ behavior: 'smooth' })
     })
@@ -1035,6 +1105,7 @@ crsBtn.addEventListener('click', () => {
                 educationScore = 140;
             } else {
                 educationScore = 0;
+                // notDisplayComponents(educationDiv);
             }
         } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
             if (educationInput.value == 'secondary') {
@@ -1053,10 +1124,9 @@ crsBtn.addEventListener('click', () => {
                 educationScore = 150;
             } else {
                 educationScore = 0;
+                // notDisplayComponents(educationDiv);
             }
         }
-        console.log(educationScore);
-        console.log(likeSingle);
         studiesInCanadaDiv.style.display = 'block';
         studiesInCanadaInput.scrollIntoView({ behavior: 'smooth' })
     })
@@ -1066,21 +1136,25 @@ crsBtn.addEventListener('click', () => {
             studiesInCanadaTypeDiv.style.display = 'block';
             studiesInCanadaTypeInput.scrollIntoView({ behavior: 'smooth' })
             firstLangDiv.style.display = 'none';
-        } else {
+        } else if (studiesInCanadaInput.value == 'no') {
             studiesInCanadaTypeDiv.style.display = 'none';
             firstLangDiv.style.display = 'block';
             firstLangInput.scrollIntoView({ behavior: 'smooth' })
-        }
+        } /* else {
+            notDisplayComponents(studiesInCanadaDiv);
+        } */
     })
 
     studiesInCanadaTypeInput.addEventListener('change', () => {
-        if (studiesInCanadaTypeInput.value == 'secondary') {
+        /*if (studiesInCanadaTypeInput.value == 'secondary') {
             educationScore = 5;
         } else if (studiesInCanadaTypeInput.value == 'diploma') {
             educationScore = 7;
         } else if (studiesInCanadaTypeInput.value == 'bachelor') {
             educationScore = 15;
-        }
+        }  else {
+            notDisplayComponents(studiesInCanadaTypeDiv);
+        } */
         firstLangDiv.style.display = 'block';
         firstLangInput.scrollIntoView({ behavior: 'smooth' })
     })
@@ -1183,23 +1257,27 @@ crsBtn.addEventListener('click', () => {
     })
 
     firstLangReadingInput.addEventListener('change', () => {
-        getPointsFirstLanguage(martialStatus.value, firstLangReadingInput.value, firstLangScoresArray, 0);
+        getPointsFirstLanguage(martialStatus.value, likeSingle, firstLangReadingInput.value, firstLangScoresArray, 0);
         triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
     })
 
     firstLangWritingInput.addEventListener('change', () => {
-        getPointsFirstLanguage(martialStatus.value, firstLangWritingInput.value, firstLangScoresArray, 1);
+        getPointsFirstLanguage(martialStatus.value, likeSingle, firstLangWritingInput.value, firstLangScoresArray, 1);
         triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
     })
 
     firstLangListeningInput.addEventListener('change', () => {
-        getPointsFirstLanguage(martialStatus.value, firstLangListeningInput.value, firstLangScoresArray, 2);
+        getPointsFirstLanguage(martialStatus.value, likeSingle, firstLangListeningInput.value, firstLangScoresArray, 2);
         triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
     })
 
     firstLangSpeakingInput.addEventListener('change', () => {
-        getPointsFirstLanguage(martialStatus.value, firstLangSpeakingInput.value, firstLangScoresArray, 3);
+        getPointsFirstLanguage(martialStatus.value, likeSingle, firstLangSpeakingInput.value, firstLangScoresArray, 3);
         triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
+        firstLangScore = calculateLanguageScore(firstLangScoresArray);
     })
 
     secondLangInput.addEventListener('change', () => {
@@ -1256,30 +1334,28 @@ crsBtn.addEventListener('click', () => {
         }
     })
 
-    // secondLangScoresInput.addEventListener('change', () => {
-    //     secondLangScoresInput.value == 'yes' ? secondLangScore = 4 : secondLangScore = 0;
-    //     count = educationScore + ageScore + firstLangScore + secondLangScore;
-    //     triggerWorkExpDivFromSecondLang(secondLangScore, workExpDiv);
-    // })
-
     secondLangReadingInput.addEventListener('change', () => {
         getPointsSecondLanguage(secondLangReadingInput.value, secondLangScoresArray, 0);
         triggerWorkExpDiv()
+        secondLangScore = calculateLanguageScore(secondLangScoresArray);
     })
 
     secondLangWritingInput.addEventListener('change', () => {
         getPointsSecondLanguage(secondLangWritingInput.value, secondLangScoresArray, 1);
         triggerWorkExpDiv()
+        secondLangScore = calculateLanguageScore(secondLangScoresArray);
     })
 
     secondLangListeningInput.addEventListener('change', () => {
         getPointsSecondLanguage(secondLangListeningInput.value, secondLangScoresArray, 2);
         triggerWorkExpDiv()
+        secondLangScore = calculateLanguageScore(secondLangScoresArray);
     })
 
     secondLangSpeakingInput.addEventListener('change', () => {
         getPointsSecondLanguage(secondLangSpeakingInput.value, secondLangScoresArray, 3);
         triggerWorkExpDiv()
+        secondLangScore = calculateLanguageScore(secondLangScoresArray);
     })
 
     function triggerWorkExpDiv() {
@@ -1291,31 +1367,40 @@ crsBtn.addEventListener('click', () => {
         }
     }
 
-    // workExpCanInput.addEventListener('change', () => {
-    //     if (workExpCanInput.value === '1') {
-    //         workExpeScore = 9;
-    //     } else if (workExpCanInput.value === '2-3') {
-    //         workExpeScore = 11;
-    //     } else if (workExpCanInput.value === '4-5') {
-    //         workExpeScore = 13;
-    //     } else if (workExpCanInput.value === '6') {
-    //         workExpeScore = 15;
-    //     }
-    //     qualificationDiv.style.display = 'block';
-    //     qualificationInput.scrollIntoView({ behavior: 'smooth' })
-    //     if (workExpCanInput.value === '') {
-    //         workExpeScore = 0;
-    //         workExpDiv.style.display = 'none';
-    //     }
-    //     count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore;
-    // })
-
     workExpCanInput.addEventListener('change', () => {
         let monthYearSpan = document.querySelector('#monthYearExp');
-        monthYearSpan.textContent = `${month}/${year}`;
+        monthYearSpan.textContent = `${month} 1st, ${year}`;
 
-        if (workExpCanInput.value != '') {
-            workExpeScore = 9;
+        if (martialStatus.value == 'married' && likeSingle == false) {
+            if (workExpCanInput.value == 1) {
+                workExpeCanScore = 35;
+            } else if (workExpCanInput.value == 2) {
+                workExpeCanScore = 46;
+            } else if (workExpCanInput.value == 3) {
+                workExpeCanScore = 56;
+            } else if (workExpCanInput.value == 4) {
+                workExpeCanScore = 63;
+            } else if (workExpCanInput.value == 5) {
+                workExpeCanScore = 70;
+            } else {
+                workExpeCanScore = 0;
+                // notDisplayComponents(educationDiv);
+            }
+        } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
+            if (workExpCanInput.value == 1) {
+                workExpeCanScore = 40;
+            } else if (workExpCanInput.value == 2) {
+                workExpeCanScore = 53;
+            } else if (workExpCanInput.value == 3) {
+                workExpeCanScore = 64;
+            } else if (workExpCanInput.value == 4) {
+                workExpeCanScore = 72;
+            } else if (workExpCanInput.value == 5) {
+                workExpeCanScore = 80;
+            } else {
+                workExpeCanScore = 0;
+                // notDisplayComponents(educationDiv);
+            }
         }
 
         workExpDiv.style.display = 'block';
@@ -1327,29 +1412,29 @@ crsBtn.addEventListener('click', () => {
         }
     })
 
-
-
     workExpInput.addEventListener('change', () => {
-        if (workExpInput.value == '1') {
-            workExpeScore = 9;
-        } else if (workExpInput.value == '2') {
-            workExpeScore = 11;
-        } else if (workExpInput.value == '3') {
-            workExpeScore = 13;
-        }
-        qualificationDiv.style.display = 'block';
-        qualificationInput.scrollIntoView({ behavior: 'smooth' })
+        // if (workExpInput.value == '1') {
+        //     workExpeScore = 9;
+        // } else if (workExpInput.value == '2') {
+        //     workExpeScore = 11;
+        // } else if (workExpInput.value == '3') {
+        //     workExpeScore = 13;
+        // }
+
         if (workExpInput.value == '') {
             workExpeScore = 0;
             qualificationDiv.style.display = 'none';
+        } else {
+            qualificationDiv.style.display = 'block';
+            qualificationInput.scrollIntoView({ behavior: 'smooth' })
         }
     })
 
     qualificationInput.addEventListener('change', () => {
         if (qualificationInput.value == 'yes') {
-            workExpeScore = 15;
+            qualificationScore = 50;
         } else if (qualificationInput.value == 'no') {
-            workExpeScore = 0;
+            qualificationScore = 0;
         }
         reservedJobDiv.style.display = 'block';
         reservedJobInput.scrollIntoView({ behavior: 'smooth' })
@@ -1372,8 +1457,6 @@ crsBtn.addEventListener('click', () => {
             jobOfferTeerDiv.style.display = 'none';
             nominationDiv.style.display = 'none';
         }
-
-        count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore;
     })
 
     jobOfferTeerInput.addEventListener('change', () => {
@@ -1392,103 +1475,47 @@ crsBtn.addEventListener('click', () => {
             reservedJobScore = 0;
             nominationDiv.style.display = 'none';
         }
-
-        count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore;
     })
 
     nominationInput.addEventListener('change', () => {
         if (nominationInput.value == 'yes') {
-            reservedJobScore = 600;
+            nominationScore = 600;
         } else if (nominationInput.value == 'no') {
-            reservedJobScore = 0;
+            nominationScore = 0;
         }
 
         relativesDiv.style.display = 'block';
         relativesInput.scrollIntoView({ behavior: 'smooth' })
 
         if (nominationInput.value == '') {
-            reservedJobScore = 0;
+            nominationScore = 0;
             relativesDiv.style.display = 'none';
         }
-
-        count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore;
     })
-
-    // studyInput.addEventListener('change', () => {
-    //     if (studyInput.value == 'yes') {
-    //         studyScore = 5;
-    //     } else if (studyInput.value == 'no') {
-    //         studyScore = 0;
-    //     }
-
-    //     workExpInCanadaDiv.style.display = 'block';
-    //     workExpInCanadaDiv.scrollIntoView({ behavior: 'smooth' })
-
-    //     if (studyInput.value == '') {
-    //         studyScore = 0;
-    //         workExpInCanadaDiv.style.display = 'none';
-    //     }
-
-    //     adaptabilityScore += studyScore;
-    // })
-
-    // workExpInCanadaInput.addEventListener('change', () => {
-    //     if (workExpInCanadaInput.value == 'yes') {
-    //         workExpInCanadaScore = 10;
-    //     } else if (workExpInCanadaInput.value == 'no') {
-    //         workExpInCanadaScore = 0;
-    //     }
-
-    //     jobOfferDiv.style.display = 'block';
-    //     jobOfferDiv.scrollIntoView({ behavior: 'smooth' })
-
-    //     if (workExpInCanadaInput.value == '') {
-    //         workExpInCanadaScore = 0;
-    //         jobOfferDiv.style.display = 'none';
-    //     }
-
-    //     adaptabilityScore += workExpInCanadaScore;
-    // })
-
-    // jobOfferInput.addEventListener('change', () => {
-    //     if (jobOfferInput.value == 'yes') {
-    //         jobOfferScore = 5;
-    //     } else if (jobOfferInput.value == 'no') {
-    //         jobOfferScore = 0;
-    //     }
-
-    //     relativesDiv.style.display = 'block';
-    //     relativesDiv.scrollIntoView({ behavior: 'smooth' })
-
-    //     if (jobOfferInput.value == '') {
-    //         jobOfferScore = 0;
-    //         relativesDiv.style.display = 'none';
-    //     }
-
-    //     adaptabilityScore += jobOfferScore;
-    // })
 
     relativesInput.addEventListener('change', () => {
         if (relativesInput.value == 'yes') {
-            relativesScore = 5;
+            relativesScore = 15;
         } else if (relativesInput.value == 'no') {
             relativesScore = 0;
         }
 
-        if (martialStatus.value == 'married') {
+        if (martialStatus.value == 'married' && likeSingle == false) {
             spouseEducationDiv.style.display = 'block';
             spouseEducationDiv.scrollIntoView({ behavior: 'smooth' })
-        } else {
+        } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
             spouseEducationDiv.style.display = 'none';
+            spouseWorkExpDiv.style.display = 'none';
+            spouseLangDiv.style.display = 'none';
             btnCalculate.disabled = false;
         }
 
         if (relativesInput.value == '') {
             relativesScore = 0;
             spouseEducationDiv.style.display = 'none';
+            spouseWorkExpDiv.style.display = 'none';
+            spouseLangDiv.style.display = 'none';
         }
-
-        adaptabilityScore += relativesScore;
     })
 
 
@@ -1516,8 +1543,6 @@ crsBtn.addEventListener('click', () => {
             spouseEducationScore = 0;
             spouseWorkExpDiv.style.display = 'none';
         }
-
-        adaptabilityScore += spouseEducationScore;
     })
 
     spouseWorkExpInput.addEventListener('change', () => {
@@ -1544,79 +1569,292 @@ crsBtn.addEventListener('click', () => {
             spouseWorkExpScore = 0;
             spouseLangDiv.style.display = 'none';
         }
-
-        adaptabilityScore += spouseWorkExpScore;
     })
 
     spouseLangInput.addEventListener('change', () => {
-        if (spouseLangInput.value != '' && spouseLangInput.value != 'none') {
+        if (spouseLangInput.value == 'ielts') {
             spouseLangScoresDiv.style.display = 'block';
             spouseLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
+            fillLanguageReading('ielts', spouseLangReadingInput);
+            fillLanguageWriting('ielts', spouseLangWritingInput);
+            fillLanguageListening('ielts', spouseLangListeningInput);
+            fillLanguageSpeaking('ielts', spouseLangSpeakingInput);
+        } else if (spouseLangInput.value == 'celpip') {
+            spouseLangScoresDiv.style.display = 'block';
+            spouseLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
+            fillLanguageReading('celpip', spouseLangReadingInput);
+            fillLanguageWriting('celpip', spouseLangWritingInput);
+            fillLanguageListening('celpip', spouseLangListeningInput);
+            fillLanguageSpeaking('celpip', spouseLangSpeakingInput);
+        } else if (spouseLangInput.value == 'tef-canada') {
+            spouseLangScoresDiv.style.display = 'block';
+            spouseLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
+            fillLanguageReading('tef-canada', spouseLangReadingInput);
+            fillLanguageWriting('tef-canada', spouseLangWritingInput);
+            fillLanguageListening('tef-canada', spouseLangListeningInput);
+            fillLanguageSpeaking('tef-canada', spouseLangSpeakingInput);
+        } else if (spouseLangInput.value == 'tcf-canada') {
+            spouseLangScoresDiv.style.display = 'block';
+            spouseLangScoresDiv.scrollIntoView({ behavior: 'smooth' })
+            fillLanguageReading('tcf-canada', spouseLangReadingInput);
+            fillLanguageWriting('tcf-canada', spouseLangWritingInput);
+            fillLanguageListening('tcf-canada', spouseLangListeningInput);
+            fillLanguageSpeaking('tcf-canada', spouseLangSpeakingInput);
         } else {
+            spouseLangReadingInput.value = '';
+            spouseLangWritingInput.value = '';
+            spouseLangListeningInput.value = '';
+            spouseLangSpeakingInput.value = '';
             spouseLangScoresDiv.style.display = 'none';
-            btnCalculate.disabled = false;
         }
-
-        spouseLangReadingInput.value = '';
-        spouseLangWritingInput.value = '';
-        spouseLangListeningInput.value = '';
-        spouseLangSpeakingInput.value = '';
     })
 
     spouseLangReadingInput.addEventListener('change', () => {
-        console.log(spouseLangReadingInput.value);
+        getPointsLanguageSpouse(spouseLangReadingInput.value, spouseLangScoresArray, 0);
+        spouseLangScore = calculateLanguageScore(spouseLangScoresArray);
+        enableCalculateButton();
     })
 
     spouseLangWritingInput.addEventListener('change', () => {
-        console.log(spouseLangWritingInput.value);
+        getPointsLanguageSpouse(spouseLangWritingInput.value, spouseLangScoresArray, 1);
+        spouseLangScore = calculateLanguageScore(spouseLangScoresArray);
+        enableCalculateButton();
     })
 
     spouseLangListeningInput.addEventListener('change', () => {
-        console.log(spouseLangListeningInput.value);
+        getPointsLanguageSpouse(spouseLangListeningInput.value, spouseLangScoresArray, 2);
+        spouseLangScore = calculateLanguageScore(spouseLangScoresArray);
+        enableCalculateButton();
     })
 
     spouseLangSpeakingInput.addEventListener('change', () => {
-        console.log(spouseLangSpeakingInput.value);
+        getPointsLanguageSpouse(spouseLangSpeakingInput.value, spouseLangScoresArray, 3);
+        spouseLangScore = calculateLanguageScore(spouseLangScoresArray);
+        enableCalculateButton();
     })
 
-
-
-
+    function enableCalculateButton() {
+        if (spouseLangReadingInput.value != '' && spouseLangWritingInput.value != '' && spouseLangListeningInput.value != '' && spouseLangSpeakingInput.value != '') {
+            btnCalculate.disabled = false;
+        } else {
+            btnCalculate.disabled = true;
+        }
+    }
 
     function showResultModal(count) {
-        adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
-        count = educationScore + ageScore + firstLangScore + secondLangScore + workExpeScore + reservedJobScore + adaptabilityScore;
+        let studyPlusLanguage = 0
+        let studyPlusWorkExpCan = 0
+        let workExpPlusLanguage = 0
+        let workExpPlusWorkExpCan = 0
+        let qualificationPlusLanguage = 0
+        let studiesEntries = 0
+        let experienceEntries = 0
+        let qualificationEntries = 0
+        let pointsForFrenchlanguageSkills = 0
+        let pointsForStudiesInCanada = 0
+        let allSpouseScore = 0;
+
+        let firstLangScoree = calculateLanguageScore(firstLangScoresArray);
+
+        if (firstLangScoree >= 64 && firstLangScoree < 116) {
+            if (educationInput.value == 'secondary') {
+                studyPlusLanguage = 0;
+            } else if (educationInput.value == 'one-year' || educationInput.value == 'two-year' || educationInput.value == 'bachelors') {
+                studyPlusLanguage = 13;
+            } else {
+                studyPlusLanguage = 25;
+            }
+        } else if (firstLangScoree > 116) {
+            if (educationInput.value == 'secondary') {
+                studyPlusLanguage = 0;
+            } else if (educationInput.value == 'one-year' || educationInput.value == 'two-year' || educationInput.value == 'bachelors') {
+                studyPlusLanguage = 25;
+            } else {
+                studyPlusLanguage = 50;
+            }
+        } else {
+            studyPlusLanguage = 0;
+        }
+
+        if (workExpCanInput.value == 1) {
+            if (educationInput.value == 'secondary') {
+                studyPlusWorkExpCan = 0;
+            } else if (educationInput.value == 'one-year' || educationInput.value == 'two-year' || educationInput.value == 'bachelors') {
+                studyPlusWorkExpCan = 13;
+            } else {
+                studyPlusWorkExpCan = 25;
+            }
+        } else if (workExpCanInput.value > 1) {
+            if (educationInput.value == 'secondary') {
+                studyPlusWorkExpCan = 0;
+            } else if (educationInput.value == 'one-year' || educationInput.value == 'two-year' || educationInput.value == 'bachelors') {
+                studyPlusWorkExpCan = 25;
+            } else {
+                studyPlusWorkExpCan = 50;
+            }
+        } else {
+            studyPlusWorkExpCan = 0;
+        }
+
+        studiesEntries = studyPlusLanguage + studyPlusWorkExpCan;
+        studiesEntries > 50 ? studiesEntries = 50 : studiesEntries = studiesEntries;
+
+        if (firstLangScoree >= 64 && firstLangScoree < 116) {
+            if (workExpInput.value == 0) {
+                workExpPlusLanguage = 0;
+            } else if (workExpInput.value == 1 || workExpInput.value == 2) {
+                workExpPlusLanguage = 13;
+            } else {
+                workExpPlusLanguage = 25;
+            }
+        } else if (firstLangScoree > 116) {
+            if (workExpInput.value == 0) {
+                workExpPlusLanguage = 0;
+            } else if (workExpInput.value == 1 || workExpInput.value == 2) {
+                workExpPlusLanguage = 25;
+            } else {
+                workExpPlusLanguage = 50;
+            }
+        } else {
+            workExpPlusLanguage = 0;
+        }
+
+        if (workExpCanInput.value == 1) {
+            if (workExpInput.value == 0 || workExpInput.value == '') {
+                workExpPlusWorkExpCan = 0;
+            } else if (workExpInput.value == 1 || workExpInput.value == 2) {
+                workExpPlusWorkExpCan = 13;
+            } else {
+                workExpPlusWorkExpCan = 25;
+            }
+        } else if (workExpCanInput.value > 1) {
+            if (workExpInput.value == 0 || workExpInput.value == '') {
+                workExpPlusWorkExpCan = 0;
+            } else if (workExpInput.value == 1 || workExpInput.value == 2) {
+                workExpPlusWorkExpCan = 25;
+            } else {
+                workExpPlusWorkExpCan = 50;
+            }
+        } else {
+            workExpPlusWorkExpCan = 0;
+        }
+
+        if (firstLangScoree >= 64 && firstLangScoree < 116) {
+            if (qualificationInput.value == 'no') {
+                qualificationPlusLanguage = 0;
+            } else {
+                qualificationPlusLanguage = 25;
+            }
+        } else if (firstLangScoree > 116) {
+            if (qualificationInput.value == 'no') {
+                qualificationPlusLanguage = 0;
+            } else {
+                qualificationPlusLanguage = 50;
+            }
+        } else {
+            qualificationPlusLanguage = 0;
+        }
+
+        if (firstLangTypeInput.value == 'tef-canada' || firstLangTypeInput.value == 'tcf-canada') {
+            if (firstLangScoree >= 64 && secondLangScore >= 4) {
+                pointsForFrenchlanguageSkills = 50;
+            } else if (firstLangScoree >= 64 && secondLangScore < 4) {
+                pointsForFrenchlanguageSkills = 25;
+            } else {
+                pointsForFrenchlanguageSkills = 0;
+            }
+        } else if (firstLangTypeInput.value != 'tef-canada' || firstLangTypeInput.value != 'tcf-canada') {
+            if (firstLangScoree >= 64 && secondLangScore >= 12) {
+                pointsForFrenchlanguageSkills = 50;
+            } else /* if (firstLangScoree >= 64 && secondLangScore <= 12) {
+                pointsForFrenchlanguageSkills = 25;
+            } else */ {
+                pointsForFrenchlanguageSkills = 0;
+            }
+        }
+
+        if (studiesInCanadaInput.value == 'yes') {
+            if (studiesInCanadaTypeInput.value == 'diploma') {
+                pointsForStudiesInCanada = 15;
+            } else if (studiesInCanadaTypeInput.value == 'bachelor') {
+                pointsForStudiesInCanada = 30;
+            } else {
+                pointsForStudiesInCanada = 0;
+            }
+        }
+
+        if (martialStatus.value == 'married' && likeSingle == false) {
+            secondLangScore >= 22 ? secondLangScore = 22 : secondLangScore = secondLangScore;
+        } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
+            secondLangScore >= 24 ? secondLangScore = 24 : secondLangScore = secondLangScore;
+        }
+
+        experienceEntries = workExpPlusLanguage + workExpPlusWorkExpCan;
+        experienceEntries > 50 ? experienceEntries = 50 : experienceEntries = experienceEntries;
+
+        qualificationEntries = qualificationPlusLanguage + qualificationScore;
+        qualificationEntries > 50 ? qualificationEntries = 50 : qualificationEntries = qualificationEntries;
+
+        skillTransferabilityScore = studiesEntries + experienceEntries + qualificationEntries;
+        skillTransferabilityScore > 100 ? skillTransferabilityScore = 100 : skillTransferabilityScore = skillTransferabilityScore;
+
+        allSpouseScore = spouseEducationScore + spouseWorkExpScore + spouseLangScore;
 
 
+        additionalPointsScore = relativesScore + pointsForFrenchlanguageSkills + pointsForStudiesInCanada + reservedJobScore + nominationScore
+        additionalPointsScore > 600 ? additionalPointsScore = 600 : additionalPointsScore = additionalPointsScore;
+
+        count = ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore + skillTransferabilityScore + additionalPointsScore + allSpouseScore;
+        count > 1200 ? count = 1200 : count = count;
 
         let modalResult = document.querySelector('#modalResult');
 
-        if (count >= 67) {
-            modalResult.style.backgroundColor = '#c3ffc3';
-            let audio = new Audio('assets/sounds/success.mp3');
-            audio.play();
-        } else {
-            modalResult.style.backgroundColor = '#fcc2c2';
-            let audio = new Audio('assets/sounds/failure.mp3');
-            audio.play();
-        }
-
         modalResult.innerHTML += `
         <div class="mt-5">
-        <h1 class="text-center text-xl font-bold underline md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile mb-3"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear mb-3"></i>'}</h1>
-        <div class="indent-8">
-        <li><b>Age:</b> ${ageScore}</li>
-        <li><b>Education:</b> ${educationScore}</li>
-        <li><b>First Language:</b> ${firstLangScore}</li>
-        <li><b>Second Language:</b> ${secondLangScore}</li>
-        <li><b>Work Experience:</b> ${workExpeScore}</li>
-        <li><b>Reserved Job:</b> ${reservedJobScore}</li>
-        <li><b>Adaptability:</b> ${adaptabilityScore}</li>
-        </div>
         <h2 class="text-center text-xl mt-3 md:text-3xl">Your score is <b class="underline">${count}</b></h2>
+        <h1 class="text-red-800">human capital factors</h1>
+        <p>age: ${ageScore}</p>
+        <p>education: ${educationScore}</p>
+        <p>languages: ${firstLangScoree + secondLangScore}</p>
+        <p>1st: ${firstLangScoree} -- 2nd ${secondLangScore}</p>
+        <p>canadian work experience: ${workExpeCanScore}</p>
+        <h3 class="italic">total: ${ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore}</h3>
+        <h1 class="text-red-800">spouse factors</h1>
+        <p>spouse education: ${spouseEducationScore}</p>
+        <p>spouse language: ${spouseLangScore}</p>
+        <p>spouse canadian work experience: ${spouseWorkExpScore}</p>
+        <h1 class="text-red-800">skill transferability factors</h1>
+        <p>education + language: ${studyPlusLanguage}</p>
+        <p>education + canadian work experience: ${studyPlusWorkExpCan}</p>
+        <h3 class="italic">total: ${studiesEntries}</h3>
+        <p>foreign work experience + language: ${workExpPlusLanguage}</p>
+        <p>foreign work experience + canadian work experience: ${workExpPlusWorkExpCan}</p>
+        <h3 class="italic">total: ${experienceEntries}</h3>
+        <p>foreign work experience + canadian work experience: ${qualificationEntries}</p>
+        <h3>transferability: ${skillTransferabilityScore}</h3>
+        <h1 class="text-red-800">additional points</h1>
+        <p>provincial nomination: ${nominationScore}</p>
+        <p>job offer: ${reservedJobScore}</p>
+        <p>studies in canada: ${pointsForStudiesInCanada}</p>
+        <p>language skills: ${pointsForFrenchlanguageSkills}</p>
+        <p>siblings in canada: ${relativesScore}</p>
+        <h3 class="italic">total: ${additionalPointsScore}</h3>
+        <h1 class="text-red-800">TOOOOTAL: ${count}</h1>
+
+
         </div>
         `;
 
+        // <h1 class="text-center text-xl font-bold underline md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile mb-3"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear mb-3"></i>'}</h1>
+        // <div class="indent-8">
+        // <li><b>Age:</b> ${ageScore}</li>
+        // <li><b>Education:</b> ${educationScore}</li>
+        // <li><b>First Language:</b> ${firstLangScore}</li>
+        // <li><b>Second Language:</b> ${secondLangScore}</li>
+        // <li><b>Work Experience:</b> ${workExpeScore}</li>
+        // <li><b>Reserved Job:</b> ${reservedJobScore}</li>
+        // <li><b>Adaptability:</b> ${adaptabilityScore}</li>
+        // </div>
 
         overlay.style.display = 'block';
         overlay.style.opacity = '0.8';
@@ -1669,72 +1907,91 @@ crsBtn.addEventListener('click', () => {
         educationScore = 0;
         ageScore = 0;
         firstLangScore = 0;
-        firstLangScoresArray = [0, 0, 0, 0];
         secondLangScore = 0;
-        secondLangScoresArray = [0, 0, 0, 0];
         workExpeScore = 0;
         reservedJobScore = 0;
-        studyScore = 0;
-        workExpInCanadaScore = 0;
+        adaptabilityScore = 0;
+        additionalPointsScore = 0;
+        skillTransferabilityScore = 0;
+        qualificationScore = 0;
         relativesScore = 0;
-        spouseLangScore = 0;
         spouseEducationScore = 0;
         spouseWorkExpScore = 0;
-        adaptabilityScore = 0;
+        spouseLangScore = 0;
+        spouseLangScoresArray = [0, 0, 0, 0];
+        spouseLangReadingScore = 0;
+        spouseLangWritingScore = 0;
+        spouseLangListeningScore = 0;
+        spouseLangSpeakingScore = 0;
+
         martialStatus.value = '';
-        ageDiv.style.display = 'none';
+        likeSingle = false;
         ageInput.value = '';
-        educationDiv.style.display = 'none';
         educationInput.value = '';
-        firstLangDiv.style.display = 'none';
         firstLangInput.value = '';
-        firstLangTypeDiv.style.display = 'none';
         firstLangTypeInput.value = '';
-        firstLangScoresDiv.style.display = 'none';
-        firstLangReadingInput.value = 'first-language-reading-clb6';
-        firstLangWritingInput.value = 'first-language-writing-clb6';
-        firstLangListeningInput.value = 'first-language-listening-clb6';
-        firstLangSpeakingInput.value = 'first-language-speaking-clb6';
-        secondLangDiv.style.display = 'none';
+        firstLangReadingInput.value = '';
+        firstLangWritingInput.value = '';
+        firstLangListeningInput.value = '';
+        firstLangSpeakingInput.value = '';
         secondLangInput.value = '';
-        secondLangTypeDiv.style.display = 'none';
         secondLangTypeInput.value = '';
-        secondLangScoresDiv.style.display = 'none';
-        secondLangScoresInput.value = '';
-        workExpDiv.style.display = 'none';
+        secondLangReadingInput.value = '';
+        secondLangWritingInput.value = '';
+        secondLangListeningInput.value = '';
+        secondLangSpeakingInput.value = '';
         workExpInput.value = '';
-        reservedJobDiv.style.display = 'none';
+        workExpCanInput.value = '';
+        qualificationInput.value = '';
         reservedJobInput.value = '';
-        studyDiv.style.display = 'none';
-        studyInput.value = '';
-        workExpInCanadaDiv.style.display = 'none';
-        workExpInCanadaInput.value = '';
-        jobOfferDiv.style.display = 'none';
-        jobOfferInput.value = '';
-        relativesDiv.style.display = 'none';
+        jobOfferTeerInput.value = '';
+        nominationInput.value = '';
         relativesInput.value = '';
-        spouseLangDiv.style.display = 'none';
-        spouseLangInput.value = '';
-        spouseEducationDiv.style.display = 'none';
+        studiesInCanadaInput.value = '';
+        studiesInCanadaTypeInput.value = '';
         spouseEducationInput.value = '';
-        spouseWorkExpDiv.style.display = 'none';
         spouseWorkExpInput.value = '';
+        spouseLangInput.value = '';
+        spouseCanadianStatusInput.value = '';
+        spouseFollowerInput.value = '';
+        spouseLangReadingInput.value = '';
+        spouseLangWritingInput.value = '';
+        spouseLangListeningInput.value = '';
+        spouseLangSpeakingInput.value = '';
+
+        ageDiv.style.display = 'none';
+        spouseCanadianStatusDiv.style.display = 'none';
+        spouseFollowerDiv.style.display = 'none';
+        educationDiv.style.display = 'none';
+        studiesInCanadaDiv.style.display = 'none';
+        studiesInCanadaTypeDiv.style.display = 'none';
+
+        firstLangDiv.style.display = 'none';
+        firstLangTypeDiv.style.display = 'none';
+        firstLangScoresDiv.style.display = 'none';
+
+        secondLangDiv.style.display = 'none';
+        secondLangTypeDiv.style.display = 'none';
+        secondLangScoresDiv.style.display = 'none';
+
+        workExpCanDiv.style.display = 'none';
+        workExpDiv.style.display = 'none';
+        qualificationDiv.style.display = 'none';
+        reservedJobDiv.style.display = 'none';
+        jobOfferTeerDiv.style.display = 'none';
+        nominationDiv.style.display = 'none';
+        relativesDiv.style.display = 'none';
+        spouseEducationDiv.style.display = 'none';
+        spouseWorkExpDiv.style.display = 'none';
+        spouseLangDiv.style.display = 'none';
+
         btnReset.disabled = true;
         btnCalculate.disabled = true;
-        eligibilityDiv.style.backgroundColor = '#e2e8f0';
         modalResult.style.backgroundColor = '#f7e6e6';
     }
 })
 
 
-
-
-
-
-// function triggerCanWorkExpDivFromSecondLang(secondLangScoreArray, workExpDiv, workExpInput) {
-//     workExpDiv.style.display = 'block';
-//     workExpInput.scrollIntoView({ behavior: 'smooth' })
-// }
 
 function fillLanguageReading(language, readingInput) {
     if (language == 'ielts') {
@@ -1896,8 +2153,8 @@ function fillLanguageSpeaking(language, speakingInput) {
     }
 }
 
-function getPointsFirstLanguage(marriedOrSingle, languageSkill, langArray, index) {
-    if (marriedOrSingle == 'married') {
+function getPointsFirstLanguage(statusMarital, singleOrMarried, languageSkill, langArray, index) {
+    if (statusMarital == 'married' && singleOrMarried == false) {
         if (languageSkill == 'clb10') {
             langArray[index] = 32;
         } else if (languageSkill == 'clb9') {
@@ -1908,12 +2165,12 @@ function getPointsFirstLanguage(marriedOrSingle, languageSkill, langArray, index
             langArray[index] = 16;
         } else if (languageSkill == 'clb6') {
             langArray[index] = 8;
-        } else if (languageSkill == 'clb5') {
+        } else if (languageSkill == 'clb5' || languageSkill == 'clb4') {
             langArray[index] = 6;
         } else {
             langArray[index] = 0;
         }
-    } else if (marriedOrSingle == 'single') {
+    } else if ((statusMarital == 'married' && singleOrMarried == true) || statusMarital == 'single') {
         if (languageSkill == 'clb10') {
             langArray[index] = 34;
         } else if (languageSkill == 'clb9') {
@@ -1924,7 +2181,7 @@ function getPointsFirstLanguage(marriedOrSingle, languageSkill, langArray, index
             langArray[index] = 17;
         } else if (languageSkill == 'clb6') {
             langArray[index] = 9;
-        } else if (languageSkill == 'clb5') {
+        } else if (languageSkill == 'clb5' || languageSkill == 'clb4') {
             langArray[index] = 6;
         } else {
             langArray[index] = 0;
@@ -1933,8 +2190,20 @@ function getPointsFirstLanguage(marriedOrSingle, languageSkill, langArray, index
 }
 
 function getPointsSecondLanguage(languageSkill, langArray, index) {
-    if (languageSkill == 'clb10' || languageSkill == 'clb9') {
+    if (languageSkill == 'clb9' || languageSkill == 'clb10') {
         langArray[index] = 6;
+    } else if (languageSkill == 'clb7' || languageSkill == 'clb8') {
+        langArray[index] = 3;
+    } else if (languageSkill == 'clb5' || languageSkill == 'clb6') {
+        langArray[index] = 1;
+    } else {
+        langArray[index] = 0;
+    }
+}
+
+function getPointsLanguageSpouse(languageSkill, langArray, index) {
+    if (languageSkill == 'clb10' || languageSkill == 'clb9') {
+        langArray[index] = 5;
     } else if (languageSkill == 'clb8' || languageSkill == 'clb7') {
         langArray[index] = 3;
     } else if (languageSkill == 'clb6' || languageSkill == 'clb5') {
@@ -1943,7 +2212,6 @@ function getPointsSecondLanguage(languageSkill, langArray, index) {
         langArray[index] = 0;
     }
 }
-
 
 
 nclcBtn.addEventListener('click', () => {
