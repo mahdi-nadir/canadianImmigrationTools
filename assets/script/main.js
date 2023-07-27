@@ -1,4 +1,8 @@
 
+// const cheerio = require('cheerio');
+
+
+
 // year for footer
 let span = document.querySelector('#year');
 span.textContent = new Date().getFullYear();
@@ -50,6 +54,10 @@ let additionalPointsScore = 0;
 
 
 adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
+
+// scrapping data from the table
+
+
 
 // add event listeners to buttons and display the right component when clicked
 homeBtn.addEventListener('click', () => {
@@ -1833,49 +1841,49 @@ crsBtn.addEventListener('click', () => {
         let modalResult = document.querySelector('#modalResult');
 
         modalResult.innerHTML += `
-        
-        <h2 class="text-center text-md md:text-lg mb-3">Your score is <b class="underline">${count}</b></h2>
         <div class="flex flex-col md:gap-2 justify-center items-center">
             <h1 class="text-red-800 font-bold uppercase underline">human capital factors</h1>
             <p class="text-center">Age + Education + Languages + Canadian Work Experience</p>
             <p>${ageScore} + ${educationScore} + ${firstLangScoree + secondLangScore} + ${workExpeCanScore}</p>
-            <h3 class="italic uppercase font-bold mt-1">Subtotal = ${ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore}</h3>
+            <h3 class="italic uppercase font-bold mt-3">Subtotal = ${ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore}</h3>
         </div>
         `
         if (martialStatus.value == 'married' && likeSingle == false) {
             modalResult.innerHTML += `
-                <div class="flex flex-col md:gap-2 justify-center items-center">
-                    <h1 class="text-red-800 font-bold uppercase underline mt-2">spouse factors</h1>
+                <div class="flex flex-col md:gap-2 justify-center items-center mt-2">
+                    <h1 class="text-red-800 font-bold uppercase underline">spouse factors</h1>
                     <p class="text-center">Education + Language + Canadian Work Experience</p>
                     <p>${spouseEducationScore} + ${spouseLangScore} + ${spouseWorkExpScore}</p>
-                    <h3 class="italic uppercase font-bold mt-1">Subtotal = ${allSpouseScore}</h3>
+                    <h3 class="italic uppercase font-bold mt-3">Subtotal = ${allSpouseScore}</h3>
                 </div>
                 `;
         }
 
         modalResult.innerHTML += `
-        <div class="flex flex-col md:gap-2 justify-center items-center">
-            <h1 class="text-red-800 font-bold uppercase underline mt-2">skill transferability factors</h1>
-            <p class="font-bold underline text-center">Education (to a maximum of 50 points)</p>
+        <div class="flex flex-col md:gap-2 justify-center items-center mt-2">
+            <h1 class="text-red-800 font-bold uppercase underline">skill transferability factors</h1>
+            <p class="font-bold underline text-center mt-2">Education (to a maximum of 50 points)</p>
             <p class="indent-10 text-center">Education + Official Language proficiency = ${studyPlusLanguage}</p>
             <p class="indent-10 text-center">Education + Canadian work experience = ${studyPlusWorkExpCan}</p>
-            <h3 class="font-bold italic mt-1">Subtotal = ${studiesEntries}</h3>
-            <p class="font-bold underline text-center mt-1">Foreign work experience (to a maximum of 50 points)</p>
+            <h3 class="font-bold italic mt-2">Subtotal = ${studiesEntries}</h3>
+            <p class="font-bold underline text-center mt-2">Foreign work experience (to a maximum of 50 points)</p>
             <p class="indent-10 text-center">Foreign work experience + Official Language proficiency = ${workExpPlusLanguage}</p>
             <p class="indent-10 text-center">Foreign work experience + Canadian work experience = ${workExpPlusWorkExpCan}</p>
-            <h3 class="italic font-bold mt-1">Subtotal = ${experienceEntries}</h3>
+            <h3 class="italic font-bold mt-2 mb-2">Subtotal = ${experienceEntries}</h3>
             <p>Certificate of qualification = ${qualificationEntries}</p>
-            <h3 class="italic uppercase font-bold mt-1">Subtotal = ${skillTransferabilityScore}</h3>
+            <h3 class="italic uppercase font-bold mt-2">Subtotal = ${skillTransferabilityScore}</h3>
         </div>
 
-        <div class="flex flex-col md:gap-2 justify-center items-center">
-            <h1 class="text-red-800 font-bold uppercase underline mt-2">additional points</h1>
+        <div class="flex flex-col md:gap-2 justify-center items-center mt-2">
+            <h1 class="text-red-800 font-bold uppercase underline">additional points</h1>
             <p class="text-center">Provincial nomination + Job offer + Studies in Canada + French language skills + Sibling in Canada</p>
             <p>${nominationScore} + ${reservedJobScore} + ${pointsForStudiesInCanada} + ${pointsForFrenchlanguageSkills} + ${relativesScore}</p>
             <h3 class="italic uppercase font-bold mt-1">Subtotal = ${additionalPointsScore}</h3>
         </div>
 
-        <h1 class="text-red-800 font-bold uppercase mt-2 text-center">Total: ${ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore} + ${allSpouseScore} + ${skillTransferabilityScore} + ${additionalPointsScore}<br><span class="font-bold text-green-600 text-lg md:text-xl mt-2">${count}</span></h1>
+        <h1 class="text-red-800 font-bold uppercase mt-4 text-center text-2xl md:text-3xl underline">Total:</h1>
+        <p class="text-red-600 font-bold mt-2 text-center text-xl md:text-2xl">${ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore} + ${allSpouseScore} + ${skillTransferabilityScore} + ${additionalPointsScore}<p>
+        <p class="font-bold text-green-600 text-2xl md:text-3xl mt-4 text-center">${count}</p>
 
         `;
 
