@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/unfetch/polyfill"></script>
     <title>Maple Tools</title>
 </head>
-<body class='flex flex-col h-screen justify-between text-center bg-slate-50'>
+<body class='flex flex-col h-screen justify-between text-center bg-slate-50 max-w-screen'>
     <nav class='text-xl p-8 border-b-2 border-red-600 uppercase font-bold mx-auto h-18'>
         <button id="homeBtn" class="active nav-link px-5" aria-current="page">Home</button>
         <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
@@ -32,7 +32,7 @@
                     <div class="flex flex-col justify-center items-center gap-4">
                         <h1 class='text-xl md:text-2xl font-bold'>Marital status</h1>
                         <div class="flex flex-row justify-center items-center gap-2">
-                            <select class="marital-status rounded bg-slate-100 border-red-800 border-4" name="marital-status" id="marital-status">
+                            <select class="marital-status rounded bg-slate-100 border-red-800 border-4 custom-select w-full overflow-hidden whitespace-nowrap overflow-ellipsis" name="marital-status" id="marital-status">
                                 <option value="">Select..</option>
                                 <option value="single">Single / Annulled Marriage / Widowed / Separated</option>
                                 <option value="married">Married / Common-Law</option>

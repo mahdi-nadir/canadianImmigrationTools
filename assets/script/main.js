@@ -70,6 +70,7 @@ let secondLangScore = 0;
 let secondLangScoresArray = [0, 0, 0, 0];
 let workExpeCanScore = 0;
 let workExpeScore = 0;
+let jobOfferScore = 0;
 let qualificationScore = 0;
 let nominationScore = 0;
 let reservedJobScore = 0;
@@ -595,9 +596,9 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         }
 
         modalResult.innerHTML += `
-        <div class="mt-5">
-        <h1 class="text-center text-xl font-bold underline md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile mb-3"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear mb-3"></i>'}</h1>
-        <div class="indent-8">
+        <div class="mt-5 flex flex-col items-around justify-between gap-10">
+        <h1 class="text-center text-3xl font-bold underline md:text-4xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile mb-3"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear mb-3"></i>'}</h1>
+        <div class="indent-8 text-2xl md:text-3xl mt-2">
         <li><b>Age:</b> ${ageScore}</li>
         <li><b>Education:</b> ${educationScore}</li>
         <li><b>First Language:</b> ${firstLangScore}</li>
@@ -606,7 +607,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         <li><b>Reserved Job:</b> ${reservedJobScore}</li>
         <li><b>Adaptability:</b> ${adaptabilityScore}</li>
         </div>
-        <h2 class="text-center text-xl mt-3 md:text-3xl">Your score is <b class="underline">${count}</b></h2>
+        <h2 class="text-center text-xl mt-3 md:text-3xl">Your score is <b>${count}</b></h2>
         </div>
         `;
 
@@ -1880,6 +1881,7 @@ crsBtn.addEventListener('click', () => {
         count > 1200 ? count = 1200 : count = count;
 
         let modalResult = document.querySelector('#modalResult');
+        modalResult.innerHTML = '';
 
         modalResult.innerHTML += `
         <div class="flex flex-col md:gap-2 justify-center items-center">
@@ -1990,10 +1992,10 @@ crsBtn.addEventListener('click', () => {
         spouseWorkExpScore = 0;
         spouseLangScore = 0;
         spouseLangScoresArray = [0, 0, 0, 0];
-        spouseLangReadingScore = 0;
-        spouseLangWritingScore = 0;
-        spouseLangListeningScore = 0;
-        spouseLangSpeakingScore = 0;
+        // spouseLangReadingScore = 0;
+        // spouseLangWritingScore = 0;
+        // spouseLangListeningScore = 0;
+        // spouseLangSpeakingScore = 0;
 
         martialStatus.value = '';
         likeSingle = false;
