@@ -1731,30 +1731,53 @@ crsBtn.addEventListener('click', () => {
 
         let firstLangScoree = calculateLanguageScore(firstLangScoresArray);
 
-        if (firstLangScoree >= 64 && firstLangScoree < 116) {
-            if (educationInput.value == 'secondary') {
-                studyPlusLanguage = 0;
-            } else if (educationInput.value == 'one-year' || educationInput.value == 'two-year' || educationInput.value == 'bachelors') {
-                studyPlusLanguage = 13;
+        if (martialStatus.value == 'married' && likeSingle == false) {
+            if (firstLangScoree >= 64 && firstLangScoree < 116) {
+                if (educationInput.value == 'secondary' || educationInput.value == 'notCompleted') {
+                    studyPlusLanguage = 0;
+                } else if (educationInput.value == 'one-year') {
+                    studyPlusLanguage = 13;
+                } else {
+                    studyPlusLanguage = 25;
+                }
+            } else if (firstLangScoree >= 116) {
+                if (educationInput.value == 'secondary' || educationInput.value == 'notCompleted') {
+                    studyPlusLanguage = 0;
+                } else if (educationInput.value == 'one-year') {
+                    studyPlusLanguage = 25;
+                } else {
+                    studyPlusLanguage = 50;
+                }
             } else {
-                studyPlusLanguage = 25;
-            }
-        } else if (firstLangScoree > 116) {
-            if (educationInput.value == 'secondary') {
                 studyPlusLanguage = 0;
-            } else if (educationInput.value == 'one-year' || educationInput.value == 'two-year' || educationInput.value == 'bachelors') {
-                studyPlusLanguage = 25;
-            } else {
-                studyPlusLanguage = 50;
             }
         } else {
-            studyPlusLanguage = 0;
+            if (firstLangScoree >= 68 && firstLangScoree < 124) {
+                if (educationInput.value == 'secondary' || educationInput.value == 'notCompleted') {
+                    studyPlusLanguage = 0;
+                } else if (educationInput.value == 'one-year') {
+                    studyPlusLanguage = 13;
+                } else {
+                    studyPlusLanguage = 25;
+                }
+            } else if (firstLangScoree >= 124) {
+                if (educationInput.value == 'secondary' || educationInput.value == 'notCompleted') {
+                    studyPlusLanguage = 0;
+                } else if (educationInput.value == 'one-year') {
+                    studyPlusLanguage = 25;
+                } else {
+                    studyPlusLanguage = 50;
+                }
+            } else {
+                studyPlusLanguage = 0;
+            }
         }
+
 
         if (workExpCanInput.value == 1) {
             if (educationInput.value == 'secondary') {
                 studyPlusWorkExpCan = 0;
-            } else if (educationInput.value == 'one-year' || educationInput.value == 'two-year' || educationInput.value == 'bachelors') {
+            } else if (educationInput.value == 'one-year') {
                 studyPlusWorkExpCan = 13;
             } else {
                 studyPlusWorkExpCan = 25;
@@ -1762,7 +1785,7 @@ crsBtn.addEventListener('click', () => {
         } else if (workExpCanInput.value > 1) {
             if (educationInput.value == 'secondary') {
                 studyPlusWorkExpCan = 0;
-            } else if (educationInput.value == 'one-year' || educationInput.value == 'two-year' || educationInput.value == 'bachelors') {
+            } else if (educationInput.value == 'one-year') {
                 studyPlusWorkExpCan = 25;
             } else {
                 studyPlusWorkExpCan = 50;
@@ -1774,24 +1797,47 @@ crsBtn.addEventListener('click', () => {
         studiesEntries = studyPlusLanguage + studyPlusWorkExpCan;
         studiesEntries > 50 ? studiesEntries = 50 : studiesEntries = studiesEntries;
 
-        if (firstLangScoree >= 64 && firstLangScoree < 116) {
-            if (workExpInput.value == 0) {
-                workExpPlusLanguage = 0;
-            } else if (workExpInput.value == 1 || workExpInput.value == 2) {
-                workExpPlusLanguage = 13;
+
+        if (martialStatus.value == 'married' && likeSingle == false) {
+            if (firstLangScoree >= 64 && firstLangScoree < 116) {
+                if (workExpInput.value == 0) {
+                    workExpPlusLanguage = 0;
+                } else if (workExpInput.value == 1 || workExpInput.value == 2) {
+                    workExpPlusLanguage = 13;
+                } else {
+                    workExpPlusLanguage = 25;
+                }
+            } else if (firstLangScoree >= 116) {
+                if (workExpInput.value == 0) {
+                    workExpPlusLanguage = 0;
+                } else if (workExpInput.value == 1 || workExpInput.value == 2) {
+                    workExpPlusLanguage = 25;
+                } else {
+                    workExpPlusLanguage = 50;
+                }
             } else {
-                workExpPlusLanguage = 25;
-            }
-        } else if (firstLangScoree > 116) {
-            if (workExpInput.value == 0) {
                 workExpPlusLanguage = 0;
-            } else if (workExpInput.value == 1 || workExpInput.value == 2) {
-                workExpPlusLanguage = 25;
-            } else {
-                workExpPlusLanguage = 50;
             }
-        } else {
-            workExpPlusLanguage = 0;
+        } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
+            if (firstLangScoree >= 68 && firstLangScoree < 124) {
+                if (workExpInput.value == 0) {
+                    workExpPlusLanguage = 0;
+                } else if (workExpInput.value == 1 || workExpInput.value == 2) {
+                    workExpPlusLanguage = 13;
+                } else {
+                    workExpPlusLanguage = 25;
+                }
+            } else if (firstLangScoree >= 124) {
+                if (workExpInput.value == 0) {
+                    workExpPlusLanguage = 0;
+                } else if (workExpInput.value == 1 || workExpInput.value == 2) {
+                    workExpPlusLanguage = 25;
+                } else {
+                    workExpPlusLanguage = 50;
+                }
+            } else {
+                workExpPlusLanguage = 0;
+            }
         }
 
         if (workExpCanInput.value == 1) {
@@ -1814,35 +1860,71 @@ crsBtn.addEventListener('click', () => {
             workExpPlusWorkExpCan = 0;
         }
 
-        if (firstLangScoree >= 64 && firstLangScoree < 116) {
-            if (qualificationInput.value == 'no') {
-                qualificationPlusLanguage = 0;
+        if (martialStatus.value == 'married' && likeSingle == false) {
+            if (firstLangScoree >= 64 && firstLangScoree < 116) {
+                if (qualificationInput.value == 'no') {
+                    qualificationPlusLanguage = 0;
+                } else {
+                    qualificationPlusLanguage = 25;
+                }
+            } else if (firstLangScoree >= 116) {
+                if (qualificationInput.value == 'no') {
+                    qualificationPlusLanguage = 0;
+                } else {
+                    qualificationPlusLanguage = 50;
+                }
             } else {
-                qualificationPlusLanguage = 25;
-            }
-        } else if (firstLangScoree > 116) {
-            if (qualificationInput.value == 'no') {
                 qualificationPlusLanguage = 0;
-            } else {
-                qualificationPlusLanguage = 50;
             }
-        } else {
-            qualificationPlusLanguage = 0;
+        } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
+            if (firstLangScoree >= 68 && firstLangScoree < 124) {
+                if (qualificationInput.value == 'no') {
+                    qualificationPlusLanguage = 0;
+                } else {
+                    qualificationPlusLanguage = 25;
+                }
+            } else if (firstLangScoree >= 124) {
+                if (qualificationInput.value == 'no') {
+                    qualificationPlusLanguage = 0;
+                } else {
+                    qualificationPlusLanguage = 50;
+                }
+            } else {
+                qualificationPlusLanguage = 0;
+            }
         }
 
         if (firstLangTypeInput.value == 'tef-canada' || firstLangTypeInput.value == 'tcf-canada') {
-            if (firstLangScoree >= 64 && secondLangScore >= 4) {
-                pointsForFrenchlanguageSkills = 50;
-            } else if (firstLangScoree >= 64 && secondLangScore < 4) {
-                pointsForFrenchlanguageSkills = 25;
-            } else {
-                pointsForFrenchlanguageSkills = 0;
+            if (martialStatus.value == 'married' && likeSingle == false) {
+                if (firstLangScoree >= 64 && secondLangScore >= 4) {
+                    pointsForFrenchlanguageSkills = 50;
+                } else if (firstLangScoree >= 64 && secondLangScore < 4) {
+                    pointsForFrenchlanguageSkills = 25;
+                } else {
+                    pointsForFrenchlanguageSkills = 0;
+                }
+            } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
+                if (firstLangScoree >= 68 && secondLangScore >= 4) {
+                    pointsForFrenchlanguageSkills = 50;
+                } else if (firstLangScoree >= 68 && secondLangScore < 4) {
+                    pointsForFrenchlanguageSkills = 25;
+                } else {
+                    pointsForFrenchlanguageSkills = 0;
+                }
             }
         } else if (firstLangTypeInput.value != 'tef-canada' || firstLangTypeInput.value != 'tcf-canada') {
-            if (firstLangScoree >= 64 && secondLangScore >= 12) {
-                pointsForFrenchlanguageSkills = 50;
-            } else {
-                pointsForFrenchlanguageSkills = 0;
+            if (martialStatus.value == 'married' && likeSingle == false) {
+                if (firstLangScoree >= 64 && secondLangScore >= 12) {
+                    pointsForFrenchlanguageSkills = 50;
+                } else {
+                    pointsForFrenchlanguageSkills = 0;
+                }
+            } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
+                if (firstLangScoree >= 68 && secondLangScore >= 12) {
+                    pointsForFrenchlanguageSkills = 50;
+                } else {
+                    pointsForFrenchlanguageSkills = 0;
+                }
             }
         }
 
@@ -1881,9 +1963,9 @@ crsBtn.addEventListener('click', () => {
         count > 1200 ? count = 1200 : count = count;
 
         let modalResult = document.querySelector('#modalResult');
-        modalResult.innerHTML = '';
 
         modalResult.innerHTML += `
+        <div class="modalContent">
         <div class="flex flex-col md:gap-2 justify-center items-center">
             <h1 class="text-red-800 font-bold uppercase underline">human capital factors</h1>
             <p class="text-center">Age + Education + Languages + Canadian Work Experience</p>
@@ -1927,13 +2009,14 @@ crsBtn.addEventListener('click', () => {
         <h1 class="text-red-800 font-bold uppercase mt-4 text-center text-2xl md:text-3xl underline">Total:</h1>
         <p class="text-red-600 font-bold mt-2 text-center text-xl md:text-2xl">${ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore} + ${allSpouseScore} + ${skillTransferabilityScore} + ${additionalPointsScore}<p>
         <p class="font-bold text-green-600 text-2xl md:text-3xl mt-4 text-center">${count}</p>
-
+        </div>
         `;
 
         overlay.style.display = 'block';
         overlay.style.opacity = '0.8';
         overlay.style.visibility = 'visible';
         modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+
 
         function hideResultModal() {
             modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
@@ -1942,7 +2025,14 @@ crsBtn.addEventListener('click', () => {
             overlay.style.visibility = 'hidden';
             modalResult.querySelector('div').remove(); // Clear the modal content for the next time
             cancelButton.removeEventListener('click', hideResultModal);
+            // modalContent.innerHTML = '';
+            // modalContent.remove();
             resetAll();
+            modalResult.innerHTML = `
+                <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            `
         }
 
         let cancelButton = document.querySelector('#cancel');
