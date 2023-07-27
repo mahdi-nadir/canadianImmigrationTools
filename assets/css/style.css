@@ -52,6 +52,22 @@ body {
     margin: auto;
 }
 
+.noticeCRS, .noticeEligiblity {
+    animation: fadeOut 8s ease-in-out;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 
 /* media query */
 @media (max-width: 1015px) {

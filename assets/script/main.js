@@ -1,3 +1,40 @@
+// scraping data from website
+let tab = {}
+async function scrapeData() {
+    try {
+        // Fetch the HTML content from the target website
+        const response = await fetch('https://moving2canada.com/immigration/express-entry/express-entry-draw/');
+        const html = await response.text();
+        // Parse the HTML using DOMParser
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Find the table on the page (in this case, it's the first table)
+        for (let i = 2; i < 13; i++) {
+            let nbDraw = doc.querySelector('.row-' + i).querySelectorAll('td')[0].textContent.split(' ')[1];
+            let date = doc.querySelector('.row-' + i).querySelectorAll('td')[1].textContent;
+            let nbInvitations = doc.querySelector('.row-' + i).querySelectorAll('td')[2].textContent;
+            let crsScore = doc.querySelector('.row-' + i).querySelectorAll('td')[3].textContent;
+            let program = doc.querySelector('.row-' + i).querySelectorAll('td')[4].textContent;
+            let draws = {
+                nbDraw,
+                date,
+                nbInvitations,
+                crsScore,
+                program
+            }
+            tab[i] = draws;
+            // 
+        }
+    } catch (error) {
+        console.error('Error scraping data:', error);
+    }
+}
+
+// Call the scrapeData function when the page loads
+window.onload = scrapeData;
+
+
 // year for footer
 let span = document.querySelector('#year');
 span.textContent = new Date().getFullYear();
@@ -737,10 +774,6 @@ function calculateLanguageScore(langArray) {
 
 
 
-
-
-
-
 crsBtn.addEventListener('click', () => {
     let count = 0;
     main.innerHTML = '';
@@ -1005,6 +1038,11 @@ crsBtn.addEventListener('click', () => {
                 <span class="underline">BECARFUL</span> <br>
                 You are not eligible to apply for Express Entry because you are under 18 years old.
                 `;
+
+                setTimeout(() => {
+                    noticeDiv.style.display = 'none';
+                    noticeDiv.innerHTML = '';
+                }, 8000);
             } else if (ageInput.value == 18) {
                 ageScore = 90;
             } else if (ageInput.value == 19) {
@@ -1055,6 +1093,11 @@ crsBtn.addEventListener('click', () => {
                 <span class="underline">BECARFUL</span> <br>
                 You are not eligible to apply for Express Entry because you are under 18 years old.
                 `;
+
+                setTimeout(() => {
+                    noticeDiv.style.display = 'none';
+                    noticeDiv.innerHTML = '';
+                }, 8000);
             } else if (ageInput.value == 18) {
                 ageScore = 99;
             } else if (ageInput.value == 19) {
@@ -1185,6 +1228,7 @@ crsBtn.addEventListener('click', () => {
         } else {
             firstLangTypeDiv.style.display = 'none';
             firstLangScoresDiv.style.display = 'none';
+            noticeDiv.classList.remove('noticeCRS');
             noticeDiv.style.display = 'block';
             noticeDiv.innerHTML = `
             You must have a language test result to be eligible for Express Entry.
@@ -1432,6 +1476,7 @@ crsBtn.addEventListener('click', () => {
     })
 
     workExpInput.addEventListener('change', () => {
+        noticeDiv.classList.remove('noticeCRS');
         if (workExpInput.value == '') {
             workExpeScore = 0;
             qualificationDiv.style.display = 'none';
@@ -1442,14 +1487,16 @@ crsBtn.addEventListener('click', () => {
             <span class="underline">BECARFUL</span> <br>
             You must have at least one year of continuous full-time or equivalent paid work experience in the past 10 years (from ${month} 1st, ${year}) in a skilled occupation.
             `;
-            setTimeout(() => {
-                noticeDiv.style.display = 'none';
-                noticeDiv.innerHTML = '';
-                workExpInput.scrollIntoView({ behavior: 'smooth' })
-            }, 4000);
+            // setTimeout(() => {
+            //     noticeDiv.style.display = 'none';
+            //     noticeDiv.innerHTML = '';
+            //     workExpInput.scrollIntoView({ behavior: 'smooth' })
+            // }, 8000);
         } else {
             qualificationDiv.style.display = 'block';
             qualificationInput.scrollIntoView({ behavior: 'smooth' })
+            noticeDiv.style.display = 'none';
+            noticeDiv.innerHTML = '';
         }
     })
 
@@ -1540,7 +1587,6 @@ crsBtn.addEventListener('click', () => {
             spouseLangDiv.style.display = 'none';
         }
     })
-
 
     spouseEducationInput.addEventListener('change', () => {
         if (spouseEducationInput.value == 'secondary') {
@@ -3108,40 +3154,7 @@ ebooksBtn.addEventListener('click', () => {
 
 
 
-let tab = {}
-async function scrapeData() {
-    try {
-        // Fetch the HTML content from the target website
-        const response = await fetch('https://moving2canada.com/immigration/express-entry/express-entry-draw/');
-        const html = await response.text();
-        // Parse the HTML using DOMParser
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
 
-        // Find the table on the page (in this case, it's the first table)
-        for (let i = 2; i < 13; i++) {
-            let nbDraw = doc.querySelector('.row-' + i).querySelectorAll('td')[0].textContent;
-            let date = doc.querySelector('.row-' + i).querySelectorAll('td')[1].textContent;
-            let nbInvitations = doc.querySelector('.row-' + i).querySelectorAll('td')[2].textContent;
-            let crsScore = doc.querySelector('.row-' + i).querySelectorAll('td')[3].textContent;
-            let program = doc.querySelector('.row-' + i).querySelectorAll('td')[4].textContent;
-            let draws = {
-                nbDraw,
-                date,
-                nbInvitations,
-                crsScore,
-                program
-            }
-            tab[i] = draws;
-            // 
-        }
-    } catch (error) {
-        console.error('Error scraping data:', error);
-    }
-}
-
-// Call the scrapeData function when the page loads
-window.onload = scrapeData;
 
 
 
@@ -3153,15 +3166,18 @@ extraInfoBtn.addEventListener('click', () => {
     for (let i = 2; i < 13; i++) {
         let tr = document.createElement('tr');
         tr.innerHTML = `
-        <td>${tab[i].nbDraw}</td>
+        <td class="bg-indigo-50 font-bold">${tab[i].nbDraw}</td>
         <td>${tab[i].date}</td>
         <td>${tab[i].nbInvitations}</td>
-        <td>${tab[i].crsScore}</td>
+        <td class="bg-yellow-50 font-bold">${tab[i].crsScore}</td>
         <td>${tab[i].program}</td>
         `;
         document.querySelector('#tbody').appendChild(tr);
+        let tds = document.querySelectorAll('td');
+        for (let elementTd of tds) {
+            elementTd.classList.add('border-2', 'border-gray-400', 'px-4', 'py-2');
+        }
     }
-
 })
 
 
