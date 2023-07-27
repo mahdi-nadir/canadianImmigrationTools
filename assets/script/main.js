@@ -1,8 +1,3 @@
-
-// const cheerio = require('cheerio');
-
-
-
 // year for footer
 let span = document.querySelector('#year');
 span.textContent = new Date().getFullYear();
@@ -3107,10 +3102,66 @@ ebooksBtn.addEventListener('click', () => {
     main.appendChild(clone);
 })
 
+
+
+
+
+
+
+let tab = {}
+async function scrapeData() {
+    try {
+        // Fetch the HTML content from the target website
+        const response = await fetch('https://moving2canada.com/immigration/express-entry/express-entry-draw/');
+        const html = await response.text();
+        // Parse the HTML using DOMParser
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Find the table on the page (in this case, it's the first table)
+        for (let i = 2; i < 13; i++) {
+            let nbDraw = doc.querySelector('.row-' + i).querySelectorAll('td')[0].textContent;
+            let date = doc.querySelector('.row-' + i).querySelectorAll('td')[1].textContent;
+            let nbInvitations = doc.querySelector('.row-' + i).querySelectorAll('td')[2].textContent;
+            let crsScore = doc.querySelector('.row-' + i).querySelectorAll('td')[3].textContent;
+            let program = doc.querySelector('.row-' + i).querySelectorAll('td')[4].textContent;
+            let draws = {
+                nbDraw,
+                date,
+                nbInvitations,
+                crsScore,
+                program
+            }
+            tab[i] = draws;
+            // 
+        }
+    } catch (error) {
+        console.error('Error scraping data:', error);
+    }
+}
+
+// Call the scrapeData function when the page loads
+window.onload = scrapeData;
+
+
+
 extraInfoBtn.addEventListener('click', () => {
     main.innerHTML = '';
     let clone = extraInfoTemplate.content.cloneNode(true);
     main.appendChild(clone);
+
+    for (let i = 2; i < 13; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>${tab[i].nbDraw}</td>
+        <td>${tab[i].date}</td>
+        <td>${tab[i].nbInvitations}</td>
+        <td>${tab[i].crsScore}</td>
+        <td>${tab[i].program}</td>
+        `;
+        document.querySelector('#tbody').appendChild(tr);
+    }
+
 })
 
 
