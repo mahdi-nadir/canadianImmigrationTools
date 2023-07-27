@@ -127,7 +127,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     let modalConfirmation = document.querySelector('#modalConfirmation');
     let btnReset = document.querySelector('.btn-reset');
     let btnCalculate = document.querySelector('.btn-calculate');
-    let noticeDiv = document.querySelector('.notice');
+    let noticeDiv = document.querySelector('.noticeEligibility');
 
 
 
@@ -845,6 +845,7 @@ crsBtn.addEventListener('click', () => {
     let modal = document.querySelector('#modal');
     let modalResult = document.querySelector('#modalResult');
     let modalConfirmation = document.querySelector('#modalConfirmation');
+    let noticeDiv = document.querySelector('.noticeCRS');
     let btnReset = document.querySelector('.btn-reset');
     let btnCalculate = document.querySelector('.btn-calculate');
     let spanMarried = document.querySelector('#marriedOrNot');
@@ -977,6 +978,7 @@ crsBtn.addEventListener('click', () => {
             notDisplayComponents(spouseFollowerDiv);
         } */
         ageDiv.style.display = 'block';
+        ageInput.scrollIntoView({ behavior: 'smooth' })
         ageInput.value = '';
         spanMarriedOrSingle(spanMarried);
 
@@ -995,6 +997,11 @@ crsBtn.addEventListener('click', () => {
         if (martialStatus.value == 'married' && likeSingle == false) {
             if (ageInput.value == 17) {
                 ageScore = 0;
+                noticeDiv.style.display = 'block';
+                noticeDiv.innerHTML = `
+                <span class="underline">BECARFUL</span> <br>
+                You are not eligible to apply for Express Entry because you are under 18 years old.
+                `;
             } else if (ageInput.value == 18) {
                 ageScore = 90;
             } else if (ageInput.value == 19) {
@@ -1040,6 +1047,11 @@ crsBtn.addEventListener('click', () => {
         } else if ((martialStatus.value == 'married' && likeSingle == true) || martialStatus.value == 'single') {
             if (ageInput.value == 17) {
                 ageScore = 0;
+                noticeDiv.style.display = 'block';
+                noticeDiv.innerHTML = `
+                <span class="underline">BECARFUL</span> <br>
+                You are not eligible to apply for Express Entry because you are under 18 years old.
+                `;
             } else if (ageInput.value == 18) {
                 ageScore = 99;
             } else if (ageInput.value == 19) {
@@ -1129,6 +1141,8 @@ crsBtn.addEventListener('click', () => {
         }
         studiesInCanadaDiv.style.display = 'block';
         studiesInCanadaInput.scrollIntoView({ behavior: 'smooth' })
+        noticeDiv.style.display = 'none';
+        noticeDiv.innerHTML = '';
     })
 
     studiesInCanadaInput.addEventListener('change', () => {
@@ -1163,37 +1177,15 @@ crsBtn.addEventListener('click', () => {
         if (firstLangInput.value == 'yes') {
             firstLangTypeDiv.style.display = 'block';
             firstLangTypeInput.scrollIntoView({ behavior: 'smooth' })
+            noticeDiv.style.display = 'none';
+            noticeDiv.innerHTML = '';
         } else {
             firstLangTypeDiv.style.display = 'none';
             firstLangScoresDiv.style.display = 'none';
-            let modalResult = document.querySelector('#modalResult');
-            modalResult.innerHTML += `
-                <div class="mt-5">
-                <h1><b>You should have a language test to be eligible to Express Entry</b></h1>
-                </div>`;
-
-            overlay.style.display = 'block';
-            overlay.style.opacity = '0.8';
-            overlay.style.visibility = 'visible';
-            modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
-            modalResult.style.backgroundColor = '#fcc2c2';
-            let audio = new Audio('assets/sounds/failure.mp3');
-            audio.play();
-
-            function hideResultModal() {
-                modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
-                overlay.style.display = 'none';
-                overlay.style.opacity = '0';
-                overlay.style.visibility = 'hidden';
-                modalResult.querySelector('div').remove(); // Clear the modal content for the next time
-                cancelButton.removeEventListener('click', hideResultModal);
-                resetAll();
-            }
-
-            let cancelButton = document.querySelector('#cancel');
-            cancelButton.addEventListener('click', hideResultModal);
-
-            return
+            noticeDiv.style.display = 'block';
+            noticeDiv.innerHTML = `
+            You must have a language test result to be eligible for Express Entry.
+            `;
         }
     })
 
@@ -1258,27 +1250,51 @@ crsBtn.addEventListener('click', () => {
 
     firstLangReadingInput.addEventListener('change', () => {
         getPointsFirstLanguage(martialStatus.value, likeSingle, firstLangReadingInput.value, firstLangScoresArray, 0);
-        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
         firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        errorLanguageSkill(firstLangReadingInput, 'reading', firstLangWritingInput, secondLangDiv);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
     })
 
     firstLangWritingInput.addEventListener('change', () => {
         getPointsFirstLanguage(martialStatus.value, likeSingle, firstLangWritingInput.value, firstLangScoresArray, 1);
-        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
         firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        errorLanguageSkill(firstLangWritingInput, 'writing', firstLangListeningInput, secondLangDiv);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
     })
 
     firstLangListeningInput.addEventListener('change', () => {
         getPointsFirstLanguage(martialStatus.value, likeSingle, firstLangListeningInput.value, firstLangScoresArray, 2);
-        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
         firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        errorLanguageSkill(firstLangListeningInput, 'listening', firstLangSpeakingInput, secondLangDiv);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
     })
 
     firstLangSpeakingInput.addEventListener('change', () => {
         getPointsFirstLanguage(martialStatus.value, likeSingle, firstLangSpeakingInput.value, firstLangScoresArray, 3);
-        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
         firstLangScore = calculateLanguageScore(firstLangScoresArray);
+        errorLanguageSkill(firstLangSpeakingInput, 'speaking', firstLangScoresDiv, secondLangDiv);
+        triggerSecondLangDiv(firstLangReadingInput, firstLangWritingInput, firstLangListeningInput, firstLangSpeakingInput, secondLangDiv);
     })
+
+    function errorLanguageSkill(input, skill, nextInput, secondLanguageDiv) {
+        if (input.value == '' || input.value == 'clb6' || input.value == 'clb5' || input.value == 'clb4' || input.value == 'clb3') {
+            noticeDiv.style.display = 'block';
+            noticeDiv.innerHTML += `
+                <li class="listElement">Just remember that you should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry</li>
+                `;
+            setTimeout(() => {
+                noticeDiv.style.display = 'none';
+                noticeDiv.innerHTML = '';
+                input.scrollIntoView({ behavior: 'smooth' })
+            }, 4000);
+            secondLanguageDiv.style.display = 'none';
+            nextInput.disabled ? nextInput.disabled = true : nextInput.disabled = false;
+        } else {
+            nextInput.disabled = false;
+        }
+    }
+
+
 
     secondLangInput.addEventListener('change', () => {
         if (secondLangInput.value == 'yes') {
@@ -1354,8 +1370,8 @@ crsBtn.addEventListener('click', () => {
 
     secondLangSpeakingInput.addEventListener('change', () => {
         getPointsSecondLanguage(secondLangSpeakingInput.value, secondLangScoresArray, 3);
-        triggerWorkExpDiv()
         secondLangScore = calculateLanguageScore(secondLangScoresArray);
+        triggerWorkExpDiv()
     })
 
     function triggerWorkExpDiv() {
@@ -1413,17 +1429,21 @@ crsBtn.addEventListener('click', () => {
     })
 
     workExpInput.addEventListener('change', () => {
-        // if (workExpInput.value == '1') {
-        //     workExpeScore = 9;
-        // } else if (workExpInput.value == '2') {
-        //     workExpeScore = 11;
-        // } else if (workExpInput.value == '3') {
-        //     workExpeScore = 13;
-        // }
-
         if (workExpInput.value == '') {
             workExpeScore = 0;
             qualificationDiv.style.display = 'none';
+        } else if (workExpInput.value == 0) {
+            qualificationDiv.style.display = 'none';
+            noticeDiv.style.display = 'block';
+            noticeDiv.innerHTML = `
+            <span class="underline">BECARFUL</span> <br>
+            You must have at least one year of continuous full-time or equivalent paid work experience in the past 10 years (from ${month} 1st, ${year}) in a skilled occupation.
+            `;
+            setTimeout(() => {
+                noticeDiv.style.display = 'none';
+                noticeDiv.innerHTML = '';
+                workExpInput.scrollIntoView({ behavior: 'smooth' })
+            }, 4000);
         } else {
             qualificationDiv.style.display = 'block';
             qualificationInput.scrollIntoView({ behavior: 'smooth' })
@@ -1600,12 +1620,17 @@ crsBtn.addEventListener('click', () => {
             fillLanguageWriting('tcf-canada', spouseLangWritingInput);
             fillLanguageListening('tcf-canada', spouseLangListeningInput);
             fillLanguageSpeaking('tcf-canada', spouseLangSpeakingInput);
-        } else {
+        } else if (spouseLangInput.value == '') {
             spouseLangReadingInput.value = '';
             spouseLangWritingInput.value = '';
             spouseLangListeningInput.value = '';
             spouseLangSpeakingInput.value = '';
             spouseLangScoresDiv.style.display = 'none';
+
+        } else {
+            spouseLangScoresDiv.style.display = 'none';
+            spouseLangScoresArray = [0, 0, 0, 0];
+            btnCalculate.disabled = false;
         }
     })
 
@@ -1766,9 +1791,7 @@ crsBtn.addEventListener('click', () => {
         } else if (firstLangTypeInput.value != 'tef-canada' || firstLangTypeInput.value != 'tcf-canada') {
             if (firstLangScoree >= 64 && secondLangScore >= 12) {
                 pointsForFrenchlanguageSkills = 50;
-            } else /* if (firstLangScoree >= 64 && secondLangScore <= 12) {
-                pointsForFrenchlanguageSkills = 25;
-            } else */ {
+            } else {
                 pointsForFrenchlanguageSkills = 0;
             }
         }
@@ -1810,51 +1833,51 @@ crsBtn.addEventListener('click', () => {
         let modalResult = document.querySelector('#modalResult');
 
         modalResult.innerHTML += `
-        <div class="mt-5">
-        <h2 class="text-center text-xl mt-3 md:text-3xl">Your score is <b class="underline">${count}</b></h2>
-        <h1 class="text-red-800">human capital factors</h1>
-        <p>age: ${ageScore}</p>
-        <p>education: ${educationScore}</p>
-        <p>languages: ${firstLangScoree + secondLangScore}</p>
-        <p>1st: ${firstLangScoree} -- 2nd ${secondLangScore}</p>
-        <p>canadian work experience: ${workExpeCanScore}</p>
-        <h3 class="italic">total: ${ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore}</h3>
-        <h1 class="text-red-800">spouse factors</h1>
-        <p>spouse education: ${spouseEducationScore}</p>
-        <p>spouse language: ${spouseLangScore}</p>
-        <p>spouse canadian work experience: ${spouseWorkExpScore}</p>
-        <h1 class="text-red-800">skill transferability factors</h1>
-        <p>education + language: ${studyPlusLanguage}</p>
-        <p>education + canadian work experience: ${studyPlusWorkExpCan}</p>
-        <h3 class="italic">total: ${studiesEntries}</h3>
-        <p>foreign work experience + language: ${workExpPlusLanguage}</p>
-        <p>foreign work experience + canadian work experience: ${workExpPlusWorkExpCan}</p>
-        <h3 class="italic">total: ${experienceEntries}</h3>
-        <p>foreign work experience + canadian work experience: ${qualificationEntries}</p>
-        <h3>transferability: ${skillTransferabilityScore}</h3>
-        <h1 class="text-red-800">additional points</h1>
-        <p>provincial nomination: ${nominationScore}</p>
-        <p>job offer: ${reservedJobScore}</p>
-        <p>studies in canada: ${pointsForStudiesInCanada}</p>
-        <p>language skills: ${pointsForFrenchlanguageSkills}</p>
-        <p>siblings in canada: ${relativesScore}</p>
-        <h3 class="italic">total: ${additionalPointsScore}</h3>
-        <h1 class="text-red-800">TOOOOTAL: ${count}</h1>
-
-
+        
+        <h2 class="text-center text-md md:text-lg mb-3">Your score is <b class="underline">${count}</b></h2>
+        <div class="flex flex-col md:gap-2 justify-center items-center">
+            <h1 class="text-red-800 font-bold uppercase underline">human capital factors</h1>
+            <p class="text-center">Age + Education + Languages + Canadian Work Experience</p>
+            <p>${ageScore} + ${educationScore} + ${firstLangScoree + secondLangScore} + ${workExpeCanScore}</p>
+            <h3 class="italic uppercase font-bold mt-1">Subtotal = ${ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore}</h3>
         </div>
-        `;
+        `
+        if (martialStatus.value == 'married' && likeSingle == false) {
+            modalResult.innerHTML += `
+                <div class="flex flex-col md:gap-2 justify-center items-center">
+                    <h1 class="text-red-800 font-bold uppercase underline mt-2">spouse factors</h1>
+                    <p class="text-center">Education + Language + Canadian Work Experience</p>
+                    <p>${spouseEducationScore} + ${spouseLangScore} + ${spouseWorkExpScore}</p>
+                    <h3 class="italic uppercase font-bold mt-1">Subtotal = ${allSpouseScore}</h3>
+                </div>
+                `;
+        }
 
-        // <h1 class="text-center text-xl font-bold underline md:text-3xl">${count >= 67 ? 'Congratulations <i class="fa-solid fa-face-smile mb-3"></i>' : 'Condolences <i class="fa-solid fa-face-sad-tear mb-3"></i>'}</h1>
-        // <div class="indent-8">
-        // <li><b>Age:</b> ${ageScore}</li>
-        // <li><b>Education:</b> ${educationScore}</li>
-        // <li><b>First Language:</b> ${firstLangScore}</li>
-        // <li><b>Second Language:</b> ${secondLangScore}</li>
-        // <li><b>Work Experience:</b> ${workExpeScore}</li>
-        // <li><b>Reserved Job:</b> ${reservedJobScore}</li>
-        // <li><b>Adaptability:</b> ${adaptabilityScore}</li>
-        // </div>
+        modalResult.innerHTML += `
+        <div class="flex flex-col md:gap-2 justify-center items-center">
+            <h1 class="text-red-800 font-bold uppercase underline mt-2">skill transferability factors</h1>
+            <p class="font-bold underline text-center">Education (to a maximum of 50 points)</p>
+            <p class="indent-10 text-center">Education + Official Language proficiency = ${studyPlusLanguage}</p>
+            <p class="indent-10 text-center">Education + Canadian work experience = ${studyPlusWorkExpCan}</p>
+            <h3 class="font-bold italic mt-1">Subtotal = ${studiesEntries}</h3>
+            <p class="font-bold underline text-center mt-1">Foreign work experience (to a maximum of 50 points)</p>
+            <p class="indent-10 text-center">Foreign work experience + Official Language proficiency = ${workExpPlusLanguage}</p>
+            <p class="indent-10 text-center">Foreign work experience + Canadian work experience = ${workExpPlusWorkExpCan}</p>
+            <h3 class="italic font-bold mt-1">Subtotal = ${experienceEntries}</h3>
+            <p>Certificate of qualification = ${qualificationEntries}</p>
+            <h3 class="italic uppercase font-bold mt-1">Subtotal = ${skillTransferabilityScore}</h3>
+        </div>
+
+        <div class="flex flex-col md:gap-2 justify-center items-center">
+            <h1 class="text-red-800 font-bold uppercase underline mt-2">additional points</h1>
+            <p class="text-center">Provincial nomination + Job offer + Studies in Canada + French language skills + Sibling in Canada</p>
+            <p>${nominationScore} + ${reservedJobScore} + ${pointsForStudiesInCanada} + ${pointsForFrenchlanguageSkills} + ${relativesScore}</p>
+            <h3 class="italic uppercase font-bold mt-1">Subtotal = ${additionalPointsScore}</h3>
+        </div>
+
+        <h1 class="text-red-800 font-bold uppercase mt-2 text-center">Total: ${ageScore + educationScore + firstLangScoree + secondLangScore + workExpeCanScore} + ${allSpouseScore} + ${skillTransferabilityScore} + ${additionalPointsScore}<br><span class="font-bold text-green-600 text-lg md:text-xl mt-2">${count}</span></h1>
+
+        `;
 
         overlay.style.display = 'block';
         overlay.style.opacity = '0.8';
@@ -1869,7 +1892,6 @@ crsBtn.addEventListener('click', () => {
             modalResult.querySelector('div').remove(); // Clear the modal content for the next time
             cancelButton.removeEventListener('click', hideResultModal);
             resetAll();
-
         }
 
         let cancelButton = document.querySelector('#cancel');
@@ -1989,6 +2011,7 @@ crsBtn.addEventListener('click', () => {
         btnCalculate.disabled = true;
         modalResult.style.backgroundColor = '#f7e6e6';
     }
+
 })
 
 
