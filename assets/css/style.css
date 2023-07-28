@@ -48,10 +48,6 @@ body {
     text-decoration: underline;
 }
 
-#ttt {
-    margin: auto;
-}
-
 .noticeCRS, .noticeEligiblity {
     animation: fadeOut 8s ease-in-out;
 }

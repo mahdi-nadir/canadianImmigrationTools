@@ -14,8 +14,10 @@ async function scrapeData() {
             let nbDraw = doc.querySelector('.row-' + i).querySelectorAll('td')[0].textContent.split(' ')[1];
             let date = doc.querySelector('.row-' + i).querySelectorAll('td')[1].textContent;
             let nbInvitations = doc.querySelector('.row-' + i).querySelectorAll('td')[2].textContent;
-            let crsScore = doc.querySelector('.row-' + i).querySelectorAll('td')[3].textContent;
+            let crsScore = doc.querySelector('.row-' + i).querySelectorAll('td')[3].textContent.split(' ')[0];
             let program = doc.querySelector('.row-' + i).querySelectorAll('td')[4].textContent;
+            crsScore > 560 ? program = 'PNP' : program = program;
+            program == '--' ? program = 'NPS' : program = program;
             let draws = {
                 nbDraw,
                 date,
@@ -3108,16 +3110,6 @@ ebooksBtn.addEventListener('click', () => {
     main.appendChild(clone);
 })
 
-
-
-
-
-
-
-
-
-
-
 extraInfoBtn.addEventListener('click', () => {
     main.innerHTML = '';
     let clone = extraInfoTemplate.content.cloneNode(true);
@@ -3126,7 +3118,7 @@ extraInfoBtn.addEventListener('click', () => {
     for (let i = 2; i < 13; i++) {
         let tr = document.createElement('tr');
         tr.innerHTML = `
-        <td class="bg-indigo-50 font-bold">${tab[i].nbDraw}</td>
+        <td class="bg-indigo-50 font-bold text-blue-600 underline"><a href="https://www.canada.ca/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=${tab[i].nbDraw}" title="Get more information about #${tab[i].nbDraw} draw" target="_blank" rel="noreferrer">${tab[i].nbDraw}</a></td>
         <td>${tab[i].date}</td>
         <td>${tab[i].nbInvitations}</td>
         <td class="bg-yellow-50 font-bold">${tab[i].crsScore}</td>
@@ -3139,9 +3131,6 @@ extraInfoBtn.addEventListener('click', () => {
         }
     }
 })
-
-
-
 
 
 
