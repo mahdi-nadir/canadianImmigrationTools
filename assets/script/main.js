@@ -1600,11 +1600,6 @@ crsBtn.addEventListener('click', () => {
         let listeningSkillFirstLanguage = firstLangScoresArray[2];
         let speakingSkillFirstLanguage = firstLangScoresArray[3];
 
-        let readingSkillSecondLanguage = secondLangScoresArray[0];
-        let writingSkillSecondLanguage = secondLangScoresArray[1];
-        let listeningSkillSecondLanguage = secondLangScoresArray[2];
-        let speakingSkillSecondLanguage = secondLangScoresArray[3];
-
         if (martialStatus.value == 'married' && likeSingle == false) {
             if (readingSkillFirstLanguage < 29 || writingSkillFirstLanguage < 29 || listeningSkillFirstLanguage < 29 || speakingSkillFirstLanguage < 29) {
                 if (educationInput.value == 'secondary' || educationInput.value == 'notCompleted') {
