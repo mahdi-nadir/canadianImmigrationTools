@@ -3692,10 +3692,12 @@ suggestedpnpBtn.addEventListener('click', () => {
                 princeEdwardIslandDiv('yellow');
             } else {
                 error.innerHTML = 'The NOC code is not found';
+                resultDiv.style.display = 'none';
             }
         } else {
             error.innerHTML = '';
             resultDiv.innerHTML = '';
+            resultDiv.style.display = 'none';
         }
     })
 })
