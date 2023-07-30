@@ -3109,24 +3109,41 @@ suggestedpnpBtn.addEventListener('click', () => {
     let resultDiv = document.querySelector('#resultDiv');
     let error = document.querySelector('.error');
 
+    // function scrapOntario() {
+    //     try {
+    //         let url = `https://www.ontario.ca/page/oinp-express-entry-notifications-interest`;
+    //         fetch(url)
+    //             .then(response => response.text())
+    //             .then(data => {
+    //                 let parser = new DOMParser();
+    //                 let htmlDoc = parser.parseFromString(data, 'text/html');
+    //                 let td = htmlDoc.querySelectorAll('tr')[0].querySelectorAll('td')[2].textContent.split('-')[0];
+    //                 console.log(td);
+    //             })
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
+    // scrapOntario();
+
     function ontarioDiv(bgColor) {
-        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Ontario</p>`;
+        resultDiv.innerHTML += `<a href="https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp" target="_blank" rel="noreferrer"><p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Ontario</p></a>`;
     }
 
     function albertaDiv(bgColor) {
-        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Alberta</p>`;
+        resultDiv.innerHTML += `<a href="https://www.alberta.ca/aaip-alberta-express-entry-stream-eligibility.aspx" target="_blank" rel="noreferrer"><p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Alberta</p></a>`;
     }
 
     function britishColumbiaDiv(bgColor) {
-        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">British Columbia</p>`;
+        resultDiv.innerHTML += `<a href="https://www.welcomebc.ca/Immigrate-to-B-C/About-The-BC-PNP" target="_blank" rel="noreferrer"><p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">British Columbia</p></a>`;
     }
 
     function manitobaDiv(bgColor) {
-        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Manitoba</p>`;
+        resultDiv.innerHTML += `<a href="https://immigratemanitoba.com/fr/immigrer-au-manitoba/visite-exploratoire/" target="_blank" rel="noreferrer"><p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Manitoba</p></a>`;
     }
 
     function newBrunswickDiv(bgColor) {
-        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">New Brunswick</p>`;
+        resultDiv.innerHTML += `<a href="https://www.welcomenb.ca/content/wel-bien/en/immigrating/content/HowToImmigrate/NBProvincialNomineeProgram.html" target="_blank" rel="noreferrer"><p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">New Brunswick</p></a>`;
     }
 
     function newfoundlandAndLabradorDiv(bgColor) {
@@ -3146,11 +3163,11 @@ suggestedpnpBtn.addEventListener('click', () => {
     }
 
     function princeEdwardIslandDiv(bgColor) {
-        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Prince Edward Island</p>`;
+        resultDiv.innerHTML += `<a href="https://www.princeedwardisland.ca/en/information/office-of-immigration/pei-express-entry" target="_blank" rel="noreferrer"><p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Prince Edward Island</p></a>`;
     }
 
     function saskatchewanDiv(bgColor) {
-        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Saskatchewan</p>`;
+        resultDiv.innerHTML += `<a href="https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program/browse-sinp-programs/applicants-international-skilled-workers/assess-your-eligibility" target="_blank" rel="noreferrer"><p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Saskatchewan</p></a>`;
     }
 
     function yukonDiv(bgColor) {
@@ -3158,7 +3175,7 @@ suggestedpnpBtn.addEventListener('click', () => {
     }
 
     function quebecDiv(bgColor) {
-        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Quebec</p>`;
+        resultDiv.innerHTML += `<a href="https://www.quebec.ca/immigration/travailler-quebec/travailleurs-qualifies/programme-regulier-travailleurs-qualifies/declaration-interet" target="_blank" rel="noreferrer"><p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Quebec</p></a>`;
     }
 
     const edArray = ['00010', '40041', '10019', '14103', '42200', '41302', '42204', '44100', '65310', '51122', '53121', '53122', '53121', '55109', '53124', '53200', '64321', '65229', '65109', '65211', '65329', '75200', '85104', '85121 ', '85102', '85110'];
@@ -3375,6 +3392,8 @@ suggestedpnpBtn.addEventListener('click', () => {
         } else if (crsInput.value != '' && regexCrs.test(crsInput.value)) {
             resultDiv.innerHTML = '';
             error.innerHTML = '';
+            resultDiv.style.display = 'block';
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
             if (edArray.includes(nocInput.value)) {
                 princeEdwardIslandDiv('yellow');
             } else if (qcEdArray.includes(nocInput.value)) {
@@ -3477,8 +3496,10 @@ suggestedpnpBtn.addEventListener('click', () => {
                 saskatchewanDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbNbBcSkMbEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 albertaDiv('green');
                 newBrunswickDiv('green');
@@ -3487,8 +3508,10 @@ suggestedpnpBtn.addEventListener('click', () => {
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbNbBcQcSkMbEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 albertaDiv('green');
                 newBrunswickDiv('green');
@@ -3498,8 +3521,10 @@ suggestedpnpBtn.addEventListener('click', () => {
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbNsQcSkMbEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 albertaDiv('green');
                 novaScotiaDiv('green');
@@ -3508,8 +3533,10 @@ suggestedpnpBtn.addEventListener('click', () => {
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbQcSkMbEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 albertaDiv('green');
                 quebecDiv('green');
@@ -3517,8 +3544,10 @@ suggestedpnpBtn.addEventListener('click', () => {
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbBcQcSkMbEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 albertaDiv('green');
                 quebecDiv('green');
@@ -3551,8 +3580,10 @@ suggestedpnpBtn.addEventListener('click', () => {
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbSkEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 albertaDiv('green');
                 saskatchewanDiv('yellow');
@@ -3582,14 +3613,18 @@ suggestedpnpBtn.addEventListener('click', () => {
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onSkEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 saskatchewanDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbNsSkMbEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 albertaDiv('green');
                 novaScotiaDiv('green');
@@ -3597,8 +3632,10 @@ suggestedpnpBtn.addEventListener('click', () => {
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbNsBcQcSkMbEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 albertaDiv('green');
                 novaScotiaDiv('green');
@@ -3634,8 +3671,10 @@ suggestedpnpBtn.addEventListener('click', () => {
                 saskatchewanDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbNsQcEdArray.includes(nocInput.value)) {
-                if (crsInput.value >= 460) {
+                if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
+                } else if (crsInput.value > 462) {
+                    ontarioDiv('yellow')
                 }
                 albertaDiv('green');
                 novaScotiaDiv('green');
