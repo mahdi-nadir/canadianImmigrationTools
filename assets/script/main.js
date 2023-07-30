@@ -3155,7 +3155,7 @@ suggestedpnpBtn.addEventListener('click', () => {
     }
 
     function novaScotiaDiv(bgColor) {
-        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Nova Scotia</p>`;
+        resultDiv.innerHTML += `<a href="https://novascotiaimmigration.com/move-here/nova-scotia-experience-express-entry/" target="_blank" rel="noreferrer"><p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Nova Scotia</p></a>`;
     }
 
     function nunavutDiv(bgColor) {
@@ -3265,7 +3265,7 @@ suggestedpnpBtn.addEventListener('click', () => {
     ]
 
     const onAbNbBcQcSkMbEdArray = [
-        '21211', '21230', '21232', '21231',
+        '21211', '21230', '21232', '21231', '21234'
     ]
 
     const onAbNsQcSkMbEdArray = [
@@ -3273,7 +3273,7 @@ suggestedpnpBtn.addEventListener('click', () => {
     ]
 
     const onAbQcSkMbEdArray = [
-        '21234', '10010', '11201',
+        '10010', '11201',
     ]
 
     const onAbBcQcSkMbEdArray = [
@@ -3393,7 +3393,7 @@ suggestedpnpBtn.addEventListener('click', () => {
             resultDiv.innerHTML = '';
             error.innerHTML = '';
             resultDiv.style.display = 'block';
-            nocInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
             if (edArray.includes(nocInput.value)) {
                 ontarioDiv('gray');
                 albertaDiv('gray');
