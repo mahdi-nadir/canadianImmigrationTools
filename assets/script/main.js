@@ -3393,78 +3393,171 @@ suggestedpnpBtn.addEventListener('click', () => {
             resultDiv.innerHTML = '';
             error.innerHTML = '';
             resultDiv.style.display = 'block';
-            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            nocInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
             if (edArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
+                albertaDiv('gray');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (qcEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
+                albertaDiv('gray');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (bcEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
+                albertaDiv('gray');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
                 britishColumbiaDiv('yellow');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (nbQcEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
+                albertaDiv('gray');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abQcEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abBcEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
                 britishColumbiaDiv('yellow');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abBcQcEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
                 britishColumbiaDiv('yellow');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abSkEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abQcSkEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abBcSkEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
                 britishColumbiaDiv('yellow');
                 saskatchewanDiv('yellow');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abNbSkEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abNbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abNbBcEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
+                quebecDiv('gray');
                 britishColumbiaDiv('yellow');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abNbSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abNbQcSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abNbBcQcSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
                 quebecDiv('green');
                 britishColumbiaDiv('yellow');
@@ -3472,37 +3565,57 @@ suggestedpnpBtn.addEventListener('click', () => {
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abNsNbSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
                 novaScotiaDiv('green');
                 newBrunswickDiv('green');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abNbMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (nbQcSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
+                albertaDiv('gray');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abNsNbSkEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
                 novaScotiaDiv('green');
                 newBrunswickDiv('green');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbNbBcSkMbEdArray.includes(nocInput.value)) {
                 if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
                 albertaDiv('green');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
+                quebecDiv('gray');
                 britishColumbiaDiv('yellow');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
@@ -3512,8 +3625,11 @@ suggestedpnpBtn.addEventListener('click', () => {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
                 albertaDiv('green');
+                novaScotiaDiv('gray');
                 newBrunswickDiv('green');
                 quebecDiv('green');
                 britishColumbiaDiv('yellow');
@@ -3525,10 +3641,14 @@ suggestedpnpBtn.addEventListener('click', () => {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
@@ -3537,9 +3657,14 @@ suggestedpnpBtn.addEventListener('click', () => {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
@@ -3548,32 +3673,52 @@ suggestedpnpBtn.addEventListener('click', () => {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
                 britishColumbiaDiv('yellow');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abQcSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abBcSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
                 britishColumbiaDiv('yellow');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abBcQcSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
                 britishColumbiaDiv('yellow');
                 saskatchewanDiv('yellow');
@@ -3584,31 +3729,64 @@ suggestedpnpBtn.addEventListener('click', () => {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abQcMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abBcMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
                 britishColumbiaDiv('yellow');
+                saskatchewanDiv('gray');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abBcQcMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
                 britishColumbiaDiv('yellow');
+                saskatchewanDiv('gray');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (skMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
+                albertaDiv('gray');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
@@ -3617,17 +3795,30 @@ suggestedpnpBtn.addEventListener('click', () => {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
+                albertaDiv('gray');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbNsSkMbEdArray.includes(nocInput.value)) {
                 if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
@@ -3636,58 +3827,101 @@ suggestedpnpBtn.addEventListener('click', () => {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
                 britishColumbiaDiv('yellow');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abNsSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abNsQcSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abNsBcQcSkMbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
                 britishColumbiaDiv('yellow');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else if (abNsSkEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (onAbNsQcEdArray.includes(nocInput.value)) {
                 if (crsInput.value >= 458 && crsInput.value <= 462) {
                     ontarioDiv('green');
                 } else if (crsInput.value > 462) {
                     ontarioDiv('yellow')
+                } else {
+                    ontarioDiv('gray');
                 }
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                newBrunswickDiv('gray');
                 quebecDiv('green');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (skEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
+                albertaDiv('gray');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
                 saskatchewanDiv('yellow');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (abNsEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
+                manitobaDiv('gray');
                 princeEdwardIslandDiv('yellow');
             } else if (mbEdArray.includes(nocInput.value)) {
+                ontarioDiv('gray');
+                albertaDiv('gray');
+                novaScotiaDiv('gray');
+                newBrunswickDiv('gray');
+                quebecDiv('gray');
+                britishColumbiaDiv('gray');
+                saskatchewanDiv('gray');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
             } else {
