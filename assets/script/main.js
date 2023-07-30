@@ -3157,105 +3157,505 @@ suggestedpnpBtn.addEventListener('click', () => {
         resultDiv.innerHTML += `<p class="rounded bg-slate-100 p-2 my-2 font-bold">Yukon</p>`;
     }
 
+    function quebecDiv(bgColor) {
+        resultDiv.innerHTML += `<p class="rounded bg-${bgColor}-100 p-2 my-2 font-bold">Quebec</p>`;
+    }
+
+    const edArray = ['00010', '40041', '10019', '14103', '42200', '41302', '42204', '44100', '65310', '51122', '53121', '53122', '53121', '55109', '53124', '53200', '64321', '65229', '65109', '65211', '65329', '75200', '85104', '85121 ', '85102', '85110'];
+
+    const qcEdArray = [
+        '44101', '43100', '40021',
+    ]
+
+    const bcEdArray = [
+        '51111', '51112',
+    ]
+
+    const nbQcEdArray = [
+        '41221', '41220',
+    ]
+
+    const abEdArray = [
+        '00011', '00014', '40010', '40011', '40012', '40019', '40040', '10012', '40042', '80022', '11103', '12104', '43203', '12203', '14100', '14101', '14102', '14103', '14111', '14112', '14200', '13102', '14201', '14202', '14301', '14110', '64401', '74100', '74101', '74102', '75201', '14400', '14401', '13201', '14402', '14403', '13201', '14404', '14405', '21100', '21102', '21103', '21109', '21111', '21332', '21201', '21202', '22112', '22113', '22214', '72602', '72603', '72604', '31103', '31209', '31204', '32122', '32100', '32200', '32209', '41201', '41100', '41311', '42201', '42100', '42102', '43204', '44200', '43200', '43201', '43202', '51100', '51101', '51102', '51113', '51121', '53120', '52100', '53100', '53110', '52110', '52114', '53125', '53201', '53202', '62010', '62023', '63210', '63220', '63221', '62201', '64100', '64300', '64301', '65200', '64310', '64311', '64312', '64313', '64320', '64322', '64314', '64410', '65329', '64400', '64409', '64201', '63211', '65220', '65100', '65101', '65102', '65201', '65210', '65310', '65311', '65312', '73201', '65320', '72012', '72204', '72205', '72301', '72302', '72311', '73101', '73110', '72022', '72023', '72403', '72420', '72421', '73402', '72501', '73200', '74204', '73202', '73209', '75100', '73300', '73301', '74102', '75201', '73400', '74204', '74205', '74201', '75210', '74202', '74203', '75119', '75212', '75211', '82020', '83100', '83101', '83120', '83121', '84100', '84101', '84110', '84111', '85103', '84121', '85111', '85120', '92010', '92014', '92015', '92020', '92021', '92021', '92022', '92024', '93102', '92101', '94100', '94102', '94103', '94105', '94106', '94107', '94110', '95102', '94111', '94112', '94120', '94129', '94122', '94123', '94124', '94130', '95105', '94131', '95105', '94133', '94140', '94141', '94143', '94150', '94151', '94152', '94153', '94200', '94201', '94202', '94203', '94204', '94205', '94219', '94211', '94212', '94213', '94219', '95100', '95101', '95102', '95103', '95104', '94130', '95105', '95109'
+    ]
+
+    const abQcEdArray = [
+        '31102', '31300', '31100', '31101', '31110', '84120', '85101', '73111', '72321', '72406', '94142', '95107', '31302', '33102', '63100', '12201', '22114', '45100', '31111', '42101', '52111', '94210', '92013', '95106', '64101', '94132', '13200', '21390', '94101', '50010', '14300', '32110', '74200', '94104', '94121', '93200',
+    ]
+
+    const abBcEdArray = [
+        '22311', '51110', '52112', '52119', '53111',
+    ]
+
+    const abBcQcEdArray = [
+        '50011'
+    ]
+
+    const abSkEdArray = [
+        '00013', '00015', '10012', '10029', '70021', '60031', '80010', '80021', '12010', '72025', '13100', '12103', '13112', '12111', '12112', '12113', '21101', '21322', '21330', '21331', '21399', '22210', '22211', '22213', '22231', '31201', '32123', '33100', '33109', '41200', '41401', '41409', '62021', '62022', '62024', '62029', '65211', '62200', '63201', '65202', '65202', '64200', '62202', '72010', '72013', '72014', '72103', '72104', '72105', '72202', '72320', '72020', '72021', '72423', '72429', '73401', '72423', '72999', '82010', '82021', '83110', '72600', '82030', '84120', '82031', '92011', '93100', '93101'
+    ]
+
+    const abQcSkEdArray = [
+        '85100', '32102', '72422', '21120', '92012', '41320', '12202', '22233', '22222', '22230', '72011', '72024', '40020', '12012', '72601', '92023',
+    ]
+
+    const abBcSkEdArray = [
+        '10030', '21320',
+    ]
+
+    const abNbSkEdArray = [
+        '00012', '60030', '12100', '12102',
+    ]
+
+    const abNbEdArray = [
+        '30010',
+    ]
+
+    const abNbBcEdArray = [
+        '51114',
+    ]
+
+    const abNbSkMbEdArray = [
+        '13110', '62101',
+    ]
+
+    const abNbQcSkMbEdArray = [
+        '11200', '11101',
+    ]
+
+    const abNbBcQcSkMbEdArray = [
+        '22220',
+    ]
+
+    const abNsNbSkMbEdArray = [
+        '12200',
+    ]
+
+    const abNbMbEdArray = [
+        '62010', '63200',
+    ]
+
+    const nbQcSkMbEdArray = [
+        '42202'
+    ]
+
+    const abNsNbSkEdArray = [
+        '41210'
+    ]
+
+    const onAbNbBcSkMbEdArray = [
+        '21223',
+    ]
+
+    const onAbNbBcQcSkMbEdArray = [
+        '21211', '21230', '21232', '21231',
+    ]
+
+    const onAbNsQcSkMbEdArray = [
+        '10022',
+    ]
+
+    const onAbQcSkMbEdArray = [
+        '21234', '10010', '11201',
+    ]
+
+    const onAbBcQcSkMbEdArray = [
+        '21233', '20012',
+    ]
+
+    const abSkMbEdArray = [
+        '10021', '70010', '70011', '70020', '80020', '90010', '90011', '11200', '12011', '12013', '13201', '74202', '13111', '21110', '22101', '22110', '22111', '22301', '22303', '22311', '22212', '31203', '32120', '33101', '32124', '32129', '33103', '41400', '11202', '41402', '41403', '41404', '41406', '42203', '63202', '72101', '72200', '72201', '72203', '72204', '72205', '72300', '72310', '73112', '72401', '72402', '72410', '92100'
+    ]
+
+    const abQcSkMbEdArray = [
+        '22300', '31200', '41301', '41310', '21220', '21221', '21222', '21210', '31303', '32103', '22302', '72106', '32121', '41300', '72100', '12101', '22232', '63102', '72500', '75110', '41405', '10020', '13101', '72411', '41321', '72404', '20011', '12110', '22313',
+    ]
+
+    const abBcSkMbEdArray = [
+        '22110', '22312', '22221',
+    ]
+
+    const abBcQcSkMbEdArray = [
+        '62100', '70012', '22310', '75101',
+    ]
+
+    const onAbSkEdArray = [
+        '10019', '60010', '60020'
+    ]
+
+    const abMbEdArray = [
+        '20010', '50012', '21112', '21200', '22100', '72600', '31112', '31202', '32109', '32111', '32201', '41407', '52121', '53123', '64100', '54100', '62020', '73100', '73102', '73113', '73310', '73311'
+    ]
+
+    const abQcMbEdArray = [
+        '31120', '21321', '31121', '52120', '21203', '32104', '72102', '41101', '72405', '51120',
+    ]
+
+    const abBcMbEdArray = [
+        '21301',
+    ]
+
+    const abBcQcMbEdArray = [
+        '21310', '52113',
+    ]
+
+    const skMbEdArray = [
+        '40030',
+    ]
+
+    const onSkEdArray = [
+        '60040'
+    ]
+
+    const onAbNsSkMbEdArray = [
+        '11100', '11102', '11109',
+    ]
+
+    const onAbNsBcQcSkMbEdArray = [
+        '21311'
+    ]
+
+    const abNsSkMbEdArray = [
+        '42200', '42201'
+    ]
+
+    const abNsQcSkMbEdArray = [
+        '11202', '64409',
+    ]
+
+    const abNsBcQcSkMbEdArray = [
+        '21300',
+    ]
+
+    const abNsSkEdArray = [
+        '13110',
+    ]
+
+    const onAbNsQcEdArray = [
+        '31301'
+    ]
+
+    const skEdArray = [
+        '32112', '43109'
+    ]
+
+    const abNsEdArray = [
+        '32101'
+    ]
+
+    const mbEdArray = [
+        '63101'
+    ]
+
     calculateBtn.addEventListener('click', () => {
+        resultDiv.style.display = 'block';
         const regexNoc = /^[0-9]{5}$/;
         const regexCrs = /^[0-9]{2,3}$/;
 
         if (nocInput.value == '' && crsInput.value == '') {
             resultDiv.innerHTML = '';
+            resultDiv.style.display = 'none';
             error.innerHTML = 'You should fill both fields';
         } else if (nocInput.value == '') {
             resultDiv.innerHTML = '';
+            resultDiv.style.display = 'none';
             error.innerHTML = 'The NOC code field is empty';
         } else if (crsInput.value == '') {
             resultDiv.innerHTML = '';
+            resultDiv.style.display = 'none';
             error.innerHTML = 'The CRS score field is empty';
         } else if (!regexNoc.test(nocInput.value)) {
             resultDiv.innerHTML = '';
+            resultDiv.style.display = 'none';
             error.innerHTML = 'Please enter a valid NOC code';
         } else if (!regexCrs.test(crsInput.value)) {
             resultDiv.innerHTML = '';
+            resultDiv.style.display = 'none';
             error.innerHTML = 'Please enter a valid CRS score';
         } else if (crsInput.value != '' && regexCrs.test(crsInput.value)) {
             resultDiv.innerHTML = '';
             error.innerHTML = '';
-            if (nocInput.value == '00010' || nocInput.value == '40021' || nocInput.value == '40041' || nocInput.value == '10019' || nocInput.value == '14103' || nocInput.value == '42200' || nocInput.value == '41220' || nocInput.value == '41221') {
+            if (edArray.includes(nocInput.value)) {
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '00011' || nocInput.value == '00014' || nocInput.value == '30010' || nocInput.value == '40010' || nocInput.value == '40011' || nocInput.value == '40012' || nocInput.value == '40019' || nocInput.value == '40040' || nocInput.value == '41310' || nocInput.value == '10012' || nocInput.value == '40042' || nocInput.value == '50010' || nocInput.value == '50011' || nocInput.value == '80022' || nocInput.value == '11103' || nocInput.value == '12104' || nocInput.value == '43203' || nocInput.value == '12201' || nocInput.value == '12203' || nocInput.value == '13200' || nocInput.value == '14100' || nocInput.value == '14101' || nocInput.value == '14102' || nocInput.value == '14103' || nocInput.value == '14111' || nocInput.value == '14112' || nocInput.value == '14200' || nocInput.value == '13102' || nocInput.value == '14201' || nocInput.value == '14202' || nocInput.value == '14300' || nocInput.value == '14301' || nocInput.value == '14110' || nocInput.value == '64401' || nocInput.value == '74100' || nocInput.value == '74101' || nocInput.value == '74102' || nocInput.value == '75201' || nocInput.value == '14400' || nocInput.value == '14401' || nocInput.value == '13201' || nocInput.value == '14402' || nocInput.value == '14403' || nocInput.value == '13201' || nocInput.value == '14404' || nocInput.value == '14405' || nocInput.value == '21100' || nocInput.value == '21102' || nocInput.value == '21103' || nocInput.value == '21109' || nocInput.value == '21111' || nocInput.value == '21332' || nocInput.value == '21390' || nocInput.value == '21201' || nocInput.value == '21202' || nocInput.value == '22112' || nocInput.value == '22113' || nocInput.value == '22114' || nocInput.value == '22214' || nocInput.value == '72602' || nocInput.value == '72603' || nocInput.value == '72604' || nocInput.value == '31300' || nocInput.value == '31100' || nocInput.value == '31101' || nocInput.value == '41310' || nocInput.value == '31102' || nocInput.value == '31110' || nocInput.value == '31103' || nocInput.value == '31111' || nocInput.value == '31302' || nocInput.value == '32103' || nocInput.value == '31209' || nocInput.value == '31204' || nocInput.value == '41301' || nocInput.value == '32122' || nocInput.value == '32110' || nocInput.value == '32100' || nocInput.value == '32200' || nocInput.value == '32209' || nocInput.value == '33102' || nocInput.value == '41201') {
+            } else if (qcEdArray.includes(nocInput.value)) {
+                quebecDiv('green');
+                princeEdwardIslandDiv('yellow');
+            } else if (bcEdArray.includes(nocInput.value)) {
+                britishColumbiaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (nbQcEdArray.includes(nocInput.value)) {
+                newBrunswickDiv('green');
+                quebecDiv('green');
+                princeEdwardIslandDiv('yellow');
+            } else if (abEdArray.includes(nocInput.value)) {
                 albertaDiv('green');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '00012' || nocInput.value == '00013' || nocInput.value == '00015' || nocInput.value == '10012' || nocInput.value == '10029' || nocInput.value == '10030' || nocInput.value == '70021' || nocInput.value == '40020' || nocInput.value == '60030' || nocInput.value == '60031' || nocInput.value == '80010' || nocInput.value == '80021' || nocInput.value == '12010' || nocInput.value == '12012' || nocInput.value == '72025' || nocInput.value == '13100' || nocInput.value == '12100' || nocInput.value == '12102' || nocInput.value == '12103' || nocInput.value == '13112' || nocInput.value == '12111' || nocInput.value == '12112' || nocInput.value == '12113' || nocInput.value == '12202' || nocInput.value == '21101' || nocInput.value == '21320' || nocInput.value == '21322' || nocInput.value == '21330' || nocInput.value == '21331' || nocInput.value == '21399' || nocInput.value == '22210' || nocInput.value == '22211' || nocInput.value == '22213' || nocInput.value == '22230' || nocInput.value == '22231' || nocInput.value == '21120' || nocInput.value == '22232' || nocInput.value == '22233' || nocInput.value == '72601' || nocInput.value == '22222' || nocInput.value == '31201' || nocInput.value == '32123' || nocInput.value == '33100' || nocInput.value == '32102' || nocInput.value == '33109' || nocInput.value == '41200') {
+            } else if (abQcEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                quebecDiv('green');
+                princeEdwardIslandDiv('yellow');
+            } else if (abBcEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                britishColumbiaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abBcQcEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                quebecDiv('green');
+                britishColumbiaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abSkEdArray.includes(nocInput.value)) {
                 albertaDiv('green');
                 saskatchewanDiv('yellow');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '10010' || nocInput.value == '10022' || nocInput.value == '20012' || nocInput.value == '11201' || nocInput.value == '21211' || nocInput.value == '21223' || nocInput.value == '21211' || nocInput.value == '21231' || nocInput.value == '21230' || nocInput.value == '21232' || nocInput.value == '21234' || nocInput.value == '21233') {
-                ontarioDiv('green');
+            } else if (abQcSkEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                quebecDiv('green');
+                saskatchewanDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abBcSkEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                britishColumbiaDiv('yellow');
+                saskatchewanDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNbSkEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                newBrunswickDiv('green');
+                saskatchewanDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                newBrunswickDiv('green');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNbBcEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                newBrunswickDiv('green');
+                britishColumbiaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNbSkMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                newBrunswickDiv('green');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNbQcSkMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                newBrunswickDiv('green');
+                quebecDiv('green');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNbBcQcSkMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                newBrunswickDiv('green');
+                quebecDiv('green');
+                britishColumbiaDiv('yellow');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNsNbSkMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                novaScotiaDiv('green');
+                newBrunswickDiv('green');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNbMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                newBrunswickDiv('green');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (nbQcSkMbEdArray.includes(nocInput.value)) {
+                newBrunswickDiv('green');
+                quebecDiv('green');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNsNbSkEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                novaScotiaDiv('green');
+                newBrunswickDiv('green');
+                saskatchewanDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (onAbNbBcSkMbEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
+                albertaDiv('green');
+                newBrunswickDiv('green');
+                britishColumbiaDiv('yellow');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (onAbNbBcQcSkMbEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
+                albertaDiv('green');
+                newBrunswickDiv('green');
+                quebecDiv('green');
+                britishColumbiaDiv('yellow');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (onAbNsQcSkMbEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
+                albertaDiv('green');
+                novaScotiaDiv('green');
+                quebecDiv('green');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (onAbQcSkMbEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
+                albertaDiv('green');
+                quebecDiv('green');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (onAbBcQcSkMbEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
+                albertaDiv('green');
+                quebecDiv('green');
+                britishColumbiaDiv('yellow');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abSkMbEdArray.includes(nocInput.value)) {
                 albertaDiv('green');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '11200' || nocInput.value == '13110' || nocInput.value == '22232' || nocInput.value == '10020' || nocInput.value == '10021' || nocInput.value == '20011' || nocInput.value == '70010' || nocInput.value == '70011' || nocInput.value == '70012' || nocInput.value == '70020' || nocInput.value == '80020' || nocInput.value == '90010' || nocInput.value == '90011' || nocInput.value == '11101' || nocInput.value == '11200' || nocInput.value == '12011' || nocInput.value == '12013' || nocInput.value == '13201' || nocInput.value == '74202' || nocInput.value == '12101' || nocInput.value == '13101' || nocInput.value == '13111' || nocInput.value == '12110' || nocInput.value == '21110' || nocInput.value == '21210' || nocInput.value == '21211' || nocInput.value == '21220' || nocInput.value == '21221' || nocInput.value == '21222' || nocInput.value == '22101' || nocInput.value == '22110' || nocInput.value == '22111' || nocInput.value == '22300' || nocInput.value == '22301' || nocInput.value == '22302' || nocInput.value == '22303' || nocInput.value == '22310' || nocInput.value == '22311' || nocInput.value == '22312' || nocInput.value == '22313' || nocInput.value == '22212' || nocInput.value == '22220' || nocInput.value == '22221' || nocInput.value == '31203' || nocInput.value == '32120' || nocInput.value == '31303' || nocInput.value == '33101' || nocInput.value == '32103' || nocInput.value == '32121' || nocInput.value == '32124' || nocInput.value == '32129' || nocInput.value == '33103') {
+            } else if (abQcSkMbEdArray.includes(nocInput.value)) {
                 albertaDiv('green');
+                quebecDiv('green');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '10019' || nocInput.value == '60010' || nocInput.value == '60020') {
-                ontarioDiv('green');
+            } else if (abBcSkMbEdArray.includes(nocInput.value)) {
                 albertaDiv('green');
-                saskatchewanDiv('yellow');
-                princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '20010' || nocInput.value == '50012' || nocInput.value == '21112' || nocInput.value == '21301' || nocInput.value == '21310' || nocInput.value == '21321' || nocInput.value == '21200' || nocInput.value == '21203' || nocInput.value == '22100' || nocInput.value == '72600' || nocInput.value == '31120' || nocInput.value == '31121' || nocInput.value == '31112' || nocInput.value == '31202' || nocInput.value == '32109' || nocInput.value == '32104' || nocInput.value == '32111' || nocInput.value == '32201') {
-                albertaDiv('green');
-                manitobaDiv('yellow');
-                princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '40030') {
+                britishColumbiaDiv('yellow');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '60040') {
-                ontarioDiv('green');
+            } else if (abBcQcSkMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                quebecDiv('green');
+                britishColumbiaDiv('yellow');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (onAbSkEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
+                albertaDiv('green');
                 saskatchewanDiv('yellow');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '11100' || nocInput.value == '11102' || nocInput.value == '11109' || nocInput.value == '21311') {
-                ontarioDiv('green');
+            } else if (abMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abQcMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                quebecDiv('green');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abBcMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                britishColumbiaDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abBcQcMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                quebecDiv('green');
+                britishColumbiaDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (skMbEdArray.includes(nocInput.value)) {
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (onSkEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
+                saskatchewanDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (onAbNsSkMbEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
                 albertaDiv('green');
                 novaScotiaDiv('green');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '10022' || nocInput.value == '11202' || nocInput.value == '64409' || nocInput.value == '12200' || nocInput.value == '21300') {
+            } else if (onAbNsBcQcSkMbEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
+                albertaDiv('green');
+                novaScotiaDiv('green');
+                quebecDiv('green');
+                britishColumbiaDiv('yellow');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNsSkMbEdArray.includes(nocInput.value)) {
                 albertaDiv('green');
                 novaScotiaDiv('green');
                 saskatchewanDiv('yellow');
                 manitobaDiv('yellow');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '13110' || nocInput.value == '41210') {
+            } else if (abNsQcSkMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                novaScotiaDiv('green');
+                quebecDiv('green');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNsBcQcSkMbEdArray.includes(nocInput.value)) {
+                albertaDiv('green');
+                novaScotiaDiv('green');
+                quebecDiv('green');
+                britishColumbiaDiv('yellow');
+                saskatchewanDiv('yellow');
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else if (abNsSkEdArray.includes(nocInput.value)) {
                 albertaDiv('green');
                 novaScotiaDiv('green');
                 saskatchewanDiv('yellow');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '31301') {
-                ontarioDiv('green');
+            } else if (onAbNsQcEdArray.includes(nocInput.value)) {
+                if (crsInput.value >= 460) {
+                    ontarioDiv('green');
+                }
                 albertaDiv('green');
                 novaScotiaDiv('green');
+                quebecDiv('green');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '32112') {
+            } else if (skEdArray.includes(nocInput.value)) {
                 saskatchewanDiv('yellow');
                 princeEdwardIslandDiv('yellow');
-            } else if (nocInput.value == '32101') {
+            } else if (abNsEdArray.includes(nocInput.value)) {
                 albertaDiv('green');
                 novaScotiaDiv('green');
                 princeEdwardIslandDiv('yellow');
+            } else if (mbEdArray.includes(nocInput.value)) {
+                manitobaDiv('yellow');
+                princeEdwardIslandDiv('yellow');
+            } else {
+                error.innerHTML = 'The NOC code is not found';
             }
-
-
-
-
-
-
-
         } else {
-            error.innerHTML = 'ssss';
+            error.innerHTML = '';
             resultDiv.innerHTML = '';
         }
     })
