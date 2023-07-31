@@ -10,7 +10,27 @@
     <title>Maple Tools</title>
 </head>
 <body class='flex flex-col h-screen justify-between text-center bg-slate-50 max-w-screen'>
-    <nav class='text-xl p-8 border-b-2 border-red-600 uppercase font-bold mx-auto h-18'>
+    <div class="navbar flex flex-row justify-between border-b-2 border-gray-100  drop-shadow-sm bg-black text-white">
+        <!-- <div>
+            <a href="index.php"><img src="./assets/images/logo.png" alt="logo" class="w-20"></a>
+        </div> -->
+        <!-- <div class=""> -->
+            <!-- <div class="mr-6"> -->
+                <label for="burger" id="labelburger"><i class="fa-solid fa-bars text-white text-4xl ml-4 my-3"></i></label>
+                <input type="checkbox" name="burger" id="burger" class="">
+            <!-- </div> -->
+            <nav class='navBig text-md md:text-xl uppercase font-bold mx-auto py-8'>
+                <button id="homeBtn" class="active nav-link px-5" aria-current="page">Home</button>
+                <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
+                <button id="crsBtn" class="nav-link px-5">CRS</button>
+                <button id="nclcBtn" class="nav-link px-5">CLB</button>
+                <button id="suggestedpnpBtn" class="nav-link px-5">Suggested PNP</button>
+                <button id="ebooksBtn" class="nav-link px-5">Ebooks</button>
+                <button id="extraInfoBtn" class="nav-link px-5">Extra Info</button>
+            </nav>
+        <!-- </div> -->
+    </div>
+    <!-- <nav class='navSmall text-xl p-8 border-b-2 border-red-600 uppercase font-bold mx-auto h-18'>
         <button id="homeBtn" class="active nav-link px-5" aria-current="page">Home</button>
         <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
         <button id="crsBtn" class="nav-link px-5">CRS</button>
@@ -18,7 +38,7 @@
         <button id="suggestedpnpBtn" class="nav-link px-5">Suggested PNP</button>
         <button id="ebooksBtn" class="nav-link px-5">Ebooks</button>
         <button id="extraInfoBtn" class="nav-link px-5">Extra Info</button>
-    </nav>
+    </nav> -->
     
     <div class="px-10">
     <template id="eligibilityCalculatorTemplate">
@@ -1452,25 +1472,27 @@
         </section>
     </template>
 
-    <main>
+    <main class="stretch">
         <section>
             <h1 class='text-4xl font-bold mt-10'>Welcome to MapleMind Tools</h1>
             <p class='text-xl mt-5'>This website is designed to help you with your Express Entry application.</p>
             <!-- <p class='text-xl mt-5'>Please note that the other IRCC immigration systems will be added soon.</p> -->
             <p class='text-xl mt-5'>If you have any questions, feel free to ask them in my <a href='https://www.facebook.com/groups/hellocanada25' class='text-blue-600' target="_blank" rel="noreferrer">Facebook group</a></p>
         </section>
+        
+        
+        <div id="overlay"></div>
+        
+        <div id="modal" class="text-lg lg:text-xl border-black rounded w-1/2 p-4 min-h-[10%] text-justify"></div>
+    
+        <div id="modalResult" class="p-6 text-start text-sm md:text-md overflow-auto h-2/3">
+            <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
     </main>
 
 
-    <div id="overlay"></div>
-    
-    <div id="modal" class="text-lg lg:text-xl border-black rounded w-1/2 p-4 min-h-[10%] text-justify"></div>
-
-    <div id="modalResult" class="p-6 text-start text-sm md:text-md overflow-auto h-2/3">
-        <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    </div>
     
     <!-- <div id="modalConfirmation" class="text-lg lg:text-xl border-black rounded w-[30%] p-4 min-h-[10%] text-justify flex flex-col justify-center items-center gap-10 bg-slate-400" style="display: none;">
         <p>

@@ -84,13 +84,24 @@ let spouseWorkExpScore = 0;
 let adaptabilityScore = 0;
 let skillTransferabilityScore = 0;
 let additionalPointsScore = 0;
+let navbar = document.querySelector('.navBig');
+let burger = document.querySelector('#labelburger');
+let logo = document.querySelector('#logo');
 
 
 adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
 
+burger.addEventListener('change', () => {
+    if (burger.checked === true) {
+        burger.innerHTML = '<i class="fa-solid fa-times"></i>';
+    } else {
+        burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }
+});
 
 // add event listeners to buttons and display the right component when clicked
 homeBtn.addEventListener('click', () => {
+    burger.checked = true;
     main.innerHTML = '';
     let clone = homeTemplate.content.cloneNode(true);
     main.appendChild(clone);
@@ -600,20 +611,26 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 
     for (let explanation of explanations) {
         explanation.addEventListener('click', () => {
-            overlay.style.display = 'block';
-            overlay.style.opacity = '0.8';
-            overlay.style.visibility = 'visible';
-            modal.style.transform = 'translate(-50%, -50%) scale(1)';
-            modal.innerHTML = explanation.parentElement.nextElementSibling.innerHTML;
+            if (!explanation.classList.contains('fa-solid')) {
+                overlay.style.display = 'block';
+                overlay.style.opacity = '0.8';
+                overlay.style.visibility = 'visible';
+                modal.style.transform = 'translate(-50%, -50%) scale(1)';
+                modal.innerHTML = explanation.parentElement.nextElementSibling.innerHTML;
+            } else {
+                return;
+            }
 
-            const cancelBtn = modal.querySelector('#cancelBtn');
+            const cancelBtn = modal.querySelectorAll('.cancelButton');
 
-            cancelBtn.addEventListener('click', () => {
-                overlay.style.display = 'none';
-                overlay.style.opacity = '0';
-                overlay.style.visibility = 'hidden';
-                modal.style.transform = 'translate(-50%, -50%) scale(0)';
-            });
+            cancelBtn.forEach(element => {
+                element.addEventListener('click', () => {
+                    overlay.style.display = 'none';
+                    overlay.style.opacity = '0';
+                    overlay.style.visibility = 'hidden';
+                    modal.style.transform = 'translate(-50%, -50%) scale(0)';
+                });
+            })
         });
     }
 
@@ -1916,23 +1933,29 @@ crsBtn.addEventListener('click', () => {
 
 
     for (let explanation of explanations) {
-        explanation.addEventListener('click', () => {
+        if (!explanation.classList.contains('fa-solid')) {
             overlay.style.display = 'block';
             overlay.style.opacity = '0.8';
             overlay.style.visibility = 'visible';
             modal.style.transform = 'translate(-50%, -50%) scale(1)';
             modal.innerHTML = explanation.parentElement.nextElementSibling.innerHTML;
+        } else {
+            return;
+        }
 
-            const cancelBtn = modal.querySelector('#cancelBtn');
+        const cancelBtn = modal.querySelectorAll('.cancelButton');
 
-            cancelBtn.addEventListener('click', () => {
+        cancelBtn.forEach(element => {
+            element.addEventListener('click', () => {
                 overlay.style.display = 'none';
                 overlay.style.opacity = '0';
                 overlay.style.visibility = 'hidden';
                 modal.style.transform = 'translate(-50%, -50%) scale(0)';
             });
+
         });
     }
+
 
     function resetAll() {
         count = 0;

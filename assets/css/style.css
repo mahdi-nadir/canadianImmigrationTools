@@ -44,7 +44,7 @@ body {
 }
 
 .active {
-    color: red;
+    color: yellow !important;
     text-decoration: underline;
 }
 
@@ -52,18 +52,22 @@ body {
     animation: fadeOut 8s ease-in-out;
 }
 
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    100% {
-        opacity: 0;
-        visibility: hidden;
-    }
+.navBig {
+    display: block;
 }
 
+/* .navSmall {
+    display: none;
+} */
+
+#burger {
+    display: none;
+}
+
+#labelburger {
+    display: none;
+    cursor: pointer;
+}
 
 /* media query */
 @media (max-width: 1015px) {
@@ -74,6 +78,25 @@ body {
     nav {
         display: flex;
         flex-direction: column;
+    }
+
+    .navBig {
+        display: none;
+    }
+
+    #labelburger {
+        display: block;
+    }
+
+    /* .navSmall {
+        display: flex;
+        flex-flow: column nowrap;
+    } */
+
+    #burger:checked + .navBig,
+    #burger:checked + #labelburger + .navSmall {
+        display: flex;
+        margin: 0 auto;
     }
 }
 
