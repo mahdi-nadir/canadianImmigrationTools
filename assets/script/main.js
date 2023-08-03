@@ -1,5 +1,5 @@
 // scraping data from website
-let tab = {}
+let tabDraw = {}
 async function scrapeData() {
     try {
         // Fetch the HTML content from the target website
@@ -8,14 +8,13 @@ async function scrapeData() {
         // Parse the HTML using DOMParser
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
-
         // Find the table on the page (in this case, it's the first table)
-        for (let i = 2; i < 13; i++) {
-            let nbDraw = doc.querySelector('.row-' + i).querySelectorAll('td')[0].textContent.split(' ')[1];
-            let date = doc.querySelector('.row-' + i).querySelectorAll('td')[1].textContent;
-            let nbInvitations = doc.querySelector('.row-' + i).querySelectorAll('td')[2].textContent;
-            let crsScore = doc.querySelector('.row-' + i).querySelectorAll('td')[3].textContent.split(' ')[0];
-            let program = doc.querySelector('.row-' + i).querySelectorAll('td')[4].textContent;
+        for (let i = 1; i < 12; i++) {
+            let nbDraw = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[0].textContent.split(' ')[1];
+            let date = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[1].textContent;
+            let nbInvitations = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[2].textContent;
+            let crsScore = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[3].textContent.split(' ')[0];
+            let program = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[4].textContent;
             crsScore > 560 ? program = 'PNP' : program = program;
             program == '--' ? program = 'NPS' : program = program;
             let draws = {
@@ -25,12 +24,29 @@ async function scrapeData() {
                 crsScore,
                 program
             }
-            tab[i] = draws;
+            tabDraw[i] = draws;
         }
     } catch (error) {
         console.error('Error scraping data:', error);
     }
 }
+
+let temperature;
+// async function getWeather(town) {
+//     town = 'montreal';
+//     try {
+//         const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/ottawa?unitGroup=metric&key=HVUCRCFGA393TYXXTAT6Z5774&contentType=json`);
+//         const json = await response.json();
+//         temperature = json.days[0]
+//         console.log(temperature);
+//     } catch (error) {
+//         console.error('Please try again later', error);
+//     }
+// }
+// getWeather();
+
+
+
 
 // Call the scrapeData function when the page loads
 window.onload = scrapeData;
@@ -48,6 +64,9 @@ let nclcBtn = document.querySelector('#nclcBtn');
 let suggestedpnpBtn = document.querySelector('#suggestedpnpBtn');
 let ebooksBtn = document.querySelector('#ebooksBtn');
 let extraInfoBtn = document.querySelector('#extraInfoBtn');
+let weatherBtn = document.querySelector('.weatherBtn');
+let newsBtn = document.querySelector('.newsBtn');
+let currencyBtn = document.querySelector('.currencyBtn');
 
 // templates of components
 let homeTemplate = document.querySelector('#homeTemplate');
@@ -87,7 +106,7 @@ let additionalPointsScore = 0;
 let navbar = document.querySelector('.navBig');
 let burger = document.querySelector('#labelburger');
 let logo = document.querySelector('#logo');
-
+let title = document.querySelector('#title');
 
 adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
 
@@ -99,8 +118,51 @@ burger.addEventListener('change', () => {
     }
 });
 
+// add event listeners to APIs buttons
+// weatherBtn.addEventListener('click', () => {
+//     let overlay = document.querySelector('#overlay');
+//     let modalResult = document.querySelector('#modalResult');
+
+//     overlay.style.display = 'block';
+//     overlay.style.opacity = '0.8';
+//     overlay.style.visibility = 'visible';
+//     modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+//     console.log(temperature);
+//     modalResult.innerHTML += `
+//     ${temperature}
+//     `;
+//     const cancelBtn = modalResult.querySelectorAll('.cancel');
+
+//     cancelBtn.forEach(element => {
+//         element.addEventListener('click', () => {
+//             overlay.style.display = 'none';
+//             overlay.style.opacity = '0';
+//             overlay.style.visibility = 'hidden';
+//             modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+//             modalResult.innerHTML = `
+//             <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+//                 <i class="fa-solid fa-xmark"></i>
+//             </button>
+//             `;
+//         });
+//     })
+// })
+
+// newsBtn.addEventListener('click', () => {
+//     console.log('news');
+// })
+
+// currencyBtn.addEventListener('click', () => {
+//     console.log('currency');
+// })
+
+
+
+
+
 // add event listeners to buttons and display the right component when clicked
 homeBtn.addEventListener('click', () => {
+    document.title = 'Maple Tools - Home';
     burger.checked = true;
     main.innerHTML = '';
     let clone = homeTemplate.content.cloneNode(true);
@@ -108,6 +170,7 @@ homeBtn.addEventListener('click', () => {
 })
 
 eligibilityCalculatorBtn.addEventListener('click', () => {
+    document.title = 'Maple Tools - Eligibility Calculator';
     let count = 0;
     main.innerHTML = '';
     let clone = eligibilityCalculatorTemplate.content.cloneNode(true);
@@ -598,7 +661,6 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
             modalResult.querySelector('div').remove(); // Clear the modal content for the next time
             cancelButton.removeEventListener('click', hideResultModal);
             resetAll();
-
         }
 
         let cancelButton = document.querySelector('#cancel');
@@ -741,6 +803,7 @@ function calculateLanguageScore(langArray) {
 
 
 crsBtn.addEventListener('click', () => {
+    document.title = 'Maple Tools - CRS Calculator';
     let count = 0;
     main.innerHTML = '';
     let clone = crsTemplate.content.cloneNode(true);
@@ -2272,6 +2335,7 @@ function getPointsLanguageSpouse(languageSkill, langArray, index) {
 
 
 nclcBtn.addEventListener('click', () => {
+    document.title = 'Maple Tools - CLB Calculator';
     main.innerHTML = '';
     let clone = nclcTemplate.content.cloneNode(true);
     main.appendChild(clone);
@@ -3122,6 +3186,7 @@ nclcBtn.addEventListener('click', () => {
 })
 
 suggestedpnpBtn.addEventListener('click', () => {
+    document.title = 'Maple Tools - Suggested PNP';
     main.innerHTML = '';
     let clone = suggestedpnpTemplate.content.cloneNode(true);
     main.appendChild(clone);
@@ -3960,12 +4025,14 @@ suggestedpnpBtn.addEventListener('click', () => {
 })
 
 ebooksBtn.addEventListener('click', () => {
+    document.title = 'Maple Tools - Ebooks';
     main.innerHTML = '';
     let clone = ebooksTemplate.content.cloneNode(true);
     main.appendChild(clone);
 })
 
 extraInfoBtn.addEventListener('click', () => {
+    document.title = 'Maple Tools - Extra Info';
     main.innerHTML = '';
     let clone = extraInfoTemplate.content.cloneNode(true);
     main.appendChild(clone);
@@ -3973,11 +4040,11 @@ extraInfoBtn.addEventListener('click', () => {
     for (let i = 2; i < 13; i++) {
         let tr = document.createElement('tr');
         tr.innerHTML = `
-        <td class="bg-indigo-50 font-bold text-blue-600 underline"><a href="https://www.canada.ca/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=${tab[i].nbDraw}" title="Get more information about #${tab[i].nbDraw} draw" target="_blank" rel="noreferrer">${tab[i].nbDraw}</a></td>
-        <td>${tab[i].date}</td>
-        <td>${tab[i].nbInvitations}</td>
-        <td class="bg-yellow-50 font-bold">${tab[i].crsScore}</td>
-        <td>${tab[i].program}</td>
+        <td class="bg-indigo-50 font-bold text-blue-600 underline"><a href="https://www.canada.ca/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=${tabDraw[i].nbDraw}" title="Get more information about #${tabDraw[i].nbDraw} draw" target="_blank" rel="noreferrer">${tabDraw[i].nbDraw}</a></td>
+        <td>${tabDraw[i].date}</td>
+        <td>${tabDraw[i].nbInvitations}</td>
+        <td class="bg-yellow-50 font-bold">${tabDraw[i].crsScore}</td>
+        <td>${tabDraw[i].program}</td>
         `;
         document.querySelector('#tbody').appendChild(tr);
         let tds = document.querySelectorAll('td');
@@ -3986,7 +4053,6 @@ extraInfoBtn.addEventListener('click', () => {
         }
     }
 })
-
 
 
 
