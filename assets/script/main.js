@@ -818,7 +818,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 
     for (let explanation of explanations) {
         explanation.addEventListener('click', () => {
-            if (!explanation.classList.contains('fa-bars') && !explanation.classList.contains('fa-xmark')) {
+            if (!explanation.classList.contains('fa-bars') && !explanation.classList.contains('fa-xmark') && !explanation.classList.contains('fa-minus')) {
                 overlay.style.display = 'block';
                 overlay.style.opacity = '0.8';
                 overlay.style.visibility = 'visible';
@@ -2142,7 +2142,7 @@ crsBtn.addEventListener('click', () => {
 
     for (let explanation of explanations) {
         explanation.addEventListener('click', () => {
-            if (!explanation.classList.contains('fa-bars') && !explanation.classList.contains('fa-xmark')) {
+            if (!explanation.classList.contains('fa-bars') && !explanation.classList.contains('fa-xmark') && !explanation.classList.contains('fa-minus')) {
                 overlay.style.display = 'block';
                 overlay.style.opacity = '0.8';
                 overlay.style.visibility = 'visible';

@@ -11,59 +11,36 @@
 </head>
 <body class='flex flex-col h-screen justify-between text-center bg-slate-50 max-w-screen'>
     <div class="navbar flex flex-row justify-between border-b-2 border-gray-100 drop-shadow-sm bg-black text-white relative">
-        <!-- <div>
-            <a href="index.php"><img src="./assets/images/logo.png" alt="logo" class="w-20"></a>
-        </div> -->
-        <!-- <div class=""> -->
-            <!-- <div class="mr-6"> -->
-                <label for="burger" id="labelburger"><i class="fa-solid fa-bars text-white text-4xl ml-4 my-3"></i></label>
-                <input type="checkbox" name="burger" id="burger" class="">
-            <!-- </div> -->
-            <nav class='navBig text-md md:text-xl uppercase font-bold mx-auto py-8'>
-                <button id="homeBtn" class="active nav-link px-5" aria-current="page">Home</button>
-                <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
-                <button id="crsBtn" class="nav-link px-5">CRS</button>
-                <button id="nclcBtn" class="nav-link px-5">CLB</button>
-                <button id="suggestedpnpBtn" class="nav-link px-5">Suggested PNP</button>
-                <button id="ebooksBtn" class="nav-link px-5">Ebooks</button>
-                <button id="extraInfoBtn" class="nav-link px-5">Extra Info</button>
-            </nav>
-        <!-- </div> -->
+        <label for="burger" id="labelburger"><i class="fa-solid fa-bars text-white text-4xl ml-4 my-3"></i></label>
+        <input type="checkbox" name="burger" id="burger" class="">
+        <nav class='navBig text-md md:text-xl uppercase font-bold mx-auto py-8'>
+            <button id="homeBtn" class="active nav-link px-5" aria-current="page">Home</button>
+            <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
+            <button id="crsBtn" class="nav-link px-5">CRS</button>
+            <button id="nclcBtn" class="nav-link px-5">CLB</button>
+            <button id="suggestedpnpBtn" class="nav-link px-5">Suggested PNP</button>
+            <button id="ebooksBtn" class="nav-link px-5">Ebooks</button>
+            <button id="extraInfoBtn" class="nav-link px-5">Extra Info</button>
+    </nav>
     </div>
     <div class="apis flex flex-row justify-center items-center gap-3 p-2 pr-0 bg-gray-600 absolute left-[-15px] top-[45%] translate hover:bg-gray-500 rounded-r-lg ">
         <!-- <button class="weatherBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">Weather in Canada</button>
         <button class="newsBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">News in Canada</button> -->
         <button class="currencyBtn text-white text-lg font-bold uppercase animate-bounce w-7 h-7" title="Required Funds">$</button>
     </div>
-    <!-- <div class=" translate"> -->
-        <!-- <button class="weatherBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">Weather in Canada</button>
-        <button class="newsBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">News in Canada</button> -->
-        <button class="robotBtn text-2xl md:text-3xl font-bold uppercase animate-pulse w-7 h-7 block absolute right-[15px] bottom-[100px]" title="Ask questions!"><i class="fa-solid fa-robot"></i></button>
-    <!-- </div> -->
-    <!-- <nav class='navSmall text-xl p-8 border-b-2 border-red-600 uppercase font-bold mx-auto h-18'>
-        <button id="homeBtn" class="active nav-link px-5" aria-current="page">Home</button>
-        <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
-        <button id="crsBtn" class="nav-link px-5">CRS</button>
-        <button id="nclcBtn" class="nav-link px-5">CLB</button>
-        <button id="suggestedpnpBtn" class="nav-link px-5">Suggested PNP</button>
-        <button id="ebooksBtn" class="nav-link px-5">Ebooks</button>
-        <button id="extraInfoBtn" class="nav-link px-5">Extra Info</button>
-    </nav> -->
-    <!-- <nav class='navBig text-md md:text-xl uppercase font-bold mx-auto py-8'>
-                <ul>
-                    <button class="nav-item inline-block px-5 py-3"><a id="homeBtn" href="#home" class="nav-link">Home</a><button>
-                    <button class="nav-item inline-block px-5 py-3"><a id="eligibilityCalculatorBtn" href="#eligibility_calculator" class="nav-link">Eligibility Calculator</a><button>
-                    <button class="nav-item inline-block px-5 py-3"><a id="crsBtn" href="#crs" class="nav-link">CRS</a><button>
-                    <button class="nav-item inline-block px-5 py-3"><a id="nclcBtn" href="#nclc" class="nav-link">CLB</a><button>
-                    <button class="nav-item inline-block px-5 py-3"><a id="suggestedpnpBtn" href="#suggested_pnp" class="nav-link">Suggested PNP</a><button>
-                    <button class="nav-item inline-block px-5 py-3"><a id="ebooksBtn" href="#ebooks" class="nav-link">Ebooks</a><button>
-                    <button class="nav-item inline-block px-5 py-3"><a id="extraInfoBtn" href="#extra_info" class="nav-link">Extra Info</a><button>
-                </ul>
-            </nav> -->
     
+    <button class="robotBtn text-2xl md:text-3xl font-bold animate-pulse w-7 h-7 block absolute right-[15px] bottom-[100px] hover:text-blue-700" title="Ask questions!"><i class="fa-solid fa-robot"></i></button>
+
+    <div class="chatDiv text-md md:text-lg w-3/4 md:w-1/4 h-[350px] absolute right-[15px] bottom-[100px] border-2 border-black bg-slate-100 rounded">
+        <div class="h-[36px] w-full bg-blue-700 border-b-2 border-slate-700 text-white flex flex-row justify-between items-center p-2">
+            <span class="font-bold">Talk to MedyBot!</span>
+            <div class="flex flex-row justify-center items-center gap-2">
+                <button class="reduceBtn hover:text-gray-400" title="Reduce"><i class="fa-solid fa-minus"></i></button>
+                <button class="closeBtn hover:text-gray-400" title="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </div>
     
-
-
     <div class="px-10">
     <template id="eligibilityCalculatorTemplate">
         <section id="eligibility_calculator">
