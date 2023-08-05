@@ -165,12 +165,12 @@ currencyBtn.addEventListener('click', () => {
     let currencyTemplate = document.querySelector('#currencyTemplate');
     let clone = currencyTemplate.content.cloneNode(true);
     modalResult.appendChild(clone);
-    let convertBtn = document.querySelector('#convertBtn');
 
     overlay.style.display = 'block';
     overlay.style.opacity = '0.8';
     overlay.style.visibility = 'visible';
     modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+    let convertBtn = document.querySelector('#convertBtn');
 
     let familyMembers = document.querySelector('#familyMembers');
     let localCurrencyDiv = document.querySelector('.localCurrencyDiv');
@@ -275,8 +275,8 @@ currencyBtn.addEventListener('click', () => {
 
             if (exchangeRates[selectedCurrency]) {
                 const equivalentInLocalCurrency = (canadianFunds * exchangeRates[selectedCurrency]).toFixed(2);
-                result.textContent = `Required funds in Canadian dollars (CAD): ${canadianFunds}
-                In your local currency (${selectedCurrency}), you should have approximately: ${equivalentInLocalCurrency}`;
+                selectedCurrency === 'CAD' ? result.innerHTML = `Required funds in Canadian dollars (CAD) for ${familyMembers.value} person${familyMembers.value > 1 ? 's' : ''} are: <b>${canadianFunds}$</b>, that's what you need to have in your bank account.` : result.innerHTML = `Required funds in Canadian dollars (CAD) for ${familyMembers.value} person${familyMembers.value > 1 ? 's' : ''}: <b>${canadianFunds}$</b>.<br/>
+                In your local currency (${selectedCurrency}), you should have approximately: <b>${equivalentInLocalCurrency} ${selectedCurrency}</b>`;
             } else {
                 result.textContent = 'Currency not found in exchange rates data.';
             }
