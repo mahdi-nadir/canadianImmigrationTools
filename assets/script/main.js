@@ -251,7 +251,7 @@ currencyBtn.addEventListener('click', () => {
         const data = await res.json();
         const rates = data.rates;
         const keys = Object.keys(rates);
-
+        html = '';
         keys.forEach(key => {
             html += `<option value="${key}">${key}</option>`;
         })
@@ -818,7 +818,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 
     for (let explanation of explanations) {
         explanation.addEventListener('click', () => {
-            if (!explanation.classList.contains('fa-bars')) {
+            if (!explanation.classList.contains('fa-bars') && !explanation.classList.contains('fa-xmark')) {
                 overlay.style.display = 'block';
                 overlay.style.opacity = '0.8';
                 overlay.style.visibility = 'visible';
@@ -2142,7 +2142,7 @@ crsBtn.addEventListener('click', () => {
 
     for (let explanation of explanations) {
         explanation.addEventListener('click', () => {
-            if (!explanation.classList.contains('fa-bars')) {
+            if (!explanation.classList.contains('fa-bars') && !explanation.classList.contains('fa-xmark')) {
                 overlay.style.display = 'block';
                 overlay.style.opacity = '0.8';
                 overlay.style.visibility = 'visible';

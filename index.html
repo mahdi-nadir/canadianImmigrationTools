@@ -10,7 +10,7 @@
     <title>Maple Tools - Home</title>
 </head>
 <body class='flex flex-col h-screen justify-between text-center bg-slate-50 max-w-screen'>
-    <div class="navbar flex flex-row justify-between border-b-2 border-gray-100  drop-shadow-sm bg-black text-white">
+    <div class="navbar flex flex-row justify-between border-b-2 border-gray-100 drop-shadow-sm bg-black text-white relative">
         <!-- <div>
             <a href="index.php"><img src="./assets/images/logo.png" alt="logo" class="w-20"></a>
         </div> -->
@@ -30,6 +30,16 @@
             </nav>
         <!-- </div> -->
     </div>
+    <div class="apis flex flex-row justify-center items-center gap-3 p-2 pr-0 bg-gray-600 absolute left-[-15px] top-[45%] translate hover:bg-gray-500 rounded-r-lg ">
+        <!-- <button class="weatherBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">Weather in Canada</button>
+        <button class="newsBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">News in Canada</button> -->
+        <button class="currencyBtn text-white text-lg font-bold uppercase animate-bounce w-7 h-7" title="Required Funds">$</button>
+    </div>
+    <!-- <div class=" translate"> -->
+        <!-- <button class="weatherBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">Weather in Canada</button>
+        <button class="newsBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">News in Canada</button> -->
+        <button class="robotBtn text-2xl md:text-3xl font-bold uppercase animate-pulse w-7 h-7 block absolute right-[15px] bottom-[100px]" title="Ask questions!"><i class="fa-solid fa-robot"></i></button>
+    <!-- </div> -->
     <!-- <nav class='navSmall text-xl p-8 border-b-2 border-red-600 uppercase font-bold mx-auto h-18'>
         <button id="homeBtn" class="active nav-link px-5" aria-current="page">Home</button>
         <button id="eligibilityCalculatorBtn" class="nav-link px-5">Eligibility Calculator</button>
@@ -51,11 +61,7 @@
                 </ul>
             </nav> -->
     
-    <div class="apis flex flex-row justify-center items-center gap-3 md:gap-5 p-2 bg-gray-600 absolute left-[1%] bottom-[11%] translate hover:bg-gray-500 rounded">
-        <!-- <button class="weatherBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">Weather in Canada</button>
-        <button class="newsBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">News in Canada</button> -->
-        <button class="currencyBtn text-white w-[60px] md:w-[120px] text-sm md:text-lg font-bold uppercase">Funds</button>
-    </div>
+    
 
 
     <div class="px-10">
@@ -1489,11 +1495,12 @@
             <p class='text-xl mt-5'>If you have any questions, feel free to ask them in <a href='https://www.facebook.com/groups/hellocanada25' class='text-blue-600' target="_blank" rel="noreferrer">Facebook group</a></p>
         </section>
     </template>
+    
     <template id="currencyTemplate" style="display: none;">
         <h1 class="text-xl md:text-3xl uppercase text-center mb-2 mt-2 font-bold underline">required funds</h1>
-        <div class="mt-6 text-center mx-auto text-lg md:text-xl">
+        <div class="mt-4 text-center mx-auto text-md md:text-xl">
             <label class="font-bold italic text-slate-600" for="familyMembers">How many family members do you have?</label><br>
-            <select name="familyMembers" id="familyMembers" class="rounded bg-slate-100 border-red-800 border-4 mt-6 text-center">
+            <select name="familyMembers" id="familyMembers" class="rounded bg-slate-100 border-red-800 border-4 mt-4 text-center">
                 <option value="">Select..</option>
                 <option value="1">1 member</option>
                 <option value="2">2 members</option>
@@ -1512,12 +1519,12 @@
                 <option value="15">15 members</option>
             </select>
         </div>
-        <div class="localCurrencyDiv mt-6 text-center mx-auto text-lg md:text-xl" style="display: none;">
+        <div class="localCurrencyDiv mt-4 text-center mx-auto text-md md:text-xl" style="display: none;">
             <label class="font-bold italic text-slate-600" for="localCurrency">What is the currency of your country?</label><br>
-            <select name="localCurrency" id="localCurrency" class="rounded bg-slate-100 border-red-800 border-4 w-[100px] mt-6 text-center"></select>
+            <select name="localCurrency" id="localCurrency" class="rounded bg-slate-100 border-red-800 border-4 w-[100px] mt-4 text-center"></select>
         </div>
-        <button id="convertBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-6 text-xl md:text-2xl block mx-auto" disabled>Result!</button>
-        <h1 id="result" class="text-xl md:text-2xl text-center mt-6"></h1> 
+        <button id="convertBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-4 text-lg md:text-2xl block mx-auto" disabled>Result!</button>
+        <h1 id="result" class="text-md md:text-2xl text-center mt-4"></h1> 
 </template>
 
     <main class="stretch">
