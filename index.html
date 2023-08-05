@@ -51,11 +51,11 @@
                 </ul>
             </nav> -->
     
-    <!-- <div class="apis flex flex-col justify-center items-center gap-3 md:gap-5 p-4 bg-blue-600 w-1/4 absolute left-[-24%] top-[30%] translate md:h-10 hover:h-1/3 hover:left-0 rounded-r-lg">
-        <button class="weatherBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">Weather in Canada</button>
-        <button class="newsBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">News in Canada</button>
+    <div class="apis flex flex-col justify-center items-center gap-3 md:gap-5 p-4 bg-blue-600 w-1/4 absolute left-[-24%] top-[30%] translate md:h-10 hover:h-1/3 hover:left-0 rounded-r-lg">
+        <!-- <button class="weatherBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">Weather in Canada</button>
+        <button class="newsBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">News in Canada</button> -->
         <button class="currencyBtn p-4 bg-red-400 border-2 rounded w-[100px] md:w-[200px] text-sm md:text-lg">Currency Converter</button>
-    </div> -->
+    </div>
 
 
     <div class="px-10">
@@ -1489,6 +1489,51 @@
             <p class='text-xl mt-5'>If you have any questions, feel free to ask them in <a href='https://www.facebook.com/groups/hellocanada25' class='text-blue-600' target="_blank" rel="noreferrer">Facebook group</a></p>
         </section>
     </template>
+    <template id="currencyTemplate" style="display: none;">
+        <h1>currency converter</h1>
+        <div>
+            <div>
+            <label for="familyMembers">How many family members do you have?</label>
+            <select name="familyMembers" id="familyMembers">
+                <option value="">Select..</option>
+                <option value="1">1 member</option>
+                <option value="2">2 members</option>
+                <option value="3">3 members</option>
+                <option value="4">4 members</option>
+                <option value="5">5 members</option>
+                <option value="6">6 members</option>
+                <option value="7">7 members</option>
+                <option value="8">8 members</option>
+                <option value="9">9 members</option>
+                <option value="10">10 members</option>
+                <option value="11">11 members</option>
+                <option value="12">12 members</option>
+                <option value="13">13 members</option>
+                <option value="14">14 members</option>
+                <option value="15">15 members</option>
+            </select>
+        </div>
+        <div class="localCurrencyDiv" style="display: none;">
+            <label for="localCurrency">What is the currency of your country?</label>
+            <select name="localCurrency" id="localCurrency"></select>
+        </div>
+        <!-- <div class="amountDiv" style="display: none;">
+            <label for="amount">How much money do you have in your local currency?</label>
+            <input type="number" name="amount" id="amount">
+        </div> -->
+            <!-- <input type="number" class="currencyInput">
+            <label for="currencyFrom"></label>
+            <select name="currencyFrom" id="currencyFrom">
+                
+            </select>
+            <label for="currencyTo"></label>
+            <select name="currencyTo" id="currencyTo">
+                
+            </select>
+        -->
+        <button id="convertBtn" disabled>convert</button>
+        <h1 id="result"></h1> 
+</template>
 
     <main class="stretch">
         <section>
@@ -1499,16 +1544,16 @@
         </section>
         
         
-        <div id="overlay"></div>
-        
-        <div id="modal" class="text-lg lg:text-xl border-black rounded w-1/2 p-4 min-h-[10%] text-justify"></div>
-    
-        <div id="modalResult" class="p-6 text-start text-sm md:text-md overflow-auto h-2/3">
-            <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
     </main>
+    <div id="overlay"></div>
+    
+    <div id="modal" class="text-lg lg:text-xl border-black rounded w-1/2 p-4 min-h-[10%] text-justify"></div>
+
+    <div id="modalResult" class="p-6 text-start text-sm md:text-md overflow-auto h-2/3">
+        <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
 
 
     

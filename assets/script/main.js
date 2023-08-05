@@ -107,6 +107,13 @@ let navbar = document.querySelector('.navBig');
 let burger = document.querySelector('#labelburger');
 let logo = document.querySelector('#logo');
 let title = document.querySelector('#title');
+const select = document.querySelectorAll('.currencySelect');
+const input = document.querySelectorAll('.currencyInput');
+const currencyResult = document.querySelector('.currencyResult');
+const API_URL = 'https://api.exchangerate-api.com/v4/latest/CAD';
+let html = '';
+
+
 
 adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
 
@@ -152,9 +159,147 @@ burger.addEventListener('change', () => {
 //     console.log('news');
 // })
 
-// currencyBtn.addEventListener('click', () => {
-//     console.log('currency');
-// })
+currencyBtn.addEventListener('click', () => {
+    let modalResult = document.querySelector('#modalResult');
+    const cancelBtn = modalResult.querySelectorAll('.cancel');
+    let currencyTemplate = document.querySelector('#currencyTemplate');
+    let clone = currencyTemplate.content.cloneNode(true);
+    modalResult.appendChild(clone);
+    let convertBtn = document.querySelector('#convertBtn');
+
+    overlay.style.display = 'block';
+    overlay.style.opacity = '0.8';
+    overlay.style.visibility = 'visible';
+    modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+
+    let familyMembers = document.querySelector('#familyMembers');
+    let localCurrencyDiv = document.querySelector('.localCurrencyDiv');
+    let localCurrencyValue = document.querySelector('#localCurrency');
+    let amountDiv = document.querySelector('.amountDiv');
+    let amount = document.querySelector('#amount');
+    let canadianFunds = 0;
+    let result = document.querySelector('#result');
+
+    familyMembers.addEventListener('change', () => {
+        if (familyMembers.value != '') {
+            localCurrencyDiv.style.display = 'block';
+        } else {
+            localCurrencyDiv.style.display = 'none';
+        }
+
+        switch (familyMembers.value) {
+            case "1":
+                canadianFunds = 13757;
+                break;
+            case "2":
+                canadianFunds = 17127;
+                break;
+            case "3":
+                canadianFunds = 21055;
+                break;
+            case "4":
+                canadianFunds = 25564;
+                break;
+            case "5":
+                canadianFunds = 28994;
+                break;
+            case "6":
+                canadianFunds = 32700;
+                break;
+            case "7":
+                canadianFunds = 36407;
+                break;
+            case "8":
+                canadianFunds = 40113;
+                break;
+            case "9":
+                canadianFunds = 43819;
+                break;
+            case "10":
+                canadianFunds = 47525;
+                break;
+            case "11":
+                canadianFunds = 51231;
+                break;
+            case "12":
+                canadianFunds = 54937;
+                break;
+            case "13":
+                canadianFunds = 58643;
+                break;
+            case "14":
+                canadianFunds = 62349;
+                break;
+            default:
+                canadianFunds = 66055;
+                break;
+        }
+    })
+
+    localCurrencyValue.addEventListener('change', () => {
+        if (localCurrencyValue.value != '') {
+            convertBtn.disabled = false;
+        } else {
+            convertBtn.disabled = true;
+        }
+    })
+
+    async function getCurrencyData() {
+        const currencyType = document.querySelector('#localCurrency');
+
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        const rates = data.rates;
+        const keys = Object.keys(rates);
+
+        keys.forEach(key => {
+            html += `<option value="${key}">${key}</option>`;
+        })
+
+        currencyType.innerHTML = html;
+    }
+    getCurrencyData();
+
+    convertBtn.addEventListener('click', async () => {
+        if (localCurrencyValue.value === '') {
+            result.textContent = 'Please select a local currency.';
+            return;
+        }
+
+        const selectedCurrency = localCurrencyValue.value;
+
+        try {
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            const exchangeRates = data.rates;
+
+            if (exchangeRates[selectedCurrency]) {
+                const equivalentInLocalCurrency = (canadianFunds * exchangeRates[selectedCurrency]).toFixed(2);
+                result.textContent = `Required funds in Canadian dollars (CAD): ${canadianFunds}
+                In your local currency (${selectedCurrency}), you should have approximately: ${equivalentInLocalCurrency}`;
+            } else {
+                result.textContent = 'Currency not found in exchange rates data.';
+            }
+        } catch (error) {
+            result.textContent = 'An error occurred during currency conversion.';
+        }
+    })
+
+    cancelBtn.forEach(element => {
+        element.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+            modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+            modalResult.innerHTML = `
+            <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            `;
+        });
+    })
+})
+
 
 
 
@@ -673,7 +818,7 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
 
     for (let explanation of explanations) {
         explanation.addEventListener('click', () => {
-            if (!explanation.classList.contains('fa-solid')) {
+            if (!explanation.classList.contains('fa-bars')) {
                 overlay.style.display = 'block';
                 overlay.style.opacity = '0.8';
                 overlay.style.visibility = 'visible';
@@ -1996,27 +2141,29 @@ crsBtn.addEventListener('click', () => {
 
 
     for (let explanation of explanations) {
-        if (!explanation.classList.contains('fa-solid')) {
-            overlay.style.display = 'block';
-            overlay.style.opacity = '0.8';
-            overlay.style.visibility = 'visible';
-            modal.style.transform = 'translate(-50%, -50%) scale(1)';
-            modal.innerHTML = explanation.parentElement.nextElementSibling.innerHTML;
-        } else {
-            return;
-        }
+        explanation.addEventListener('click', () => {
+            if (!explanation.classList.contains('fa-bars')) {
+                overlay.style.display = 'block';
+                overlay.style.opacity = '0.8';
+                overlay.style.visibility = 'visible';
+                modal.style.transform = 'translate(-50%, -50%) scale(1)';
+                modal.innerHTML = explanation.parentElement.nextElementSibling.innerHTML;
+            } else {
+                return;
+            }
 
-        const cancelBtn = modal.querySelectorAll('.cancelButton');
+            const cancelBtn = modal.querySelectorAll('.cancelButton');
 
-        cancelBtn.forEach(element => {
-            element.addEventListener('click', () => {
-                overlay.style.display = 'none';
-                overlay.style.opacity = '0';
-                overlay.style.visibility = 'hidden';
-                modal.style.transform = 'translate(-50%, -50%) scale(0)';
+            cancelBtn.forEach(element => {
+                element.addEventListener('click', () => {
+                    overlay.style.display = 'none';
+                    overlay.style.opacity = '0';
+                    overlay.style.visibility = 'hidden';
+                    modal.style.transform = 'translate(-50%, -50%) scale(0)';
+                });
+
             });
-
-        });
+        })
     }
 
 
