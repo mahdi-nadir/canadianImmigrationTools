@@ -112,8 +112,15 @@ const input = document.querySelectorAll('.currencyInput');
 const currencyResult = document.querySelector('.currencyResult');
 const API_URL = 'https://api.exchangerate-api.com/v4/latest/CAD';
 let html = '';
-
-
+let robotBtn = document.querySelector('.robotBtn');
+let chatDiv = document.querySelector('.chatDiv');
+let chatArea = document.querySelector('.chatArea');
+let discussion = document.querySelector('.discussion');
+let suggestionUser = document.querySelector('.suggestionUser');
+let reduceBtn = chatDiv.querySelector('.reduceBtn');
+let closeChatBtn = chatDiv.querySelector('.closeBtn');
+let answers = document.querySelectorAll('.answer');
+let spinner = document.querySelector('.spinner');
 
 adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
 
@@ -124,6 +131,110 @@ burger.addEventListener('change', () => {
         burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
     }
 });
+
+robotBtn.addEventListener('click', () => {
+    chatDiv.style.height = '400px';
+    chatDiv.style.display = 'block';
+    chatDiv.style.opacity = '1';
+    chatDiv.style.visibility = 'visible';
+    chatDiv.style.zIndex = '1000';
+    robotBtn.style.display = 'none';
+})
+
+reduceBtn.addEventListener('click', () => {
+    chatDiv.style.height = '40px';
+    chatArea.style.display = 'none';
+    reduceBtn.style.display = 'none';
+})
+
+closeChatBtn.addEventListener('click', () => {
+    chatDiv.style.display = 'none';
+    robotBtn.style.display = 'block';
+    chatArea.style.display = 'block';
+    reduceBtn.style.display = 'block';
+})
+
+chatDiv.querySelector('span').addEventListener('click', () => {
+    chatDiv.style.height = '400px';
+    chatArea.style.display = 'block';
+    reduceBtn.style.display = 'block';
+})
+
+function answerUser(response) {
+    discussion.innerHTML += `<div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+    <i class="fa-solid fa-user ml-2 mt-2"></i>
+            <div>
+                <h3 class="rounded-lg p-1 my-1 ml-1 pl-2 text-sm md:text-md bg-blue-200 w-full">${response.textContent}</h3>
+            </div>
+        </div>`
+}
+
+function questionType(lang) {
+    let engBtn = document.querySelector('.engBtn');
+    let frBtn = document.querySelector('.frBtn');
+    frBtn.disabled = true;
+    engBtn.disabled = true;
+    spinner.style.display = 'block';
+    if (lang == 'english') {
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+        <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+            <i class="fa-solid fa-robot ml-1 mt-1"></i>
+            <div>
+                <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">Great! I can help you with the topics listed below. Select one of them to get started.
+                <ul class="suggestionUser pt-2">
+                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Eligibility</button></li>
+                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">E.E. Pool</button></li>
+                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
+                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
+                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
+                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Settlement</button></li>
+                    </ul>
+                </h3>
+            </div>
+        </div>
+    `}, 2000);
+    } else {
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+            <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                <div>
+                    <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                    Excellent! Je peux vous aider avec les sujets énumérés ci-dessous. Sélectionnez-en un pour commencer.
+                    <ul class="suggestionUser pt-2">
+                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Admissibilité</button></li>
+                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Bassin E.E.</button></li>
+                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
+                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
+                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
+                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Installation</button></li>
+                        </ul>
+                    </h3>
+                </div>
+            </div>
+        `}, 2000);
+    }
+}
+
+
+function questionSubType(lang) {
+    console.log('sub');
+}
+
+answers.forEach(answer => {
+    answer.addEventListener('click', () => {
+        answerUser(answer);
+        answer.textContent == 'English' ? questionType('english') : questionType('french');
+    })
+})
+
+
+
+
+
 
 // add event listeners to APIs buttons
 // weatherBtn.addEventListener('click', () => {

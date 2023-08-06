@@ -29,15 +29,33 @@
         <button class="currencyBtn text-white text-lg font-bold uppercase animate-bounce w-7 h-7" title="Required Funds">$</button>
     </div>
     
-    <button class="robotBtn text-2xl md:text-3xl font-bold animate-pulse w-7 h-7 block absolute right-[15px] bottom-[100px] hover:text-blue-700" title="Ask questions!"><i class="fa-solid fa-robot"></i></button>
+    <button class="robotBtn text-2xl md:text-3xl font-bold animate-pulse w-7 h-7 block fixed right-[15px] bottom-[100px] hover:text-blue-700" title="Ask questions!"><i class="fa-solid fa-robot"></i></button>
 
-    <div class="chatDiv text-md md:text-lg w-3/4 md:w-1/4 h-[350px] absolute right-[15px] bottom-[100px] border-2 border-black bg-slate-100 rounded">
+    <div class="chatDiv text-md md:text-lg w-3/4 md:w-1/4 fixed right-[15px] bottom-[100px] border-2 border-black bg-slate-100 rounded overflow-y-auto" style="display: none;">
         <div class="h-[36px] w-full bg-blue-700 border-b-2 border-slate-700 text-white flex flex-row justify-between items-center p-2">
-            <span class="font-bold">Talk to MedyBot!</span>
-            <div class="flex flex-row justify-center items-center gap-2">
+            <span class="font-bold cursor-pointer pr-10 py-1">Talk to Medy!</span>
+            <div class="flex flex-row justify-center items-center gap-2" >
                 <button class="reduceBtn hover:text-gray-400" title="Reduce"><i class="fa-solid fa-minus"></i></button>
                 <button class="closeBtn hover:text-gray-400" title="Close"><i class="fa-solid fa-xmark"></i></button>
             </div>
+        </div>
+        <div class="chatArea">
+            <div class="messageBot text-start flex flex-row justify-around items-start gap-2">
+                <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                <div>
+                    <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">Hey There! I'm Medy, your personal assistant!</h3>
+                    <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">What language do you prefer?
+                    <ul class="suggestionUser pt-2">
+                        <li><button class="answer engBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">English</button></li>
+                        <li><button class="answer frBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">French</button></li>
+                    </ul></h3>
+                </div>
+            </div>
+            <div class="discussion flex flex-col justify-center items-start gap-2 text-start">
+                
+            </div>
+            <div class="spinner animate-spin" style="display: none;"><i class="fa-solid fa-spinner"></i></div>
+            
         </div>
     </div>
     

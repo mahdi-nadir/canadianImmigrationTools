@@ -105,3 +105,8 @@ body {
         font-size: 12pt;
     }
 }
+
+/* chatDiv */
+.chatDiv {
+    height: 350px;
+}
