@@ -121,6 +121,33 @@ let reduceBtn = chatDiv.querySelector('.reduceBtn');
 let closeChatBtn = chatDiv.querySelector('.closeBtn');
 let answers = document.querySelectorAll('.answer');
 let spinner = document.querySelector('.spinner');
+let questionInvitationFr = [
+    "Si vous avez d'autres questions plus spécifiques, n'hésitez pas à me demander.",
+    "Si vous avez des interrogations plus ciblées, n'hésitez pas à me les poser.",
+    "Si vous avez d'autres questions liées à ce sujet, n'hésitez pas à me les poser. Je suis là pour fournir des réponses précises et détaillées.",
+    "Si vous souhaitez obtenir des réponses à d'autres questions connexes, je suis là pour répondre à vos questions spécifiques. N'hésitez pas à me les poser.",
+    "Vous pouvez compter sur moi pour répondre à toutes vos questions pertinentes sur ce sujet. N'hésitez pas à poser vos questions pour obtenir des éclaircissements supplémentaires.",
+    "Si vous souhaitez en savoir plus, je suis là pour répondre à vos questions supplémentaires.",
+    "Si vous avez d'autres questions, n'hésitez pas à me les poser.",
+    "Si d'autres interrogations vous viennent à l'esprit, je suis prêt à y répondre.",
+    "Pour toute autre question que vous pourriez avoir, je suis à votre disposition.",
+    "Si d'autres points nécessitent des éclaircissements, je suis là pour vous fournir les réponses.",
+    "N'hésitez pas à me poser d'autres questions si vous en avez."
+]
+
+let questionInvitationEn = [
+    "If you have other more specific questions, feel free to ask me.",
+    "If you have more targeted questions, feel free to ask them.",
+    "If you have other questions related to this topic, feel free to ask them. I am here to provide accurate and detailed answers.",
+    "If you want answers to other related questions, I am here to answer your specific questions. Feel free to ask them.",
+    "You can count on me to answer all your relevant questions on this topic. Feel free to ask your questions for further clarification.",
+    "If you want to know more, I am here to answer your additional questions.",
+    "If you have other questions, feel free to ask me.",
+    "If other questions come to mind, I am ready to answer them.",
+    "For any other questions you may have, I am at your disposal.",
+    "If other points require clarification, I am here to provide you with the answers.",
+    "Feel free to ask me other questions if you have any."
+]
 
 adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
 
@@ -139,6 +166,72 @@ robotBtn.addEventListener('click', () => {
     chatDiv.style.visibility = 'visible';
     chatDiv.style.zIndex = '1000';
     robotBtn.style.display = 'none';
+    let frLang = document.querySelector('.frBtn');
+    let engLang = document.querySelector('.engBtn');
+    frLang.addEventListener('click', () => {
+        answerUser('French');
+        questionType('french');
+    })
+
+    engLang.addEventListener('click', () => {
+        answerUser('English');
+        questionType('english');
+    })
+
+    function questionType(lang) {
+        let engBtn = document.querySelector('.engBtn');
+        let frBtn = document.querySelector('.frBtn');
+        frBtn.disabled = true;
+        engBtn.disabled = true;
+        spinner.style.display = 'block';
+        if (lang == 'english') {
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+            <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                <div>
+                    <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">Great! I can help you with the topics listed below. Select one of them to get started.
+                    <ul class="suggestionUser pt-2">
+                            <li><button class="answer eligibilityBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Eligibility</button></li>
+                            <li><button class="answer poolBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">E.E. Pool</button></li>
+                            <li><button class="answer postItaEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
+                            <li><button class="answer postAorEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
+                            <li><button class="answer pprEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
+                            <li><button class="answer settlementBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Settlement</button></li>
+                        </ul>
+                    </h3>
+                </div>
+            </div>
+        `;
+                questionSubType(lang);
+            }, 2000);
+
+        } else {
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Excellent! Je peux vous aider avec les sujets énumérés ci-dessous. Sélectionnez-en un pour commencer.
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer admissibiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Admissibilité</button></li>
+                                <li><button class="answer bassinBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Bassin E.E.</button></li>
+                                <li><button class="answer postItaFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
+                                <li><button class="answer postAorFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
+                                <li><button class="answer pprFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
+                                <li><button class="answer installationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Installation</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+                questionSubType(lang);
+            }, 2000);
+        }
+    }
 })
 
 reduceBtn.addEventListener('click', () => {
@@ -164,72 +257,428 @@ function answerUser(response) {
     discussion.innerHTML += `<div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
     <i class="fa-solid fa-user ml-2 mt-2"></i>
             <div>
-                <h3 class="rounded-lg p-1 my-1 ml-1 pl-2 text-sm md:text-md bg-blue-200 w-full">${response.textContent}</h3>
+                <h3 class="rounded-lg p-1 my-1 ml-1 pl-2 text-sm md:text-md bg-blue-200 w-full">${response}</h3>
             </div>
         </div>`
 }
 
-function questionType(lang) {
-    let engBtn = document.querySelector('.engBtn');
-    let frBtn = document.querySelector('.frBtn');
-    frBtn.disabled = true;
-    engBtn.disabled = true;
-    spinner.style.display = 'block';
-    if (lang == 'english') {
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
-        <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
-            <i class="fa-solid fa-robot ml-1 mt-1"></i>
-            <div>
-                <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">Great! I can help you with the topics listed below. Select one of them to get started.
-                <ul class="suggestionUser pt-2">
-                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Eligibility</button></li>
-                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">E.E. Pool</button></li>
-                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
-                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
-                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
-                        <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Settlement</button></li>
-                    </ul>
-                </h3>
-            </div>
-        </div>
-    `}, 2000);
-    } else {
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
-            <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
-                <i class="fa-solid fa-robot ml-1 mt-1"></i>
-                <div>
-                    <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
-                    Excellent! Je peux vous aider avec les sujets énumérés ci-dessous. Sélectionnez-en un pour commencer.
-                    <ul class="suggestionUser pt-2">
-                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Admissibilité</button></li>
-                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Bassin E.E.</button></li>
-                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
-                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
-                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
-                            <li><button class="answer bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Installation</button></li>
-                        </ul>
-                    </h3>
-                </div>
-            </div>
-        `}, 2000);
-    }
-}
 
 
 function questionSubType(lang) {
-    console.log('sub');
+    if (lang == 'french') {
+        let admissibiliteBtn = document.querySelector('.admissibiliteBtn');
+        let bassinBtn = document.querySelector('.bassinBtn');
+        let postItaFrBtn = document.querySelector('.postItaFrBtn');
+        let postAorFrBtn = document.querySelector('.postAorFrBtn');
+        let pprFrBtn = document.querySelector('.pprFrBtn');
+        let installationBtn = document.querySelector('.installationBtn');
+
+        admissibiliteBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Admissibilité');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Je crains que je ne puisse pas rédiger tout un article sur l'admissibilité. Mais j'ai une meilleure idée! Je peux vous donner un lien vers un article qui explique tout cela. <a href="https://www.facebook.com/groups/hellocanada25/posts/185945916030094/?__cft__[0]=AZWHjGSQcxo-zmxuyvWErV-o7FE00vXQxghw2Op3EoitY7dH-Ia0vE4gGNmjKIrb9V9tYC3Ntd9_-HnHKEbVhm6HVWKHF3jbHU5VFIC8f_iTHqaj19wWR2M-LT_M5SfB1z3FRJSx0nvO-N0t5AKCk0Ph&__tn__=%2CO%2CP-R" target="_blank" class="text-blue-500 underline">Cliquez ici</a> pour lire l'article.<br>
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer ageBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Age</button></li>
+                                <li><button class="answer educationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Etudes</button></li>
+                                <li><button class="answer languagesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Langues</button></li>
+                                <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Expérience professionnelle</button></li>
+                                <li><button class="answer adaptabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Adaptabilité</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        bassinBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Bassin Entrée Express');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Le "bassin du système Entrée express" fait référence à un groupe de candidats potentiels à l'immigration économique au Canada qui soumettent une "expression d'intérêt" (expression of interest, en anglais) dans le cadre du programme Entrée express. Ces candidats sont évalués en fonction de certains critères tels que l'âge, les compétences linguistiques, l'éducation, l'expérience de travail et d'autres facteurs. Par la suite, des invitations à présenter une demande de résidence permanente peuvent être envoyées aux candidats sélectionnés à partir de ce bassin. Cela signifie que les candidats qui se qualifient davantage et qui répondent aux besoins du marché du travail canadien ont plus de chances de recevoir une invitation. <br>
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer etatCivilBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Etat civil</button></li>
+                                <li><button class="answer ageBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Age</button></li>
+                                <li><button class="answer educationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Etudes</button></li>
+                                <li><button class="answer languagesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Langues</button></li>
+                                <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Expérience professionnelle</button></li>
+                                <li><button class="answer transferabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Transférabilité de compétences</button></li>
+                                <li><button class="answer drawsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Les sélections fédérales</button></li>
+                                <li><button class="answer fundsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Preuve de fonds</button></li>
+                                <li><button class="answer pnpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Programme des Candidats des Provinces (PCP)</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        postItaFrBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Post-ITA');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Après avoir reçu une invitation à présenter une demande de résidence permanente dans le cadre du programme Entrée express, la prochaine étape consiste généralement à soumettre une demande complète auprès d'Immigration, Réfugiés et Citoyenneté Canada (IRCC). Voici une explication détaillée de cette étape :
+                        <ol>
+                        <li><b>Acceptation de l'invitation:</b> Une fois que vous avez reçu une invitation à présenter une demande (ITA), vous devez l'accepter dans un délai précisé (15 jours généralement). Cela démontrera votre intention de poursuivre le processus d'immigration.</li>
+
+                        <li><b>Accès au portail en ligne:</b> Après avoir accepté l'invitation, vous aurez accès au portail en ligne de l'IRCC, où vous pourrez commencer à remplir et préparer votre demande de résidence permanente.</li>
+
+                        <li><b>Préparation des documents:</b> Vous devrez rassembler et télécharger les documents requis pour votre demande, tels que des preuves d'identité, des relevés de compétences linguistiques, des relevés bancaires, des antécédents médicaux, etc.</li>
+
+                        <li><b>Remplissage des formulaires:</b> À l'intérieur du portail en ligne, vous devrez remplir les formulaires appropriés pour votre programme d'immigration. Assurez-vous de fournir des informations précises et véridiques.</li>
+
+                        <li><b>Paiement des frais:</b> Vous devrez payer les frais de traitement de votre demande. Les montants varient en fonction du type de programme et du nombre de membres de votre famille inclus dans la demande.</li>
+
+                        <li><b>Soumission de la demande:</b> Une fois que vous avez téléchargé tous les documents et rempli les formulaires, vous pourrez soumettre électroniquement votre demande via le portail en ligne. Assurez-vous de bien vérifier toutes les informations avant de soumettre.</li>
+
+                        <li><b>Réception d'une confirmation:</b> Après la soumission, vous recevrez une confirmation de réception de votre demande. Cela peut inclure un accusé de réception et un numéro de suivi pour votre dossier.</li></ol><br>
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer docsListBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Liste de documents</button></li>
+                                <li><button class="answer personalBgBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Antécédents personnels</button></li>
+                                <li><button class="answer profesionalBgBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Antécédents professionnels</button></li>
+                                <li><button class="answer referenceLetterBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Lettre de référence</button></li>
+                                <li><button class="answer giftDeedBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Lettre de don d'argent</button></li>
+                                <li><button class="answer feesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Frais à payer</button></li>
+                                <li><button class="answer vmBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Visite médicale</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        postAorFrBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Post-AoR');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Après avoir soumis votre demande de résidence permanente, l'étape suivante implique le traitement et l'évaluation approfondie de votre dossier par Immigration, Réfugiés et Citoyenneté Canada (IRCC). Voici une brève explication de cette étape:
+                        <ol>
+                        <li><b>Réception et vérification des documents:</b> L'IRCC recevra votre demande et commencera par vérifier que tous les documents requis ont été soumis correctement. Cela inclut les formulaires, les preuves d'identité, les relevés de compétences linguistiques, les antécédents médicaux, et d'autres pièces justificatives spécifiques à votre programme d'immigration.</li>
+
+                        <li><b>Vérifications de sécurité et de fond:</b> L'IRCC effectuera des vérifications approfondies de sécurité et de fond pour s'assurer que vous ne présentez pas de risques pour la sécurité nationale du Canada. Cela peut inclure des enquêtes sur vos antécédents criminels, vos affiliations et vos activités.</li>
+
+                        <li><b>Vérifications médicales:</b> Dans certains cas, des vérifications médicales seront nécessaires pour confirmer que vous êtes en bonne santé et que vous ne présentez pas de risques pour la santé publique canadienne. Des examens médicaux peuvent être demandés à vous et à votre famille.</li>
+
+                        <li><b>Évaluation des critères de sélection:</b> Votre demande sera évaluée en fonction des critères spécifiques de votre programme d'immigration. Cela peut inclure des facteurs tels que votre âge, vos compétences linguistiques, votre expérience de travail, votre éducation et d'autres éléments.</li>
+
+                        <li><b>Prise de décision:</b> Après avoir examiné tous les aspects de votre dossier, l'IRCC prendra une décision concernant l'approbation ou le rejet de votre demande. Si votre demande est approuvée, vous recevrez une confirmation de résidence permanente et des instructions sur la manière de procéder. Si elle est refusée, vous serez informé des raisons du refus.</li>
+                        
+                        <li>Si vous voulez en savoir davantage, vous pouvez <a href="https://www.facebook.com/groups/hellocanada25/posts/379422516682432/?__cft__[0]=AZWAlOYBdFzpoWFG0cOGeUkRZ5OlZedEoYIwvWSBhxq3DlgIlmS88ytBihh2z1Te0dIpXqRkezsgXtw0J7pB0a_eoO06pWw9AS8F3sglNNeT7esoh1FWCauWPQ7W4nUYmgLx8byyjAPt412ZNDUkJB3R&__tn__=%2CO%2CP-R" target="_blank" class="text-blue-600">lire cet article bien détaillé</a>.</li></ol><br>
+
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer bioBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Données biométriques</button></li>
+                                <li><button class="answer processingTimeBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Délai de traitement</button></li>
+                                <li><button class="answer adrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Additional Document Request</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        pprFrBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Demande de Passport');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        L'approbation de votre demande de résidence permanente signifie que vous avez satisfait aux critères d'immigration. Vous recevrez une Confirmation de Résidence Permanente (CRP) ou une lettre d'approbation. Déposez votre passeport pour obtenir le visa de résident permanent, puis voyagez au Canada avant la date d'expiration indiquée.<br>
+
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer visaBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Visa IMMIGRANT</button></li>
+                                <li><button class="answer coprBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Confirmation de la résidence permanente</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        installationBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Voyage et Installation');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Une fois que vous avez reçu votre visa d'immigrant pour le Canada, le voyage et l'installation se profilent. Voici un aperçu de ces étapes clés:
+                        <ol>
+                        <li><b>Voyage au Canada:</b> Avec votre visa d'immigrant dans votre passeport, vous pouvez voyager au Canada. Assurez-vous de conserver vos documents de voyage, y compris votre Confirmation de Résidence Permanente (CRP), en lieu sûr pendant votre voyage.</li>
+
+                        <li><b>Contrôle à la frontière:</b> À votre arrivée au Canada, vous serez soumis à un contrôle à la frontière. Présentez vos documents, y compris votre CRP et votre passeport avec le visa, pour confirmer votre statut de résident permanent.</li>
+
+                        <li><b>Carte de Résident Permanent (CRP):</b> Si vous avez demandé une CRP, vous la recevrez après votre arrivée. Cette carte officielle confirme votre statut de résident permanent et est nécessaire pour les voyages internationaux.</li>
+
+                        <li><b>Établissement au Canada:</b> Une fois au Canada, préparez-vous à vous installer. Cherchez un logement, ouvrez un compte bancaire, obtenez une assurance santé et explorez les services locaux.</li>
+
+                        <li><b>Intégration et Emploi:</b> Familiarisez-vous avec la vie canadienne, la culture et les opportunités. Si vous cherchez un emploi, mettez à jour votre CV et explorez les options de carrière.</li>
+
+                        <li><b>Soutien aux nouveaux arrivants:</b> Le Canada offre des programmes et des ressources pour aider les nouveaux arrivants à s'intégrer. Profitez des ateliers, des cours de langue et des services d'orientation.</li>
+
+                        <li><b>Démarches administratives:</b> Effectuez les démarches nécessaires pour obtenir un numéro d'assurance sociale (NAS), une carte d'assurance maladie provinciale et d'autres documents essentiels.</li>
+
+                        <li><b>Communauté et Réseautage:</b> Impliquez-vous dans la communauté locale, établissez des liens et élargissez votre réseau social.</li>
+
+                        <li><b>Planification Financière:</b> Gérez vos finances judicieusement en tenant compte des coûts de la vie, des dépenses et des économies.</li>
+                        </ol><br>
+
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer nasBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Numéro d'Assurance Sociale</button></li>
+                                <li><button class="answer bankBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Compte bancaire</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+    } else {
+        let eligibilityBtn = document.querySelector('.eligibilityBtn');
+        let poolBtn = document.querySelector('.poolBtn');
+        let postItaEnBtn = document.querySelector('.postItaEnBtn');
+        let postAorEnBtn = document.querySelector('.postAorEnBtn');
+        let pprEnBtn = document.querySelector('.pprEnBtn');
+        let settlementBtn = document.querySelector('.settlementBtn');
+
+        eligibilityBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Eligibility');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        I'm afraid I can't write a whole article on eligibility. But I have a better idea! I can provide you with a link to an article that explains all of that. <a href="https://www.facebook.com/groups/hellocanada25/posts/185945916030094/?__cft__[0]=AZWHjGSQcxo-zmxuyvWErV-o7FE00vXQxghw2Op3EoitY7dH-Ia0vE4gGNmjKIrb9V9tYC3Ntd9_-HnHKEbVhm6HVWKHF3jbHU5VFIC8f_iTHqaj19wWR2M-LT_M5SfB1z3FRJSx0nvO-N0t5AKCk0Ph&__tn__=%2CO%2CP-R" target="_blank" class="text-blue-500 underline">Click here</a> to read the article. (French only)<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer ageBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Age</button></li>
+                                <li><button class="answer educationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Education</button></li>
+                                <li><button class="answer languagesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Languages</button></li>
+                                <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Work Experience</button></li>
+                                <li><button class="answer adaptabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Adaptability</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        poolBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Express Entry Pool');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The "Express Entry pool" refers to a group of potential candidates for economic immigration to Canada who submit an "expression of interest" within the framework of the Express Entry program. These candidates are evaluated based on certain criteria such as age, language skills, education, work experience, and other factors. Subsequently, invitations to apply for permanent residency may be sent to selected candidates from this pool. This means that candidates who qualify more and meet the needs of the Canadian job market have a higher chance of receiving an invitation. <br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer etatCivilBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Marital status</button></li>
+                                <li><button class="answer ageBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Age</button></li>
+                                <li><button class="answer educationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Education</button></li>
+                                <li><button class="answer languagesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Languages</button></li>
+                                <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Work Experience</button></li>
+                                <li><button class="answer transferabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Skill Transferability</button></li>
+                                <li><button class="answer drawsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Federal draws</button></li>
+                                <li><button class="answer fundsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Proof of funds</button></li>
+                                <li><button class="answer pnpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Provincial Nominee Program (PNP)</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        postItaEnBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Post-ITA');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        After receiving an invitation to apply for permanent residency through the Express Entry program, the next step usually involves submitting a complete application to Immigration, Refugees and Citizenship Canada (IRCC). Here's a detailed explanation of this step:
+                        <ol>
+                        <li><b>Acceptance of the invitation:</b> Once you receive an Invitation to Apply (ITA), you need to accept it within a specified timeframe (usually 15 days). This demonstrates your intention to continue with the immigration process.</li>
+                        <li><b>Access to the online portal:</b> After accepting the invitation, you'll gain access to IRCC's online portal, where you can begin to fill out and prepare your permanent residency application.</li>
+                        <li><b>Document preparation:</b> You'll need to gather and upload the required documents for your application, such as proof of identity, language test results, bank statements, medical records, etc.</li>
+                        <li><b>Form filling:</b> Within the online portal, you'll need to complete the relevant forms for your immigration program. Ensure you provide accurate and truthful information.</li>
+                        <li><b>Fee payment:</b> You'll need to pay the processing fees for your application. The amounts vary depending on the program type and the number of family members included in the application.</li>
+                        <li><b>Application submission:</b> Once you've uploaded all documents and completed the forms, you can electronically submit your application through the online portal. Double-check all information before submitting.</li>
+                        <li><b>Receipt of confirmation:</b> After submission, you'll receive a confirmation of receipt for your application. This may include an acknowledgment of receipt and a tracking number for your file.</li></ol><br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer docsListBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Documents List</button></li>
+                                <li><button class="answer personalBgBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Personal background</button></li>
+                                <li><button class="answer profesionalBgBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Profesional background</button></li>
+                                <li><button class="answer referenceLetterBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Reference Letter</button></li>
+                                <li><button class="answer giftDeedBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Gift Deed</button></li>
+                                <li><button class="answer feesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Fees to pay</button></li>
+                                <li><button class="answer vmBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Medical examination</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        postAorEnBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Post-AoR');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        After submitting your application for permanent residency, the next step involves the thorough processing and evaluation of your file by Immigration, Refugees and Citizenship Canada (IRCC). Here's a brief explanation of this step:
+                        <ol>
+                        <li><b>Receipt and verification of documents:</b> IRCC will receive your application and begin by verifying that all required documents have been correctly submitted. This includes forms, proof of identity, language test results, medical records, and other specific supporting documents for your immigration program.</li>
+                        <li><b>Security and background checks:</b> IRCC will conduct comprehensive security and background checks to ensure you do not pose a risk to Canada's national security. This may involve inquiries into your criminal history, affiliations, and activities.</li>
+                        <li><b>Medical examinations:</b> In some cases, medical examinations will be required to confirm your good health and that you do not pose a risk to public health in Canada. Medical assessments may be requested for you and your family.</li>
+                        <li><b>Evaluation of selection criteria:</b> Your application will be assessed based on the specific criteria of your immigration program. This may include factors such as age, language skills, work experience, education, and other elements.</li>
+                        <li><b>Decision-making:</b> After reviewing all aspects of your file, IRCC will make a decision regarding the approval or rejection of your application. If approved, you'll receive confirmation of permanent residency and instructions on next steps. If rejected, you'll be informed of the reasons for the refusal.</li>
+                        <li>If you'd like to learn more, you can <a href="https://www.facebook.com/groups/hellocanada25/posts/379422516682432/?__cft__[0]=AZWAlOYBdFzpoWFG0cOGeUkRZ5OlZedEoYIwvWSBhxq3DlgIlmS88ytBihh2z1Te0dIpXqRkezsgXtw0J7pB0a_eoO06pWw9AS8F3sglNNeT7esoh1FWCauWPQ7W4nUYmgLx8byyjAPt412ZNDUkJB3R&__tn__=%2CO%2CP-R" target="_blank" class="text-blue-600">read this detailed article</a>. (French only)</li></ol><br>
+
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer bioBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Biometrics</button></li>
+                                <li><button class="answer processingTimeBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Processing time</button></li>
+                                <li><button class="answer adrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Additional Document Request</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        pprEnBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Passport Request');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Approval of your permanent residency application signifies that you have met the immigration criteria. You'll receive a Confirmation of Permanent Residence (CPR) or an approval letter. Submit your passport to obtain the permanent resident visa, then travel to Canada before the indicated expiry date.<br>
+
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer visaBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">IMMIGRANT Visa</button></li>
+                                <li><button class="answer coprBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Confirmation of Permanent Residence</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+
+        settlementBtn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Travel and Settlement');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Une fois que vous avez reçu votre visa d'immigrant pour le Canada, le voyage et l'installation se profilent. Voici un aperçu de ces étapes clés:
+                        <ol>
+                        <li><b>Travel to Canada:</b> With your immigrant visa in your passport, you can travel to Canada. Make sure to keep your travel documents, including your Confirmation of Permanent Residence (CPR), safely during your journey.</li>
+                        <li><b>Border Control:</b> Upon arrival in Canada, you'll undergo border control. Present your documents, including your CPR and passport with the visa, to confirm your permanent resident status.</li>
+                        <li><b>Permanent Resident Card (PRC):</b> If you applied for a PRC, you'll receive it after your arrival. This official card confirms your permanent resident status and is necessary for international travel.</li>
+                        <li><b>Settlement in Canada:</b> Once in Canada, prepare to settle down. Look for housing, open a bank account, obtain health insurance, and explore local services.</li>
+                        <li><b>Integration and Employment:</b> Familiarize yourself with Canadian life, culture, and opportunities. If you're seeking employment, update your resume and explore career options.</li>
+                        <li><b>Newcomer Support:</b> Canada offers programs and resources to help newcomers integrate. Take advantage of workshops, language courses, and orientation services.</li>
+                        <li><b>Administrative Steps:</b> Complete the necessary steps to obtain a Social Insurance Number (SIN), provincial health insurance card, and other essential documents.</li>
+                        <li><b>Community and Networking:</b> Get involved in the local community, build connections, and expand your social network.</li>
+                        <li><b>Financial Planning:</b> Manage your finances wisely, considering the cost of living, expenses, and savings.</li>
+                        </ol><br>
+
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer nasBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Social Insurance Number</button></li>
+                                <li><button class="answer bankBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Bank account</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `; // function here and disable buttons
+            }, 2000);
+        })
+    }
 }
 
-answers.forEach(answer => {
-    answer.addEventListener('click', () => {
-        answerUser(answer);
-        answer.textContent == 'English' ? questionType('english') : questionType('french');
-    })
-})
+// answers.forEach(answer => {
+//     answer.addEventListener('click', () => {
+//         answerUser(answer);
+//         answer.textContent == 'English' ? questionType('english') : questionType('french');
+//     })
+// })
 
 
 
