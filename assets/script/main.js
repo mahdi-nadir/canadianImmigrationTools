@@ -191,7 +191,7 @@ robotBtn.addEventListener('click', () => {
             <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                 <i class="fa-solid fa-robot ml-1 mt-1"></i>
                 <div>
-                    <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">Great! I can help you with the topics listed below. Select one of them to get started.
+                    <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">Great! I can help you with all Express Entry system topics listed below. Select one of them to get started.
                     <ul class="suggestionUser pt-2">
                             <li><button class="answer eligibilityBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Eligibility</button></li>
                             <li><button class="answer poolBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">E.E. Pool</button></li>
@@ -215,7 +215,7 @@ robotBtn.addEventListener('click', () => {
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
                         <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
-                        Excellent! Je peux vous aider avec les sujets énumérés ci-dessous. Sélectionnez-en un pour commencer.
+                        Excellent! Je peux vous aider avec les sujets énumérés ci-dessous concernant le système d'immigration Entrée Express. Sélectionnez-en un pour commencer.
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer admissibiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Admissibilité</button></li>
                                 <li><button class="answer bassinBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Bassin E.E.</button></li>
