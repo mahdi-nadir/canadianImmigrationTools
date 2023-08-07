@@ -290,12 +290,13 @@ function questionSubType(lang) {
                                 <li><button class="answer educationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Etudes</button></li>
                                 <li><button class="answer languagesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Langues</button></li>
                                 <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Expérience professionnelle</button></li>
+                                <li><button class="answer reservedJobBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Offre d'emploi</button></li>
                                 <li><button class="answer adaptabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Adaptabilité</button></li>
                             </ul>
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromAdmissibilite();
             }, 2000);
         })
 
@@ -325,7 +326,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromBassin();
             }, 2000);
         })
 
@@ -367,7 +368,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromPostItaFr();
             }, 2000);
         })
 
@@ -405,7 +406,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromPostAorFr();
             }, 2000);
         })
 
@@ -430,7 +431,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromPprFr();
             }, 2000);
         })
 
@@ -474,7 +475,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromInstallation();
             }, 2000);
         })
     } else {
@@ -507,7 +508,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromEligibility();
             }, 2000);
         })
 
@@ -537,7 +538,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromPool();
             }, 2000);
         })
 
@@ -573,7 +574,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromPostItaEn();
             }, 2000);
         })
 
@@ -606,7 +607,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromPostAorEn();
             }, 2000);
         })
 
@@ -631,7 +632,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromPprEn();
             }, 2000);
         })
 
@@ -667,7 +668,7 @@ function questionSubType(lang) {
                         </h3>
                     </div>
                 </div>
-            `; // function here and disable buttons
+            `; fromSettlement();
             }, 2000);
         })
     }
@@ -718,6 +719,359 @@ function questionSubType(lang) {
 // newsBtn.addEventListener('click', () => {
 //     console.log('news');
 // })
+
+
+
+function fromAdmissibilite() {
+    let ageBtn = document.querySelector('.ageBtn');
+    let educationBtn = document.querySelector('.educationBtn');
+    let languagesBtn = document.querySelector('.languagesBtn');
+    let workExpBtn = document.querySelector('.workExpBtn');
+    let reservedJobBtn = document.querySelector('.reservedJobBtn');
+    let adaptabiliteBtn = document.querySelector('.adaptabiliteBtn');
+
+    ageBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Le critère de l'âge");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Le critère de l'âge dans le score d'admissibilité de l'Entrée express mesure l'impact de l'âge sur la capacité d'adaptation et de contribution du candidat à l'économie canadienne. Des points sont attribués en fonction de l'âge, avec un maximum pour les candidats âgés de 18 à 35 ans, reflétant leur potentiel d'intégration et de productivité à long terme. A savoir que le candidat perd 1 point par année à partir de 36 ans et n'a aucun point à partir de 47 ans ou moins de 18 ans.<br>
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    educationBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser('Le critère des études');
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Le critère des études dans le système Entrée express évalue le niveau d'éducation du candidat et attribue des points en fonction de ce niveau. Cela reflète comment l'éducation du candidat peut contribuer positivement à l'économie canadienne. Les diplômes de divers niveaux, allant des certificats aux diplômes avancés, peuvent donner droit à des points, encourageant ainsi les candidats ayant une variété de compétences à postuler et à contribuer à la société canadienne.<br>
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    languagesBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser('Les deux langues officielles du Canada');
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Les compétences linguistiques sont un critère important dans le système Entrée express, évaluant la capacité d'un candidat à communiquer et à s'intégrer dans la société canadienne. Les candidats peuvent obtenir des points en fonction de leurs résultats aux examens de langue approuvés, tels que l'IELTS, le CELPIP, le TEF Canada et le TCF Canada. Chaque examen évalue la maîtrise de l'anglais et/ou du français, en évaluant la compréhension écrite et orale, ainsi que l'expression écrite et orale. Les points attribués varient en fonction du score obtenu (sachant que le score minimal requis est de NCLC7), ce qui reflète l'importance de la communication fluide et de la compréhension dans le processus d'immigration au Canada.<br>
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    workExpBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser('Le critère de l\'expérience de travail');
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        L'expérience professionnelle acquise à l'étranger est un critère important dans le système Entrée express. Pour être admissible, un candidat doit avoir au moins une année d'expérience de travail continue à temps plein (ou l'équivalent à temps partiel) dans une profession qualifiée, acquise en dehors du Canada. Cette exigence de continuité garantit que le candidat possède une solide expérience professionnelle à l'étranger.<br>
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    reservedJobBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser('Le critère de l\'offre d\'emploi réservé');
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Une offre d'emploi réservé est une proposition d'emploi émise par un employeur canadien spécifiquement en faveur d'un travailleur étranger. Cela signifie que l'employeur a choisi ce travailleur pour combler un poste vacant, et cette offre est généralement liée à une demande d'immigration. L'offre d'emploi réservé peut faciliter le processus d'immigration en offrant un soutien supplémentaire au candidat. Cependant, elle peut être soumise à certaines exigences et conditions définies par les autorités de l'immigration au Canada.<br>
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    adaptabiliteBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser('Faculté d\'adaptation');
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Le score d'adaptabilité dans le système Entrée express évalue la capacité du candidat et de son conjoint à s'intégrer dans la société canadienne. Il prend en compte plusieurs facteurs liés à l'adaptabilité :
+                        <ol>
+                        <li><b>Niveau linguistique du conjoint:</b> Les compétences linguistiques du conjoint en anglais ou en français sont évaluées. Un niveau élevé peut améliorer l'adaptabilité.</li>
+
+                        <li><b>Études au Canada:</b> Si le conjoint a fait ses études au Canada, cela indique une familiarité avec le système éducatif canadien, ce qui peut favoriser l'adaptabilité.</li>
+
+                        <li><b>Expérience professionnelle au Canada:</b> De même, si le conjoint a une expérience professionnelle au Canada, cela peut faciliter l'intégration sur le marché du travail.</li>
+
+                        <li><b>Études du requérant principal au Canada:</b> Les études du candidat principal au Canada démontrent une connaissance du système éducatif local et peuvent contribuer à l'adaptabilité.</li>
+
+                        <li><b>Expérience professionnelle au Canada:</b> Une expérience professionnelle du candidat principal au Canada peut faciliter la transition vers le marché du travail canadien.</li>
+
+                        <li><b>Membre de la famille vivant au Canada:</b> La présence de membres de la famille au Canada, tels que frères, sœurs, parents, grands-parents, enfants, petits-enfants, tantes, oncles, nièces ou neveux, peut renforcer les liens sociaux et le soutien, contribuant ainsi à l'adaptabilité.</li></ol><br>
+
+                        L'ensemble de ces facteurs est évalué pour déterminer le score d'adaptabilité global du candidat et de son conjoint, influençant ainsi leur admissibilité au programme Entrée express.<br>
+                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+}
+
+function fromBassin() {
+    let etatCivilBtn = document.querySelector('.etatCivilBtn');
+    let ageBtn = document.querySelector('.ageBtn');
+    let educationBtn = document.querySelector('.educationBtn');
+    let languagesBtn = document.querySelector('.languagesBtn');
+    let workExpBtn = document.querySelector('.workExpBtn');
+    let transferabiliteBtn = document.querySelector('.transferabiliteBtn');
+    let drawsBtn = document.querySelector('.drawsBtn');
+    let fundsBtn = document.querySelector('.fundsBtn');
+    let pnpBtn = document.querySelector('.pnpBtn');
+
+    etatCivilBtn.addEventListener('click', () => { })
+
+    ageBtn.addEventListener('click', () => { })
+
+    educationBtn.addEventListener('click', () => { })
+
+    languagesBtn.addEventListener('click', () => { })
+
+    workExpBtn.addEventListener('click', () => { })
+
+    transferabiliteBtn.addEventListener('click', () => { })
+
+    drawsBtn.addEventListener('click', () => { })
+
+    fundsBtn.addEventListener('click', () => { })
+
+    pnpBtn.addEventListener('click', () => { })
+}
+
+function fromPostItaFr() {
+    let docsListBtn = document.querySelector('.docsListBtn');
+    let personalBgBtn = document.querySelector('.personalBgBtn');
+    let profesionalBgBtn = document.querySelector('.profesionalBgBtn');
+    let referenceLetterBtn = document.querySelector('.referenceLetterBtn');
+    let giftDeedBtn = document.querySelector('.giftDeedBtn');
+    let feesBtn = document.querySelector('.feesBtn');
+    let vmBtn = document.querySelector('.vmBtn');
+
+    docsListBtn.addEventListener('click', () => { })
+
+    personalBgBtn.addEventListener('click', () => { })
+
+    profesionalBgBtn.addEventListener('click', () => { })
+
+    referenceLetterBtn.addEventListener('click', () => { })
+
+    giftDeedBtn.addEventListener('click', () => { })
+
+    feesBtn.addEventListener('click', () => { })
+
+    vmBtn.addEventListener('click', () => { })
+}
+
+function fromPostAorFr() {
+    let bioBtn = document.querySelector('.bioBtn');
+    let processingTimeBtn = document.querySelector('.processingTimeBtn');
+    let adrBtn = document.querySelector('.adrBtn');
+
+    bioBtn.addEventListener('click', () => { })
+
+    processingTimeBtn.addEventListener('click', () => { })
+
+    adrBtn.addEventListener('click', () => { })
+}
+
+function fromPprFr() {
+    let visaBtn = document.querySelector('.visaBtn');
+    let coprBtn = document.querySelector('.coprBtn');
+
+    visaBtn.addEventListener('click', () => { })
+
+    coprBtn.addEventListener('click', () => { })
+}
+
+function fromInstallation() {
+    let nasBtn = document.querySelector('.nasBtn');
+    let bankBtn = document.querySelector('.bankBtn');
+
+    nasBtn.addEventListener('click', () => { })
+
+    bankBtn.addEventListener('click', () => { })
+}
+
+function fromEligibility() {
+    let ageBtn = document.querySelector('.ageBtn');
+    let educationBtn = document.querySelector('.educationBtn');
+    let languagesBtn = document.querySelector('.languagesBtn');
+    let workExpBtn = document.querySelector('.workExpBtn');
+    let adaptabiliteBtn = document.querySelector('.adaptabiliteBtn');
+
+    ageBtn.addEventListener('click', () => { })
+
+    educationBtn.addEventListener('click', () => { })
+
+    languagesBtn.addEventListener('click', () => { })
+
+    workExpBtn.addEventListener('click', () => { })
+
+    adaptabiliteBtn.addEventListener('click', () => { })
+}
+
+function fromPool() {
+    let etatCivilBtn = document.querySelector('.etatCivilBtn');
+    let ageBtn = document.querySelector('.ageBtn');
+    let educationBtn = document.querySelector('.educationBtn');
+    let languagesBtn = document.querySelector('.languagesBtn');
+    let workExpBtn = document.querySelector('.workExpBtn');
+    let transferabiliteBtn = document.querySelector('.transferabiliteBtn');
+    let drawsBtn = document.querySelector('.drawsBtn');
+    let fundsBtn = document.querySelector('.fundsBtn');
+    let pnpBtn = document.querySelector('.pnpBtn');
+
+    etatCivilBtn.addEventListener('click', () => { })
+
+    ageBtn.addEventListener('click', () => { })
+
+    educationBtn.addEventListener('click', () => { })
+
+    languagesBtn.addEventListener('click', () => { })
+
+    workExpBtn.addEventListener('click', () => { })
+
+    transferabiliteBtn.addEventListener('click', () => { })
+
+    drawsBtn.addEventListener('click', () => { })
+
+    fundsBtn.addEventListener('click', () => { })
+
+    pnpBtn.addEventListener('click', () => { })
+}
+
+function fromPostItaEn() {
+    let docsListBtn = document.querySelector('.docsListBtn');
+    let personalBgBtn = document.querySelector('.personalBgBtn');
+    let profesionalBgBtn = document.querySelector('.profesionalBgBtn');
+    let referenceLetterBtn = document.querySelector('.referenceLetterBtn');
+    let giftDeedBtn = document.querySelector('.giftDeedBtn');
+    let feesBtn = document.querySelector('.feesBtn');
+    let vmBtn = document.querySelector('.vmBtn');
+
+    docsListBtn.addEventListener('click', () => { })
+
+    personalBgBtn.addEventListener('click', () => { })
+
+    profesionalBgBtn.addEventListener('click', () => { })
+
+    referenceLetterBtn.addEventListener('click', () => { })
+
+    giftDeedBtn.addEventListener('click', () => { })
+
+    feesBtn.addEventListener('click', () => { })
+
+    vmBtn.addEventListener('click', () => { })
+}
+
+function fromPostAorEn() {
+    let bioBtn = document.querySelector('.bioBtn');
+    let processingTimeBtn = document.querySelector('.processingTimeBtn');
+    let adrBtn = document.querySelector('.adrBtn');
+
+    bioBtn.addEventListener('click', () => { })
+
+    processingTimeBtn.addEventListener('click', () => { })
+
+    adrBtn.addEventListener('click', () => { })
+}
+
+function fromPprEn() {
+    let visaBtn = document.querySelector('.visaBtn');
+    let coprBtn = document.querySelector('.coprBtn');
+
+    visaBtn.addEventListener('click', () => { })
+
+    coprBtn.addEventListener('click', () => { })
+}
+
+function fromSettlement() {
+    let nasBtn = document.querySelector('.nasBtn');
+    let bankBtn = document.querySelector('.bankBtn');
+
+    nasBtn.addEventListener('click', () => { })
+
+    bankBtn.addEventListener('click', () => { })
+}
+
+
+
+
+
+
+
+
+
+
 
 currencyBtn.addEventListener('click', () => {
     let modalResult = document.querySelector('#modalResult');
@@ -859,11 +1213,6 @@ currencyBtn.addEventListener('click', () => {
         });
     })
 })
-
-
-
-
-
 
 // add event listeners to buttons and display the right component when clicked
 homeBtn.addEventListener('click', () => {
