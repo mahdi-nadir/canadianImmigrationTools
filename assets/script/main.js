@@ -121,6 +121,11 @@ let reduceBtn = chatDiv.querySelector('.reduceBtn');
 let closeChatBtn = chatDiv.querySelector('.closeBtn');
 let answers = document.querySelectorAll('.answer');
 let spinner = document.querySelector('.spinner');
+let heyMessage = document.querySelector('.hey');
+let masculinePronoun = document.querySelector('.masculinePronoun');
+let whatLang = document.querySelector('.whatLang');
+let robotIcon = document.querySelector('.robotIcon');
+let chatTime, chatMonth, chatDay, chatHour, chatMinute;
 let questionInvitationFr = [
     "Si vous avez d'autres questions plus spécifiques, n'hésitez pas à me demander.",
     "Si vous avez des interrogations plus ciblées, n'hésitez pas à me les poser.",
@@ -166,6 +171,24 @@ robotBtn.addEventListener('click', () => {
     chatDiv.style.visibility = 'visible';
     chatDiv.style.zIndex = '1000';
     robotBtn.style.display = 'none';
+    spinner.style.display = 'block';
+    chatTime = new Date();
+    chatDay = chatTime.getDate();
+    chatMonth = chatTime.getMonth() + 1;
+    chatHour = chatTime.getHours();
+    chatMinute = chatTime.getMinutes();
+    setTimeout(() => {
+        robotIcon.style.display = 'block';
+        heyMessage.style.display = 'block';
+    }, 800)
+    setTimeout(() => {
+        masculinePronoun.style.display = 'block';
+    }, 2500)
+    setTimeout(() => {
+        whatLang.style.display = 'block';
+        suggestionUser.style.display = 'block';
+        spinner.style.display = 'none';
+    }, 3200)
     let frLang = document.querySelector('.frBtn');
     let engLang = document.querySelector('.engBtn');
     frLang.addEventListener('click', () => {
@@ -199,6 +222,7 @@ robotBtn.addEventListener('click', () => {
                             <li><button class="answer postAorEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
                             <li><button class="answer pprEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
                             <li><button class="answer settlementBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Settlement</button></li>
+                            <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">The topic is not listed</button></li>
                         </ul>
                     </h3>
                 </div>
@@ -223,6 +247,7 @@ robotBtn.addEventListener('click', () => {
                                 <li><button class="answer postAorFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
                                 <li><button class="answer pprFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
                                 <li><button class="answer installationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Installation</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -271,6 +296,7 @@ function questionSubType(lang) {
         let postAorFrBtn = document.querySelector('.postAorFrBtn');
         let pprFrBtn = document.querySelector('.pprFrBtn');
         let installationBtn = document.querySelector('.installationBtn');
+        let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
         admissibiliteBtn.addEventListener('click', () => {
             spinner.style.display = 'block';
@@ -291,11 +317,12 @@ function questionSubType(lang) {
                                 <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Expérience professionnelle</button></li>
                                 <li><button class="answer reservedJobBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Offre d'emploi</button></li>
                                 <li><button class="answer adaptabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Adaptabilité</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
                 </div>
-            `; fromAdmissibilite();
+            `; fromAdmissibilite(lang);
             }, 2000);
         })
 
@@ -323,6 +350,7 @@ function questionSubType(lang) {
                                 <li><button class="answer drawsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Les sélections fédérales</button></li>
                                 <li><button class="answer fundsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Preuve de fonds</button></li>
                                 <li><button class="answer pnpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Programme des Candidats des Provinces (PCP)</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -365,6 +393,7 @@ function questionSubType(lang) {
                                 <li><button class="answer giftDeedBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Lettre de don d'argent</button></li>
                                 <li><button class="answer feesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Frais à payer</button></li>
                                 <li><button class="answer vmBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Visite médicale</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -403,6 +432,7 @@ function questionSubType(lang) {
                                 <li><button class="answer bioBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Données biométriques</button></li>
                                 <li><button class="answer processingTimeBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Délai de traitement</button></li>
                                 <li><button class="answer adrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Additional Document Request</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -428,6 +458,7 @@ function questionSubType(lang) {
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer visaBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Visa IMMIGRANT</button></li>
                                 <li><button class="answer coprBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Confirmation de la résidence permanente</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -472,6 +503,7 @@ function questionSubType(lang) {
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer nasBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Numéro d'Assurance Sociale</button></li>
                                 <li><button class="answer bankBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Compte bancaire</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -479,6 +511,8 @@ function questionSubType(lang) {
             `; fromInstallation();
             }, 2000);
         })
+
+        anotherQuestionBtn.addEventListener('click', questionFromWebsite('french'))
     } else {
         let eligibilityBtn = document.querySelector('.eligibilityBtn');
         let poolBtn = document.querySelector('.poolBtn');
@@ -486,6 +520,7 @@ function questionSubType(lang) {
         let postAorEnBtn = document.querySelector('.postAorEnBtn');
         let pprEnBtn = document.querySelector('.pprEnBtn');
         let settlementBtn = document.querySelector('.settlementBtn');
+        let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
         eligibilityBtn.addEventListener('click', () => {
             spinner.style.display = 'block';
@@ -506,11 +541,12 @@ function questionSubType(lang) {
                                 <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Work Experience</button></li>
                                 <li><button class="answer reservedJobBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Reserved job</button></li>
                                 <li><button class="answer adaptabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Adaptability</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
                 </div>
-            `; fromEligibility();
+            `; fromEligibility(lang);
             }, 2000);
         })
 
@@ -532,12 +568,13 @@ function questionSubType(lang) {
                                 <li><button class="answer educationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Education</button></li>
                                 <li><button class="answer languagesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Languages</button></li>
                                 <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Work Experience</button></li>
-                                <li><button class="answer spouseBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Conjoint</button></li>
+                                <li><button class="answer spouseBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Spouse / Partner</button></li>
                                 <li><button class="answer transferabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Skill Transferability</button></li>
-                                <li><button class="answer nominationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Nomination provinciale</button></li>
+                                <li><button class="answer nominationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Provincial Nomination Certificate</button></li>
                                 <li><button class="answer drawsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Federal draws</button></li>
                                 <li><button class="answer fundsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Proof of funds</button></li>
                                 <li><button class="answer pnpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Provincial Nominee Program (PNP)</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -574,6 +611,7 @@ function questionSubType(lang) {
                                 <li><button class="answer giftDeedBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Gift Deed</button></li>
                                 <li><button class="answer feesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Fees to pay</button></li>
                                 <li><button class="answer vmBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Medical examination</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -607,6 +645,7 @@ function questionSubType(lang) {
                                 <li><button class="answer bioBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Biometrics</button></li>
                                 <li><button class="answer processingTimeBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Processing time</button></li>
                                 <li><button class="answer adrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Additional Document Request</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -632,6 +671,7 @@ function questionSubType(lang) {
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer visaBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">IMMIGRANT Visa</button></li>
                                 <li><button class="answer coprBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Confirmation of Permanent Residence</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -668,6 +708,7 @@ function questionSubType(lang) {
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer nasBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Social Insurance Number</button></li>
                                 <li><button class="answer bankBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Bank account</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -675,9 +716,74 @@ function questionSubType(lang) {
             `; fromSettlement();
             }, 2000);
         })
+
+        anotherQuestionBtn.addEventListener('click', questionFromWebsite('english'))
     }
 }
 
+function questionFromWebsite(lang) {
+    let anotherQuestionBtn = document.querySelectorAll('.anotherQuestionBtn');
+
+    if (lang == 'english') {
+        anotherQuestionBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('I want to ask another question');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
+                    <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                        <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                        <div>
+                            <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                            Need help with a topic not listed? You can navigate to our Facebook group where you can ask your question with the appropriate hashtag. We're here to assist you!
+                            
+                            Please copy this hashtag <b>#toMedy_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> and paste it into your post in <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">our Facebook group</a>.
+                            <br>
+
+                            ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+
+                            <ul class="suggestionUser pt-2">
+                                    <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                                </ul>
+                            </h3>
+                        </div>
+                    </div>
+                `; questionFromWebsite();
+                }, 2000);
+            })
+        })
+    } else {
+        anotherQuestionBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Je veux poser une autre question');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
+                    <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                        <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                        <div>
+                            <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                            Besoin d'aide sur un sujet qui n'est pas dans la liste ? Vous pouvez vous diriger vers notre groupe Facebook où vous pourrez poser votre question avec le hashtag approprié. Nous sommes là pour vous aider!
+                            
+                            Prière de copier cet hashtag <b>#toMedy_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> et de le coller dans votre publication dans <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">notre groupe Facebook</a>.<br>
+                            <br>
+
+                            ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+
+                            <ul class="suggestionUser pt-2">
+                                    <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
+                                </ul>
+                            </h3>
+                        </div>
+                    </div>
+                `;
+                }, 2000);
+            })
+        })
+    }
+}
 // answers.forEach(answer => {
 //     answer.addEventListener('click', () => {
 //         answerUser(answer);
@@ -726,13 +832,14 @@ function questionSubType(lang) {
 
 
 // eligibility
-function fromAdmissibilite() {
+function fromAdmissibilite(lang) {
     let ageBtn = document.querySelector('.ageBtn');
     let educationBtn = document.querySelector('.educationBtn');
     let languagesBtn = document.querySelector('.languagesBtn');
     let workExpBtn = document.querySelector('.workExpBtn');
     let reservedJobBtn = document.querySelector('.reservedJobBtn');
     let adaptabiliteBtn = document.querySelector('.adaptabiliteBtn');
+    let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
     ageBtn.addEventListener('click', () => {
         spinner.style.display = 'block';
@@ -879,15 +986,18 @@ function fromAdmissibilite() {
             `;
         }, 2000);
     })
+
+    anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
 }
 
-function fromEligibility() {
+function fromEligibility(lang) {
     let ageBtn = document.querySelector('.ageBtn');
     let educationBtn = document.querySelector('.educationBtn');
     let languagesBtn = document.querySelector('.languagesBtn');
     let workExpBtn = document.querySelector('.workExpBtn');
     let reservedJobBtn = document.querySelector('.reservedJobBtn');
     let adaptabiliteBtn = document.querySelector('.adaptabiliteBtn');
+    let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
     ageBtn.addEventListener('click', () => {
         spinner.style.display = 'block';
@@ -1029,6 +1139,8 @@ function fromEligibility() {
             `;
         }, 2000);
     })
+
+    anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
 }
 
 // pool  
@@ -2488,7 +2600,7 @@ function fromInstallation() {
 
                         <li><b>Obtenez les cartes et les services:</b> Une fois que votre compte est ouvert, la banque vous fournira généralement une carte de débit et des informations sur les services bancaires en ligne.</li></ol>
 
-                        Êtes-vous intéressé(e) à en savoir plus sur quelques banques au Canada? vous les trouvez ci-dessous.
+                        Êtes-vous intéressé à en savoir plus sur quelques banques au Canada? vous les trouvez ci-dessous.
                         <ul>
                             <li><a class="text-blue-600" href="https://www.rbcroyalbank.com/fr/personal.html" target="_blank" rel="noreferrer">Banque Royale du Canada (RBC)</a></li>
                             <li><a class="text-blue-600" href="https://www.td.com/ca/fr/services-bancaires-personnels" target="_blank" rel="noreferrer">Banque Toronto-Dominion (TD)</a></li>
