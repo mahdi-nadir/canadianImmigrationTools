@@ -153,7 +153,6 @@ let questionInvitationFr = [
     "Si d'autres points nécessitent des éclaircissements, je suis là pour vous fournir les réponses.",
     "N'hésitez pas à me poser d'autres questions si vous en avez."
 ]
-
 let questionInvitationEn = [
     "If you have other more specific questions, feel free to ask me.",
     "If you have more targeted questions, feel free to ask them.",
@@ -200,7 +199,6 @@ robotBtn.addEventListener('click', () => {
     })
 })
 
-
 reduceBtn.addEventListener('click', () => {
     chatDiv.style.height = '40px';
     chatArea.style.display = 'none';
@@ -212,13 +210,18 @@ closeChatBtn.addEventListener('click', () => {
     robotBtn.style.display = 'block';
     chatArea.style.display = 'block';
     reduceBtn.style.display = 'block';
-    // chatDiv.innerHTML = ''
+    discussion.innerHTML = ''
+    let engBtn = document.querySelector('.engBtn');
+    let frBtn = document.querySelector('.frBtn');
+    frBtn.disabled = false;
+    engBtn.disabled = false;
 })
 
 chatDiv.querySelector('span').addEventListener('click', () => {
     chatDiv.style.height = '400px';
     chatArea.style.display = 'block';
     reduceBtn.style.display = 'block';
+    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
 })
 
 function startConversation() {
@@ -242,6 +245,7 @@ function startConversation() {
 }
 
 function refreshing(lang) {
+    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
     let refreshBtn = document.querySelectorAll('.resetBtn');
     refreshBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -249,7 +253,6 @@ function refreshing(lang) {
         })
     })
 }
-
 
 function answerUser(response) {
     discussion.innerHTML += `<div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
@@ -320,48 +323,51 @@ function questionType(lang) {
 
 function questionSubType(lang) {
     if (lang == 'french') {
-        let admissibiliteBtn = document.querySelector('.admissibiliteBtn');
-        let bassinBtn = document.querySelector('.bassinBtn');
-        let postItaFrBtn = document.querySelector('.postItaFrBtn');
-        let postAorFrBtn = document.querySelector('.postAorFrBtn');
-        let pprFrBtn = document.querySelector('.pprFrBtn');
-        let installationBtn = document.querySelector('.installationBtn');
+        let admissibiliteBtn = document.querySelectorAll('.admissibiliteBtn');
+        let bassinBtn = document.querySelectorAll('.bassinBtn');
+        let postItaFrBtn = document.querySelectorAll('.postItaFrBtn');
+        let postAorFrBtn = document.querySelectorAll('.postAorFrBtn');
+        let pprFrBtn = document.querySelectorAll('.pprFrBtn');
+        let installationBtn = document.querySelectorAll('.installationBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-        admissibiliteBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Admissibilité');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
-                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
-                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
-                    <div>
-                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
-                        Je crains que je ne puisse pas rédiger tout un article sur l'admissibilité. Mais j'ai une meilleure idée! Je peux vous donner un lien vers un article qui explique tout cela. <a href="https://www.facebook.com/groups/hellocanada25/posts/185945916030094/?__cft__[0]=AZWHjGSQcxo-zmxuyvWErV-o7FE00vXQxghw2Op3EoitY7dH-Ia0vE4gGNmjKIrb9V9tYC3Ntd9_-HnHKEbVhm6HVWKHF3jbHU5VFIC8f_iTHqaj19wWR2M-LT_M5SfB1z3FRJSx0nvO-N0t5AKCk0Ph&__tn__=%2CO%2CP-R" target="_blank" class="text-blue-500 underline">Cliquez ici</a> pour lire l'article.<br>
-                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
-                        <ul class="suggestionUser pt-2">
-                                <li><button class="answer ageBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Age</button></li>
-                                <li><button class="answer educationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Etudes</button></li>
-                                <li><button class="answer languagesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Langues</button></li>
-                                <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Expérience professionnelle</button></li>
-                                <li><button class="answer reservedJobBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Offre d'emploi</button></li>
-                                <li><button class="answer adaptabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Adaptabilité</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
-                            </ul>
-                        </h3>
+        admissibiliteBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Admissibilité');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
+                    <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                        <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                        <div>
+                            <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                            Je crains que je ne puisse pas rédiger tout un article sur l'admissibilité. Mais j'ai une meilleure idée! Je peux vous donner un lien vers un article qui explique tout cela. <a href="https://www.facebook.com/groups/hellocanada25/posts/185945916030094/?__cft__[0]=AZWHjGSQcxo-zmxuyvWErV-o7FE00vXQxghw2Op3EoitY7dH-Ia0vE4gGNmjKIrb9V9tYC3Ntd9_-HnHKEbVhm6HVWKHF3jbHU5VFIC8f_iTHqaj19wWR2M-LT_M5SfB1z3FRJSx0nvO-N0t5AKCk0Ph&__tn__=%2CO%2CP-R" target="_blank" class="text-blue-500 underline">Cliquez ici</a> pour lire l'article.<br>
+                            ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                            <ul class="suggestionUser pt-2">
+                                    <li><button class="answer ageBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Age</button></li>
+                                    <li><button class="answer educationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Etudes</button></li>
+                                    <li><button class="answer languagesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Langues</button></li>
+                                    <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Expérience professionnelle</button></li>
+                                    <li><button class="answer reservedJobBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Offre d'emploi</button></li>
+                                    <li><button class="answer adaptabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Adaptabilité</button></li>
+                                    <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
+                                </ul>
+                            </h3>
+                        </div>
                     </div>
-                </div>
-            `; fromAdmissibilite(lang);
-            }, 2000);
+                `; fromAdmissibilite(lang);
+                }, 2000);
+            })
         })
 
-        bassinBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Bassin Entrée Express');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        bassinBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Bassin Entrée Express');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -386,15 +392,17 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromBassin(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
-        postItaFrBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Post-ITA');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        postItaFrBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Post-ITA');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -429,15 +437,17 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromPostItaFr(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
-        postAorFrBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Post-AoR');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        postAorFrBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Post-AoR');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -468,15 +478,17 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromPostAorFr(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
-        pprFrBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Demande de Passeport');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        pprFrBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Demande de Passeport');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -494,15 +506,17 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromPprFr(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
-        installationBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Voyage et Installation');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        installationBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Voyage et Installation');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -539,25 +553,27 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromInstallation(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
         anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
     } else {
-        let eligibilityBtn = document.querySelector('.eligibilityBtn');
-        let poolBtn = document.querySelector('.poolBtn');
-        let postItaEnBtn = document.querySelector('.postItaEnBtn');
-        let postAorEnBtn = document.querySelector('.postAorEnBtn');
-        let pprEnBtn = document.querySelector('.pprEnBtn');
-        let settlementBtn = document.querySelector('.settlementBtn');
+        let eligibilityBtn = document.querySelectorAll('.eligibilityBtn');
+        let poolBtn = document.querySelectorAll('.poolBtn');
+        let postItaEnBtn = document.querySelectorAll('.postItaEnBtn');
+        let postAorEnBtn = document.querySelectorAll('.postAorEnBtn');
+        let pprEnBtn = document.querySelectorAll('.pprEnBtn');
+        let settlementBtn = document.querySelectorAll('.settlementBtn');
         let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-        eligibilityBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Eligibility');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        eligibilityBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Eligibility');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -577,15 +593,17 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromEligibility(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
-        poolBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Express Entry Pool');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        poolBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Express Entry Pool');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -610,15 +628,17 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromPool(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
-        postItaEnBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Post-ITA');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        postItaEnBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Post-ITA');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -647,15 +667,17 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromPostItaEn(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
-        postAorEnBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Post-AoR');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        postAorEnBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Post-AoR');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -681,15 +703,17 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromPostAorEn(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
-        pprEnBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Passport Request');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        pprEnBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Passport Request');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -707,15 +731,17 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromPprEn(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
-        settlementBtn.addEventListener('click', () => {
-            spinner.style.display = 'block';
-            answerUser('Travel and Settlement');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
+        settlementBtn.forEach(btn => {
+            btn.addEventListener('click', () => {
+                spinner.style.display = 'block';
+                answerUser('Travel and Settlement');
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -744,7 +770,8 @@ function questionSubType(lang) {
                     </div>
                 </div>
             `; fromSettlement(lang);
-            }, 2000);
+                }, 2000);
+            })
         })
 
         anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -866,20 +893,22 @@ function questionFromWebsite(lang) {
 
 // eligibility
 function fromAdmissibilite(lang) {
-    let ageBtn = document.querySelector('.ageBtn');
-    let educationBtn = document.querySelector('.educationBtn');
-    let languagesBtn = document.querySelector('.languagesBtn');
-    let workExpBtn = document.querySelector('.workExpBtn');
-    let reservedJobBtn = document.querySelector('.reservedJobBtn');
-    let adaptabiliteBtn = document.querySelector('.adaptabiliteBtn');
+    let ageBtn = document.querySelectorAll('.ageBtn');
+    let educationBtn = document.querySelectorAll('.educationBtn');
+    let languagesBtn = document.querySelectorAll('.languagesBtn');
+    let workExpBtn = document.querySelectorAll('.workExpBtn');
+    let reservedJobBtn = document.querySelectorAll('.reservedJobBtn');
+    let adaptabiliteBtn = document.querySelectorAll('.adaptabiliteBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
 
-    ageBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Le critère de l'âge");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    ageBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Le critère de l'âge");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -893,16 +922,18 @@ function fromAdmissibilite(lang) {
                     </div>
                 </div>
             `;
-            refreshing(lang);
-        }, 2000);
+                refreshing(lang);
+            }, 2000);
+        })
     })
 
-    educationBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Le critère des études');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    educationBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Le critère des études');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -916,15 +947,17 @@ function fromAdmissibilite(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    languagesBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Les deux langues officielles du Canada');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    languagesBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Les deux langues officielles du Canada');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -938,15 +971,17 @@ function fromAdmissibilite(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    workExpBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Le critère de l\'expérience de travail');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    workExpBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Le critère de l\'expérience de travail');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -960,15 +995,17 @@ function fromAdmissibilite(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    reservedJobBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Le critère de l\'offre d\'emploi réservé');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    reservedJobBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Le critère de l\'offre d\'emploi réservé');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -982,15 +1019,17 @@ function fromAdmissibilite(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    adaptabiliteBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Faculté d\'adaptation');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    adaptabiliteBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Faculté d\'adaptation');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1018,29 +1057,30 @@ function fromAdmissibilite(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
-
-    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
 }
 
 function fromEligibility(lang) {
-    let ageBtn = document.querySelector('.ageBtn');
-    let educationBtn = document.querySelector('.educationBtn');
-    let languagesBtn = document.querySelector('.languagesBtn');
-    let workExpBtn = document.querySelector('.workExpBtn');
-    let reservedJobBtn = document.querySelector('.reservedJobBtn');
-    let adaptabiliteBtn = document.querySelector('.adaptabiliteBtn');
+    let ageBtn = document.querySelectorAll('.ageBtn');
+    let educationBtn = document.querySelectorAll('.educationBtn');
+    let languagesBtn = document.querySelectorAll('.languagesBtn');
+    let workExpBtn = document.querySelectorAll('.workExpBtn');
+    let reservedJobBtn = document.querySelectorAll('.reservedJobBtn');
+    let adaptabiliteBtn = document.querySelectorAll('.adaptabiliteBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
 
-    ageBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Age criterion");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    ageBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Age criterion");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1053,16 +1093,19 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
-        }, 2000);
+            `;
+                refreshing(lang);
+            }, 2000);
+        })
     })
 
-    educationBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Education criterion');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    educationBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Education criterion');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1076,15 +1119,17 @@ function fromEligibility(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    languagesBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Canada\'s two official languages');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    languagesBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Canada\'s two official languages');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1098,15 +1143,17 @@ function fromEligibility(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    workExpBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Work experience criterion');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    workExpBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Work experience criterion');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1120,15 +1167,17 @@ function fromEligibility(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    reservedJobBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Reserved job offer criterion');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    reservedJobBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Reserved job offer criterion');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1142,15 +1191,17 @@ function fromEligibility(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    adaptabiliteBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser('Adaptability');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    adaptabiliteBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser('Adaptability');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1173,35 +1224,36 @@ function fromEligibility(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
-
-    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
 }
 
 // pool  
 function fromBassin(lang) {
-    let etatCivilBtn = document.querySelector('.etatCivilBtn');
-    let ageBtn = document.querySelector('.ageBtn');
-    let educationBtn = document.querySelector('.educationBtn');
-    let languagesBtn = document.querySelector('.languagesBtn');
-    let workExpBtn = document.querySelector('.workExpBtn');
-    let spouseBtn = document.querySelector('.spouseBtn');
-    let transferabiliteBtn = document.querySelector('.transferabiliteBtn');
-    let nominationBtn = document.querySelector('.nominationBtn');
-    let drawsBtn = document.querySelector('.drawsBtn');
-    let fundsBtn = document.querySelector('.fundsBtn');
-    let pnpBtn = document.querySelector('.pnpBtn');
+    let etatCivilBtn = document.querySelectorAll('.etatCivilBtn');
+    let ageBtn = document.querySelectorAll('.ageBtn');
+    let educationBtn = document.querySelectorAll('.educationBtn');
+    let languagesBtn = document.querySelectorAll('.languagesBtn');
+    let workExpBtn = document.querySelectorAll('.workExpBtn');
+    let spouseBtn = document.querySelectorAll('.spouseBtn');
+    let transferabiliteBtn = document.querySelectorAll('.transferabiliteBtn');
+    let nominationBtn = document.querySelectorAll('.nominationBtn');
+    let drawsBtn = document.querySelectorAll('.drawsBtn');
+    let fundsBtn = document.querySelectorAll('.fundsBtn');
+    let pnpBtn = document.querySelectorAll('.pnpBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
 
-    etatCivilBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("L'état civil du candidat");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    etatCivilBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("L'état civil du candidat");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1221,15 +1273,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    ageBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Le critère de l'âge dans le bassin");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    ageBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Le critère de l'âge dans le bassin");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1247,15 +1301,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    educationBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Les études dans le bassin");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    educationBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Les études dans le bassin");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1273,15 +1329,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    languagesBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Les langues dans le bassin");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    languagesBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Les langues dans le bassin");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1299,15 +1357,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    workExpBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("L'expérience de travail dans le bassin");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    workExpBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("L'expérience de travail dans le bassin");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1325,15 +1385,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    spouseBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Le conjoint");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    spouseBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Le conjoint");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1355,15 +1417,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    transferabiliteBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("La transférabilité des compétences");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    transferabiliteBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("La transférabilité des compétences");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1381,15 +1445,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    nominationBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("La nomination provinciale");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    nominationBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("La nomination provinciale");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1407,15 +1473,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    drawsBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Les sélections");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    drawsBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Les sélections");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1435,15 +1503,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    fundsBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Les fonds requis");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    fundsBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Les fonds requis");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1463,15 +1533,17 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    pnpBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Le programme des candidats des provinces (PCP)");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    pnpBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Le programme des candidats des provinces (PCP)");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1508,7 +1580,8 @@ function fromBassin(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -1517,25 +1590,26 @@ function fromBassin(lang) {
 }
 
 function fromPool(lang) {
-    let etatCivilBtn = document.querySelector('.etatCivilBtn');
-    let ageBtn = document.querySelector('.ageBtn');
-    let educationBtn = document.querySelector('.educationBtn');
-    let languagesBtn = document.querySelector('.languagesBtn');
-    let workExpBtn = document.querySelector('.workExpBtn');
-    let spouseBtn = document.querySelector('.spouseBtn');
-    let transferabiliteBtn = document.querySelector('.transferabiliteBtn');
-    let nominationBtn = document.querySelector('.nominationBtn');
-    let drawsBtn = document.querySelector('.drawsBtn');
-    let fundsBtn = document.querySelector('.fundsBtn');
-    let pnpBtn = document.querySelector('.pnpBtn');
+    let etatCivilBtn = document.querySelectorAll('.etatCivilBtn');
+    let ageBtn = document.querySelectorAll('.ageBtn');
+    let educationBtn = document.querySelectorAll('.educationBtn');
+    let languagesBtn = document.querySelectorAll('.languagesBtn');
+    let workExpBtn = document.querySelectorAll('.workExpBtn');
+    let spouseBtn = document.querySelectorAll('.spouseBtn');
+    let transferabiliteBtn = document.querySelectorAll('.transferabiliteBtn');
+    let nominationBtn = document.querySelectorAll('.nominationBtn');
+    let drawsBtn = document.querySelectorAll('.drawsBtn');
+    let fundsBtn = document.querySelectorAll('.fundsBtn');
+    let pnpBtn = document.querySelectorAll('.pnpBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-    etatCivilBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Marital status");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    etatCivilBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Marital status");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1555,15 +1629,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    ageBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Age");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    ageBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Age");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1581,15 +1657,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    educationBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Education criterion in the pool");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    educationBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Education criterion in the pool");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1607,15 +1685,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    languagesBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Language criterion in the pool");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    languagesBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Language criterion in the pool");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1633,15 +1713,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    workExpBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Work experience criterion");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    workExpBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Work experience criterion");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1659,15 +1741,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    spouseBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Spouse's contribution");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    spouseBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Spouse's contribution");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1689,15 +1773,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    transferabiliteBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Skill transferability");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    transferabiliteBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Skill transferability");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1715,15 +1801,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    nominationBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Provincial nomination");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    nominationBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Provincial nomination");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1741,15 +1829,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    drawsBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Federal draws");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    drawsBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Federal draws");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1769,15 +1859,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    fundsBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Funds required");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    fundsBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Required funds");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1797,15 +1889,17 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    pnpBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Provincial Nominee Program (PNP)");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    pnpBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Provincial Nominee Program (PNP)");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1842,7 +1936,8 @@ function fromPool(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -1852,21 +1947,22 @@ function fromPool(lang) {
 
 // From Post Ita
 function fromPostItaFr(lang) {
-    let docsListBtn = document.querySelector('.docsListBtn');
-    let personalBgBtn = document.querySelector('.personalBgBtn');
-    let profesionalBgBtn = document.querySelector('.profesionalBgBtn');
-    let referenceLetterBtn = document.querySelector('.referenceLetterBtn');
-    let giftDeedBtn = document.querySelector('.giftDeedBtn');
-    let feesBtn = document.querySelector('.feesBtn');
-    let vmBtn = document.querySelector('.vmBtn');
+    let docsListBtn = document.querySelectorAll('.docsListBtn');
+    let personalBgBtn = document.querySelectorAll('.personalBgBtn');
+    let profesionalBgBtn = document.querySelectorAll('.profesionalBgBtn');
+    let referenceLetterBtn = document.querySelectorAll('.referenceLetterBtn');
+    let giftDeedBtn = document.querySelectorAll('.giftDeedBtn');
+    let feesBtn = document.querySelectorAll('.feesBtn');
+    let vmBtn = document.querySelectorAll('.vmBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-    docsListBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("La liste des documents à déposer");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    docsListBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("La liste des documents à déposer");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1889,15 +1985,17 @@ function fromPostItaFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    personalBgBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Les antécédents personnels");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    personalBgBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Les antécédents personnels");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1917,15 +2015,17 @@ function fromPostItaFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    profesionalBgBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Les antécédents professionnels");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    profesionalBgBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Les antécédents professionnels");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1947,15 +2047,17 @@ function fromPostItaFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    referenceLetterBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("La lettre de référence professionnelle");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    referenceLetterBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("La lettre de référence professionnelle");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -1978,15 +2080,17 @@ function fromPostItaFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    giftDeedBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("L'attestation de don d'argent");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    giftDeedBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("L'attestation de don d'argent");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2009,15 +2113,17 @@ function fromPostItaFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    feesBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Le critère de l'âge dans le bassin");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    feesBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Le critère de l'âge dans le bassin");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2042,15 +2148,17 @@ function fromPostItaFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    vmBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Le critère de l'âge dans le bassin");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    vmBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Le critère de l'âge dans le bassin");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2070,7 +2178,8 @@ function fromPostItaFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -2079,21 +2188,22 @@ function fromPostItaFr(lang) {
 }
 
 function fromPostItaEn(lang) {
-    let docsListBtn = document.querySelector('.docsListBtn');
-    let personalBgBtn = document.querySelector('.personalBgBtn');
-    let profesionalBgBtn = document.querySelector('.profesionalBgBtn');
-    let referenceLetterBtn = document.querySelector('.referenceLetterBtn');
-    let giftDeedBtn = document.querySelector('.giftDeedBtn');
-    let feesBtn = document.querySelector('.feesBtn');
-    let vmBtn = document.querySelector('.vmBtn');
+    let docsListBtn = document.querySelectorAll('.docsListBtn');
+    let personalBgBtn = document.querySelectorAll('.personalBgBtn');
+    let profesionalBgBtn = document.querySelectorAll('.profesionalBgBtn');
+    let referenceLetterBtn = document.querySelectorAll('.referenceLetterBtn');
+    let giftDeedBtn = document.querySelectorAll('.giftDeedBtn');
+    let feesBtn = document.querySelectorAll('.feesBtn');
+    let vmBtn = document.querySelectorAll('.vmBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-    docsListBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("The documents checklist");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    docsListBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("The documents checklist");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2116,15 +2226,17 @@ function fromPostItaEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    personalBgBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Personal background");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    personalBgBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Personal background");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2144,15 +2256,17 @@ function fromPostItaEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    profesionalBgBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Professional background");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    profesionalBgBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Professional background");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2174,15 +2288,17 @@ function fromPostItaEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    referenceLetterBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("The professional reference letter");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    referenceLetterBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("The professional reference letter");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2205,15 +2321,17 @@ function fromPostItaEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    giftDeedBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("The gift deed");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    giftDeedBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("The gift deed");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2236,15 +2354,17 @@ function fromPostItaEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    feesBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("The fees");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    feesBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("The fees");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2269,15 +2389,17 @@ function fromPostItaEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    vmBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("The medical visit");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    vmBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("The medical visit");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2297,7 +2419,8 @@ function fromPostItaEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -2307,17 +2430,18 @@ function fromPostItaEn(lang) {
 
 // From Post Aor
 function fromPostAorFr(lang) {
-    let bioBtn = document.querySelector('.bioBtn');
-    let processingTimeBtn = document.querySelector('.processingTimeBtn');
-    let adrBtn = document.querySelector('.adrBtn');
+    let bioBtn = document.querySelectorAll('.bioBtn');
+    let processingTimeBtn = document.querySelectorAll('.processingTimeBtn');
+    let adrBtn = document.querySelectorAll('.adrBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-    bioBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("La biométrie");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    bioBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("La biométrie");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2340,15 +2464,17 @@ function fromPostAorFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    processingTimeBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Le délai de traitement de la demande");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    processingTimeBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Le délai de traitement de la demande");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2366,15 +2492,17 @@ function fromPostAorFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    adrBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Demande de document additionnel");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    adrBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Demande de document additionnel");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2388,7 +2516,8 @@ function fromPostAorFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -2397,17 +2526,18 @@ function fromPostAorFr(lang) {
 }
 
 function fromPostAorEn(lang) {
-    let bioBtn = document.querySelector('.bioBtn');
-    let processingTimeBtn = document.querySelector('.processingTimeBtn');
-    let adrBtn = document.querySelector('.adrBtn');
+    let bioBtn = document.querySelectorAll('.bioBtn');
+    let processingTimeBtn = document.querySelectorAll('.processingTimeBtn');
+    let adrBtn = document.querySelectorAll('.adrBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-    bioBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Biometrics");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    bioBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Biometrics");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2430,15 +2560,17 @@ function fromPostAorEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    processingTimeBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Processing time");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    processingTimeBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Processing time");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2456,15 +2588,17 @@ function fromPostAorEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    adrBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Additional document request");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    adrBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Additional document request");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2482,7 +2616,8 @@ function fromPostAorEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -2492,16 +2627,17 @@ function fromPostAorEn(lang) {
 
 // From Post Ppr
 function fromPprFr(lang) {
-    let visaBtn = document.querySelector('.visaBtn');
-    let coprBtn = document.querySelector('.coprBtn');
+    let visaBtn = document.querySelectorAll('.visaBtn');
+    let coprBtn = document.querySelectorAll('.coprBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-    visaBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Le visa IMMIGRANT");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    visaBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Le visa IMMIGRANT");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2521,15 +2657,17 @@ function fromPprFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    coprBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("La Confirmation de Résidence Permanente");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    coprBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("La Confirmation de Résidence Permanente");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2547,7 +2685,8 @@ function fromPprFr(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -2556,16 +2695,17 @@ function fromPprFr(lang) {
 }
 
 function fromPprEn(lang) {
-    let visaBtn = document.querySelector('.visaBtn');
-    let coprBtn = document.querySelector('.coprBtn');
+    let visaBtn = document.querySelectorAll('.visaBtn');
+    let coprBtn = document.querySelectorAll('.coprBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-    visaBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("IMMIGRANT visa");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    visaBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("IMMIGRANT visa");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2585,15 +2725,17 @@ function fromPprEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    coprBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Confirmation of Permanent Residence (CoPR)");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    coprBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Confirmation of Permanent Residence (CoPR)");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2611,7 +2753,8 @@ function fromPprEn(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -2621,16 +2764,17 @@ function fromPprEn(lang) {
 
 // From settlement
 function fromInstallation(lang) {
-    let nasBtn = document.querySelector('.nasBtn');
-    let bankBtn = document.querySelector('.bankBtn');
+    let nasBtn = document.querySelectorAll('.nasBtn');
+    let bankBtn = document.querySelectorAll('.bankBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-    nasBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Le NAS");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    nasBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Le NAS");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2650,15 +2794,17 @@ function fromInstallation(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    bankBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Créer un compte bancaire");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    bankBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Créer un compte bancaire");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2700,7 +2846,8 @@ function fromInstallation(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
@@ -2709,16 +2856,17 @@ function fromInstallation(lang) {
 }
 
 function fromSettlement(lang) {
-    let nasBtn = document.querySelector('.nasBtn');
-    let bankBtn = document.querySelector('.bankBtn');
+    let nasBtn = document.querySelectorAll('.nasBtn');
+    let bankBtn = document.querySelectorAll('.bankBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
 
-    nasBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Social Insurance Number (SIN)");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    nasBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Social Insurance Number (SIN)");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2738,15 +2886,17 @@ function fromSettlement(lang) {
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
-    bankBtn.addEventListener('click', () => {
-        spinner.style.display = 'block';
-        answerUser("Créer un compte bancaire");
-        setTimeout(() => {
-            spinner.style.display = 'none';
-            discussion.innerHTML += `
+    bankBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            spinner.style.display = 'block';
+            answerUser("Créer un compte bancaire");
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                discussion.innerHTML += `
                 <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
                     <i class="fa-solid fa-robot ml-1 mt-1"></i>
                     <div>
@@ -2776,13 +2926,14 @@ function fromSettlement(lang) {
                         Remember to consider fees, interest rates, online services, branch availability, and other important factors when making your decision.<br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                            <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Actualiser</button></li>
+                            <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh</button></li>
                         </ul>
                         </h3>
                     </div>
                 </div>
             `; refreshing(lang);
-        }, 2000);
+            }, 2000);
+        })
     })
 
     anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
