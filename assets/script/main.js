@@ -263,7 +263,6 @@ function answerUser(response) {
 }
 
 
-
 function questionSubType(lang) {
     if (lang == 'french') {
         let admissibiliteBtn = document.querySelector('.admissibiliteBtn');
@@ -533,7 +532,9 @@ function questionSubType(lang) {
                                 <li><button class="answer educationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Education</button></li>
                                 <li><button class="answer languagesBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Languages</button></li>
                                 <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Work Experience</button></li>
+                                <li><button class="answer spouseBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Conjoint</button></li>
                                 <li><button class="answer transferabiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Skill Transferability</button></li>
+                                <li><button class="answer nominationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Nomination provinciale</button></li>
                                 <li><button class="answer drawsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Federal draws</button></li>
                                 <li><button class="answer fundsBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Proof of funds</button></li>
                                 <li><button class="answer pnpBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Provincial Nominee Program (PNP)</button></li>
@@ -899,9 +900,9 @@ function fromEligibility() {
                     <div>
                         <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
                         The age criterion in the Express Entry eligibility score measures the impact of age on the candidate's ability to adapt and contribute to the Canadian economy. Points are awarded based on age, with a maximum for candidates aged 18 to 35, reflecting their potential for long-term integration and productivity. It's worth noting that the candidate loses 1 point per year starting from age 36 and receives no points at age 47 or below 18.<br>
-                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh the discussion</button></li>
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -921,9 +922,9 @@ function fromEligibility() {
                     <div>
                         <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
                         The education criterion in the Express Entry system assesses the candidate's level of education and awards points based on this level. This reflects how the candidate's education can positively contribute to the Canadian economy. Degrees of various levels, ranging from certificates to advanced diplomas, can earn points, thereby encouraging candidates with a variety of skills to apply and contribute to Canadian society.<br>
-                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh the discussion</button></li>
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -943,9 +944,9 @@ function fromEligibility() {
                     <div>
                         <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
                         Linguistic skills are a crucial criterion in the Express Entry system, assessing a candidate's ability to communicate and integrate into Canadian society. Candidates can earn points based on their results in approved language exams such as IELTS, CELPIP, TEF Canada, and TCF Canada. Each exam evaluates proficiency in English and/or French, assessing listening, speaking, reading, and writing skills. Points awarded vary based on the achieved score (with a minimum required score of CLB 7), reflecting the significance of effective communication and comprehension in the Canadian immigration process.<br>
-                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh the discussion</button></li>
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -965,9 +966,9 @@ function fromEligibility() {
                     <div>
                         <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
                         Foreign work experience is a significant criterion in the Express Entry system. To be eligible, a candidate must have a minimum of one year of continuous full-time work experience (or part-time equivalent) in a qualified occupation gained outside of Canada. This requirement of continuity ensures that the candidate possesses robust professional experience gained abroad.<br>
-                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh the discussion</button></li>
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -987,9 +988,9 @@ function fromEligibility() {
                     <div>
                         <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
                         A reserved job offer is an employment proposal extended by a Canadian employer specifically in favor of a foreign worker. This signifies that the employer has selected this worker to fill a vacant position, and the offer is typically tied to an immigration application. The reserved job offer can streamline the immigration process by providing additional support to the candidate. However, it may be subject to certain requirements and conditions set forth by Canadian immigration authorities.<br>
-                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh the discussion</button></li>
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1018,9 +1019,9 @@ function fromEligibility() {
                         <li><b>Canadian Work Experience:</b> The principal applicant's work experience in Canada can ease the transition into the Canadian job market.</li>
                         <li><b>Family Member in Canada:</b> The presence of family members in Canada, such as siblings, parents, grandparents, children, grandchildren, aunts, uncles, nieces, or nephews, can strengthen social ties and support, thus contributing to adaptability.</li></ol><br>
                         All these factors are evaluated to determine the overall adaptability score of the candidate and their spouse, thereby influencing their eligibility for the Express Entry program<br>
-                        ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh the discussion</button></li>
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1274,7 +1275,7 @@ function fromBassin() {
 
                         Les extractions reflètent l'engagement du Canada à sélectionner des candidats hautement qualifiés et capables de contribuer à l'économie canadienne. Elles offrent aux candidats les plus compétitifs l'opportunité de concrétiser leur projet d'immigration et de devenir résidents permanents du Canada, participant ainsi à la diversité et à la croissance du pays.
                         
-                        Pour consulter la dernière sélection qui a été faites, <a class="text-blue-600" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html" target="_blank" rel="noreferrer">cliquez ici</a>.<br>
+                        Pour consulter la dernière sélection qui a été faites, <a class="text-blue-600" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/immigrer-canada/entree-express/soumettre-profil/selections-candidats.html" target="_blank" rel="noreferrer">cliquez ici</a>.<br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
@@ -1316,7 +1317,7 @@ function fromBassin() {
 
     pnpBtn.addEventListener('click', () => {
         spinner.style.display = 'block';
-        answerUser("");
+        answerUser("Le programme des candidats des provinces (PCP)");
         setTimeout(() => {
             spinner.style.display = 'none';
             discussion.innerHTML += `
@@ -1345,7 +1346,7 @@ function fromBassin() {
 
                             <li><a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/408808063743877/" target="_blank" rel="noreferrer">PCP Manitoba</a></li>
 
-                            <li><a class="text-blue-600" href="https://www.princeedwardisland.ca/en/information/office-of-immigration/pei-express-entry" target="_blank" rel="noreferrer">PCP Île-du-Prince-Édouard</a></li>
+                            <li><a class="text-blue-600" href="https://www.princeedwardisland.ca/fr/information/bureau-limmigration/entree-express-ile-du-prince-edouard" target="_blank" rel="noreferrer">PCP Île-du-Prince-Édouard</a></li>
                         </ul>
                         <br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
@@ -1366,28 +1367,327 @@ function fromPool() {
     let educationBtn = document.querySelector('.educationBtn');
     let languagesBtn = document.querySelector('.languagesBtn');
     let workExpBtn = document.querySelector('.workExpBtn');
+    let spouseBtn = document.querySelector('.spouseBtn');
     let transferabiliteBtn = document.querySelector('.transferabiliteBtn');
+    let nominationBtn = document.querySelector('.nominationBtn');
     let drawsBtn = document.querySelector('.drawsBtn');
     let fundsBtn = document.querySelector('.fundsBtn');
     let pnpBtn = document.querySelector('.pnpBtn');
 
-    etatCivilBtn.addEventListener('click', () => { })
+    etatCivilBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Marital status");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The marital status of the candidate, whether single or married, plays a role in the Express Entry system.
+                        <ol>
+                        <li><b>Single:</b> The single status can impact the eligibility score. Single candidates may receive additional points, reflecting their potential flexibility to settle in Canada and integrate into society.</li>
 
-    ageBtn.addEventListener('click', () => { })
+                        <li><b>Married:</b> If the candidate is married, the score can also be influenced. The spouse's language skills, education, and work experience are taken into account to determine the overall score. This approach recognizes the importance of family support and joint adaptation to life in Canada.</li></ol><br>
 
-    educationBtn.addEventListener('click', () => { })
+                        In summary, the marital status of the candidate, whether single or married, can play a role in evaluating eligibility and the overall score within the framework of the Express Entry program.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
 
-    languagesBtn.addEventListener('click', () => { })
+    ageBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Age");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The age criterion in the Express Entry pool is a crucial element in evaluating potential candidates for economic immigration to Canada. It pertains to how the candidate's age is considered during registration in the pool, where candidates are ranked based on various factors. Specifically, the age criterion awards points to candidates based on their age at the time of registration.
 
-    workExpBtn.addEventListener('click', () => { })
+                        Candidates aged 20 to 29 generally receive the maximum number of points in this category, reflecting their high potential for adaptability, economic contribution, and active participation in Canadian life. As age increases beyond this range, the number of points gradually decreases. This approach recognizes the significance of youth in terms of long-term integration and support for the Canadian job market.
 
-    transferabiliteBtn.addEventListener('click', () => { })
+                        In summary, the age criterion in the Express Entry pool aims to assess how the candidate's age can influence their potential contribution to the Canadian economy and society as a whole.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
 
-    drawsBtn.addEventListener('click', () => { })
+    educationBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Education criterion in the pool");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The education criterion in the Express Entry pool is a central factor that determines the position of potential candidates in the Canadian economic immigration process. It emphasizes the candidate's level of education at the time of registration in the pool. Specifically, this criterion awards points based on the degree of academic achievement.
 
-    fundsBtn.addEventListener('click', () => { })
+                        Candidates with higher levels of education, such as university degrees, generally receive a higher number of points. This approach reflects Canada's recognition of the importance of expertise and specialized skills for enriching the Canadian economy and society. It aims to attract individuals with an educational background that can contribute significantly to the development of the job market and innovation in the country.
 
-    pnpBtn.addEventListener('click', () => { })
+                        To sum up, the education criterion in the Express Entry pool evaluates how the candidate's level of education can positively influence their ability to make a lasting and beneficial contribution to the economy and society of Canada.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    languagesBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Language criterion in the pool");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The language criterion in the Express Entry pool holds a pivotal role in evaluating candidates for potential economic immigration to Canada. It sheds light on the candidate's linguistic skills at the time of their pool entry. In practice, this criterion awards points based on the results achieved in approved language assessments.
+
+                        It's worth noting that since 2021, particular emphasis has been placed on French, which has become even more highly regarded. Candidates demonstrating high proficiency in English and/or French typically earn an increased number of points. This approach underscores the importance of smooth communication in both daily life and the professional context in Canada. It aims to attract individuals capable of swift and effective integration into Canadian society, while actively contributing to the labor market and intercultural exchanges.
+
+                        In conclusion, the language criterion in the Express Entry pool evaluates how a candidate's language skills can not only facilitate successful integration but also highlights the growing relevance of French proficiency since 2021. This demonstrates the ability to communicate effectively and play an active role within Canada's social and economic spheres.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    workExpBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Work experience criterion");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        In the context of the Express Entry pool, the experience gained outside of Canada holds significant importance. Although it does not award standalone points, it can be seamlessly combined with other elements to maximize the candidate's overall score.
+
+                        More specifically, this foreign-acquired experience can be blended with the results of the first language assessment as well as the professional experience accumulated in Canada. This strategic combination can yield up to 100 additional points, a concept known as "skill transferability."
+
+                        This approach highlights the value of professional skills developed outside of Canada by seamlessly integrating them with other aspects of the candidate's profile. It also reinforces the notion of transferring skills acquired elsewhere to the Canadian job market, thus promoting a successful transition and a positive economic contribution to Canadian society.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    spouseBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Spouse's contribution");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The spouse of a candidate in the Express Entry program can make a significant contribution to their overall score in the pool. More specifically, the spouse can positively influence the eligibility score through three key elements:
+                        <ol>
+                        <li><b>Spouse's language skills:</b> The spouse's language proficiency in English or French can add points to the overall score of the primary candidate. Language assessments such as IELTS, CELPIP, TEF Canada, or TCF Canada are used to evaluate these skills. Better language results from the spouse can lead to an increase in the score.</li>
+
+                        <li><b>Spouse's education in Canada:</b> If the spouse has pursued post-secondary studies in Canada and obtained a degree, this can also add points to the eligibility score of the primary candidate. The spouse's academic achievement is considered in the evaluation.</li>
+
+                        <li><b>Spouse's work experience in Canada:</b> If the spouse has work experience in Canada, this can also positively contribute to the score of the primary candidate. The years of the spouse's work experience are taken into account, thereby strengthening the candidate's position in the pool.</li></ol><br>
+
+                        In conclusion, the participation of the spouse in the Express Entry process can play an essential role in adding points to the overall score of the primary candidate. The spouse's language skills, education, and work experience are all factors that can increase eligibility chances and enhance the candidate's position in the pool.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    transferabiliteBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Skill transferability");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The concept of skills transferability within the Express Entry program proves to be a clever way to optimize your eligibility score. By skillfully combining various aspects of your journey, you have the opportunity to gain up to 100 additional points, thereby strengthening your position in the Canadian economic immigration process.
+
+                        This insightful strategy involves specific combinations. For instance, pairing a post-secondary degree with high language proficiency results or obtaining a certificate of skills can each provide a gain of 50 points. Similarly, a post-secondary degree coupled with Canadian work experience can offer an equivalent bonus. Foreign work experience, combined with similar experience in Canada or strong language skills, as well as obtaining the certificate, opens the possibility of a 50-point increase.
+
+                        In brief, skills transferability presents a dynamic approach to accumulate up to 100 points, showcasing your ability to maximize your strengths and highlight your versatility and adaptability. This concept underscores the importance of strategic planning within the Express Entry framework, enabling you to skillfully play with various elements to achieve an optimal eligibility score.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    nominationBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Provincial nomination");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Provincial nomination stands as a pivotal factor within the Express Entry program. When a candidate receives a nomination from a Canadian province or territory, they gain a significant advantage in terms of points in their eligibility score. Specifically, this nomination grants an impressive total of 600 points, which can propel the candidate towards the top of the pool and greatly enhance their chances of receiving an invitation to apply for permanent residency.
+
+                        This substantial advantage reflects the importance that Canadian provinces and territories place on certain candidates who meet the specific needs of their local labor market and economy. By granting a nomination, a province or territory acknowledges the value and potential of the candidate to make a significant contribution to its community and economic development.
+
+                        Thus, provincial nomination stands out as a major catalyst in the Express Entry process, providing the candidate with an excellent opportunity to achieve a high score and thereby facilitating their path to permanent residence in Canada.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    drawsBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Federal draws");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Draws, also known as selections or extractions, within the Express Entry program represent crucial moments where IRCC chooses potential candidates for economic immigration. These periodic selections (usually every 15 days, on Wednesdays) take place at regular intervals and aim to invite candidates with the highest eligibility scores to apply for permanent residence.
+
+                        During each extraction, candidates in the Express Entry pool are ranked based on their overall scores. Those surpassing the predefined threshold for that extraction receive an invitation to apply for permanent residence. Candidates who are not invited in a particular draw remain in the pool for subsequent draws.
+
+                        These extractions reflect Canada's commitment to selecting highly skilled candidates capable of contributing to the Canadian economy. They provide the most competitive candidates with the opportunity to realize their immigration goals and become permanent residents of Canada, thereby contributing to the country's diversity and growth.
+
+                        To view the latest selection that has been made, <a class="text-blue-600" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html" target="_blank" rel="noreferrer">click here</a>.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    fundsBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Funds required");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The required funds within the framework of the Express Entry system refer to the financial resources that candidates must demonstrate they possess to support their settlement in Canada. This requirement aims to ensure that newcomers have the necessary means to meet their essential needs during their initial period of adaptation.
+
+                        The specific amounts required vary based on the candidate's family size. They are assessed based on the number of accompanying family members and the size of the family itself. These funds can cover expenses such as housing, food, clothing, and other basic necessities.
+
+                        Candidates must provide evidence of these required funds when applying for permanent residence. This can be done by showing bank statements or providing an income declaration. The goal is to ensure that newcomers have the financial stability needed to succeed in their integration into Canada and to avoid placing an excessive burden on the country's social services.
+
+                        To put it briefly, the required funds in the Express Entry system are a measure aimed at ensuring that candidates have the necessary financial resources to start their lives in Canada on a solid footing and to make a positive contribution to Canadian society.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    pnpBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Provincial Nominee Program (PNP)");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The Provincial Nominee Program (PNP) is a key initiative within the Canadian immigration system that allows provinces and territories to select qualified candidates who are suited to their specific economic and labor market needs. This program provides provinces and territories with the flexibility to choose candidates who align with their priorities for economic development and growth.
+
+                        Under the PNP, provinces and territories can issue nominations for candidates who have demonstrated their ability to settle and make a significant contribution to the local society and economy. These nominations provide candidates with a significant boost to their eligibility score within the Express Entry program, greatly enhancing their chances of being invited to apply for permanent residence.
+
+                        The PNP reflects Canada's commitment to collaboration and the decentralization of immigration. It empowers provinces and territories to play an active role in selecting new arrivals and better align immigration with their specific needs. As a result, the Provincial Nominee Program contributes to a balanced distribution of talents and skills across the country, thereby promoting economic and social development on a national scale.
+                        
+                        <ul>
+                            <li><a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/408807183743965/?__cft__[0]=AZX2Yvuq3sLOgjvEcb7uIVG2eeOQLXPZuXd_Y7lEgNIM08fKBmKooVCltk1w0Atcz_NFmILGvQqyym6T5SYpBz7H1ttIzGdXgBVQPZtByiDPAp2sXA0iMMa61roGzACfi2yJui2rGyHVwHcu4-sEEvkz&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">Ontario (OINP)</a></li>
+
+                            <li><a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/408809047077112/?__cft__[0]=AZVtFL_UweRUWY1hp6a31S07C_t8m0de_qVjsJFKYhAcnGHnVH-OTj3u9ddaKchgKoOWTBcy5hSjevnsLxTjMBwiuzIVNJFAoZPASkdOhSo-St5bxGeeGrv2v2gUoTfmQa0eP1R9JPpUVYA4spSMZeyz&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">Alberta (AINP)</a></li>
+
+                            <li><a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/408810603743623/?__cft__[0]=AZUMjuk_lT2U6aUPRwC6TYTSyNGAxGEZ4PeycjaX2gX4XPHYOFCGBiQ0Yj_k9IBhqXGpnzBh-hc4pff65wFkASvXJFS90aMNmqqon73QqZOE0ukjiCPLCgz0FCdgeRDvYUliGwn7O7oiKlljlp4gbye9&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">New Brunswick (NBPNP)</a></li>
+
+                            <li><a class="text-blue-600" href="https://novascotiaimmigration.com/move-here/" target="_blank" rel="noreferrer">Nova Scotia (NSNP)</a></li>
+
+                            <li><a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/408809737077043/?__cft__[0]=AZWNgOI9yneS5u-ry70jTr5WeLRTuZa-3dJYoqf46YTxCQKIkMJkyT86C0jSy7Bn1lWrw67jLbUx6fdvnu6FIncxXAhuCKupUu2h7Do5l9WBBWDgeZiOD98oHRB95rYL7KsaerPNUMn4zyEIcuYnS6vi&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">Saskatchewan (SINP)</a></li>
+
+                            <li><a class="text-blue-600" href="https://www.welcomebc.ca/Immigrate-to-B-C/About-The-BC-PNP" target="_blank" rel="noreferrer">British Columbia (BC PNP)</a></li>
+
+                            <li><a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/408808063743877/" target="_blank" rel="noreferrer">Manitoba (MPNP)</a></li>
+
+                            <li><a class="text-blue-600" href="https://www.princeedwardisland.ca/en/information/office-of-immigration/pei-express-entry" target="_blank" rel="noreferrer">PCP Prince Edward Island (PEI PNP)</a></li>
+                        </ul>
+                        <br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                            <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                        </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
 }
 
 // From Post Ita
@@ -1622,19 +1922,217 @@ function fromPostItaEn() {
     let feesBtn = document.querySelector('.feesBtn');
     let vmBtn = document.querySelector('.vmBtn');
 
-    docsListBtn.addEventListener('click', () => { })
+    docsListBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("The documents checklist");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The list of documents to be submitted refers to the essential compilation of supporting documents and required records when submitting an application for permanent residence under the Express Entry program. This list is designed to demonstrate your eligibility and support the information you have provided in your application.
 
-    personalBgBtn.addEventListener('click', () => { })
+                        The documents to be submitted may vary based on your personal situation, professional experience, academic background, and any other criteria specific to your immigration program. They may include items such as copies of diplomas, transcripts, language assessments, bank statements, medical records, proof of work experience, professional references, and other supporting documents.
 
-    profesionalBgBtn.addEventListener('click', () => { })
+                        Thoroughly compiling these documents is crucial to substantiate your application and ensure its compliance with requirements. It is advisable to carefully review the list of documents to be submitted provided by immigration authorities, gather the necessary elements, and submit a complete and accurate application.
 
-    referenceLetterBtn.addEventListener('click', () => { })
+                        In summary, the list of documents to be submitted is an essential step in the immigration process, ensuring that your application is backed by tangible and comprehensive evidence of your eligibility and ability to contribute positively to Canadian society.
 
-    giftDeedBtn.addEventListener('click', () => { })
+                        To get an idea of the list of documents to be submitted, <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/454628579161825/?__cft__[0]=AZW5OUMLLaUQXGN1Hn6KWs7Wm4jzVjriUKPC-ypWFLiVlDRCmZDrdgqCLzpmKTpRtzkg8oQiwV3AR6pymGISI4-1il7a4SCXnUu7jzuRqJto4wgk4mziBq3lvENd52K0sdnrhJNSAZ4xeepm3P9KtAHc&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">click here</a>.
+                        <br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
 
-    feesBtn.addEventListener('click', () => { })
+    personalBgBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Personal background");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        After receiving an invitation to apply for permanent residence under the Express Entry system, you will need to provide information about your personal history for the ten years preceding the date of application OR, if recommended, since the age of 18. This step involves documenting your activities and statuses during this period.
 
-    vmBtn.addEventListener('click', () => { })
+                        The purpose of providing your personal history is to give a clear overview of your background during this timeframe. You will indicate the main activities you have undertaken, such as education, employment, unemployment, military service, or other significant engagements. This process allows authorities to assess your journey and the consistency of the information provided.
+
+                        Each activity you mention should be accompanied by details such as dates, names of employers or educational institutions, job titles held, or programs of study pursued. It is essential to provide comprehensive and accurate information for your application to be processed with integrity.
+
+                        Ultimately, providing your personal history within the context of Express Entry offers you the opportunity to showcase your journey over the past ten years, thereby contributing to a comprehensive evaluation of your eligibility for permanent residence in Canada.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    profesionalBgBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Professional background");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Professional backgrounds within the context of Express Entry hold paramount importance in demonstrating your eligibility for permanent residence in Canada. This step requires the precise and detailed declaration of your work experience over the past ten years OR from your 18th birthday onwards, with an emphasis on continuous experience of at least one year in an eligible job.
+
+                        You have the option to declare multiple work experiences, which can influence the calculation of your total years of experience. For instance, if you worked for one year in a qualified job and then another year in a different eligible job, you can accumulate two years of professional experience. <b>It is important to note that eligible jobs must be full-time (at least 30 hours per week).</b>
+
+                        Eligible jobs are categorized based on the skill levels of the National Occupational Classification (NOC) of Canada, identified by NOC codes 0, 1, 2, or 3. These jobs are assessed for their relevance and contribution to the Canadian economy.
+
+                        If you are unable to provide the necessary documents to support a specific work experience, you have the option to declare it in your personal history. This allows you to highlight periods of activity that may not be directly related to an eligible job but still contribute to your overall journey and eligibility.
+
+                        In conclusion, professional backgrounds provide an opportunity to demonstrate your continuous and eligible work experience, while showcasing your skills and potential contribution to the Canadian economy. This step plays a crucial role in determining your eligibility for permanent residence in Canada through the Express Entry system.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    referenceLetterBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("The professional reference letter");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The professional reference letter is a crucial document when submitting an application for permanent residence through the Express Entry system. Its purpose is to provide an objective assessment of your skills, work experience, and professional character from someone who has supervised or closely worked with you.
+
+                        Usually written by an employer, direct supervisor, or trusted colleague with whom you have worked for a significant period, the letter should include detailed information about your job responsibilities, achievements, specific skills, and any other relevant aspects of your work experience.
+
+                        The aim of the professional reference letter is to enhance your profile by offering tangible evidence of your skills and contributions within your work environment. It also adds credibility to your application by confirming your alignment with professional standards and requirements of the Canadian job market.
+
+                        In summary, the professional reference letter is a written testimony that highlights your skills and work experience, thereby strengthening your candidacy for permanent residence in Canada through the Express Entry system.
+
+                        You can <a class="text-blue-600" href="https://drive.google.com/file/d/1Z3W7dTGRcwQBRERC3OU6EU3ldXLtah3H/view?fbclid=IwAR3JxeiY7DW0eXdoHhu832ed1BJDGUcg3dy1jCqG7CVpBY81kEESZvjA6d4" target="_blank" rel="noreferrer">click here</a> to view an example of a professional reference letter.
+                        <br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    giftDeedBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("The gift deed");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The gift deed is a process that allows a candidate for permanent residence in Canada, who does not have the full required funds, to receive a financial contribution from a close family member. This contribution aims to supplement the required amount to meet the financial requirements of the immigration program.
+
+                        The gift deed involves an official declaration from the close family member, stating their commitment to provide the necessary funds to the candidate to cover the shortfall. This declaration must be supported by supporting documents, such as bank statements or proof of money transfer.
+
+                        This process offers an option for candidates who receive financial support from their close relatives to meet the financial requirements of the program. However, it is crucial to comply with official guidelines and provide solid evidence to ensure the validity and transparency of the gift deed.
+
+                        In short, the gift deed allows candidates to receive financial support from close family members to meet the necessary financial criteria for their application for permanent residence in Canada.
+
+                        You can <a class="text-blue-600" href="https://drive.google.com/file/d/1_UqlPCrwc7xYcXLiCXq_4m2QojY7Vfmy/view?fbclid=IwAR0ZlqOZQWDMQO-ltvs7Cwmxxl2sN0s6nKhYSulK6T3xE51U-uITL4roVXU" target="_blank" rel="noreferrer">click here</a> to view an example of a gift deed.<br>
+                        <br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    feesBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("The fees");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        As an immigration candidate through the Express Entry system, it's crucial to be aware of the fees associated with this process. These fees cover various stages, including application fees, biometric fees for fingerprinting and photography, as well as permanent residence fees. It's important to understand the fee structure based on your situation, the number of family members included in the application, and the immigration category you're applying for. Ensuring timely payment of these fees is a crucial element to ensure the processing of your application and continue your journey towards permanent residence in Canada.<br>
+                        <ol>
+                            <li><b>Application processing fee:</b> 850$</li>
+                            <li><b>Permanent residence fee:</b> 515$</li>
+                            <li><b>Dependent child:</b> 230$</li>
+                            <li><b>Biometric fee:</b> 85$</li>
+                            <li><b>TOTAL FOR A SINGLE APPLICANT:</b> 1450$</li>
+                            <li><b>TOTAL FOR TWO ADULTS WITHOUT CHILDREN:</b> 2900$</li>
+                            <li><b>TOTAL FOR TWO ADULTS WITH ONE CHILD:</b> 3130$</li>
+                        </ol>
+    
+                        <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/321111072513577/?__cft__[0]=AZVwmw321Tz5-XLh6Cce3PaUVGx1YrPtJ6NRVB4N9ryDI4bLGbhjULVH6WYE4xgtx4C_LL-ukFVEzrtBloTO44uZ4WajEsb4_l5qFWX8gdjo8dEwRYepzDtEPx2ts7D9Yhm_KvTVflLsdsJK_68_C3sZ&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">Click here</a> to get an idea of the fees to be paid.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    vmBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("The medical visit");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The medical examination required by Immigration, Refugees, and Citizenship Canada (IRCC) is a crucial step in the immigration process, particularly within the context of the Express Entry system. This medical examination aims to assess your health status to ensure that you do not pose a risk to public health in Canada and that you will not require intensive healthcare upon arrival.
+
+                        A physician designated by IRCC will conduct a comprehensive medical examination, including screening tests for contagious diseases and other medical assessments. The results of this medical examination will be considered in the eligibility process for permanent residence.
+
+                        It's important to note that the medical examination must be conducted only by a physician authorized by IRCC (<a class="text-blue-600" href="https://secure.cic.gc.ca/PanelPhysicianMedecinDesigne/en/Home" target="_blank" rel="noreferrer">Find an Authorized Physician</a>). The results of the medical examination will be transmitted directly to IRCC and will not be disclosed to the candidate.
+
+                        In a nutshell, the IRCC-required medical examination within the context of Express Entry aims to ensure that candidates for permanent residence are in good health and do not pose a risk to Canadian public health.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
 }
 
 // From Post Aor
@@ -1728,11 +2226,88 @@ function fromPostAorEn() {
     let processingTimeBtn = document.querySelector('.processingTimeBtn');
     let adrBtn = document.querySelector('.adrBtn');
 
-    bioBtn.addEventListener('click', () => { })
+    bioBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Biometrics");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        Biometric data refers to unique and physical characteristics that allow for accurate identification of an individual. In the context of the immigration process, biometric data is collected to enhance the security and authenticity of identification documents.
 
-    processingTimeBtn.addEventListener('click', () => { })
+                        When a candidate for immigration through the Express Entry system is invited to provide biometric data, it involves capturing photographs of fingerprints and other distinctive features. This data is then stored in a government database and used to verify the candidate's identity throughout the immigration process.
 
-    adrBtn.addEventListener('click', () => { })
+                        The collection of biometric data aims to prevent fraud and ensure that individuals submitting immigration applications are indeed who they claim to be. It's an important security measure to protect the integrity of the immigration system and ensure that only eligible and legitimate individuals attain permanent resident status.
+
+                        In essence, biometric data consists of unique and individual-specific information collected to enhance the security and authenticity of the immigration process in Canada through the Express Entry system.
+
+                        <a class="text-blue-600" href="https://www.cic.gc.ca/english/visit/biometrics.asp" target="_blank" rel="noreferrer">Click here</a> to find out if you need to provide biometrics.
+                        <br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    processingTimeBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Processing time");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The processing time for a permanent residence application through the Express Entry system varies depending on several factors, including the chosen immigration program, the volume of applications being processed, and the complexity of your individual case. Delays can also be influenced by external circumstances such as operational constraints or enhanced security measures.
+
+                        It is important to note that processing times can differ from one candidate to another. Generally, IRCC strives to process applications efficiently and in a timely manner. Some programs may benefit from accelerated processing times, while others may take longer due to detailed verification of provided information.
+
+                        To obtain a more precise estimate of the processing time for your specific application, it is recommended to consult the official website of Immigration, Refugees and Citizenship Canada (IRCC). <a class="text-blue-600" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/demande/verifier-delais-traitement.html" target="_blank" rel="noreferrer">Click here to get an idea of the processing time for your application</a>.<br><br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    adrBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Additional document request");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        After you have submitted your application through the Express Entry system, you may encounter a process known as "Additional Document Request" (ADR). An ADR is a request from Immigration, Refugees and Citizenship Canada (IRCC) for additional supporting documents or information to verify the details provided in your application.
+
+                        Receiving an ADR does not necessarily indicate a problem with your application; it is a routine step to ensure the accuracy and authenticity of the information you've submitted. IRCC may request documents such as educational transcripts, language test results, work experience letters, or other relevant documentation.
+
+                        It's important to respond to the ADR promptly and provide the requested documents within the specified timeframe. Failure to provide the requested documents may lead to delays or even refusal of your application. Timely and accurate submission of the requested documents can help ensure a smooth and efficient processing of your application within the Express Entry system.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
 }
 
 // From Post Ppr
@@ -1799,9 +2374,59 @@ function fromPprEn() {
     let visaBtn = document.querySelector('.visaBtn');
     let coprBtn = document.querySelector('.coprBtn');
 
-    visaBtn.addEventListener('click', () => { })
+    visaBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("IMMIGRANT visa");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The passport application step comes after receiving approval for your permanent residence application in Canada. Once you've received the approval letter, you need to submit your passport to the relevant authorities (usually the <a class="text-blue-600" href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html" target="_blank" rel="noreferrer">VACs</a>) to obtain the permanent resident visa.
 
-    coprBtn.addEventListener('click', () => { })
+                        This permanent resident visa, also known as an immigrant visa, is stamped in your passport and allows you to travel to Canada as a permanent resident. It's important to follow the instructions provided by the authorities regarding the procedure for applying for the permanent resident visa, including required documents, associated fees, and deadlines.
+
+                        Once you have the permanent resident visa in your passport, you can plan your trip to Canada. Make sure to travel before the expiration date indicated on the visa. Upon arrival in Canada, you will undergo a border control process where you'll present your passport with the visa to confirm your permanent resident status.
+
+                        To recapitulate, the passport application step follows the approval of your permanent residence application. It involves obtaining the permanent resident visa in your passport, allowing you to travel to Canada and confirm your permanent resident status upon arrival.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    coprBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Confirmation of Permanent Residence (CoPR)");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The Confirmation of Permanent Residence (CoPR) is an official document issued by Canadian authorities to confirm the approval of your permanent residence application. Once you receive the CoPR, it signifies that you have met the required immigration criteria and are authorized to become a permanent resident of Canada.
+
+                        The CoPR contains important information such as your name, photo, date of birth, and a unique identification number (<a class="text-blue-600" href="https://www.cic.gc.ca/english/helpcentre/answer.asp?qnum=013&top=4" target="_blank" rel="noreferrer">UCI</a>). It verifies your permanent resident status and can serve as an official proof of your right to live and work in Canada permanently.
+
+                        When you travel to Canada, you will need to present your CoPR to authorities upon arrival to confirm your permanent resident status. The CoPR is an essential document that you should keep secure and have with you whenever you travel abroad or interact with Canadian authorities.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
 }
 
 // From settlement
@@ -1863,7 +2488,7 @@ function fromInstallation() {
 
                         <li><b>Obtenez les cartes et les services:</b> Une fois que votre compte est ouvert, la banque vous fournira généralement une carte de débit et des informations sur les services bancaires en ligne.</li></ol>
 
-                        Quelles sont les meilleures banques au Canada pour les nouveaux arrivants? vous les trouvez ci-dessous.
+                        Êtes-vous intéressé(e) à en savoir plus sur quelques banques au Canada? vous les trouvez ci-dessous.
                         <ul>
                             <li><a class="text-blue-600" href="https://www.rbcroyalbank.com/fr/personal.html" target="_blank" rel="noreferrer">Banque Royale du Canada (RBC)</a></li>
                             <li><a class="text-blue-600" href="https://www.td.com/ca/fr/services-bancaires-personnels" target="_blank" rel="noreferrer">Banque Toronto-Dominion (TD)</a></li>
@@ -1892,9 +2517,77 @@ function fromSettlement() {
     let nasBtn = document.querySelector('.nasBtn');
     let bankBtn = document.querySelector('.bankBtn');
 
-    nasBtn.addEventListener('click', () => { })
+    nasBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Social Insurance Number (SIN)");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        The SIN, or <a class="text-blue-600" href="https://www.canada.ca/en/employment-social-development/services/social-insurance-number.html" target="_blank" rel="noreferrer">Social Insurance Number</a>, is a unique nine-digit number issued by Service Canada, which is the agency responsible for government services related to employment, social programs, and benefits in Canada. The SIN is essentially a tax and social identification number used for various interactions with the government, including working, paying taxes, and accessing certain social programs and benefits.
 
-    bankBtn.addEventListener('click', () => { })
+                        Both permanent and temporary residents in Canada generally require a SIN to work and access government services. You can obtain a SIN by applying directly to Service Canada. Typically, you will need to provide identification documents such as a work permit or confirmation of permanent residence, as well as proof of your immigration status and identity.
+
+                        It's important to note that the SIN is confidential and should be safeguarded. Do not share your SIN with unauthorized individuals and avoid using it for purposes other than those intended by government authorities.
+
+                        All in all, the SIN is a social insurance number issued by Service Canada to identify residents in Canada and allow them to access various government services. You can obtain it by applying to Service Canada and providing the required documents.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Refresh discussion</button></li>
+                            </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
+
+    bankBtn.addEventListener('click', () => {
+        spinner.style.display = 'block';
+        answerUser("Créer un compte bancaire");
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                    <div>
+                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                        To open a bank account in Canada as a newcomer and permanent resident, follow these general steps:
+                        <ol>
+                        <li><b>Choose a bank:</b> In Canada, there are several major national banks such as the Royal Bank of Canada (RBC), Toronto-Dominion Bank (TD), Bank of Montreal (BMO), Scotiabank, and CIBC. You can also consider online banks like Tangerine or credit unions.</li>
+                        <li><b>Gather your documents:</b> You will typically need to provide identification documents such as your passport, permanent resident card, Canadian driver's license (if applicable), and proof of address in Canada, such as a lease agreement or utility bill.</li>
+                        <li><b>Visit the bank:</b> Go to the branch of the bank of your choice with your documents. The bank staff will guide you through the account opening process.</li>
+                        <li><b>Choose the account type:</b> Discuss with the bank advisor to determine the account type that best suits your needs. Options may include checking accounts, savings accounts, student accounts, etc.</li>
+                        <li><b>Fill out the forms:</b> You will need to complete application forms and provide your personal information, such as your address, phone number, and Social Insurance Number (SIN).</li>
+                        <li><b>Make an initial deposit:</b> Some banks may require an initial deposit to open the account. Check the requirements of the chosen bank.</li>
+                        <li><b>Get cards and services:</b> Once your account is open, the bank will usually provide you with a debit card and information about online banking services.</li></ol>
+
+                        Are you interested in knowing about some banks in Canada? You can find them below.
+                        <ul>
+                            <li><a class="text-blue-600" href="https://www.rbcroyalbank.com/personal.html" target="_blank" rel="noreferrer">Royal Bank of Canada (RBC)</a></li>
+                            <li><a class="text-blue-600" href="https://www.td.com/ca/en/personal-banking/" target="_blank" rel="noreferrer">Toronto-Dominion Bank (TD)</a></li>
+                            <li><a class="text-blue-600" href="https://www.bmo.com/main/personal" target="_blank" rel="noreferrer">Bank of Montreal (BMO)</a></li>
+                            <li><a class="text-blue-600" href="https://www.scotiabank.com/ca/en/personal.html" target="_blank" rel="noreferrer">Scotiabank</a></li>
+                            <li><a class="text-blue-600" href="https://www.cibc.com/en/personal-banking.html" target="_blank" rel="noreferrer">CIBC</a></li>
+                            <li><a class="text-blue-600" href="https://www.tangerine.ca/en" target="_blank" rel="noreferrer">Tangerine</a></li>
+                            <li><a class="text-blue-600" href="https://www.desjardins.com/ca/personal/" target="_blank" rel="noreferrer">Desjardins</a></li>
+                            <li><a class="text-blue-600" href="https://www.atb.com/personal-banking/" target="_blank" rel="noreferrer">ATB</a></li>
+                        </ul>
+
+                        Remember to consider fees, interest rates, online services, branch availability, and other important factors when making your decision.<br>
+                        ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
+                        <ul class="suggestionUser pt-2">
+                            <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Recharger la conversation</button></li>
+                        </ul>
+                        </h3>
+                    </div>
+                </div>
+            `;
+        }, 2000);
+    })
 }
 
 
