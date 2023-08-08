@@ -113,6 +113,7 @@ const currencyResult = document.querySelector('.currencyResult');
 const API_URL = 'https://api.exchangerate-api.com/v4/latest/CAD';
 let html = '';
 let robotBtn = document.querySelector('.robotBtn');
+let messageBot = document.querySelector('.messageBot');
 let chatDiv = document.querySelector('.mainChatWindow');
 let chatArea = document.querySelector('.chatArea');
 let discussion = document.querySelector('.discussion');
@@ -186,16 +187,21 @@ robotBtn.addEventListener('click', () => {
     robotBtn.style.display = 'none';
     spinner.style.display = 'block';
     startConversation();
-    let frLang = document.querySelector('.frBtn');
-    let engLang = document.querySelector('.engBtn');
-    frLang.addEventListener('click', () => {
-        answerUser('French');
-        questionType('french');
+    let frLang = document.querySelectorAll('.frBtn');
+    let engLang = document.querySelectorAll('.engBtn');
+
+    frLang.forEach(btn => {
+        btn.addEventListener('click', () => {
+            answerUser('French');
+            questionType('french');
+        })
     })
 
-    engLang.addEventListener('click', () => {
-        answerUser('English');
-        questionType('english');
+    engLang.forEach(btn => {
+        btn.addEventListener('click', () => {
+            answerUser('English');
+            questionType('english');
+        })
     })
 })
 
@@ -211,10 +217,24 @@ closeChatBtn.addEventListener('click', () => {
     chatArea.style.display = 'block';
     reduceBtn.style.display = 'block';
     discussion.innerHTML = ''
-    let engBtn = document.querySelector('.engBtn');
-    let frBtn = document.querySelector('.frBtn');
-    frBtn.disabled = false;
-    engBtn.disabled = false;
+    robotIcon.style.display = 'none';
+    heyMessage.style.display = 'none';
+    masculinePronoun.style.display = 'none';
+    whatLang.style.display = 'none';
+    suggestionUser.innerHTML = `
+    <li><button class="answer engBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">English</button></li>
+                        <li><button class="answer frBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">French</button></li>`
+
+    let engBtn = document.querySelectorAll('.engBtn');
+    let frBtn = document.querySelectorAll('.frBtn');
+
+    frBtn.forEach(btn => {
+        btn.disabled = false;
+    })
+
+    engBtn.forEach(btn => {
+        btn.disabled = false;
+    })
 })
 
 chatDiv.querySelector('span').addEventListener('click', () => {
