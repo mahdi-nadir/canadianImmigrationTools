@@ -3087,8 +3087,10 @@ currencyBtn.addEventListener('click', () => {
 
             if (exchangeRates[selectedCurrency]) {
                 const equivalentInLocalCurrency = (canadianFunds * exchangeRates[selectedCurrency]).toFixed(2);
+                const formattedNumber = equivalentInLocalCurrency.replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
                 selectedCurrency === 'CAD' ? result.innerHTML = `Required funds in Canadian dollars (CAD) for ${familyMembers.value} person${familyMembers.value > 1 ? 's' : ''} are: <b>${canadianFunds}$</b>, that's what you need to have in your bank account.` : result.innerHTML = `Required funds in Canadian dollars (CAD) for ${familyMembers.value} person${familyMembers.value > 1 ? 's' : ''}: <b>${canadianFunds}$</b>.<br/>
-                In your local currency (${selectedCurrency}), you should have approximately: <b>${equivalentInLocalCurrency} ${selectedCurrency}</b>`;
+                In your local currency (${selectedCurrency}), you should have approximately: <b>${formattedNumber} ${selectedCurrency}</b>`;
             } else {
                 result.textContent = 'Currency not found in exchange rates data.';
             }
