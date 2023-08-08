@@ -122,6 +122,20 @@ let closeChatBtn = document.querySelector('.closeChatBtn');
 let answers = document.querySelectorAll('.answer');
 let spinner = document.querySelector('.spinner');
 let heyMessage = document.querySelector('.hey');
+let helloMessages = [
+    "Hello! I'm here to help you with your questions about Express Entry system. I can answer questions about eligibility, Express Entry pool, Post-ITA, Post-AoR, PPR and settlement. What would you like to know?",
+    "Hello! I'm Medy, your dedicated assistant.",
+    "Greetings! I'm Medy, here to assist you.",
+    "Hi there! I'm Medy, at your service.",
+    "Hey! It's Medy, your very own assistant.",
+    "Howdy! I'm Medy, your personal aide.",
+    "Salutations! Medy reporting in as your assistant.",
+    "Yo! Medy here, your trusty personal helper.",
+    "Hiya! I'm Medy, here as your assistant.",
+    "Hey, it's Medy! Ready to assist you.",
+    "Hello, it's me, Medy, your personal assistant extraordinaire!"
+]
+heyMessage.innerHTML = helloMessages[Math.floor(Math.random() * helloMessages.length)];
 let masculinePronoun = document.querySelector('.masculinePronoun');
 let whatLang = document.querySelector('.whatLang');
 let robotIcon = document.querySelector('.robotIcon');
@@ -184,64 +198,8 @@ robotBtn.addEventListener('click', () => {
         answerUser('English');
         questionType('english');
     })
-
-    function questionType(lang) {
-        let engBtn = document.querySelector('.engBtn');
-        let frBtn = document.querySelector('.frBtn');
-        frBtn.disabled = true;
-        engBtn.disabled = true;
-        spinner.style.display = 'block';
-        if (lang == 'english') {
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
-            <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
-                <i class="fa-solid fa-robot ml-1 mt-1"></i>
-                <div>
-                    <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">Great! I can help you with all Express Entry system topics listed below. Select one of them to get started.
-                    <ul class="suggestionUser pt-2">
-                            <li><button class="answer eligibilityBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Eligibility</button></li>
-                            <li><button class="answer poolBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">E.E. Pool</button></li>
-                            <li><button class="answer postItaEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
-                            <li><button class="answer postAorEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
-                            <li><button class="answer pprEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
-                            <li><button class="answer settlementBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Settlement</button></li>
-                            <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">The topic is not listed</button></li>
-                        </ul>
-                    </h3>
-                </div>
-            </div>
-        `;
-                questionSubType(lang);
-            }, 2000);
-
-        } else {
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                discussion.innerHTML += `
-                <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
-                    <i class="fa-solid fa-robot ml-1 mt-1"></i>
-                    <div>
-                        <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
-                        Excellent! Je peux vous aider avec les sujets énumérés ci-dessous concernant le système d'immigration Entrée Express. Sélectionnez-en un pour commencer.
-                        <ul class="suggestionUser pt-2">
-                                <li><button class="answer admissibiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Admissibilité</button></li>
-                                <li><button class="answer bassinBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Bassin E.E.</button></li>
-                                <li><button class="answer postItaFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
-                                <li><button class="answer postAorFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
-                                <li><button class="answer pprFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
-                                <li><button class="answer installationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Installation</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
-                            </ul>
-                        </h3>
-                    </div>
-                </div>
-            `;
-                questionSubType(lang);
-            }, 2000);
-        }
-    }
 })
+
 
 reduceBtn.addEventListener('click', () => {
     chatDiv.style.height = '40px';
@@ -254,6 +212,7 @@ closeChatBtn.addEventListener('click', () => {
     robotBtn.style.display = 'block';
     chatArea.style.display = 'block';
     reduceBtn.style.display = 'block';
+    // chatDiv.innerHTML = ''
 })
 
 chatDiv.querySelector('span').addEventListener('click', () => {
@@ -282,6 +241,16 @@ function startConversation() {
     }, 3200)
 }
 
+function refreshing(lang) {
+    let refreshBtn = document.querySelectorAll('.resetBtn');
+    refreshBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            questionType(lang);
+        })
+    })
+}
+
+
 function answerUser(response) {
     discussion.innerHTML += `<div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
     <i class="fa-solid fa-user ml-2 mt-2"></i>
@@ -290,6 +259,63 @@ function answerUser(response) {
             </div>
         </div>`
     discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
+}
+
+function questionType(lang) {
+    let engBtn = document.querySelector('.engBtn');
+    let frBtn = document.querySelector('.frBtn');
+    frBtn.disabled = true;
+    engBtn.disabled = true;
+    spinner.style.display = 'block';
+    if (lang == 'english') {
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+        <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+            <i class="fa-solid fa-robot ml-1 mt-1"></i>
+            <div>
+                <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">Great! I can help you with all Express Entry system topics listed below. Select one of them to get started.
+                <ul class="suggestionUser pt-2">
+                        <li><button class="answer eligibilityBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Eligibility</button></li>
+                        <li><button class="answer poolBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">E.E. Pool</button></li>
+                        <li><button class="answer postItaEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
+                        <li><button class="answer postAorEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
+                        <li><button class="answer pprEnBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
+                        <li><button class="answer settlementBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Settlement</button></li>
+                        <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">The topic is not listed</button></li>
+                    </ul>
+                </h3>
+            </div>
+        </div>
+    `;
+            questionSubType(lang);
+        }, 2000);
+
+    } else {
+        setTimeout(() => {
+            spinner.style.display = 'none';
+            discussion.innerHTML += `
+            <div class="discMsg text-start flex flex-row justify-around items-start gap-2 mt-3">
+                <i class="fa-solid fa-robot ml-1 mt-1"></i>
+                <div>
+                    <h3 class="rounded-lg p-1 my-1 pl-2 text-sm md:text-md bg-teal-100 w-5/6">
+                    Excellent! Je peux vous aider avec les sujets énumérés ci-dessous concernant le système d'immigration Entrée Express. Sélectionnez-en un pour commencer.
+                    <ul class="suggestionUser pt-2">
+                            <li><button class="answer admissibiliteBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg">Admissibilité</button></li>
+                            <li><button class="answer bassinBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Bassin E.E.</button></li>
+                            <li><button class="answer postItaFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-ITA</button></li>
+                            <li><button class="answer postAorFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Post-AoR</button></li>
+                            <li><button class="answer pprFrBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">PPR</button></li>
+                            <li><button class="answer installationBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Installation</button></li>
+                            <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
+                        </ul>
+                    </h3>
+                </div>
+            </div>
+        `;
+            questionSubType(lang);
+        }, 2000);
+    }
 }
 
 function questionSubType(lang) {
@@ -754,6 +780,7 @@ function questionFromWebsite(lang) {
                         </div>
                     </div>
                 `; discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                    refreshing(lang);
                 }, 2000);
             })
         })
@@ -784,6 +811,7 @@ function questionFromWebsite(lang) {
                     </div>
                 `;
                     discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                    refreshing(lang);
                 }, 2000);
             })
         })
@@ -865,6 +893,7 @@ function fromAdmissibilite(lang) {
                     </div>
                 </div>
             `;
+            refreshing(lang);
         }, 2000);
     })
 
@@ -886,7 +915,7 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -908,7 +937,7 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -930,7 +959,7 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -952,7 +981,7 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -988,7 +1017,7 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1024,7 +1053,7 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1046,7 +1075,7 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1068,7 +1097,7 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1090,7 +1119,7 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1112,7 +1141,7 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1143,7 +1172,7 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1191,7 +1220,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1217,7 +1246,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1243,7 +1272,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1269,7 +1298,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1295,7 +1324,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1325,7 +1354,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1351,7 +1380,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1377,7 +1406,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1405,7 +1434,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1433,7 +1462,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1478,7 +1507,7 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1525,7 +1554,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1551,7 +1580,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1577,7 +1606,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1603,7 +1632,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1629,7 +1658,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1659,7 +1688,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1685,7 +1714,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1711,7 +1740,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1739,7 +1768,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1767,7 +1796,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1812,7 +1841,7 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1859,7 +1888,7 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1887,7 +1916,7 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1917,7 +1946,7 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1948,7 +1977,7 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -1979,7 +2008,7 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2012,7 +2041,7 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2040,7 +2069,7 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2086,7 +2115,7 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2114,7 +2143,7 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2144,7 +2173,7 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2175,7 +2204,7 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2206,7 +2235,7 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2239,7 +2268,7 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2267,7 +2296,7 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2310,7 +2339,7 @@ function fromPostAorFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2336,7 +2365,7 @@ function fromPostAorFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2358,7 +2387,7 @@ function fromPostAorFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2400,7 +2429,7 @@ function fromPostAorEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2426,7 +2455,7 @@ function fromPostAorEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2452,7 +2481,7 @@ function fromPostAorEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2491,7 +2520,7 @@ function fromPprFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2517,7 +2546,7 @@ function fromPprFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2555,7 +2584,7 @@ function fromPprEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2581,7 +2610,7 @@ function fromPprEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2620,7 +2649,7 @@ function fromInstallation(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2670,7 +2699,7 @@ function fromInstallation(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2708,7 +2737,7 @@ function fromSettlement(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
@@ -2752,7 +2781,7 @@ function fromSettlement(lang) {
                         </h3>
                     </div>
                 </div>
-            `;
+            `; refreshing(lang);
         }, 2000);
     })
 
