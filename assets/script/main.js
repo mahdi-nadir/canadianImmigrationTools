@@ -313,7 +313,7 @@ function questionType(lang) {
                         <li><button class="answer postAorEnBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Post-AoR</button></li>
                         <li><button class="answer pprEnBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">PPR</button></li>
                         <li><button class="answer settlementBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Settlement</button></li>
-                        <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">The topic is not listed</button></li>
+                        <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">The topic is not listed</button></li>
                     </ul>
                 </h3>
             </div>
@@ -338,7 +338,7 @@ function questionType(lang) {
                             <li><button class="answer postAorFrBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Post-AoR</button></li>
                             <li><button class="answer pprFrBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">PPR</button></li>
                             <li><button class="answer installationBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Installation</button></li>
-                            <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
+                            <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                         </ul>
                     </h3>
                 </div>
@@ -379,7 +379,7 @@ function questionSubType(lang) {
                                     <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Expérience professionnelle</button></li>
                                     <li><button class="answer reservedJobBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Offre d'emploi</button></li>
                                     <li><button class="answer adaptabiliteBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Adaptabilité</button></li>
-                                    <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
+                                    <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -414,7 +414,7 @@ function questionSubType(lang) {
                                 <li><button class="answer drawsBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Les sélections fédérales</button></li>
                                 <li><button class="answer fundsBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Preuve de fonds</button></li>
                                 <li><button class="answer pnpBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Programme des Candidats des Provinces (PCP)</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -459,7 +459,7 @@ function questionSubType(lang) {
                                 <li><button class="answer giftDeedBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Lettre de don d'argent</button></li>
                                 <li><button class="answer feesBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Frais à payer</button></li>
                                 <li><button class="answer vmBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Visite médicale</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -500,7 +500,7 @@ function questionSubType(lang) {
                                 <li><button class="answer bioBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Données biométriques</button></li>
                                 <li><button class="answer processingTimeBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Délai de traitement</button></li>
                                 <li><button class="answer adrBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Additional Document Request</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -528,7 +528,7 @@ function questionSubType(lang) {
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer visaBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Visa IMMIGRANT</button></li>
                                 <li><button class="answer coprBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Confirmation de la résidence permanente</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -575,7 +575,7 @@ function questionSubType(lang) {
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer nasBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Numéro d'Assurance Sociale</button></li>
                                 <li><button class="answer bankBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Compte bancaire</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">Le sujet n'est pas listé</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -615,7 +615,7 @@ function questionSubType(lang) {
                                 <li><button class="answer workExpBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Work Experience</button></li>
                                 <li><button class="answer reservedJobBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Reserved job</button></li>
                                 <li><button class="answer adaptabiliteBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Adaptability</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">The topic is not listed</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -650,7 +650,7 @@ function questionSubType(lang) {
                                 <li><button class="answer drawsBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Federal draws</button></li>
                                 <li><button class="answer fundsBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Proof of funds</button></li>
                                 <li><button class="answer pnpBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Provincial Nominee Program (PNP)</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">The topic is not listed</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -689,7 +689,7 @@ function questionSubType(lang) {
                                 <li><button class="answer giftDeedBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Gift Deed</button></li>
                                 <li><button class="answer feesBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Fees to pay</button></li>
                                 <li><button class="answer vmBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Medical examination</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">The topic is not listed</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -725,7 +725,7 @@ function questionSubType(lang) {
                                 <li><button class="answer bioBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Biometrics</button></li>
                                 <li><button class="answer processingTimeBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Processing time</button></li>
                                 <li><button class="answer adrBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Additional Document Request</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">The topic is not listed</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -753,7 +753,7 @@ function questionSubType(lang) {
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer visaBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">IMMIGRANT Visa</button></li>
                                 <li><button class="answer coprBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Confirmation of Permanent Residence</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">The topic is not listed</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -792,7 +792,7 @@ function questionSubType(lang) {
                         <ul class="suggestionUser pt-2">
                                 <li><button class="answer nasBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Social Insurance Number</button></li>
                                 <li><button class="answer bankBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">Bank account</button></li>
-                                <li><button class="answer anotherQuestionBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">The topic is not listed</button></li>
+                                <li><button class="answer anotherQuestionBtn bg-red-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-red-400 rounded-lg mt-1">The topic is not listed</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -830,7 +830,7 @@ function questionFromWebsite(lang) {
                             ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
 
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -861,7 +861,7 @@ function questionFromWebsite(lang) {
                             ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
 
                             <ul class="suggestionUser pt-2">
-                                    <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                    <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                                 </ul>
                             </h3>
                         </div>
@@ -966,7 +966,7 @@ function fromAdmissibilite(lang) {
                         Le critère de l'âge dans le score d'admissibilité de l'Entrée express mesure l'impact de l'âge sur la capacité d'adaptation et de contribution du candidat à l'économie canadienne. Des points sont attribués en fonction de l'âge, avec un maximum pour les candidats âgés de 18 à 35 ans, reflétant leur potentiel d'intégration et de productivité à long terme. A savoir que le candidat perd 1 point par année à partir de 36 ans et n'a aucun point à partir de 47 ans ou moins de 18 ans.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -992,7 +992,7 @@ function fromAdmissibilite(lang) {
                         Le critère des études dans le système Entrée express évalue le niveau d'éducation du candidat et attribue des points en fonction de ce niveau. Cela reflète comment l'éducation du candidat peut contribuer positivement à l'économie canadienne. Les diplômes de divers niveaux, allant des certificats aux diplômes avancés, peuvent donner droit à des points, encourageant ainsi les candidats ayant une variété de compétences à postuler et à contribuer à la société canadienne.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1018,7 +1018,7 @@ function fromAdmissibilite(lang) {
                         Les compétences linguistiques sont un critère important dans le système Entrée express, évaluant la capacité d'un candidat à communiquer et à s'intégrer dans la société canadienne. Les candidats peuvent obtenir des points en fonction de leurs résultats aux examens de langue approuvés, tels que l'IELTS, le CELPIP, le TEF Canada et le TCF Canada. Chaque examen évalue la maîtrise de l'anglais et/ou du français, en évaluant la compréhension écrite et orale, ainsi que l'expression écrite et orale. Les points attribués varient en fonction du score obtenu (sachant que le score minimal requis est de NCLC7), ce qui reflète l'importance de la communication fluide et de la compréhension dans le processus d'immigration au Canada.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1043,7 +1043,7 @@ function fromAdmissibilite(lang) {
                         L'expérience professionnelle acquise à l'étranger est un critère important dans le système Entrée express. Pour être admissible, un candidat doit avoir au moins une année d'expérience de travail continue à temps plein (ou l'équivalent à temps partiel) dans une profession qualifiée, acquise en dehors du Canada. Cette exigence de continuité garantit que le candidat possède une solide expérience professionnelle à l'étranger.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1068,7 +1068,7 @@ function fromAdmissibilite(lang) {
                         Une offre d'emploi réservé est une proposition d'emploi émise par un employeur canadien spécifiquement en faveur d'un travailleur étranger. Cela signifie que l'employeur a choisi ce travailleur pour combler un poste vacant, et cette offre est généralement liée à une demande d'immigration. L'offre d'emploi réservé peut faciliter le processus d'immigration en offrant un soutien supplémentaire au candidat. Cependant, elle peut être soumise à certaines exigences et conditions définies par les autorités de l'immigration au Canada.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1107,7 +1107,7 @@ function fromAdmissibilite(lang) {
                         L'ensemble de ces facteurs est évalué pour déterminer le score d'adaptabilité global du candidat et de son conjoint, influençant ainsi leur admissibilité au programme Entrée express.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1146,7 +1146,7 @@ function fromEligibility(lang) {
                         The age criterion in the Express Entry eligibility score measures the impact of age on the candidate's ability to adapt and contribute to the Canadian economy. Points are awarded based on age, with a maximum for candidates aged 18 to 35, reflecting their potential for long-term integration and productivity. It's worth noting that the candidate loses 1 point per year starting from age 36 and receives no points at age 47 or below 18.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1171,7 +1171,7 @@ function fromEligibility(lang) {
                         The education criterion in the Express Entry system assesses the candidate's level of education and awards points based on this level. This reflects how the candidate's education can positively contribute to the Canadian economy. Degrees of various levels, ranging from certificates to advanced diplomas, can earn points, thereby encouraging candidates with a variety of skills to apply and contribute to Canadian society.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1196,7 +1196,7 @@ function fromEligibility(lang) {
                         Linguistic skills are a crucial criterion in the Express Entry system, assessing a candidate's ability to communicate and integrate into Canadian society. Candidates can earn points based on their results in approved language exams such as IELTS, CELPIP, TEF Canada, and TCF Canada. Each exam evaluates proficiency in English and/or French, assessing listening, speaking, reading, and writing skills. Points awarded vary based on the achieved score (with a minimum required score of CLB 7), reflecting the significance of effective communication and comprehension in the Canadian immigration process.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1221,7 +1221,7 @@ function fromEligibility(lang) {
                         Foreign work experience is a significant criterion in the Express Entry system. To be eligible, a candidate must have a minimum of one year of continuous full-time work experience (or part-time equivalent) in a qualified occupation gained outside of Canada. This requirement of continuity ensures that the candidate possesses robust professional experience gained abroad.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1246,7 +1246,7 @@ function fromEligibility(lang) {
                         A reserved job offer is an employment proposal extended by a Canadian employer specifically in favor of a foreign worker. This signifies that the employer has selected this worker to fill a vacant position, and the offer is typically tied to an immigration application. The reserved job offer can streamline the immigration process by providing additional support to the candidate. However, it may be subject to certain requirements and conditions set forth by Canadian immigration authorities.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1280,7 +1280,7 @@ function fromEligibility(lang) {
                         All these factors are evaluated to determine the overall adaptability score of the candidate and their spouse, thereby influencing their eligibility for the Express Entry program<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1331,7 +1331,7 @@ function fromBassin(lang) {
                         En somme, l'état civil du candidat, qu'il soit célibataire ou marié, peut jouer un rôle dans l'évaluation de l'admissibilité et du score global dans le cadre du programme Entrée express.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1360,7 +1360,7 @@ function fromBassin(lang) {
                         En somme, le critère de l'âge dans le bassin de l'Entrée express vise à évaluer comment l'âge du candidat peut influencer sa contribution potentielle à l'économie canadienne et à la société dans son ensemble.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1389,7 +1389,7 @@ function fromBassin(lang) {
                         En somme, le critère des études dans le bassin de l'Entrée express évalue comment le niveau d'éducation du candidat peut influencer positivement sa capacité à apporter une contribution durable et bénéfique à l'économie et à la société du Canada.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1418,7 +1418,7 @@ function fromBassin(lang) {
                         Finalement, le critère des langues dans le bassin de l'Entrée express évalue comment les compétences linguistiques du candidat peuvent non seulement favoriser une intégration réussie, mais également souligne la pertinence grandissante de la maîtrise du français depuis 2021, en témoignant de la capacité à communiquer de manière efficace et à jouer un rôle actif au sein de la vie sociale et économique du Canada.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1447,7 +1447,7 @@ function fromBassin(lang) {
                         Cette approche permet de mettre en avant la valeur des compétences professionnelles développées en dehors du Canada, en les intégrant harmonieusement avec d'autres aspects du profil du candidat. Elle renforce également la notion de « transfert » des compétences acquises ailleurs vers le marché du travail canadien, favorisant ainsi une transition réussie et une contribution économique positive à la société canadienne.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1480,7 +1480,7 @@ function fromBassin(lang) {
                         En conclusion, la participation du conjoint dans le processus d'Entrée express peut jouer un rôle essentiel en ajoutant des points au score global du candidat principal. Les compétences linguistiques, les études et l'expérience professionnelle du conjoint sont autant d'éléments qui peuvent augmenter les chances d'admissibilité et améliorer la position du candidat dans le bassin.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1509,7 +1509,7 @@ function fromBassin(lang) {
                         En résumé, la transférabilité des compétences se présente comme une démarche dynamique pour accumuler jusqu'à 100 points, illustrant votre capacité à optimiser vos atouts et à mettre en avant votre polyvalence et votre adaptabilité. Ce concept témoigne de l'importance de la planification stratégique dans le cadre de l'Entrée express, vous permettant de jouer judicieusement avec différents éléments pour atteindre un score d'admissibilité optimal.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1538,7 +1538,7 @@ function fromBassin(lang) {
                         Ainsi, la nomination provinciale se distingue comme un catalyseur majeur dans le processus d'Entrée express, conférant au candidat une excellente opportunité d'atteindre un score élevé, favorisant ainsi son accession à la résidence permanente au Canada.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1569,7 +1569,7 @@ function fromBassin(lang) {
                         Pour consulter la dernière sélection qui a été faites, <a class="text-blue-600" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/immigrer-canada/entree-express/soumettre-profil/selections-candidats.html" target="_blank" rel="noreferrer">cliquez ici</a>.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1600,7 +1600,7 @@ function fromBassin(lang) {
                         En conclusion, les fonds requis dans le système Entrée express sont une mesure visant à s'assurer que les candidats ont les ressources financières nécessaires pour bien démarrer leur vie au Canada et pour contribuer positivement à la société canadienne.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1648,7 +1648,7 @@ function fromBassin(lang) {
                         <br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                            <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                            <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                         </ul>
                         </h3>
                     </div>
@@ -1699,7 +1699,7 @@ function fromPool(lang) {
                         In summary, the marital status of the candidate, whether single or married, can play a role in evaluating eligibility and the overall score within the framework of the Express Entry program.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1728,7 +1728,7 @@ function fromPool(lang) {
                         In summary, the age criterion in the Express Entry pool aims to assess how the candidate's age can influence their potential contribution to the Canadian economy and society as a whole.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1757,7 +1757,7 @@ function fromPool(lang) {
                         To sum up, the education criterion in the Express Entry pool evaluates how the candidate's level of education can positively influence their ability to make a lasting and beneficial contribution to the economy and society of Canada.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1786,7 +1786,7 @@ function fromPool(lang) {
                         In conclusion, the language criterion in the Express Entry pool evaluates how a candidate's language skills can not only facilitate successful integration but also highlights the growing relevance of French proficiency since 2021. This demonstrates the ability to communicate effectively and play an active role within Canada's social and economic spheres.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1815,7 +1815,7 @@ function fromPool(lang) {
                         This approach highlights the value of professional skills developed outside of Canada by seamlessly integrating them with other aspects of the candidate's profile. It also reinforces the notion of transferring skills acquired elsewhere to the Canadian job market, thus promoting a successful transition and a positive economic contribution to Canadian society.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1848,7 +1848,7 @@ function fromPool(lang) {
                         In conclusion, the participation of the spouse in the Express Entry process can play an essential role in adding points to the overall score of the primary candidate. The spouse's language skills, education, and work experience are all factors that can increase eligibility chances and enhance the candidate's position in the pool.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1877,7 +1877,7 @@ function fromPool(lang) {
                         In brief, skills transferability presents a dynamic approach to accumulate up to 100 points, showcasing your ability to maximize your strengths and highlight your versatility and adaptability. This concept underscores the importance of strategic planning within the Express Entry framework, enabling you to skillfully play with various elements to achieve an optimal eligibility score.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1906,7 +1906,7 @@ function fromPool(lang) {
                         Thus, provincial nomination stands out as a major catalyst in the Express Entry process, providing the candidate with an excellent opportunity to achieve a high score and thereby facilitating their path to permanent residence in Canada.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1937,7 +1937,7 @@ function fromPool(lang) {
                         To view the latest selection that has been made, <a class="text-blue-600" href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/submit-profile/rounds-invitations.html" target="_blank" rel="noreferrer">click here</a>.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -1968,7 +1968,7 @@ function fromPool(lang) {
                         To put it briefly, the required funds in the Express Entry system are a measure aimed at ensuring that candidates have the necessary financial resources to start their lives in Canada on a solid footing and to make a positive contribution to Canadian society.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2016,7 +2016,7 @@ function fromPool(lang) {
                         <br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                            <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                            <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                         </ul>
                         </h3>
                     </div>
@@ -2067,7 +2067,7 @@ function fromPostItaFr(lang) {
                         <br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2098,7 +2098,7 @@ function fromPostItaFr(lang) {
                         Enfin, les antécédents personnels dans le cadre de l'Entrée express vous offrent l'opportunité de démontrer votre parcours au cours des dix dernières années, contribuant ainsi à une évaluation complète de votre admissibilité à la résidence permanente au Canada.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2131,7 +2131,7 @@ function fromPostItaFr(lang) {
                         Pour conclure, les antécédents professionnels offrent la possibilité de démontrer votre expérience de travail continue et admissible, tout en valorisant vos compétences et votre contribution potentielle à l'économie canadienne. Cette étape joue un rôle crucial dans la détermination de votre admissibilité à la résidence permanente au Canada à travers le système Entrée express.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2165,7 +2165,7 @@ function fromPostItaFr(lang) {
                         <br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2199,7 +2199,7 @@ function fromPostItaFr(lang) {
                         <br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2235,7 +2235,7 @@ function fromPostItaFr(lang) {
                         <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/321111072513577/?__cft__[0]=AZVwmw321Tz5-XLh6Cce3PaUVGx1YrPtJ6NRVB4N9ryDI4bLGbhjULVH6WYE4xgtx4C_LL-ukFVEzrtBloTO44uZ4WajEsb4_l5qFWX8gdjo8dEwRYepzDtEPx2ts7D9Yhm_KvTVflLsdsJK_68_C3sZ&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">Cliquez ici</a> pour voir avoir une idée sur les frais à acquitter.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2266,7 +2266,7 @@ function fromPostItaFr(lang) {
                         Pour récapituler, la visite médicale exigée par IRCC dans le cadre de l'Entrée express vise à garantir que les candidats à la résidence permanente sont en bonne santé et ne représentent pas de risques pour la santé publique canadienne.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2316,7 +2316,7 @@ function fromPostItaEn(lang) {
                         <br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2347,7 +2347,7 @@ function fromPostItaEn(lang) {
                         Ultimately, providing your personal history within the context of Express Entry offers you the opportunity to showcase your journey over the past ten years, thereby contributing to a comprehensive evaluation of your eligibility for permanent residence in Canada.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2380,7 +2380,7 @@ function fromPostItaEn(lang) {
                         In conclusion, professional backgrounds provide an opportunity to demonstrate your continuous and eligible work experience, while showcasing your skills and potential contribution to the Canadian economy. This step plays a crucial role in determining your eligibility for permanent residence in Canada through the Express Entry system.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2414,7 +2414,7 @@ function fromPostItaEn(lang) {
                         <br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2448,7 +2448,7 @@ function fromPostItaEn(lang) {
                         <br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2484,7 +2484,7 @@ function fromPostItaEn(lang) {
                         <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25/posts/321111072513577/?__cft__[0]=AZVwmw321Tz5-XLh6Cce3PaUVGx1YrPtJ6NRVB4N9ryDI4bLGbhjULVH6WYE4xgtx4C_LL-ukFVEzrtBloTO44uZ4WajEsb4_l5qFWX8gdjo8dEwRYepzDtEPx2ts7D9Yhm_KvTVflLsdsJK_68_C3sZ&__tn__=%2CO%2CP-R" target="_blank" rel="noreferrer">Click here</a> to get an idea of the fees to be paid.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2515,7 +2515,7 @@ function fromPostItaEn(lang) {
                         In a nutshell, the IRCC-required medical examination within the context of Express Entry aims to ensure that candidates for permanent residence are in good health and do not pose a risk to Canadian public health.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2562,7 +2562,7 @@ function fromPostAorFr(lang) {
                         <br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2591,7 +2591,7 @@ function fromPostAorFr(lang) {
                         Pour obtenir une estimation plus précise du délai de traitement de votre demande spécifique, il est recommandé de consulter le site web officiel d'Immigration, Réfugiés et Citoyenneté Canada (IRCC). <a class="text-blue-600" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/demande/verifier-delais-traitement.html" target="_blank" rel="noreferrer">Cliquez ici pour avoir une idée sur le délai de traitement de votre demande</a>.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2616,7 +2616,7 @@ function fromPostAorFr(lang) {
                         ADR "Additional Document Request", "Demande de document additionnel" en français. Cela fait référence à la situation où Immigration, Réfugiés et Citoyenneté Canada (IRCC) demande des documents ou des informations supplémentaires à un candidat pour approfondir l'évaluation de leur admissibilité au programme Entrée express ou pour vérifier les informations fournies dans leur demande. Les demandes de documents additionnels sont une étape normale du processus de demande, et les candidats doivent fournir les documents demandés dans le délai spécifié afin de poursuivre leur demande.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2662,7 +2662,7 @@ function fromPostAorEn(lang) {
                         <br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2691,7 +2691,7 @@ function fromPostAorEn(lang) {
                         To obtain a more precise estimate of the processing time for your specific application, it is recommended to consult the official website of Immigration, Refugees and Citizenship Canada (IRCC). <a class="text-blue-600" href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/demande/verifier-delais-traitement.html" target="_blank" rel="noreferrer">Click here to get an idea of the processing time for your application</a>.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2720,7 +2720,7 @@ function fromPostAorEn(lang) {
                         It's important to respond to the ADR promptly and provide the requested documents within the specified timeframe. Failure to provide the requested documents may lead to delays or even refusal of your application. Timely and accurate submission of the requested documents can help ensure a smooth and efficient processing of your application within the Express Entry system.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2763,7 +2763,7 @@ function fromPprFr(lang) {
                         En récapitulation, l'étape de la demande de passeport fait suite à l'approbation de votre demande de résidence permanente. Elle implique l'obtention du visa de résident permanent dans votre passeport, vous permettant ainsi de voyager au Canada et de confirmer votre statut de résident permanent à votre arrivée.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2792,7 +2792,7 @@ function fromPprFr(lang) {
                         Lorsque vous voyagez au Canada, vous devrez présenter votre CRP aux autorités à votre arrivée pour confirmer votre statut de résident permanent. La CRP est un document essentiel que vous devrez garder en sécurité et avoir avec vous chaque fois que vous voyagez à l'étranger ou lorsque vous interagissez avec les autorités canadiennes.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2834,7 +2834,7 @@ function fromPprEn(lang) {
                         To recapitulate, the passport application step follows the approval of your permanent residence application. It involves obtaining the permanent resident visa in your passport, allowing you to travel to Canada and confirm your permanent resident status upon arrival.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2863,7 +2863,7 @@ function fromPprEn(lang) {
                         When you travel to Canada, you will need to present your CoPR to authorities upon arrival to confirm your permanent resident status. The CoPR is an essential document that you should keep secure and have with you whenever you travel abroad or interact with Canadian authorities.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2906,7 +2906,7 @@ function fromInstallation(lang) {
                         En gros, le NAS est un numéro d'assurance sociale attribué par Service Canada pour identifier les résidents au Canada et leur permettre d'accéder à divers services gouvernementaux. Vous pouvez l'obtenir en faisant une demande auprès de Service Canada en fournissant les documents requis.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -2959,7 +2959,7 @@ function fromInstallation(lang) {
                         N'oubliez pas de prendre en compte les frais, les taux d'intérêt, les services en ligne, la disponibilité des succursales et d'autres facteurs importants lors de votre décision.<br><br>
                         ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
                         <ul class="suggestionUser pt-2">
-                            <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Actualiser</button></li>
+                            <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Actualiser</button></li>
                         </ul>
                         </h3>
                     </div>
@@ -3001,7 +3001,7 @@ function fromSettlement(lang) {
                         All in all, the SIN is a social insurance number issued by Service Canada to identify residents in Canada and allow them to access various government services. You can obtain it by applying to Service Canada and providing the required documents.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                                <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                                <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                             </ul>
                         </h3>
                     </div>
@@ -3048,7 +3048,7 @@ function fromSettlement(lang) {
                         Remember to consider fees, interest rates, online services, branch availability, and other important factors when making your decision.<br><br>
                         ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
                         <ul class="suggestionUser pt-2">
-                            <li><button class="answer resetBtn bg-teal-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">Refresh</button></li>
+                            <li><button class="answer resetBtn bg-blue-300 w-3/4 text-start px-2 ml-2 py-1 hover:bg-blue-400 rounded-lg">Refresh</button></li>
                         </ul>
                         </h3>
                     </div>
