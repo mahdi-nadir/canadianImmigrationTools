@@ -167,6 +167,11 @@ let questionInvitationEn = [
     "If other points require clarification, I am here to provide you with the answers.",
     "Feel free to ask me other questions if you have any."
 ]
+let admins = [
+    "Medy",
+    "Fiona"
+];
+let admin = admins[Math.floor(Math.random() * admins.length)];
 
 adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
 
@@ -253,14 +258,17 @@ function startConversation() {
     setTimeout(() => {
         robotIcon.style.display = 'block';
         heyMessage.style.display = 'block';
+        playAudioInbox();
     }, 800)
     setTimeout(() => {
         masculinePronoun.style.display = 'block';
+        playAudioInbox();
     }, 2500)
     setTimeout(() => {
         whatLang.style.display = 'block';
         suggestionUser.style.display = 'block';
         spinner.style.display = 'none';
+        playAudioInbox();
     }, 3200)
 }
 
@@ -796,7 +804,8 @@ function questionSubType(lang) {
 
         anotherQuestionBtn.addEventListener('click', questionFromWebsite(lang))
     }
-    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    playAudioInbox();
 }
 
 function questionFromWebsite(lang) {
@@ -815,7 +824,7 @@ function questionFromWebsite(lang) {
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Need help with a topic not listed? You can navigate to our Facebook group where you can ask your question with the appropriate hashtag. We're here to assist you!
                             
-                            Please copy this hashtag <b>#toMedy_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> and paste it into your post in <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">our Facebook group</a>.
+                            Please copy this hashtag <b>#to${admin}_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> and this tag <b>@${admin}</b>, then paste them into your post in <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">our Facebook group</a>.
                             <br>
 
                             ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
@@ -826,7 +835,8 @@ function questionFromWebsite(lang) {
                             </h3>
                         </div>
                     </div>
-                `; discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                `; discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                    playAudioInbox();
                     refreshing(lang);
                 }, 2000);
             })
@@ -845,7 +855,7 @@ function questionFromWebsite(lang) {
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Besoin d'aide sur un sujet qui n'est pas dans la liste ? Vous pouvez vous diriger vers notre groupe Facebook où vous pourrez poser votre question avec le hashtag approprié. Nous sommes là pour vous aider!
                             
-                            Prière de copier cet hashtag <b>#toMedy_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> et de le coller dans votre publication dans <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">notre groupe Facebook</a>.<br>
+                            Prière de copier cet hashtag <b>#to${admin}_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> et ce tag <b>@${admin}</b>, puis collez-les dans votre publication dans <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">notre groupe Facebook</a>.<br>
                             <br>
 
                             ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
@@ -857,7 +867,8 @@ function questionFromWebsite(lang) {
                         </div>
                     </div>
                 `;
-                    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                    playAudioInbox();
                     refreshing(lang);
                 }, 2000);
             })
@@ -866,7 +877,7 @@ function questionFromWebsite(lang) {
 }
 
 function playAudioInbox() {
-    let audio = new Audio('assets/sounds/success.mp3');
+    let audio = new Audio('assets/sounds/messageSound.mp3');
     audio.play();
 }
 // answers.forEach(answer => {
@@ -925,7 +936,8 @@ function fromAdmissibilite(lang) {
     let reservedJobBtn = document.querySelectorAll('.reservedJobBtn');
     let adaptabiliteBtn = document.querySelectorAll('.adaptabiliteBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    playAudioInbox();
 
     ageBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -947,6 +959,7 @@ function fromAdmissibilite(lang) {
                     </div>
                 </div>
             `;
+                playAudioInbox();
                 refreshing(lang);
             }, 2000);
         })
@@ -971,7 +984,9 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `;
+                playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -995,7 +1010,8 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1019,7 +1035,8 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1043,7 +1060,8 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1081,7 +1099,8 @@ function fromAdmissibilite(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1097,7 +1116,8 @@ function fromEligibility(lang) {
     let reservedJobBtn = document.querySelectorAll('.reservedJobBtn');
     let adaptabiliteBtn = document.querySelectorAll('.adaptabiliteBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    playAudioInbox();
 
     ageBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1143,7 +1163,8 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1167,7 +1188,8 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1191,7 +1213,8 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1215,7 +1238,8 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1248,7 +1272,8 @@ function fromEligibility(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1270,7 +1295,8 @@ function fromBassin(lang) {
     let fundsBtn = document.querySelectorAll('.fundsBtn');
     let pnpBtn = document.querySelectorAll('.pnpBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
-    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    discussion.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    playAudioInbox();
 
     etatCivilBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1297,7 +1323,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1325,7 +1352,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1353,7 +1381,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1381,7 +1410,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1409,7 +1439,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1441,7 +1472,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1469,7 +1501,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1497,7 +1530,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1527,7 +1561,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1557,7 +1592,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1604,7 +1640,8 @@ function fromBassin(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1627,6 +1664,7 @@ function fromPool(lang) {
     let fundsBtn = document.querySelectorAll('.fundsBtn');
     let pnpBtn = document.querySelectorAll('.pnpBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    playAudioInbox();
 
     etatCivilBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1653,7 +1691,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1681,7 +1720,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1709,7 +1749,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1737,7 +1778,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1765,7 +1807,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1797,7 +1840,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1825,7 +1869,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1853,7 +1898,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1883,7 +1929,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1913,7 +1960,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1960,7 +2008,8 @@ function fromPool(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -1980,6 +2029,7 @@ function fromPostItaFr(lang) {
     let feesBtn = document.querySelectorAll('.feesBtn');
     let vmBtn = document.querySelectorAll('.vmBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    playAudioInbox();
 
     docsListBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -2009,7 +2059,8 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2039,7 +2090,8 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2071,7 +2123,8 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2104,7 +2157,8 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2137,7 +2191,8 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2172,7 +2227,8 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2202,7 +2258,8 @@ function fromPostItaFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2221,6 +2278,7 @@ function fromPostItaEn(lang) {
     let feesBtn = document.querySelectorAll('.feesBtn');
     let vmBtn = document.querySelectorAll('.vmBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    playAudioInbox();
 
     docsListBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -2250,7 +2308,8 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2280,7 +2339,8 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2312,7 +2372,8 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2345,7 +2406,8 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2378,7 +2440,8 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2413,7 +2476,8 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2443,7 +2507,8 @@ function fromPostItaEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2459,6 +2524,7 @@ function fromPostAorFr(lang) {
     let processingTimeBtn = document.querySelectorAll('.processingTimeBtn');
     let adrBtn = document.querySelectorAll('.adrBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    playAudioInbox();
 
     bioBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -2488,7 +2554,8 @@ function fromPostAorFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2516,7 +2583,8 @@ function fromPostAorFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2540,7 +2608,8 @@ function fromPostAorFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2555,6 +2624,7 @@ function fromPostAorEn(lang) {
     let processingTimeBtn = document.querySelectorAll('.processingTimeBtn');
     let adrBtn = document.querySelectorAll('.adrBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    playAudioInbox();
 
     bioBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -2584,7 +2654,8 @@ function fromPostAorEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2612,7 +2683,8 @@ function fromPostAorEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2640,7 +2712,8 @@ function fromPostAorEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2655,6 +2728,7 @@ function fromPprFr(lang) {
     let visaBtn = document.querySelectorAll('.visaBtn');
     let coprBtn = document.querySelectorAll('.coprBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    playAudioInbox();
 
     visaBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -2681,7 +2755,8 @@ function fromPprFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2709,7 +2784,8 @@ function fromPprFr(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2723,6 +2799,7 @@ function fromPprEn(lang) {
     let visaBtn = document.querySelectorAll('.visaBtn');
     let coprBtn = document.querySelectorAll('.coprBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    playAudioInbox();
 
     visaBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -2749,7 +2826,8 @@ function fromPprEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2777,7 +2855,8 @@ function fromPprEn(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2792,6 +2871,7 @@ function fromInstallation(lang) {
     let nasBtn = document.querySelectorAll('.nasBtn');
     let bankBtn = document.querySelectorAll('.bankBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    playAudioInbox();
 
     nasBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -2818,7 +2898,8 @@ function fromInstallation(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2870,7 +2951,8 @@ function fromInstallation(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2884,6 +2966,7 @@ function fromSettlement(lang) {
     let nasBtn = document.querySelectorAll('.nasBtn');
     let bankBtn = document.querySelectorAll('.bankBtn');
     let anotherQuestionBtn = document.querySelector('.anotherQuestionBtn');
+    playAudioInbox();
 
     nasBtn.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -2910,7 +2993,8 @@ function fromSettlement(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
@@ -2956,7 +3040,8 @@ function fromSettlement(lang) {
                         </h3>
                     </div>
                 </div>
-            `; refreshing(lang);
+            `; playAudioInbox();
+                refreshing(lang);
             }, 2000);
         })
     })
