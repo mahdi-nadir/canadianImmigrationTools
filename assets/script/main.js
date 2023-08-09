@@ -880,6 +880,17 @@ function playAudioInbox() {
     let audio = new Audio('assets/sounds/messageSound.mp3');
     audio.play();
 }
+
+function showHaveQuestionsMark() {
+    let haveQuestionsMark = document.querySelector('.haveQuestions');
+    haveQuestionsMark.style.display = 'block';
+
+    haveQuestionsMark.addEventListener('click', () => {
+        haveQuestionsMark.style.display = 'none';
+    })
+}
+setTimeout(showHaveQuestionsMark, 10000); // show for the first time after 10 seconds
+setInterval(showHaveQuestionsMark, 420000); // show every 7 minutes
 // answers.forEach(answer => {
 //     answer.addEventListener('click', () => {
 //         answerUser(answer);
