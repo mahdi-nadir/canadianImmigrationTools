@@ -74,6 +74,15 @@ body {
     height: 350px;
 }
 
+footer {
+    position: relative;
+}
+
+.mainChatWindow {
+    position: fixed;
+    bottom: 85px;
+    right: 0;
+}
 
 /* media query */
 @media (max-width: 1015px) {
@@ -113,6 +122,14 @@ body {
 
     .haveQuestions {
         display: none;
+    }
+
+    
+
+    .mainChatWindow {
+        position: fixed;
+        bottom: 85px;
+        right: 0;
     }
 }
 

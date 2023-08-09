@@ -212,6 +212,10 @@ robotBtn.addEventListener('click', () => {
 
 reduceBtn.addEventListener('click', () => {
     chatDiv.style.height = '40px';
+    if (window.innerWidth < 650) {
+        chatDiv.style.opacity = '0.5';
+        chatDiv.style.right = '-65%';
+    }
     chatArea.style.display = 'none';
     reduceBtn.style.display = 'none';
 })
@@ -244,6 +248,12 @@ closeChatBtn.addEventListener('click', () => {
 
 chatDiv.querySelector('span').addEventListener('click', () => {
     chatDiv.style.height = '400px';
+    if (window.innerWidth < 650) {
+        chatDiv.style.opacity = '1';
+        chatDiv.style.right = '0';
+        chatDiv.style.transition = 'all 0.5s ease-in-out';
+    }
+    chatDiv.style.display = 'block';
     chatArea.style.display = 'block';
     reduceBtn.style.display = 'block';
     discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
