@@ -891,7 +891,7 @@ function showHaveQuestionsMark() {
         haveQuestionsMark.style.display = 'none';
     })
 }
-setTimeout(showHaveQuestionsMark, 5000); // show for the first time after 60 seconds
+setTimeout(showHaveQuestionsMark, 60000); // show for the first time after 60 seconds
 setInterval(showHaveQuestionsMark, 420000); // show every 7 minutes
 
 

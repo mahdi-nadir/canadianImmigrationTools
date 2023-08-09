@@ -29,39 +29,7 @@
         <button class="currencyBtn text-white text-lg font-bold uppercase animate-bounce w-7 h-7" title="Required Funds">$</button>
     </div>
     
-    <p class="haveQuestions text-sm p-2 bg-black text-white font-bold border-2 rounded-l-xl rounded-tr-xl italic cursor-pointer" style="display: none;">
-        Have questions? Ask Medy! 
-    </p>
-    <button class="robotBtn text-3xl md:text-4xl font-bold block hover:text-blue-700" title="Ask questions!"><i class="fa-solid fa-robot"></i></button>
-
-    <div class="mainChatWindow text-md md:text-lg w-3/4 md:w-1/4 border-2 border-black bg-slate-100 rounded" style="display: none;">
-        <div class="h-[36px] w-full bg-blue-700 border-b-2 border-slate-700 text-white flex flex-row justify-between items-center p-2 static">
-            <span class="font-bold cursor-pointer pr-10 py-1">Talk to Medy</span>
-            <div class="flex flex-row justify-center items-center gap-2" >
-                <button class="reduceChatBtn hover:text-gray-400" title="Reduce"><i class="fa-solid fa-minus"></i></button>
-                <button class="closeChatBtn hover:text-gray-400" title="Close"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-        </div>
-        <div class="chatDiv chatArea overflow-y-auto overflow-x-hidden">
-            <div class="messageBot text-start flex flex-row justify-around items-end gap-2">
-                <i class="fa-solid fa-robot ml-1 mb-1 robotIcon" style="display: none;"></i>
-                <div>
-                    <h3 class="hey rounded-lg p-1 my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">Hey There! I'm Medy, your personal assistant!</h3>
-                    <h3 class="masculinePronoun rounded-lg p-1 my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">It's important to understand that using masculine pronouns is not indicative of sexism, but rather a reflection of simplicity.</h3>
-                    <h3 class="whatLang rounded-lg p-1 my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">What language do you prefer?
-                    <ul class="suggestionUser pt-2" style="display: none;">
-                        <li><button class="answer engBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">English</button></li>
-                        <li><button class="answer frBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">French</button></li>
-                    </ul></h3>
-                </div>
-            </div>
-            <div class="discussion flex flex-col justify-center items-start gap-2 text-start">
-                
-            </div>
-            <div class="spinner animate-spin" style="display: none;"><i class="fa-solid fa-spinner"></i></div>
-            
-        </div>
-    </div>
+    
     
     <div class="px-10">
     <template id="eligibilityCalculatorTemplate">
@@ -1524,7 +1492,7 @@
         </div>
         <button id="convertBtn" class="font-bold bg-blue-500 text-white px-5 py-2 rounded-lg mt-4 text-lg md:text-2xl block mx-auto" disabled>Result!</button>
         <h1 id="result" class="text-md md:text-2xl text-center mt-4"></h1> 
-</template>
+    </template>
 
     <main>
         <section>
@@ -1548,22 +1516,60 @@
 
 
     
-    <!-- <div id="modalConfirmation" class="text-lg lg:text-xl border-black rounded w-[30%] p-4 min-h-[10%] text-justify flex flex-col justify-center items-center gap-10 bg-slate-400" style="display: none;">
-        <p>
-            <b>Are you sure you want to leave?</b>
-        </p>
-        <div class="flex flex-row justify-center items-center gap-6">
-            <button id="close" class="close right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">Close</button>
-            <button id="confirm" class="confirm right-3 px-2 text-white bg-green-500 rounded hover:bg-green-600">Confirm</button>
+        <!-- <div id="modalConfirmation" class="text-lg lg:text-xl border-black rounded w-[30%] p-4 min-h-[10%] text-justify flex flex-col justify-center items-center gap-10 bg-slate-400" style="display: none;">
+            <p>
+                <b>Are you sure you want to leave?</b>
+            </p>
+            <div class="flex flex-row justify-center items-center gap-6">
+                <button id="close" class="close right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">Close</button>
+                <button id="confirm" class="confirm right-3 px-2 text-white bg-green-500 rounded hover:bg-green-600">Confirm</button>
+            </div>
+        </div> -->
+    </div>
+    <p class="haveQuestions text-sm p-2 bg-black text-white font-bold border-2 rounded-l-xl rounded-tr-xl italic cursor-pointer w-1/4 absolute right-[60px] bottom-[120px]" style="display: none;">
+        Have questions? Ask Medy! 
+    </p>
+
+
+    <div class="mainChatWindow text-md md:text-lg w-3/4 md:w-1/4 border-2 border-black bg-slate-100 rounded absolute right-[15px] bottom-[100px]" style="display: none;">
+        <div class="h-[36px] w-full bg-blue-700 border-b-2 border-slate-700 text-white flex flex-row justify-between items-center p-2 static">
+            <span class="font-bold cursor-pointer pr-10 py-1">Talk to Medy</span>
+            <div class="flex flex-row justify-center items-center gap-2" >
+                <button class="reduceChatBtn hover:text-gray-400" title="Reduce"><i class="fa-solid fa-minus"></i></button>
+                <button class="closeChatBtn hover:text-gray-400" title="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
         </div>
-    </div> -->
-</div>
-    <footer class='flex flex-col justify-center items-center h-18 mt-10 bg-black text-white'>
-        <p class="pt-4 mb-1">Designed and developed with ❤ by <b><a href="https://www.linkedin.com/in/mahdi-nadir/" target="_blank" rel="noreferrer">Mahdi</a></b></p>
-        <p class="pb-4 mt-1">© <span id="year"></span> - All rights reserved</p>
-    </footer>
+        <div class="chatDiv chatArea overflow-y-auto overflow-x-hidden">
+            <div class="messageBot text-start flex flex-row justify-around items-end gap-2">
+                <i class="fa-solid fa-robot ml-1 mb-1 robotIcon" style="display: none;"></i>
+                <div>
+                    <h3 class="hey rounded-lg p-1 my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">Hey There! I'm Medy, your personal assistant!</h3>
+                    <h3 class="masculinePronoun rounded-lg p-1 my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">It's important to understand that using masculine pronouns is not indicative of sexism, but rather a reflection of simplicity.</h3>
+                    <h3 class="whatLang rounded-lg p-1 my-1 p-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify" style="display: none;">What language do you prefer?
+                    <ul class="suggestionUser pt-2" style="display: none;">
+                        <li><button class="answer engBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 hover:bg-teal-400 rounded-lg">English</button></li>
+                        <li><button class="answer frBtn bg-teal-300 w-3/4 text-start pl-2 ml-2 py-1 hover:bg-teal-400 rounded-lg mt-1">French</button></li>
+                    </ul></h3>
+                </div>
+            </div>
+            <div class="discussion flex flex-col justify-center items-start gap-2 text-start">
+                
+            </div>
+            <div class="spinner animate-spin" style="display: none;"><i class="fa-solid fa-spinner"></i></div>
+            
+        </div>
+    </div>
+
+    <div class="flex flex-col justify-end items-end">
+        <button class="robotBtn text-4xl md:text-5xl font-bold block hover:text-blue-700 flex flex-row justify-end items-end mr-2" title="Ask questions!"><i class="fa-solid fa-robot  mb-2 animate-pulse"></i>
+        
+        </button>
+        <footer class='flex flex-col justify-center items-center h-18 bg-black text-white w-screen'>
+            <p class="pt-4 mb-1">Designed and developed with ❤ by <b><a href="https://www.linkedin.com/in/mahdi-nadir/" target="_blank" rel="noreferrer">Mahdi</a></b></p>
+            <p class="pb-4 mt-1">© <span id="year"></span> - All rights reserved</p>
+        </footer>
+    </div>
+
     <script src="./assets/script/main.js" type="module"></script>
-
 </body>
-
 </html>
