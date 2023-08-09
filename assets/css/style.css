@@ -69,6 +69,23 @@ body {
     cursor: pointer;
 }
 
+/* chatDiv */
+.chatDiv {
+    height: 350px;
+}
+
+.haveQuestions {
+    position: fixed;
+    right: 60px;
+    bottom: 120px;
+}
+
+.robotBtn, .mainChatWindow {
+    position: fixed;
+    right: 15px;
+    bottom: 100px;
+}
+
 /* media query */
 @media (max-width: 1015px) {
     #modal, #modalResult, #modalConfirmation {
@@ -104,9 +121,38 @@ body {
     #modal, #modalResult, #modalConfirmation {
         font-size: 12pt;
     }
+
+    .haveQuestions {
+        display: none;
+    }
+
+    .robotBtn {
+        right: -30px;
+        animation: showup 50s ease-in-out infinite;
+    }
+
+    @keyframes showup {
+        0% {
+            right: -30px;
+        }
+
+        5% {
+            right: 15px;
+        }
+
+        60% {
+            right: 15px;
+        }
+
+        65% {
+            right: -30px;
+        }
+
+        100% {
+            right: -30px;
+        }
+    }
 }
 
-/* chatDiv */
-.chatDiv {
-    height: 350px;
-}
+
+
