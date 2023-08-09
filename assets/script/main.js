@@ -136,7 +136,7 @@ let helloMessages = [
     "Hey, it's Medy! Ready to assist you.",
     "Hello, it's me, Medy, your personal assistant extraordinaire!"
 ]
-heyMessage.innerHTML = helloMessages[Math.floor(Math.random() * helloMessages.length)];
+
 let masculinePronoun = document.querySelector('.masculinePronoun');
 let whatLang = document.querySelector('.whatLang');
 let robotIcon = document.querySelector('.robotIcon');
@@ -171,7 +171,7 @@ let admins = [
     "Medy",
     "Fiona"
 ];
-let admin = admins[Math.floor(Math.random() * admins.length)];
+
 
 adaptabilityScore > 10 ? adaptabilityScore = 10 : adaptabilityScore = adaptabilityScore;
 
@@ -265,6 +265,7 @@ function startConversation() {
     chatMonth = chatTime.getMonth() + 1;
     chatHour = chatTime.getHours();
     chatMinute = chatTime.getMinutes();
+    heyMessage.innerHTML = helloMessages[Math.floor(Math.random() * helloMessages.length)];
     setTimeout(() => {
         robotIcon.style.display = 'block';
         heyMessage.style.display = 'block';
@@ -819,6 +820,7 @@ function questionSubType(lang) {
 }
 
 function questionFromWebsite(lang) {
+    let admin = admins[Math.floor(Math.random() * admins.length)];
     let anotherQuestionBtn = document.querySelectorAll('.anotherQuestionBtn');
     if (lang == 'english') {
         anotherQuestionBtn.forEach(btn => {
@@ -835,7 +837,7 @@ function questionFromWebsite(lang) {
                             Need help with a topic not listed? You can navigate to our Facebook group where you can ask your question with the appropriate hashtag. We're here to assist you!<br><br>
                             
                             Please copy this hashtag <b>#to${admin}_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> and this tag <b>@${admin}</b>, then paste them into your post in <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">our Facebook group</a>.
-                            <br>
+                            <br><br>
 
                             ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
 
@@ -866,7 +868,7 @@ function questionFromWebsite(lang) {
                             Besoin d'aide sur un sujet qui n'est pas dans la liste ? Vous pouvez vous diriger vers notre groupe Facebook où vous pourrez poser votre question avec le hashtag approprié. Nous sommes là pour vous aider!<br><br>
                             
                             Prière de copier cet hashtag <b>#to${admin}_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> et ce tag <b>@${admin}</b>, puis collez-les dans votre publication dans <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">notre groupe Facebook</a>.<br>
-                            <br>
+                            <br><br>
 
                             ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
 
