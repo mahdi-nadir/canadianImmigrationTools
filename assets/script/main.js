@@ -1475,7 +1475,7 @@ function fromBassin(lang) {
     spouseBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Le conjoint");
+            answerUser("Contribution du conjoint");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -1566,7 +1566,7 @@ function fromBassin(lang) {
     drawsBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Les sélections");
+            answerUser("Les sélections fédérales");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -1597,7 +1597,7 @@ function fromBassin(lang) {
     fundsBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Les fonds requis");
+            answerUser("Les fonds requis (POF)");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -1727,7 +1727,7 @@ function fromPool(lang) {
     ageBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Age");
+            answerUser("Age in the pool");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -1905,7 +1905,7 @@ function fromPool(lang) {
     nominationBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Provincial nomination");
+            answerUser("Provincial nomination certificate");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -1965,7 +1965,7 @@ function fromPool(lang) {
     fundsBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Required funds");
+            answerUser("Required funds (POF)");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -2227,7 +2227,7 @@ function fromPostItaFr(lang) {
     feesBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Le critère de l'âge dans le bassin");
+            answerUser("Les frais à acquitter");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -2263,7 +2263,7 @@ function fromPostItaFr(lang) {
     vmBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Le critère de l'âge dans le bassin");
+            answerUser("La visite médicale");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -2903,7 +2903,7 @@ function fromInstallation(lang) {
     nasBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Le NAS");
+            answerUser("Le Numéro d'Assurance Sociale (NAS)");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -2934,7 +2934,7 @@ function fromInstallation(lang) {
     bankBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Créer un compte bancaire");
+            answerUser("Le compte bancaire");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
@@ -3029,7 +3029,7 @@ function fromSettlement(lang) {
     bankBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             spinner.style.display = 'block';
-            answerUser("Créer un compte bancaire");
+            answerUser("The bank account");
             setTimeout(() => {
                 spinner.style.display = 'none';
                 discussion.innerHTML += `
