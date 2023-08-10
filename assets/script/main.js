@@ -836,7 +836,7 @@ function questionFromWebsite(lang) {
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Need help with a topic not listed? You can navigate to our Facebook group where you can ask your question with the appropriate hashtag. We're here to assist you!<br><br>
                             
-                            Please copy this hashtag <b>#to${admin}_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> and this tag <b>@${admin}</b>, then paste them into your post in <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">our Facebook group</a>.
+                            Please copy this hashtag <b>#to${admin}_${chatMonth}${chatDay}__${chatHour}_${chatMinute}</b> and this tag <b>@${admin}</b>, then paste them into your post in <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">our Facebook group</a>.
                             <br><br>
 
                             ${questionInvitationEn[Math.floor(Math.random() * questionInvitationEn.length)]}
@@ -867,7 +867,7 @@ function questionFromWebsite(lang) {
                             <h3 class="rounded-lg p-1 my-1 px-2 text-sm md:text-md bg-teal-100 w-5/6 text-justify">
                             Besoin d'aide sur un sujet qui n'est pas dans la liste ? Vous pouvez vous diriger vers notre groupe Facebook où vous pourrez poser votre question avec le hashtag approprié. Nous sommes là pour vous aider!<br><br>
                             
-                            Prière de copier cet hashtag <b>#to${admin}_${chatMonth}${chatDay}_${chatHour}:${chatMinute}</b> et ce tag <b>@${admin}</b>, puis collez-les dans votre publication dans <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">notre groupe Facebook</a>.<br>
+                            Prière de copier cet hashtag <b>#to${admin}_${chatMonth}${chatDay}__${chatHour}_${chatMinute}</b> et ce tag <b>@${admin}</b>, puis collez-les dans votre publication dans <a class="text-blue-600" href="https://www.facebook.com/groups/hellocanada25" target="_blank" rel="noreferrer">notre groupe Facebook</a>.<br>
                             <br><br>
 
                             ${questionInvitationFr[Math.floor(Math.random() * questionInvitationFr.length)]}
@@ -904,7 +904,7 @@ function showHaveQuestionsMark() {
     })
 }
 setTimeout(showHaveQuestionsMark, 60000); // show for the first time after 60 seconds
-setInterval(showHaveQuestionsMark, 420000); // show every 7 minutes
+// setInterval(showHaveQuestionsMark, 420000); // show every 7 minutes
 
 
 // answers.forEach(answer => {
