@@ -903,7 +903,7 @@ function showHaveQuestionsMark() {
         haveQuestionsMark.style.display = 'none';
     })
 }
-setTimeout(showHaveQuestionsMark, 60000); // show for the first time after 60 seconds
+// setTimeout(showHaveQuestionsMark, 60000); // show for the first time after 60 seconds
 // setInterval(showHaveQuestionsMark, 420000); // show every 7 minutes
 
 
@@ -3471,16 +3471,32 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
     })
 
     function errorLanguageSkill(input, skill) {
+        const existingMessage = `You should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry`;
+        const listElements = noticeDiv.getElementsByClassName('listElement');
+        let messageExists = false;
+
+        for (let i = 0; i < listElements.length; i++) {
+            if (listElements[i].textContent == existingMessage) {
+                messageExists = true;
+            }
+        }
+
         if (input.value == '' || input.value == 'first-language-' + skill + '-clb6') {
-            noticeDiv.style.display = 'block';
-            noticeDiv.innerHTML += `
-                    <li class="listElement">You should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry</li>
-                    `;
+            if (!messageExists) {
+                noticeDiv.style.display = 'block';
+                noticeDiv.innerHTML += `
+                <li class="listElement">You should get at least "CLB 7" in ${skill} skill to be eligible to Express Entry</li>
+                `;
+            }
         } else {
-            let listElements = document.querySelectorAll('.listElement');
-            for (let i = 0; i < listElements.length; i++) {
-                if (listElements[i].textContent == 'You should get at least "CLB 7" in ' + skill + ' skill to be eligible to Express Entry') {
-                    listElements[i].remove();
+            if (messageExists) {
+                for (let i = 0; i < listElements.length; i++) {
+                    if (listElements[i].textContent == existingMessage) {
+                        listElements[i].remove();
+                    }
+                }
+                if (listElements.length == 0) {
+                    noticeDiv.style.display = 'none';
                 }
             }
         }
