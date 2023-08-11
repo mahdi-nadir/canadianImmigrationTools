@@ -1,37 +1,39 @@
-// scraping data from website
-let tabDraw = {}
-async function scrapeData() {
-    try {
-        // Fetch the HTML content from the target website
-        const response = await fetch('https://moving2canada.com/immigration/express-entry/express-entry-draw/');
-        const html = await response.text();
-        // Parse the HTML using DOMParser
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        // Find the table on the page (in this case, it's the first table)
-        for (let i = 1; i < 12; i++) {
-            let nbDraw = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[0].textContent.split(' ')[1];
-            let date = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[1].textContent;
-            let nbInvitations = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[2].textContent;
-            let crsScore = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[3].textContent.split(' ')[0];
-            let program = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[4].textContent;
-            crsScore > 560 ? program = 'PNP' : program = program;
-            program == '--' ? program = 'NPS' : program = program;
-            let draws = {
-                nbDraw,
-                date,
-                nbInvitations,
-                crsScore,
-                program
-            }
-            tabDraw[i] = draws;
-        }
-    } catch (error) {
-        console.error('Error scraping data:', error);
-    }
-}
+import ExtraInfoClass from "./extraInfo.js";
 
-let temperature;
+// scraping data from website
+// let tabDraw = {}
+// async function scrapeData() {
+//     try {
+//         // Fetch the HTML content from the target website
+//         const response = await fetch('https://moving2canada.com/immigration/express-entry/express-entry-draw/');
+//         const html = await response.text();
+//         // Parse the HTML using DOMParser
+//         const parser = new DOMParser();
+//         const doc = parser.parseFromString(html, 'text/html');
+//         // Find the table on the page (in this case, it's the first table)
+//         for (let i = 1; i < 12; i++) {
+//             let nbDraw = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[0].textContent.split(' ')[1];
+//             let date = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[1].textContent;
+//             let nbInvitations = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[2].textContent;
+//             let crsScore = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[3].textContent.split(' ')[0];
+//             let program = doc.querySelector('.m2c-block--tabs').querySelectorAll('tr')[i].querySelectorAll('td')[4].textContent;
+//             crsScore > 560 ? program = 'PNP' : program = program;
+//             program == '--' ? program = 'NPS' : program = program;
+//             let draws = {
+//                 nbDraw,
+//                 date,
+//                 nbInvitations,
+//                 crsScore,
+//                 program
+//             }
+//             tabDraw[i] = draws;
+//         }
+//     } catch (error) {
+//         console.error('Error scraping data:', error);
+//     }
+// }
+
+// let temperature;
 // async function getWeather(town) {
 //     town = 'montreal';
 //     try {
@@ -49,7 +51,7 @@ let temperature;
 
 
 // Call the scrapeData function when the page loads
-window.onload = scrapeData;
+window.onload = new ExtraInfoClass().scrapeData();;
 
 
 // year for footer
@@ -64,8 +66,8 @@ let nclcBtn = document.querySelector('#nclcBtn');
 let suggestedpnpBtn = document.querySelector('#suggestedpnpBtn');
 let ebooksBtn = document.querySelector('#ebooksBtn');
 let extraInfoBtn = document.querySelector('#extraInfoBtn');
-let weatherBtn = document.querySelector('.weatherBtn');
-let newsBtn = document.querySelector('.newsBtn');
+// let weatherBtn = document.querySelector('.weatherBtn');
+// let newsBtn = document.querySelector('.newsBtn');
 let currencyBtn = document.querySelector('.currencyBtn');
 
 // templates of components
@@ -182,6 +184,12 @@ burger.addEventListener('change', () => {
         burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
     }
 });
+
+
+
+// ######################################################
+// ######################################################
+// ######################################################
 
 robotBtn.addEventListener('click', () => {
     chatDiv.style.height = '400px';
@@ -906,17 +914,15 @@ function showHaveQuestionsMark() {
 // setTimeout(showHaveQuestionsMark, 60000); // show for the first time after 60 seconds
 // setInterval(showHaveQuestionsMark, 420000); // show every 7 minutes
 
-
+// ######################################################
+// ######################################################
+// ######################################################
 // answers.forEach(answer => {
 //     answer.addEventListener('click', () => {
 //         answerUser(answer);
 //         answer.textContent == 'English' ? questionType('english') : questionType('french');
 //     })
 // })
-
-
-
-
 
 
 // add event listeners to APIs buttons
@@ -952,6 +958,10 @@ function showHaveQuestionsMark() {
 // newsBtn.addEventListener('click', () => {
 //     console.log('news');
 // })
+// ######################################################
+// ######################################################
+// ######################################################
+
 
 
 // eligibility
@@ -3078,6 +3088,9 @@ function fromSettlement(lang) {
     discussion.scrollIntoView({ behavior: 'smooth', block: 'end' })
 }
 
+// ######################################################
+// ######################################################
+// ######################################################
 
 
 
@@ -3087,6 +3100,9 @@ function fromSettlement(lang) {
 
 
 
+// ######################################################
+// ######################################################
+// ######################################################
 
 currencyBtn.addEventListener('click', () => {
     let modalResult = document.querySelector('#modalResult');
@@ -3230,6 +3246,10 @@ currencyBtn.addEventListener('click', () => {
         });
     })
 })
+// ######################################################
+// ######################################################
+// ######################################################
+
 
 // add event listeners to buttons and display the right component when clicked
 homeBtn.addEventListener('click', () => {
@@ -3239,6 +3259,9 @@ homeBtn.addEventListener('click', () => {
     let clone = homeTemplate.content.cloneNode(true);
     main.appendChild(clone);
 })
+// ######################################################
+// ######################################################
+// ######################################################
 
 eligibilityCalculatorBtn.addEventListener('click', () => {
     document.title = 'Maple Tools - Eligibility Calculator';
@@ -3844,6 +3867,10 @@ eligibilityCalculatorBtn.addEventListener('click', () => {
         modalResult.style.backgroundColor = '#f7e6e6';
     }
 })
+// ######################################################
+// ######################################################
+// ######################################################
+
 
 
 for (let btn of navButtons) {
@@ -3888,6 +3915,9 @@ function calculateLanguageScore(langArray) {
 
 
 
+// ######################################################
+// ######################################################
+// ######################################################
 
 crsBtn.addEventListener('click', () => {
     document.title = 'Maple Tools - CRS Calculator';
@@ -5199,6 +5229,10 @@ crsBtn.addEventListener('click', () => {
     }
 
 })
+// ######################################################
+// ######################################################
+// ######################################################
+
 
 
 
@@ -5422,7 +5456,9 @@ function getPointsLanguageSpouse(languageSkill, langArray, index) {
     }
 }
 
-
+// ######################################################
+// ######################################################
+// ######################################################
 nclcBtn.addEventListener('click', () => {
     document.title = 'Maple Tools - CLB Calculator';
     main.innerHTML = '';
@@ -6273,7 +6309,13 @@ nclcBtn.addEventListener('click', () => {
         })
     })
 })
+// ######################################################
+// ######################################################
+// ######################################################
 
+// ######################################################
+// ######################################################
+// ######################################################
 suggestedpnpBtn.addEventListener('click', () => {
     document.title = 'Maple Tools - Suggested PNP';
     main.innerHTML = '';
@@ -7112,36 +7154,38 @@ suggestedpnpBtn.addEventListener('click', () => {
         }
     })
 })
+// ######################################################
+// ######################################################
+// ######################################################
 
+// ######################################################
+// ######################################################
+// ######################################################
 ebooksBtn.addEventListener('click', () => {
     document.title = 'Maple Tools - Ebooks';
     main.innerHTML = '';
     let clone = ebooksTemplate.content.cloneNode(true);
     main.appendChild(clone);
 })
+// ######################################################
+// ######################################################
+// ######################################################
 
+// ######################################################
+// ######################################################
+// ######################################################
 extraInfoBtn.addEventListener('click', () => {
     document.title = 'Maple Tools - Extra Info';
     main.innerHTML = '';
     let clone = extraInfoTemplate.content.cloneNode(true);
     main.appendChild(clone);
 
-    for (let i = 2; i < 13; i++) {
-        let tr = document.createElement('tr');
-        tr.innerHTML = `
-        <td class="bg-indigo-50 font-bold text-blue-600 underline"><a href="https://www.canada.ca/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=${tabDraw[i].nbDraw}" title="Get more information about #${tabDraw[i].nbDraw} draw" target="_blank" rel="noreferrer">${tabDraw[i].nbDraw}</a></td>
-        <td>${tabDraw[i].date}</td>
-        <td>${tabDraw[i].nbInvitations}</td>
-        <td class="bg-yellow-50 font-bold">${tabDraw[i].crsScore}</td>
-        <td>${tabDraw[i].program}</td>
-        `;
-        document.querySelector('#tbody').appendChild(tr);
-        let tds = document.querySelectorAll('td');
-        for (let elementTd of tds) {
-            elementTd.classList.add('border-2', 'border-gray-400', 'px-4', 'py-2');
-        }
-    }
+    new ExtraInfoClass();
 })
+// ######################################################
+// ######################################################
+// ######################################################
+
 
 
 
