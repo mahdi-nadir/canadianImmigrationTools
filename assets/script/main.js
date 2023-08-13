@@ -4,6 +4,7 @@ import crsClass from "./crsClass.js";
 import CurrencyClass from "./currencyClass.js";
 import eligibilityClass from "./eligibilityClass.js";
 import ExtraInfoClass from "./extraInfoClass.js";
+import hashtagClass from "./hashtag.js";
 import NavbarClass from "./navbarClass.js";
 import SuggestedPnpClass from "./suggestedpnpClass.js";
 
@@ -22,6 +23,7 @@ let extraInfoBtn = document.querySelector('#extraInfoBtn');
 // let weatherBtn = document.querySelector('.weatherBtn');
 // let newsBtn = document.querySelector('.newsBtn');
 let currencyBtn = document.querySelector('.currencyBtn');
+let hashtagBtn = document.querySelector('.hashtagBtn');
 
 // templates of components
 let homeTemplate = document.querySelector('#homeTemplate');
@@ -47,6 +49,14 @@ currencyBtn.addEventListener('click', () => {
     let clone = currencyTemplate.content.cloneNode(true);
     modalResult.appendChild(clone);
     new CurrencyClass();
+})
+
+hashtagBtn.addEventListener('click', () => {
+    let modalResult = document.querySelector('#modalResult');
+    let hashtagTemplate = document.querySelector('#hashtagTemplate');
+    let clone = hashtagTemplate.content.cloneNode(true);
+    modalResult.appendChild(clone);
+    new hashtagClass();
 })
 
 // add event listeners to buttons and display the right component when clicked
