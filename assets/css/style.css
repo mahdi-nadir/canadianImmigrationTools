@@ -85,14 +85,14 @@ footer {
 }
 
 /* media query */
-@media (max-width: 1015px) {
+@media (max-width: 1024px) {
     #modal, #modalResult, #modalConfirmation {
         width: 90%;
     }
 
     nav {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .navBig {
@@ -123,8 +123,6 @@ footer {
     .haveQuestions {
         display: none;
     }
-
-    
 
     .mainChatWindow {
         position: fixed;

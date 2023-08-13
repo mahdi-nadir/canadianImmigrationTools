@@ -4,6 +4,7 @@ import crsClass from "./crsClass.js";
 import CurrencyClass from "./currencyClass.js";
 import eligibilityClass from "./eligibilityClass.js";
 import ExtraInfoClass from "./extraInfoClass.js";
+import NavbarClass from "./navbarClass.js";
 import SuggestedPnpClass from "./suggestedpnpClass.js";
 
 // year for footer
@@ -34,21 +35,14 @@ let navButtons = [homeBtn, eligibilityCalculatorBtn, crsBtn, nclcBtn, suggestedp
 
 // declare components variables
 let main = document.querySelector('main');
-let burger = document.querySelector('#labelburger');
 
-burger.addEventListener('change', () => {
-    if (burger.checked === true) {
-        burger.innerHTML = '<i class="fa-solid fa-times"></i>';
-    } else {
-        burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
-    }
-});
 
+
+new NavbarClass();
 new ChatBotClass()
 
 currencyBtn.addEventListener('click', () => {
     let modalResult = document.querySelector('#modalResult');
-    // const cancelBtn = modalResult.querySelectorAll('.cancel');
     let currencyTemplate = document.querySelector('#currencyTemplate');
     let clone = currencyTemplate.content.cloneNode(true);
     modalResult.appendChild(clone);
