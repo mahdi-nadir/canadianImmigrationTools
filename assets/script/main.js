@@ -1,6 +1,7 @@
 import ChatBotClass from "./chatBotClass.js";
 import clbClass from "./clbClass.js";
 import crsClass from "./crsClass.js";
+import CurrencyClass from "./currencyClass.js";
 import eligibilityClass from "./eligibilityClass.js";
 import ExtraInfoClass from "./extraInfoClass.js";
 import SuggestedPnpClass from "./suggestedpnpClass.js";
@@ -34,11 +35,11 @@ let navButtons = [homeBtn, eligibilityCalculatorBtn, crsBtn, nclcBtn, suggestedp
 // declare components variables
 let main = document.querySelector('main');
 let burger = document.querySelector('#labelburger');
-const select = document.querySelectorAll('.currencySelect');
-const input = document.querySelectorAll('.currencyInput');
-const currencyResult = document.querySelector('.currencyResult');
-const API_URL = 'https://api.exchangerate-api.com/v4/latest/CAD';
-let html = '';
+// const select = document.querySelectorAll('.currencySelect');
+// const input = document.querySelectorAll('.currencyInput');
+// const currencyResult = document.querySelector('.currencyResult');
+// const API_URL = 'https://api.exchangerate-api.com/v4/latest/CAD';
+// let html = '';
 // let robotBtn = document.querySelector('.robotBtn');
 // let messageBot = document.querySelector('.messageBot');
 // let chatDiv = document.querySelector('.mainChatWindow');
@@ -114,145 +115,146 @@ new ChatBotClass()
 
 currencyBtn.addEventListener('click', () => {
     let modalResult = document.querySelector('#modalResult');
-    const cancelBtn = modalResult.querySelectorAll('.cancel');
+    // const cancelBtn = modalResult.querySelectorAll('.cancel');
     let currencyTemplate = document.querySelector('#currencyTemplate');
     let clone = currencyTemplate.content.cloneNode(true);
     modalResult.appendChild(clone);
+    new CurrencyClass();
 
-    overlay.style.display = 'block';
-    overlay.style.opacity = '0.8';
-    overlay.style.visibility = 'visible';
-    modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
-    let convertBtn = document.querySelector('#convertBtn');
+    // overlay.style.display = 'block';
+    // overlay.style.opacity = '0.8';
+    // overlay.style.visibility = 'visible';
+    // modalResult.style.transform = 'translate(-50%, -50%) scale(1)';
+    // let convertBtn = document.querySelector('#convertBtn');
 
-    let familyMembers = document.querySelector('#familyMembers');
-    let localCurrencyDiv = document.querySelector('.localCurrencyDiv');
-    let localCurrencyValue = document.querySelector('#localCurrency');
-    let amountDiv = document.querySelector('.amountDiv');
-    let amount = document.querySelector('#amount');
-    let canadianFunds = 0;
-    let result = document.querySelector('#result');
+    // let familyMembers = document.querySelector('#familyMembers');
+    // let localCurrencyDiv = document.querySelector('.localCurrencyDiv');
+    // let localCurrencyValue = document.querySelector('#localCurrency');
+    // let amountDiv = document.querySelector('.amountDiv');
+    // let amount = document.querySelector('#amount');
+    // let canadianFunds = 0;
+    // let result = document.querySelector('#result');
 
-    familyMembers.addEventListener('change', () => {
-        if (familyMembers.value != '') {
-            localCurrencyDiv.style.display = 'block';
-        } else {
-            localCurrencyDiv.style.display = 'none';
-        }
+    // familyMembers.addEventListener('change', () => {
+    //     if (familyMembers.value != '') {
+    //         localCurrencyDiv.style.display = 'block';
+    //     } else {
+    //         localCurrencyDiv.style.display = 'none';
+    //     }
 
-        switch (familyMembers.value) {
-            case "1":
-                canadianFunds = 13757;
-                break;
-            case "2":
-                canadianFunds = 17127;
-                break;
-            case "3":
-                canadianFunds = 21055;
-                break;
-            case "4":
-                canadianFunds = 25564;
-                break;
-            case "5":
-                canadianFunds = 28994;
-                break;
-            case "6":
-                canadianFunds = 32700;
-                break;
-            case "7":
-                canadianFunds = 36407;
-                break;
-            case "8":
-                canadianFunds = 40113;
-                break;
-            case "9":
-                canadianFunds = 43819;
-                break;
-            case "10":
-                canadianFunds = 47525;
-                break;
-            case "11":
-                canadianFunds = 51231;
-                break;
-            case "12":
-                canadianFunds = 54937;
-                break;
-            case "13":
-                canadianFunds = 58643;
-                break;
-            case "14":
-                canadianFunds = 62349;
-                break;
-            default:
-                canadianFunds = 66055;
-                break;
-        }
-    })
+    //     switch (familyMembers.value) {
+    //         case "1":
+    //             canadianFunds = 13757;
+    //             break;
+    //         case "2":
+    //             canadianFunds = 17127;
+    //             break;
+    //         case "3":
+    //             canadianFunds = 21055;
+    //             break;
+    //         case "4":
+    //             canadianFunds = 25564;
+    //             break;
+    //         case "5":
+    //             canadianFunds = 28994;
+    //             break;
+    //         case "6":
+    //             canadianFunds = 32700;
+    //             break;
+    //         case "7":
+    //             canadianFunds = 36407;
+    //             break;
+    //         case "8":
+    //             canadianFunds = 40113;
+    //             break;
+    //         case "9":
+    //             canadianFunds = 43819;
+    //             break;
+    //         case "10":
+    //             canadianFunds = 47525;
+    //             break;
+    //         case "11":
+    //             canadianFunds = 51231;
+    //             break;
+    //         case "12":
+    //             canadianFunds = 54937;
+    //             break;
+    //         case "13":
+    //             canadianFunds = 58643;
+    //             break;
+    //         case "14":
+    //             canadianFunds = 62349;
+    //             break;
+    //         default:
+    //             canadianFunds = 66055;
+    //             break;
+    //     }
+    // })
 
-    localCurrencyValue.addEventListener('change', () => {
-        if (localCurrencyValue.value != '') {
-            convertBtn.disabled = false;
-        } else {
-            convertBtn.disabled = true;
-        }
-    })
+    // localCurrencyValue.addEventListener('change', () => {
+    //     if (localCurrencyValue.value != '') {
+    //         convertBtn.disabled = false;
+    //     } else {
+    //         convertBtn.disabled = true;
+    //     }
+    // })
 
-    async function getCurrencyData() {
-        const currencyType = document.querySelector('#localCurrency');
+    // async function getCurrencyData() {
+    //     const currencyType = document.querySelector('#localCurrency');
 
-        const res = await fetch(API_URL);
-        const data = await res.json();
-        const rates = data.rates;
-        const keys = Object.keys(rates);
-        html = '';
-        keys.forEach(key => {
-            html += `<option value="${key}">${key}</option>`;
-        })
+    //     const res = await fetch(API_URL);
+    //     const data = await res.json();
+    //     const rates = data.rates;
+    //     const keys = Object.keys(rates);
+    //     html = '';
+    //     keys.forEach(key => {
+    //         html += `<option value="${key}">${key}</option>`;
+    //     })
 
-        currencyType.innerHTML = html;
-    }
-    getCurrencyData();
+    //     currencyType.innerHTML = html;
+    // }
+    // getCurrencyData();
 
-    convertBtn.addEventListener('click', async () => {
-        if (localCurrencyValue.value === '') {
-            result.textContent = 'Please select a local currency.';
-            return;
-        }
+    // convertBtn.addEventListener('click', async () => {
+    //     if (localCurrencyValue.value === '') {
+    //         result.textContent = 'Please select a local currency.';
+    //         return;
+    //     }
 
-        const selectedCurrency = localCurrencyValue.value;
+    //     const selectedCurrency = localCurrencyValue.value;
 
-        try {
-            const res = await fetch(API_URL);
-            const data = await res.json();
-            const exchangeRates = data.rates;
+    //     try {
+    //         const res = await fetch(API_URL);
+    //         const data = await res.json();
+    //         const exchangeRates = data.rates;
 
-            if (exchangeRates[selectedCurrency]) {
-                const equivalentInLocalCurrency = (canadianFunds * exchangeRates[selectedCurrency]).toFixed(2);
-                const formattedNumber = equivalentInLocalCurrency.replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    //         if (exchangeRates[selectedCurrency]) {
+    //             const equivalentInLocalCurrency = (canadianFunds * exchangeRates[selectedCurrency]).toFixed(2);
+    //             const formattedNumber = equivalentInLocalCurrency.replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
-                selectedCurrency === 'CAD' ? result.innerHTML = `Required funds in Canadian dollars (CAD) for ${familyMembers.value} person${familyMembers.value > 1 ? 's' : ''} are: <b>${canadianFunds}$</b>, that's what you need to have in your bank account.` : result.innerHTML = `Required funds in Canadian dollars (CAD) for ${familyMembers.value} person${familyMembers.value > 1 ? 's' : ''}: <b>${canadianFunds}$</b>.<br/>
-                In your local currency (${selectedCurrency}), you should have approximately: <b>${formattedNumber} ${selectedCurrency}</b>`;
-            } else {
-                result.textContent = 'Currency not found in exchange rates data.';
-            }
-        } catch (error) {
-            result.textContent = 'An error occurred during currency conversion.';
-        }
-    })
+    //             selectedCurrency === 'CAD' ? result.innerHTML = `Required funds in Canadian dollars (CAD) for ${familyMembers.value} person${familyMembers.value > 1 ? 's' : ''} are: <b>${canadianFunds}$</b>, that's what you need to have in your bank account.` : result.innerHTML = `Required funds in Canadian dollars (CAD) for ${familyMembers.value} person${familyMembers.value > 1 ? 's' : ''}: <b>${canadianFunds}$</b>.<br/>
+    //             In your local currency (${selectedCurrency}), you should have approximately: <b>${formattedNumber} ${selectedCurrency}</b>`;
+    //         } else {
+    //             result.textContent = 'Currency not found in exchange rates data.';
+    //         }
+    //     } catch (error) {
+    //         result.textContent = 'An error occurred during currency conversion.';
+    //     }
+    // })
 
-    cancelBtn.forEach(element => {
-        element.addEventListener('click', () => {
-            overlay.style.display = 'none';
-            overlay.style.opacity = '0';
-            overlay.style.visibility = 'hidden';
-            modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
-            modalResult.innerHTML = `
-            <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            `;
-        });
-    })
+    // cancelBtn.forEach(element => {
+    //     element.addEventListener('click', () => {
+    //         overlay.style.display = 'none';
+    //         overlay.style.opacity = '0';
+    //         overlay.style.visibility = 'hidden';
+    //         modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
+    //         modalResult.innerHTML = `
+    //         <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
+    //             <i class="fa-solid fa-xmark"></i>
+    //         </button>
+    //         `;
+    //     });
+    // })
 })
 
 // add event listeners to buttons and display the right component when clicked
