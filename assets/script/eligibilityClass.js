@@ -1,5 +1,11 @@
 export default class eligibilityClass {
     constructor() {
+        this.language = localStorage.getItem('language') === 'true' || false;
+        this.languageBtn = document.querySelector('#languageBtn');
+        this.languageBtn.textContent = this.language ? 'EN' : 'FR';
+
+
+
         this.main = document.querySelector('main');
         this.count = 0;
         this.educationScore = 0;
@@ -100,6 +106,22 @@ export default class eligibilityClass {
     }
 
     init() {
+        this.language ? this.translateFr() : this.translateEn();
+
+        this.languageBtn.addEventListener('click', () => {
+            this.language = !this.language;
+            localStorage.setItem('language', this.language);
+            if (this.language === true) {
+                this.translateFr();
+                languageBtn.textContent = 'EN';
+            } else {
+                this.translateEn();
+                languageBtn.textContent = 'FR';
+            }
+        })
+
+
+
         let spanMarried = document.querySelector('#marriedOrNot');
         this.martialStatus.addEventListener('change', () => {
             if (this.martialStatus.value == '') {
@@ -492,7 +514,6 @@ export default class eligibilityClass {
         }
     }
 
-
     getPointsSecondLanguage(languageSkill, langArray, index) {
         if (languageSkill == 'clb9' || languageSkill == 'clb10') {
             langArray[index] = 6;
@@ -751,19 +772,25 @@ export default class eligibilityClass {
         this.modalResult.style.backgroundColor = '#f7e6e6';
     }
 
-    // hideResultModal() {
-    //     console.log('hideResultModal');
-    //     this.modalResult.style.transform = 'translate(-50%, -50%) scale(0)';
-    //     this.overlay.style.display = 'none';
-    //     this.overlay.style.opacity = '0';
-    //     this.overlay.style.visibility = 'hidden';
-    //     // modalResult.querySelector('div').remove();
-    //     // this.cancelButton.removeEventListener('click', this.hideResultModal.bind(this));
-    //     this.resetAll().bind(this);
-    //     this.modalResult.innerHTML = `
-    //         <button id="cancel" class="cancel absolute top-2 right-3 px-2 text-white bg-red-500 rounded hover:bg-red-600">
-    //         <i class="fa-solid fa-xmark"></i>
-    //     </button>
-    //     `
-    // }
+    getVariables() {
+        let elig = []
+        elig[0] = document.querySelector('.eligTitle');
+        elig[1] = elig[0].nextElementSibling;
+        elig[2] = elig[1].nextElementSibling;
+        return elig;
+    }
+
+    translateFr() {
+        let elig = this.getVariables();
+        elig[0].innerHTML = 'Calculateur d\'éligibilité';
+        elig[1].innerHTML = 'Cet outil vous aidera à déterminer votre admissibilité à Entrée express';
+        elig[2].innerHTML = 'Veuillez noter que vous n\'êtes éligible que si vous obtenez 67 points ou plus /100';
+    }
+
+    translateEn() {
+        let elig = this.getVariables();
+        elig[0].innerHTML = 'Eligibility Calculator';
+        elig[1].innerHTML = 'This tool will help you determine your eligibility for Express Entry';
+        elig[2].innerHTML = 'Please note that you are only eligible if you get 67 points or more /100';
+    }
 }

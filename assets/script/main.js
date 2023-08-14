@@ -7,6 +7,7 @@ import ExtraInfoClass from "./extraInfoClass.js";
 import hashtagClass from "./hashtag.js";
 import NavbarClass from "./navbarClass.js";
 import SuggestedPnpClass from "./suggestedpnpClass.js";
+import TranslationClass from "./translationClass.js";
 
 // year for footer
 let span = document.querySelector('#year');
@@ -24,6 +25,7 @@ let extraInfoBtn = document.querySelector('#extraInfoBtn');
 // let newsBtn = document.querySelector('.newsBtn');
 let currencyBtn = document.querySelector('.currencyBtn');
 let hashtagBtn = document.querySelector('.hashtagBtn');
+let languageBtn = document.querySelector('#languageBtn');
 
 // templates of components
 let homeTemplate = document.querySelector('#homeTemplate');
@@ -38,10 +40,17 @@ let navButtons = [homeBtn, eligibilityCalculatorBtn, crsBtn, nclcBtn, suggestedp
 // declare components variables
 let main = document.querySelector('main');
 
-
-
 new NavbarClass();
 new ChatBotClass()
+
+
+// let language = localStorage.getItem('language') === 'true' || false;
+
+new TranslationClass();
+// languageBtn.addEventListener('click', () => {
+//     // languageBtn.textContent = language ? 'EN' : 'FR';
+//     new translationClass();
+// });
 
 currencyBtn.addEventListener('click', () => {
     let modalResult = document.querySelector('#modalResult');
