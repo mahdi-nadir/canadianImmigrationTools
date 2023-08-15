@@ -7,7 +7,8 @@ import ExtraInfoClass from "./extraInfoClass.js";
 import hashtagClass from "./hashtag.js";
 import NavbarClass from "./navbarClass.js";
 import SuggestedPnpClass from "./suggestedpnpClass.js";
-import TranslationClass from "./translationClass.js";
+import WeatherClass from "./weatherClass.js";
+// import TranslationClass from "./translationClass.js";
 
 // year for footer
 let span = document.querySelector('#year');
@@ -21,11 +22,11 @@ let nclcBtn = document.querySelector('#nclcBtn');
 let suggestedpnpBtn = document.querySelector('#suggestedpnpBtn');
 let ebooksBtn = document.querySelector('#ebooksBtn');
 let extraInfoBtn = document.querySelector('#extraInfoBtn');
-// let weatherBtn = document.querySelector('.weatherBtn');
+let weatherBtn = document.querySelector('.weatherBtn');
 // let newsBtn = document.querySelector('.newsBtn');
 let currencyBtn = document.querySelector('.currencyBtn');
 let hashtagBtn = document.querySelector('.hashtagBtn');
-let languageBtn = document.querySelector('#languageBtn');
+// let languageBtn = document.querySelector('#languageBtn');
 
 // templates of components
 let homeTemplate = document.querySelector('#homeTemplate');
@@ -46,11 +47,19 @@ new ChatBotClass()
 
 // let language = localStorage.getItem('language') === 'true' || false;
 
-new TranslationClass();
+// new TranslationClass();
 // languageBtn.addEventListener('click', () => {
 //     // languageBtn.textContent = language ? 'EN' : 'FR';
 //     new translationClass();
 // });
+
+weatherBtn.addEventListener('click', () => {
+    let modalResult = document.querySelector('#modalResult');
+    let weatherTemplate = document.querySelector('#weatherTemplate');
+    let clone = weatherTemplate.content.cloneNode(true);
+    modalResult.appendChild(clone);
+    new WeatherClass();
+})
 
 currencyBtn.addEventListener('click', () => {
     let modalResult = document.querySelector('#modalResult');

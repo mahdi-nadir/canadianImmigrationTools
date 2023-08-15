@@ -1,0 +1,26 @@
+{
+    "eligibility_intro": [
+        "Calculateur d'éligibilité",
+        "Cet outil vous aidera à déterminer votre admissibilité à Entrée express",
+        "Veuillez noter que vous n'êtes éligible que si vous obtenez 67 points ou plus /100"
+    ],
+    "marital_status": [
+        "Situation matrimoniale",
+        "Célibataire / Mariage annulé / Veuf / Séparé",
+        "Marié / Union de fait",
+        "<li><b>Célibataire</b> signifie que vous n'avez jamais été marié(e) et que vous n'êtes pas en union de fait.</li>\n<li><b>Mariage annulé</b> signifie un mariage déclaré légalement invalide.</li>\n<li><b>Veuf/Veuve</b> signifie que votre conjoint est décédé et que vous n'avez pas encore contracté de nouveau mariage ou n'avez pas encore vécu en union de fait.</li>\n<li><b>Séparé</b> signifie que vous et votre conjoint avez cessé de vivre ensemble pendant au moins 1 an en raison de problèmes de relation conjugale et que vous n'avez pas vécu en union de fait pendant cette période.</li>\n<li><b>Union de fait</b> signifie que vous avez vécu avec votre partenaire pendant au moins 1 an dans une relation continue et mutuellement dépendante, semblable à un mariage.</li>"
+    ],
+    "age": [
+        "<b>Votre âge est déterminé à partir du jour où le CIC reçoit une invitation à présenter une demande (IPD). Cela signifie que si vous avez actuellement 35 ans, mais que vous aurez 36 ans avant de recevoir une IPD, vous n'obtiendrez pas de points pour avoir 35 ans.</b>"
+    ],
+    "education": [
+        "Certificat d'études secondaires (lycée) ou moins",
+        "Certificat de programme d'enseignement post-secondaire d'un an",
+        "Certificat de programme d'enseignement post-secondaire de deux ans",
+        "Diplôme de premier cycle OU un certificat de programme d'enseignement post-secondaire de trois ans ou plus",
+        "Deux diplômes de programmes d'enseignement post-secondaire ou plus (dont au moins 1 devrait être de 3 ans ou plus)",
+        "Maîtrise",
+        "Doctorat",
+        "<b><u>Indiquez le niveau de scolarité le plus élevé pour lequel vous :</u></b>\n<li>avez obtenu un diplôme, un certificat ou un titre canadien, ou</li>\n<li>avez obtenu une évaluation des titres de compétences académiques (ÉTCA) si vous avez étudié à l'extérieur du Canada (au cours des cinq dernières années).</li>\n<b><u>Remarque :</u></b> Le diplôme canadien doit provenir d'un établissement agréé. Si vous possédez un diplôme étranger, vous devez disposer d'un rapport d'ÉTCA provenant d'un organisme approuvé."
+    ]
+}

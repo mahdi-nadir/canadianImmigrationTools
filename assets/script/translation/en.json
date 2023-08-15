@@ -1,0 +1,26 @@
+{
+    "eligibility_intro": [
+        "Eligibility Calculator",
+        "This tool will help you determine your eligibility for Express Entry",
+        "Please note that you are only eligible if you get 67 points or more /100"
+    ],
+    "marital_status": [
+        "Marital Status",
+        "Single / Annulled Marriage / Widowed / Separated",
+        "Married / Common-Law",
+        "<li><b>Single</b> means you have never been married and are not in a common-law relationship.</li>\n<li><b>Annulled Marriage</b> means a marriage that is legally declared invalid.</li>\n<li><b>Widowed</b> means your spouse has died and that you have not re-married or entered into a common-law relationship.</li>\n<li><b>Separated</b> means that you are still legally married but no longer living with your spouse.</li>\n<li><b>Married</b> means that you and your spouse have had a ceremony that legally binds you to each other. Your marriage must be legally recognized in the country where it was performed.</li>\n<li><b>Common-Law</b> means that you have lived continuously with your partner in a marital-type relationship for a minimum of 1 year.</li>"
+    ],
+    "age": [
+        "<b>Your age is based on the day IRCC gets an invitation to apply (ITA). It means that if you are 35 years old now, but you turn 36 before you get an ITA, then you will not get points for being 35.</b>"
+    ],
+    "education": [
+        "Secondary school (high school) credential or less",
+        "One-year post-secondary program credential",
+        "Two-year post-secondary program credential",
+        "Bachelor's degree OR a three or more year post-secondary program credential",
+        "Two or more post-secondary program credentials (1 should be 3 or more years)",
+        "Master's degree",
+        "Doctoral level university degree (Ph.D.)",
+        "<b><u>Enter the highest level of education for which you:</u></b>\n<li>earned a Canadian degree, diploma, or certificate, or</li>\n<li>had an Educational Credential Assessment (ECA) if studied outside Canada (within the last five years).</li>\n<b><u>Note:</u></b> Canadian degree must be from an accredited institution. If you have a foreign degree, you must have an ECA report from an approved agency."
+    ]
+}

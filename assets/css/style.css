@@ -84,6 +84,11 @@ footer {
     right: 0;
 }
 
+/* #degree {
+    font-size: 60pt;
+    padding-bottom: 20px;
+} */
+
 /* media query */
 @media (max-width: 1024px) {
     #modal, #modalResult, #modalConfirmation {
@@ -129,6 +134,10 @@ footer {
         bottom: 85px;
         right: 0;
     }
+
+    /* #degree {
+        font-size: 50pt;
+    } */
 }
 
 

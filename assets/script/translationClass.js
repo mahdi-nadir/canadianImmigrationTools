@@ -1,4 +1,4 @@
-export default class translationClass {
+/* export default class translationClass {
     constructor() {
         // super();
         this.language = localStorage.getItem('language') === 'true' || false;
@@ -74,3 +74,4 @@ export default class translationClass {
     }
 }
 
+ */

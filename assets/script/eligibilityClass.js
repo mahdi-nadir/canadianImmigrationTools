@@ -1,8 +1,12 @@
+// import Translator from "./translation/translator.js";
+
 export default class eligibilityClass {
     constructor() {
-        this.language = localStorage.getItem('language') === 'true' || false;
-        this.languageBtn = document.querySelector('#languageBtn');
-        this.languageBtn.textContent = this.language ? 'EN' : 'FR';
+        // this.language = localStorage.getItem('language') === 'true' || false;
+        // this.languageBtn = document.querySelector('#languageBtn');
+        // this.languageBtn.textContent = this.language ? 'EN' : 'FR';
+        // this.translator = new Translator(this.language);
+        // this.translator.loadTranslations();
 
 
 
@@ -106,19 +110,19 @@ export default class eligibilityClass {
     }
 
     init() {
-        this.language ? this.translateFr() : this.translateEn();
+        // this.language ? this.translateFr() : this.translateEn();
 
-        this.languageBtn.addEventListener('click', () => {
-            this.language = !this.language;
-            localStorage.setItem('language', this.language);
-            if (this.language === true) {
-                this.translateFr();
-                languageBtn.textContent = 'EN';
-            } else {
-                this.translateEn();
-                languageBtn.textContent = 'FR';
-            }
-        })
+        // this.languageBtn.addEventListener('click', () => {
+        //     this.language = !this.language;
+        //     localStorage.setItem('language', this.language);
+        //     if (this.language === true) {
+        //         this.translateFr();
+        //         languageBtn.textContent = 'EN';
+        //     } else {
+        //         this.translateEn();
+        //         languageBtn.textContent = 'FR';
+        //     }
+        // })
 
 
 
@@ -772,25 +776,117 @@ export default class eligibilityClass {
         this.modalResult.style.backgroundColor = '#f7e6e6';
     }
 
-    getVariables() {
+    /* getVariables() {
         let elig = []
-        elig[0] = document.querySelector('.eligTitle');
-        elig[1] = elig[0].nextElementSibling;
-        elig[2] = elig[1].nextElementSibling;
+        let eligibilityIntro = {}
+
+        // eligibility variables
+        eligibilityIntro[0] = document.querySelector('.eligTitle');
+        eligibilityIntro[1] = eligibilityIntro[0].nextElementSibling;
+        eligibilityIntro[2] = eligibilityIntro[1].nextElementSibling;
+        elig[0] = eligibilityIntro;
+
+        // form variables
+        // marital status
+        let maritalObj = {}
+        maritalObj[0] = document.querySelector('.maritalTitle');
+        maritalObj[1] = document.querySelector('[value="single"]');
+        maritalObj[2] = document.querySelector('[value="married"]');
+        maritalObj[3] = document.querySelector('.maritalModalExplanation');
+        elig[1] = maritalObj;
+
+        // age
+        let ageObj = {}
+        ageObj[0] = document.querySelector('.ageModalExplanation');
+        elig[2] = ageObj;
+
+        // education
+        let educationObj = {}
+        educationObj[0] = document.querySelector('[value="secondary"]');
+        educationObj[1] = document.querySelector('[value="one-year"]');
+        educationObj[2] = document.querySelector('[value="two-year"]');
+        educationObj[3] = document.querySelector('[value="bachelors"]');
+        educationObj[4] = document.querySelector('[value="two-or-more"]');
+        educationObj[5] = document.querySelector('[value="masters"]');
+        educationObj[6] = document.querySelector('[value="doctoral"]');
+        educationObj[7] = document.querySelector('.educationModalExplanation');
+        elig[3] = educationObj;
+
+        // first language
+        let firstLangObj = {}
+        firstLangObj[0] = document.querySelector('.firstLangTitle');
+        firstLangObj[1] = document.querySelector('[htmlFor="first-language-availability"]');
+
         return elig;
     }
 
     translateFr() {
         let elig = this.getVariables();
-        elig[0].innerHTML = 'Calculateur d\'éligibilité';
-        elig[1].innerHTML = 'Cet outil vous aidera à déterminer votre admissibilité à Entrée express';
-        elig[2].innerHTML = 'Veuillez noter que vous n\'êtes éligible que si vous obtenez 67 points ou plus /100';
+        elig[0][0].innerHTML = 'Calculateur d\'éligibilité';
+        elig[0][1].innerHTML = 'Cet outil vous aidera à déterminer votre admissibilité à Entrée express';
+        elig[0][2].innerHTML = 'Veuillez noter que vous n\'êtes éligible que si vous obtenez 67 points ou plus /100';
+
+        // situation matrimoniale
+        elig[1][0].innerHTML = 'Situation matrimoniale';
+        elig[1][1].innerHTML = 'Célibataire / Mariage annulé / Veuf / Séparé';
+        elig[1][2].innerHTML = 'Marié / Union de fait';
+        elig[1][3].innerHTML = `<li><b>Célibataire</b> signifie que vous n'avez jamais été marié(e) et que vous n'êtes pas en union de fait.</li>
+        <li><b>Mariage annulé</b> signifie un mariage déclaré légalement invalide.</li>
+        <li><b>Veuf/Veuve</b> signifie que votre conjoint est décédé et que vous n'avez pas encore contracté de nouveau mariage ou n'avez pas encore vécu en union de fait.</li>
+        <li><b>Séparé</b> signifie que vous et votre conjoint avez cessé de vivre ensemble pendant au moins 1 an en raison de problèmes de relation conjugale et que vous n'avez pas vécu en union de fait pendant cette période.</li>
+        <li><b>Union de fait</b> signifie que vous avez vécu avec votre partenaire pendant au moins 1 an dans une relation continue et mutuellement dépendante, semblable à un mariage.</li>`;
+
+        // age
+        elig[2][0].innerHTML = `<b>Votre âge est déterminé à partir du jour où le CIC reçoit une invitation à présenter une demande (IPD). Cela signifie que si vous avez actuellement 35 ans, mais que vous aurez 36 ans avant de recevoir une IPD, vous n'obtiendrez pas de points pour avoir 35 ans.</b>`;
+
+        // education
+        elig[3][0].innerHTML = `Certificat d'études secondaires (lycée) ou moins`;
+        elig[3][1].innerHTML = `Certificat de programme d'enseignement post-secondaire d'un an`;
+        elig[3][2].innerHTML = `Certificat de programme d'enseignement post-secondaire de deux ans`;
+        elig[3][3].innerHTML = `Diplôme de premier cycle OU un certificat de programme d'enseignement post-secondaire de trois ans ou plus`;
+        elig[3][4].innerHTML = `Deux diplômes de programmes d'enseignement post-secondaire ou plus (dont au moins 1 devrait être de 3 ans ou plus)`;
+        elig[3][5].innerHTML = `Maîtrise`;
+        elig[3][6].innerHTML = `Doctorat`;
+        elig[3][7].innerHTML = `<b><u>Indiquez le niveau de scolarité le plus élevé pour lequel vous :</u></b>
+        <li>avez obtenu un diplôme, un certificat ou un titre canadien, ou</li>
+        <li>avez obtenu une évaluation des titres de compétences académiques (ÉTCA) si vous avez étudié à l'extérieur du Canada (au cours des cinq dernières années).</li>
+        <b><u>Remarque :</u></b> Le diplôme canadien doit provenir d'un établissement agréé. Si vous possédez un diplôme étranger, vous devez disposer d'un rapport d'ÉTCA provenant d'un organisme approuvé.`
+
     }
 
     translateEn() {
         let elig = this.getVariables();
-        elig[0].innerHTML = 'Eligibility Calculator';
-        elig[1].innerHTML = 'This tool will help you determine your eligibility for Express Entry';
-        elig[2].innerHTML = 'Please note that you are only eligible if you get 67 points or more /100';
-    }
+        elig[0][0].innerHTML = 'Eligibility Calculator';
+        elig[0][1].innerHTML = 'This tool will help you determine your eligibility for Express Entry';
+        elig[0][2].innerHTML = 'Please note that you are only eligible if you get 67 points or more /100';
+
+        // marital status
+        elig[1][0].innerHTML = 'Marital Status';
+        elig[1][1].innerHTML = 'Single / Annulled Marriage / Widowed / Separated';
+        elig[1][2].innerHTML = 'Married / Common-Law';
+        elig[1][3].innerHTML = `<li><b>Single</b> means you have never been married and are not in a common-law relationship.</li>
+        <li><b>Annulled Marriage</b> means a marriage that is legally declared invalid.</li>
+        <li><b>Widowed</b> means your spouse has died and that you have not re-married or entered into a common-law relationship.</li>
+        <li><b>Separated</b> means that you are still legally married but no longer living with your spouse.</li>
+        <li><b>Married</b> means that you and your spouse have had a ceremony that legally binds you to each other. Your marriage must be legally recognized in the country where it was performed.</li>
+        <li><b>Common-Law</b> means that you have lived continuously with your partner in a marital-type relationship for a minimum of 1 year.</li>`;
+
+        // age
+        elig[2][0].innerHTML = `<b>Your age is based on the day IRCC gets an invitation to apply (ITA). It means that if you are 35 years old now, but you turn 36 before you get an ITA, then you will not get points for being 35.</b>`;
+
+        // education
+        elig[3][0].innerHTML = 'Secondary school (high school) credential or less';
+        elig[3][1].innerHTML = 'One-year post-secondary program credential';
+        elig[3][2].innerHTML = 'Two-year post-secondary program credential';
+        elig[3][3].innerHTML = 'Bachelor\'s degree OR a three or more year post-secondary program credential';
+        elig[3][4].innerHTML = 'Two or more post-secondary program credentials (1 should be 3 or more years)';
+        elig[3][5].innerHTML = 'Master\'s degree';
+        elig[3][6].innerHTML = 'Doctoral level university degree (Ph.D.)';
+        elig[3][7].innerHTML = `<b><u>Enter the highest level of education for which you:</u></b>
+        <li>earned a Canadian degree, diploma, or certificate, or</li>
+        <li>had an Educational Credential Assessment (ECA) if studied outside Canada (within the last five years).</li>
+        <b><u>Note:</u></b> Canadian degree must be from an accredited institution. If you have a foreign degree, you must have an ECA report from an approved agency.`
+
+        // language
+    } */
 }
