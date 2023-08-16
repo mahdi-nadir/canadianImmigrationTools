@@ -16,6 +16,7 @@ export default class WeatherClass {
         this.humidity = 0;
         this.windSpeed = 0;
         this.weatherIcon = '';
+        this.condition = '';
         this.API_KEY = weatherapi;
         this.init();
     }
@@ -38,6 +39,7 @@ export default class WeatherClass {
         this.getWeather.addEventListener('click', async () => {
             this.city = this.place.value;
             this.getWeatherFunction(this.city);
+            this.result.scrollIntoView({ behavior: 'smooth' });
         })
 
         this.cancelBtn.forEach(element => {
@@ -57,25 +59,38 @@ export default class WeatherClass {
 
     async getWeatherFunction(city) {
         try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},CA&appid=${this.API_KEY}&units=metric`);
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},CA&appid=${this.API_KEY[Math.floor(Math.random() * this.API_KEY.length)]}&units=metric`);
             const json = await response.json();
-            console.log(json);
             this.temperature = Math.round(parseFloat(json.main.temp))
             this.humidity = json.main.humidity;
             this.windSpeed = json.wind.speed;
-            this.weatherIcon = json.weather[0].icon;
+            // this.weatherIcon = json.weather[0].icon;
+            this.condition = json.weather[0].main;
             this.result.innerHTML = `
             <div class="flex flex-col items-center justify-center gap-8">
                 <div class="flex flex-col items-center justify-center">
                     <p class="text-3xl font-bold">${this.city.charAt(0).toUpperCase() + this.city.slice(1)}</p>
-                    <img src="http://openweathermap.org/img/w/${this.weatherIcon}.png" alt="weather icon" class="w-20 md:w-30 h-20 md:h-30">
-                    <p class="text-2xl font-bold" id="degree">${this.temperature}°C</p>
+                    <img src="assets/images/weather_icons/${this.condition}.png" alt="weather icon" class="w-20 md:w-30 h-20 md:h-30 mt-1">
+                    <div class="flex flex-row items-center justify-between gap-6">
+                        <p class="text-2xl font-bold" id="degree">${this.temperature}°C</p>
+                        <p class="text-2xl font-bold">${this.condition}</p>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <p class="text-xl font-bold underline">Humidity:</p>
-                    <p class="text-xl font-bold mb-2">${this.humidity}%</p>
-                    <p class="text-xl font-bold underline">Wind Speed:</p>
-                    <p class="text-xl font-bold">${this.windSpeed} km/h</p>
+                <div class="flex flex-row items-center justify-center gap-4 md:gap-10">
+                    <div class="flex flex-row items-center justify-center gap-2">
+                        <img src="assets/images/weather_icons/humidity.png" alt="weather icon" class="w-5 md:w-8 h-5 md:h-8">
+                        <div class="flex flex-col items-center justify-center">
+                            <p class="text-sm font-bold">${this.humidity}%</p>
+                            <p class="text-sm">Humidity</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-center justify-center gap-2">
+                        <img src="assets/images/weather_icons/winnd.png" alt="weather icon" class="w-5 md:w-8 h-6 md:h-10">
+                        <div class="flex flex-col items-center justify-center">
+                            <p class="text-sm font-bold">${this.windSpeed} km/h</p>
+                            <p class="text-sm">Wind Speed</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             `;
