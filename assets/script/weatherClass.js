@@ -1,3 +1,5 @@
+import weatherapi from './apikey.js';
+
 export default class WeatherClass {
     constructor() {
         this.modalResult = document.querySelector('#modalResult');
@@ -14,8 +16,7 @@ export default class WeatherClass {
         this.humidity = 0;
         this.windSpeed = 0;
         this.weatherIcon = '';
-        // this.API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${this.city},CA&appid=a9714d59246362bcf4603047dbc6b61a`;
-
+        this.API_KEY = weatherapi;
         this.init();
     }
 
@@ -56,8 +57,9 @@ export default class WeatherClass {
 
     async getWeatherFunction(city) {
         try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},CA&appid=a9714d59246362bcf4603047dbc6b61a&units=metric`);
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},CA&appid=${this.API_KEY}&units=metric`);
             const json = await response.json();
+            console.log(json);
             this.temperature = Math.round(parseFloat(json.main.temp))
             this.humidity = json.main.humidity;
             this.windSpeed = json.wind.speed;
@@ -79,6 +81,10 @@ export default class WeatherClass {
             `;
         } catch (error) {
             console.error('Please try again later', error);
+            this.result.innerHTML = `
+            <div class="flex flex-col items-center justify-center">
+            <p class="font-bold text-red-600">Please try again later</p>
+            </div>`
         }
     }
 }
