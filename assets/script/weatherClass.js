@@ -76,8 +76,8 @@ export default class WeatherClass {
                         <p class="text-2xl font-bold">${this.condition}</p>
                     </div>
                 </div>
-                <div class="flex flex-row items-center justify-center gap-4 md:gap-10">
-                    <div class="flex flex-row items-center justify-center gap-2">
+                <div class="flex flex-row items-center justify-center gap-6 md:gap-10">
+                    <div class="flex flex-row items-center justify-center">
                         <img src="assets/images/weather_icons/humidity.png" alt="weather icon" class="w-5 md:w-8 h-5 md:h-8">
                         <div class="flex flex-col items-center justify-center">
                             <p class="text-sm font-bold">${this.humidity}%</p>
@@ -85,11 +85,11 @@ export default class WeatherClass {
                         </div>
                     </div>
                     <div class="flex flex-row items-center justify-center gap-2">
-                        <img src="assets/images/weather_icons/winnd.png" alt="weather icon" class="w-5 md:w-8 h-6 md:h-10">
                         <div class="flex flex-col items-center justify-center">
                             <p class="text-sm font-bold">${this.windSpeed} km/h</p>
                             <p class="text-sm">Wind Speed</p>
                         </div>
+                        <img src="assets/images/weather_icons/winnd.png" alt="weather icon" class="w-5 md:w-8 h-6 md:h-10">
                     </div>
                 </div>
             </div>
