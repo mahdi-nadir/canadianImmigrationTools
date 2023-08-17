@@ -40,6 +40,7 @@ export default class ExtraInfoClass {
 
         for (let i = 1; i < 12; i++) {
             let tr = document.createElement('tr');
+            tr.setAttribute('class', 'text-sm md:text:xl')
             tr.innerHTML = `
                 <td class="bg-indigo-50 font-bold text-blue-600 underline"><a href="https://www.canada.ca/content/canadasite/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds/invitations.html?q=${this.tabDraw[i].nbDraw}" title="Get more information about #${this.tabDraw[i].nbDraw} draw" target="_blank" rel="noreferrer">${this.tabDraw[i].nbDraw}</a></td>
                 <td>${this.tabDraw[i].date}</td>
@@ -53,6 +54,19 @@ export default class ExtraInfoClass {
             let tds = document.querySelectorAll('td');
             for (let elementTd of tds) {
                 elementTd.classList.add('border-2', 'border-gray-400', 'px-4', 'py-2');
+            }
+        }
+
+        this.removeProgram();
+    }
+
+    removeProgram() {
+        if (window.innerWidth < 768) {
+            let th = document.querySelector('th:nth-child(5)');
+            let tds = document.querySelectorAll('td:nth-child(5)');
+            th.style.display = 'none';
+            for (let elementTd of tds) {
+                elementTd.style.display = 'none';
             }
         }
     }
